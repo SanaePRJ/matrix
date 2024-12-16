@@ -1,0 +1,13 @@
+#ifndef MATRIXCPP_MATRIX_HPP
+#define MATRIXCPP_MATRIX_HPP
+
+
+#include "matrix.h"
+#include "matrixCalc.hpp"
+#include "matrixDec.hpp"
+#include "matrixOps.hpp"
+#include "matrixCtor.hpp"
+#include "matrixUtils.hpp"
+
+
+#endif
