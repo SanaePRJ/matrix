@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\matrix\\matrix\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EDE1A0F-7B57-43DB-9105-6BF0F4A228F0}|matrix\\matrix.vcxproj|C:\\Users\\user\\Desktop\\matrix\\matrix\\matrix\\matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6EDE1A0F-7B57-43DB-9105-6BF0F4A228F0}|matrix\\matrix.vcxproj|solutionrelative:matrix\\matrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 549,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "matrix.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\matrix\\matrix\\matrix\\matrix.cpp",
+              "RelativeDocumentMoniker": "matrix\\matrix.cpp",
+              "ToolTip": "C:\\Users\\user\\Desktop\\matrix\\matrix\\matrix\\matrix.cpp",
+              "RelativeToolTip": "matrix\\matrix.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-12-16T01:45:26.079Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
