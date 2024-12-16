@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\user\Documents\git\matrix\matrix\matrix\matrixLib\</FILEPATH>
+      <FILENAME>matrixOps.hpp</FILENAME>
+      <LINE>65</LINE>
+      <COLUMN>28</COLUMN>
+    </SFA>
+    <DEFECTCODE>26439</DEFECTCODE>
+    <DESCRIPTION>この種類の関数は throw できません。'noexcept' として宣言します (f.6)。</DESCRIPTION>
+    <FUNCTION>Matrix&lt;float&gt;::=</FUNCTION>
+    <DECORATED>??4?$Matrix@M@@QEAAAEAV0@$$QEAV0@@Z</DECORATED>
+    <FUNCLINE>65</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
