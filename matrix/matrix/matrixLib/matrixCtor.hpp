@@ -3,16 +3,45 @@
 
 #include "matrix.h"
 
+//サイズを指定して0行列を生成する。
+template<typename Type>
+Matrix<Type>::Matrix
+(
+	const Size& size
+)
+	:matrix_(size.first, std::vector<Type>(size.second, 0))
+{}
+
+//以下のように定義することができる。
+//{
+//	{0, 0},
+//	{0, 0},
+//	{0, 0}
+//}
+template<typename Type>
+Matrix<Type>::Matrix
+(
+	const MatrixInitType<Type>& init
+)
+	:matrix_(init.begin(), init.end())
+{
+	//バリデート
+}
+
 // コピーコンストラクタ
 template<typename Type>
 Matrix<Type>::Matrix
 (
-	const Matrix<Type>& other
+	const Matrix& other
 )
 {
-	// ディープコピー
+	// リサイズ
+	matrix_.resize(other.matrix_.size());
+
+	// コピー
 	copyMatrix_(matrix_, other.matrix_);
 }
+
 
 // moveコンストラクタ
 template<typename Type>
@@ -24,32 +53,6 @@ Matrix<Type>::Matrix
 {
 	// リソースの移動
 	matrix_ = std::move(other.matrix_);
-}
-
-// デフォルトコンストラクタ
-template<typename Type>
-Matrix<Type>::Matrix
-(
-	const MatrixInitType<>& init
-)
-{
-	// 初期化リストからマトリックスを作成
-	*this = init; // 既存の代入演算子の再利用
-}
-
-// サイズ指定コンストラクタ
-template<typename Type>
-Matrix<Type>::Matrix
-(
-	const Size& size
-)
-{
-	// 指定されたサイズでマトリックスをリサイズ
-	matrix_.resize(size.first);
-	for (auto& row : matrix_)
-	{
-		row.resize(size.second);
-	}
 }
 
 #endif

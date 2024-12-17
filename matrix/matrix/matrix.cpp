@@ -3,7 +3,6 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
     Matrix<float> m1;
 
     m1 = {
@@ -24,4 +23,4 @@ int main()
     auto firstRow = m4[0][0];
 
     std::cout << firstRow << std::endl;
-} 
+}

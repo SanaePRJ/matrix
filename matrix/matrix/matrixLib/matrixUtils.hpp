@@ -13,11 +13,7 @@ void Matrix<Type>::copyMatrix_
 	// マトリックスの次元をリサイズ
 	dest.resize(src.size());
 
-	// それぞれの行をコピー
-	for (size_t i = 0; i < src.size(); ++i)
-	{
-		dest[i] = src[i];
-	}
+	std::copy(src.begin(), src.end(), dest.begin());
 }
 
 // 行数取得
