@@ -6,9 +6,6 @@
 #include <vector>
 #include <utility>
 #include <functional>
-#include <execution>
-#include <execution>
-#include <type_traits>
 
 
 template<typename Type>
