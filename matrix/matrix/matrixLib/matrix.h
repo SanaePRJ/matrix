@@ -5,7 +5,6 @@
 
 #include <vector>
 #include <utility>
-#include <stdexcept>
 #include <functional>
 
 
@@ -66,7 +65,7 @@ public:
 private:
     template<typename Type_> void add_(MatrixType<Type_>&, const MatrixType<Type_>&); // 加算
     template<typename Type_> void sub_(MatrixType<Type_>&, const MatrixType<Type_>&); // 減算
-    template<typename Type_> typename MatrixType<Type_> mul_(const MatrixType<Type_>&, const MatrixType<Type_>&); // 乗算
+    template<typename Type_> MatrixType<Type_> mul_(const MatrixType<Type_>&, const MatrixType<Type_>&); // 乗算
 
     template<typename Type_> void hadamardMul_(MatrixType<Type_>&, const MatrixType<Type_>&); // アダマール積
     template<typename Type_> void hadamardDiv_(MatrixType<Type_>&, const MatrixType<Type_>&); // アダマール除算
@@ -121,7 +120,10 @@ public:
     std::vector<std::reference_wrapper<Type>> rowRef(const size_t&); // 行参照
     std::vector<std::reference_wrapper<Type>> colRef(const size_t&); // 列参照
 
+    template<typename execPolicy = DefPolType>
     Matrix<Type>& forEach(std::function<Type()>()); // 各要素への操作
+
+    template<typename execPolicy = DefPolType>
     Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>()); // 各要素への操作(行,列,そのポイントの値)
 };
 
@@ -131,18 +133,18 @@ public:
 template<typename CharT, typename Traits, typename MatrixType = double>
 std::basic_ostream<CharT, Traits>& operator <<
 (
-    std::basic_ostream<CharT, Traits>& ostrm,
-    Matrix<MatrixType> matrix
-  )
+    std::basic_ostream<CharT, Traits>& ArgOstream,
+    Matrix<MatrixType> Matrix
+    )
 {
-    for (size_t Row = 0; Row < matrix.rows(); Row++) {
-        for (MatrixType Column : matrix[Row])
-            ostrm << std::setw(10) << Column;
+    for (size_t Row = 0; Row < Matrix.rows(); Row++) {
+        for (MatrixType Column : Matrix[Row])
+            ArgOstream << std::setw(10) << Column;
 
-        ostrm << std::endl;
+        ArgOstream << std::endl;
     }
 
-    return ostrm;
+    return ArgOstream;
 }
 
 
