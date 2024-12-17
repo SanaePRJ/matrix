@@ -1,8 +1,0 @@
-﻿  matrix.cpp
-C:\Users\user\Documents\git\matrix\matrix\matrix\matrixLib\matrix.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'matrix.cpp' をコンパイルしています)
-  
-matrix.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall Matrix<float>::Matrix<float>(class std::initializer_list<class std::initializer_list<float> > const &)" (??0?$Matrix@M@@QAE@ABV?$initializer_list@V?$initializer_list@M@std@@@std@@@Z) が関数 _main で参照されました
-matrix.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall Matrix<float>::Matrix<float>(class Matrix<float> const &)" (??0?$Matrix@M@@QAE@ABV0@@Z) が関数 _main で参照されました
-matrix.obj : error LNK2019: 未解決の外部シンボル "public: __thiscall Matrix<float>::Matrix<float>(class Matrix<float> &&)" (??0?$Matrix@M@@QAE@$$QAV0@@Z) が関数 _main で参照されました
-C:\Users\user\Documents\git\matrix\matrix\Debug\matrix.exe : fatal error LNK1120: 3 件の未解決の外部参照
