@@ -1,6 +1,0 @@
-﻿  matrix.cpp
-C:\Users\user\Documents\git\matrix\matrix\matrix\matrixLib\matrix.h(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-  (ソース ファイル 'matrix.cpp' をコンパイルしています)
-  
-  LINK : 前回のインクリメンタル リンクで C:\Users\user\Documents\git\matrix\matrix\x64\Debug\matrix.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  matrix.vcxproj -> C:\Users\user\Documents\git\matrix\matrix\x64\Debug\matrix.exe
