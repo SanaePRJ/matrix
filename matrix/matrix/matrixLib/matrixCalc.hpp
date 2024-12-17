@@ -10,7 +10,7 @@ template<typename Type>
 template<typename Type_>
 inline void Matrix<Type>::add_
 (
-    MatrixType<Type_>& dest, 
+    MatrixType<Type_>&       dest, 
     const MatrixType<Type_>& source
 )
 {
@@ -21,7 +21,7 @@ template<typename Type>
 template<typename Type_>
 inline void Matrix<Type>::sub_
 (
-    MatrixType<Type_>& dest, 
+    MatrixType<Type_>&       dest, 
     const MatrixType<Type_>& source
 )
 {
@@ -72,7 +72,7 @@ template<typename Type>
 template<typename Type_>
 inline void Matrix<Type>::hadamardMul_
 (
-    MatrixType<Type_>& dest, 
+    MatrixType<Type_>&       dest, 
     const MatrixType<Type_>& source
 )
 {
@@ -94,7 +94,7 @@ template<typename Type>
 template<typename Type_, typename calcType_>
 inline void Matrix<Type>::calcMatrix_
 (
-    MatrixType<Type_>& dest, 
+    MatrixType<Type_>&       dest, 
     const MatrixType<Type_>& source
 )
 {
@@ -103,9 +103,25 @@ inline void Matrix<Type>::calcMatrix_
         throw std::invalid_argument("The number of rows and columns of data1 and data2 must be equal.");
 
     // 全要素に対して関数オブジェクトの計算を行う。
-    for (size_t row = 0; row < rows_(dest); ++row) {
-        for (size_t col = 0; col < cols_(source); ++col) {
+    for (size_t row = 0; row < this->rows_(dest); ++row) {
+        for (size_t col = 0; col < this->cols_(source); ++col) {
             dest[row][col] = calcType_()(dest[row][col], source[row][col]);
+        }
+    }
+}
+
+template<typename Type>
+template<typename Type_, typename calcType_>
+inline void Matrix<Type>::scalarCalc_
+(
+    MatrixType<Type_>& dest, 
+    const Type_&       source
+)
+{
+    // 全要素に対して関数オブジェクトの計算を行う。
+    for (size_t row = 0; row < this->rows_(dest); ++row) {
+        for (size_t col = 0; col < this->cols_(dest); ++col) {
+            dest[row][col] = calcType_()(dest[row][col], source);
         }
     }
 }
