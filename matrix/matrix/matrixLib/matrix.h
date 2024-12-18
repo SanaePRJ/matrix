@@ -62,18 +62,18 @@ public:
 
     // matrixCalc.hpp
 private:
-    template<typename Type_> void add_(MatrixType<Type_>&, const MatrixType<Type_>&); // 加算
-    template<typename Type_> void sub_(MatrixType<Type_>&, const MatrixType<Type_>&); // 減算
-    template<typename Type_> MatrixType<Type_> mul_(const MatrixType<Type_>&, const MatrixType<Type_>&); // 乗算
+    void add_(MatrixType<Type>&, const MatrixType<Type>&); // 加算
+    void sub_(MatrixType<Type>&, const MatrixType<Type>&); // 減算
+    MatrixType<Type> mul_(const MatrixType<Type>&, const MatrixType<Type>&); // 乗算
 
-    template<typename Type_> void hadamardMul_(MatrixType<Type_>&, const MatrixType<Type_>&); // アダマール積
-    template<typename Type_> void hadamardDiv_(MatrixType<Type_>&, const MatrixType<Type_>&); // アダマール除算
+    void hadamardMul_(MatrixType<Type>&, const MatrixType<Type>&); // アダマール積
+    void hadamardDiv_(MatrixType<Type>&, const MatrixType<Type>&); // アダマール除算
 
-    template<typename Type_, typename calcType_>
-    void calcMatrix_(MatrixType<Type_>&, const MatrixType<Type_>&);
+    template<typename calcType>
+    void calcMatrix_(MatrixType<Type>&, const MatrixType<Type>&);
 
-    template<typename Type_, typename calcType_>
-    void scalarCalc_(MatrixType<Type_>&, const Type_&);
+    template<typename calcType>
+    void scalarCalc_(MatrixType<Type>&, const Type&);
 public:
 
     Matrix<Type>& add(const Matrix<Type>&); // 加算
@@ -92,21 +92,18 @@ public:
 
     // matrixUtils.hpp
 private:
-    template<typename CopyType_ = Type>
-    void copyMatrix_(MatrixType<CopyType_>&, const MatrixType<CopyType_>&); // 各要素をコピー
+    template<typename CopyType = Type>
+    void copyMatrix_(MatrixType<CopyType>&, const MatrixType<CopyType>&); // 各要素をコピー
 
-    template<typename Type_> size_t rows_(const MatrixType<Type_>&) const noexcept;
-    template<typename Type_> size_t cols_(const MatrixType<Type_>&) const noexcept;
+     size_t rows_(const MatrixType<Type>&) const noexcept;
+     size_t cols_(const MatrixType<Type>&) const noexcept;
 
-    template<typename Type_> void swapRow_(MatrixType<Type_>&,const size_t&,const size_t&);
-    template<typename Type_> void swapCol_(MatrixType<Type_>&,const size_t&, const size_t&);
-    template<typename Type_> MatrixType<Type_> transpose_(const MatrixType<Type_>&);
+     void swapRow_(MatrixType<Type>&,const size_t&,const size_t&);
+     void swapCol_(MatrixType<Type>&,const size_t&, const size_t&);
+     MatrixType<Type> transpose_(const MatrixType<Type>&);
 
-    template<typename Type1_, typename Type2_>
-    bool areSameSize_(const MatrixType<Type1_>&, const MatrixType<Type2_>&) const noexcept;
-
-    template<typename Type_>
-    void validateMatrix_(const MatrixType<Type_>&);
+    bool areSameSize_(const MatrixType<Type>&, const MatrixType<Type>&) const noexcept;
+    void validateMatrix_(const MatrixType<Type>&);
 
 public:
     Matrix<Type>  transpose();                            // 転置

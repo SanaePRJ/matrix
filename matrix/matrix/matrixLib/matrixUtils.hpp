@@ -7,8 +7,8 @@
 
 // マトリックスの内容をコピーするテンプレート関数
 template<typename Type>
-template<typename CopyType_>
-void Matrix<Type>::copyMatrix_(MatrixType<CopyType_>& dest, const MatrixType<CopyType_>& src)
+template<typename CopyType>
+void Matrix<Type>::copyMatrix_(MatrixType<CopyType>& dest, const MatrixType<CopyType>& src)
 {
     dest.resize(src.size());
 
@@ -17,24 +17,24 @@ void Matrix<Type>::copyMatrix_(MatrixType<CopyType_>& dest, const MatrixType<Cop
 
 // 行数を取得するテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline size_t Matrix<Type>::rows_(const MatrixType<Type_>& mtrx) const noexcept
+
+inline size_t Matrix<Type>::rows_(const MatrixType<Type>& mtrx) const noexcept
 {
     return mtrx.size();
 }
 
 // 列数を取得するテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline size_t Matrix<Type>::cols_(const MatrixType<Type_>& mtrx) const noexcept
+
+inline size_t Matrix<Type>::cols_(const MatrixType<Type>& mtrx) const noexcept
 {
     return mtrx.empty() ? 0 : mtrx.at(0).size();
 }
 
 // マトリックスの行を入れ替えるテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline void Matrix<Type>::swapRow_(MatrixType<Type_>& matrix, const size_t& swapRow1, const size_t& swapRow2)
+
+inline void Matrix<Type>::swapRow_(MatrixType<Type>& matrix, const size_t& swapRow1, const size_t& swapRow2)
 {
     // 行インデックスが範囲外の場合に例外を投げる
     if (swapRow1 >= this->rows_(matrix) || swapRow2 >= this->rows_(matrix))
@@ -46,8 +46,8 @@ inline void Matrix<Type>::swapRow_(MatrixType<Type_>& matrix, const size_t& swap
 
 // マトリックスの列を入れ替えるテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline void Matrix<Type>::swapCol_(MatrixType<Type_>& matrix, const size_t& swapCol1, const size_t& swapCol2)
+
+inline void Matrix<Type>::swapCol_(MatrixType<Type>& matrix, const size_t& swapCol1, const size_t& swapCol2)
 {
     // 列インデックスが範囲外の場合に例外を投げる
     if (matrix.empty() || swapCol1 >= this->cols_(matrix) || swapCol2 >= this->cols_(matrix))
@@ -60,11 +60,11 @@ inline void Matrix<Type>::swapCol_(MatrixType<Type_>& matrix, const size_t& swap
 
 // マトリックスの転置を行うテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::transpose_(const MatrixType<Type_>& mtrx)
+
+inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_(const MatrixType<Type>& mtrx)
 {
     // 転置後の新しいマトリックスを作成
-    MatrixType<Type_> newMtrx(this->cols_(mtrx), RowType<Type_>(this->rows_(mtrx)));
+    MatrixType<Type> newMtrx(this->cols_(mtrx), RowType<Type>(this->rows_(mtrx)));
 
     // 転置を実行
     for (size_t row = 0; row < this->rows_(mtrx); row++) {
@@ -78,8 +78,7 @@ inline typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::transpose
 
 // 2つのマトリックスが同じサイズかどうかをチェックするテンプレート関数
 template<typename Type>
-template<typename Type1_, typename Type2_>
-inline bool Matrix<Type>::areSameSize_(const MatrixType<Type1_>& mtrx1, const MatrixType<Type2_>& mtrx2) const noexcept
+inline bool Matrix<Type>::areSameSize_(const MatrixType<Type>& mtrx1, const MatrixType<Type>& mtrx2) const noexcept
 {
     bool result;
 
@@ -92,8 +91,8 @@ inline bool Matrix<Type>::areSameSize_(const MatrixType<Type1_>& mtrx1, const Ma
 
 // マトリックスの各行が同じサイズかどうかをチェックするテンプレート関数
 template<typename Type>
-template<typename Type_>
-inline void Matrix<Type>::validateMatrix_(const MatrixType<Type_>& mtrx)
+
+inline void Matrix<Type>::validateMatrix_(const MatrixType<Type>& mtrx)
 {
     if (mtrx.empty())
         return;

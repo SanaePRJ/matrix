@@ -176,7 +176,7 @@ Matrix<Type> Matrix<Type>::operator*(const Type& scalar)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
-    this->scalarCalc_<Type, std::multiplies>(result, scalar);
+    this->scalarCalc_<std::multiplies>(result, scalar);
     return result;
 }
 

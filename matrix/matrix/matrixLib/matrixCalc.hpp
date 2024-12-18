@@ -7,33 +7,30 @@
 
 
 template<typename Type>
-template<typename Type_>
 inline void Matrix<Type>::add_
 (
-    MatrixType<Type_>& dest,
-    const MatrixType<Type_>& source
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
 )
 {
-    this->calcMatrix_<Type_, std::plus<Type_>>(dest, source);
+    this->calcMatrix_<std::plus<Type>>(dest, source);
 }
 
 template<typename Type>
-template<typename Type_>
 inline void Matrix<Type>::sub_
 (
-    MatrixType<Type_>& dest,
-    const MatrixType<Type_>& source
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
 )
 {
-    this->calcMatrix_<Type_, std::minus<Type_>>(dest, source);
+    this->calcMatrix_<std::minus<Type>>(dest, source);
 }
 
 template<typename Type>
-template<typename Type_>
-typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::mul_
+typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_
 (
-    const MatrixType<Type_>& matrix1,
-    const MatrixType<Type_>& matrix2
+    const MatrixType<Type>& matrix1,
+    const MatrixType<Type>& matrix2
 )
 {
     if (this->cols_(matrix1) != this->rows_(matrix2))
@@ -43,10 +40,10 @@ typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::mul_
     const size_t rsltRows = this->rows_(matrix1);
     const size_t rsltCols = this->cols_(matrix2);
 
-    MatrixType<Type_> result(rsltRows, RowType<Type_>(rsltCols));
+    MatrixType<Type> result(rsltRows, RowType<Type>(rsltCols));
 
     auto calcLambda = [&matrix1, &matrix2](const size_t& posRow, const size_t& posCol) {
-        Type_ resultMatrix = 0;
+        Type resultMatrix = 0;
         for (size_t i = 0; i < matrix1[0].size(); i++) {
             resultMatrix += matrix1[posRow][i] * matrix2[i][posCol];
         }
@@ -63,33 +60,31 @@ typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::mul_
 }
 
 template<typename Type>
-template<typename Type_>
 inline void Matrix<Type>::hadamardMul_
 (
-    MatrixType<Type_>& dest,
-    const MatrixType<Type_>& source
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
 )
 {
-    this->calcMatrix_<Type_, std::multiplies<Type_>>(dest, source);
+    this->calcMatrix_<std::multiplies<Type>>(dest, source);
 }
 
 template<typename Type>
-template<typename Type_>
 inline void Matrix<Type>::hadamardDiv_
 (
-    MatrixType<Type_>& dest,
-    const MatrixType<Type_>& source
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
 )
 {
-    this->calcMatrix_<Type_, std::divides<Type_>>(dest, source);
+    this->calcMatrix_<std::divides<Type>>(dest, source);
 }
 
 template<typename Type>
-template<typename Type_, typename calcType_>
+template<typename calcType>
 void Matrix<Type>::calcMatrix_
 (
-    MatrixType<Type_>& dest,
-    const MatrixType<Type_>& source
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
 )
 {
     if (!this->areSameSize_(dest, source))
@@ -97,21 +92,21 @@ void Matrix<Type>::calcMatrix_
 
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(source); ++col)
-            dest[row][col] = calcType_()(dest[row][col], source[row][col]);
+            dest[row][col] = calcType()(dest[row][col], source[row][col]);
     }
 }
 
 template<typename Type>
-template<typename Type_, typename calcType_>
+template<typename calcType>
 void Matrix<Type>::scalarCalc_
 (
-    MatrixType<Type_>& dest,
-    const Type_& source
+    MatrixType<Type>& dest,
+    const Type& source
 )
 {
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(dest); ++col)
-            dest[row][col] = calcType_()(dest[row][col], source);
+            dest[row][col] = calcType()(dest[row][col], source);
     }
 }
 
@@ -171,10 +166,7 @@ Matrix<Type>& Matrix<Type>::hadamardMul
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::hadamardDiv
-(
-    const Matrix<Type>& source
-)
+Matrix<Type>& Matrix<Type>::hadamardDiv(const Matrix<Type>& source)
 {
     this->hadamardDiv_<Type>(this->matrix_, source);
 
@@ -183,10 +175,7 @@ Matrix<Type>& Matrix<Type>::hadamardDiv
 
 template<typename Type>
 template<typename calcType>
-Matrix<Type>& Matrix<Type>::scalarCalc
-(
-    const Matrix<Type>& source
-)
+Matrix<Type>& Matrix<Type>::scalarCalc(const Matrix<Type>& source)
 {
     this->scalarCalc_<Type, calcType>(this->matrix_, source);
 
