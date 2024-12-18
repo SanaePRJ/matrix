@@ -29,6 +29,7 @@ public:
     Matrix() {};                     // デフォルトコンストラクタ
 
     Matrix(const MatrixInitType<>&); // パラメタ付コンストラクタ 初期化
+    Matrix(const MatrixType<>&    );
     Matrix(const Size&);             // パラメタ付コンストラクタ サイズ指定
 
     Matrix(const Matrix<Type>&);     // コピーコンストラクタ
@@ -98,6 +99,10 @@ private:
 
     template<typename Type_> size_t rows_(const MatrixType<Type_>&) const noexcept;
     template<typename Type_> size_t cols_(const MatrixType<Type_>&) const noexcept;
+
+    template<typename Type_> void swapRow_(MatrixType<Type_>&,const size_t&,const size_t&);
+    template<typename Type_> void swapCol_(MatrixType<Type_>&,const size_t&, const size_t&);
+    template<typename Type_> MatrixType<Type_> transpose_(const MatrixType<Type_>&);
 
     template<typename Type1_, typename Type2_>
     bool areSameSize_(const MatrixType<Type1_>&, const MatrixType<Type2_>&) const noexcept;
