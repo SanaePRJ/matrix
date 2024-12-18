@@ -11,9 +11,7 @@ Matrix<Type>& Matrix<Type>::operator=(const MatrixInitType<Type>& init)
 {
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
-
     this->validateMatrix_(this->matrix_);
-
     return *this;
 }
 
@@ -21,9 +19,9 @@ Matrix<Type>& Matrix<Type>::operator=(const MatrixInitType<Type>& init)
 template<typename Type>
 Matrix<Type>& Matrix<Type>::operator=(const Matrix<Type>& other)
 {
-    if (this != &other)
+    if (this != &other) {
         copyMatrix_(this->matrix_, other.matrix_);
-
+    }
     return *this;
 }
 
@@ -31,9 +29,9 @@ Matrix<Type>& Matrix<Type>::operator=(const Matrix<Type>& other)
 template<typename Type>
 Matrix<Type>& Matrix<Type>::operator=(Matrix<Type>&& other)
 {
-    if (this != &other)
+    if (this != &other) {
         this->matrix_ = std::move(other.matrix_);
-    
+    }
     return *this;
 }
 
@@ -43,9 +41,7 @@ Matrix<Type>& Matrix<Type>::operator<<(const MatrixInitType<Type>& init)
 {
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
-
     this->validateMatrix_(this->matrix_);
-
     return *this;
 }
 
@@ -53,9 +49,9 @@ Matrix<Type>& Matrix<Type>::operator<<(const MatrixInitType<Type>& init)
 template<typename Type>
 Matrix<Type>& Matrix<Type>::operator<<(const Matrix<Type>& other)
 {
-    if (this != &other)
+    if (this != &other) {
         this->matrix_ = other.matrix_;
-    
+    }
     return *this;
 }
 
@@ -63,9 +59,9 @@ Matrix<Type>& Matrix<Type>::operator<<(const Matrix<Type>& other)
 template<typename Type>
 Matrix<Type>& Matrix<Type>::operator<<(Matrix<Type>&& other)
 {
-    if (this != &other)
+    if (this != &other) {
         this->matrix_ = std::move(other.matrix_);
-    
+    }
     return *this;
 }
 
@@ -74,6 +70,114 @@ template<typename Type>
 typename Matrix<Type>::RowType<Type>& Matrix<Type>::operator[](size_t index)
 {
     return this->matrix_[index];
+}
+
+// ‘«‚µZ‘ã“ü‰‰Zq +=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator+=(const Matrix<Type>& mtrx)
+{
+    this->add(mtrx);
+    return *this;
+}
+
+// ˆø‚«Z‘ã“ü‰‰Zq -=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator-=(const Matrix<Type>& mtrx)
+{
+    this->sub(mtrx);
+    return *this;
+}
+
+// Š|‚¯Z‘ã“ü‰‰Zq *=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator*=(const Matrix<Type>& mtrx)
+{
+    this->mul(mtrx);
+    return *this;
+}
+
+// ƒAƒ_ƒ}[ƒ‹Ï‘ã“ü‰‰Zq ^=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator^=(const Matrix<Type>& mtrx)
+{
+    this->hadamardMul(mtrx);
+    return *this;
+}
+
+// ƒAƒ_ƒ}[ƒ‹œZ‘ã“ü‰‰Zq /=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator/=(const Matrix<Type>& mtrx)
+{
+    this->hadamardDiv(mtrx);
+    return *this;
+}
+
+// ƒXƒJƒ‰[Š|‚¯Z‘ã“ü‰‰Zq *=
+template<typename Type>
+Matrix<Type>& Matrix<Type>::operator*=(const Type& scalar)
+{
+    this->scalarMul(scalar);
+    return *this;
+}
+
+// ‘«‚µZ‰‰Zq +
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator+(const Matrix<Type>& mtrx)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->add_(result, mtrx.matrix_);
+    return result;
+}
+
+// ˆø‚«Z‰‰Zq -
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator-(const Matrix<Type>& mtrx)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->sub_(result, mtrx.matrix_);
+    return result;
+}
+
+// Š|‚¯Z‰‰Zq *
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator*(const Matrix<Type>& mtrx)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->mul_(result, mtrx.matrix_);
+    return result;
+}
+
+// ƒAƒ_ƒ}[ƒ‹Ï‰‰Zq ^
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator^(const Matrix<Type>& mtrx)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->hadamardMul_(result, mtrx.matrix_);
+    return result;
+}
+
+// ƒAƒ_ƒ}[ƒ‹œZ‰‰Zq /
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator/(const Matrix<Type>& mtrx)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->hadamardDiv_(result, mtrx.matrix_);
+    return result;
+}
+
+// ƒXƒJƒ‰[Š|‚¯Z‰‰Zq *
+template<typename Type>
+Matrix<Type> Matrix<Type>::operator*(const Type& scalar)
+{
+    MatrixType<Type> result;
+    this->copyMatrix_(result, this->matrix_);
+    this->scalarCalc_<Type, std::multiplies>(result, scalar);
+    return result;
 }
 
 
