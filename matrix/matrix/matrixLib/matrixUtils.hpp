@@ -8,7 +8,10 @@
 // マトリックスの内容をコピーするテンプレート関数
 template<typename Type>
 template<typename CopyType>
-void Matrix<Type>::copyMatrix_(MatrixType<CopyType>& dest, const MatrixType<CopyType>& src)
+void Matrix<Type>::copyMatrix_(
+    MatrixType<CopyType>& dest,
+    const MatrixType<CopyType>& src
+)
 {
     dest.resize(src.size());
 
@@ -18,7 +21,10 @@ void Matrix<Type>::copyMatrix_(MatrixType<CopyType>& dest, const MatrixType<Copy
 // 行数を取得するテンプレート関数
 template<typename Type>
 
-inline size_t Matrix<Type>::rows_(const MatrixType<Type>& mtrx) const noexcept
+inline size_t Matrix<Type>::rows_(
+    const MatrixType<Type>& mtrx
+)
+    const noexcept
 {
     return mtrx.size();
 }
@@ -26,7 +32,10 @@ inline size_t Matrix<Type>::rows_(const MatrixType<Type>& mtrx) const noexcept
 // 列数を取得するテンプレート関数
 template<typename Type>
 
-inline size_t Matrix<Type>::cols_(const MatrixType<Type>& mtrx) const noexcept
+inline size_t Matrix<Type>::cols_(
+    const MatrixType<Type>& mtrx
+)
+    const noexcept
 {
     return mtrx.empty() ? 0 : mtrx.at(0).size();
 }
@@ -34,7 +43,11 @@ inline size_t Matrix<Type>::cols_(const MatrixType<Type>& mtrx) const noexcept
 // マトリックスの行を入れ替えるテンプレート関数
 template<typename Type>
 
-inline void Matrix<Type>::swapRow_(MatrixType<Type>& matrix, const size_t& swapRow1, const size_t& swapRow2)
+inline void Matrix<Type>::swapRow_(
+    MatrixType<Type>& matrix, 
+    const size_t& swapRow1, 
+    const size_t& swapRow2
+)
 {
     // 行インデックスが範囲外の場合に例外を投げる
     if (swapRow1 >= this->rows_(matrix) || swapRow2 >= this->rows_(matrix))
@@ -47,7 +60,11 @@ inline void Matrix<Type>::swapRow_(MatrixType<Type>& matrix, const size_t& swapR
 // マトリックスの列を入れ替えるテンプレート関数
 template<typename Type>
 
-inline void Matrix<Type>::swapCol_(MatrixType<Type>& matrix, const size_t& swapCol1, const size_t& swapCol2)
+inline void Matrix<Type>::swapCol_(
+    MatrixType<Type>& matrix, 
+    const size_t& swapCol1, 
+    const size_t& swapCol2
+)
 {
     // 列インデックスが範囲外の場合に例外を投げる
     if (matrix.empty() || swapCol1 >= this->cols_(matrix) || swapCol2 >= this->cols_(matrix))
@@ -60,8 +77,9 @@ inline void Matrix<Type>::swapCol_(MatrixType<Type>& matrix, const size_t& swapC
 
 // マトリックスの転置を行うテンプレート関数
 template<typename Type>
-
-inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_(const MatrixType<Type>& mtrx)
+inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_(
+    const MatrixType<Type>& mtrx
+)
 {
     // 転置後の新しいマトリックスを作成
     MatrixType<Type> newMtrx(this->cols_(mtrx), RowType<Type>(this->rows_(mtrx)));
@@ -78,7 +96,11 @@ inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_
 
 // 2つのマトリックスが同じサイズかどうかをチェックするテンプレート関数
 template<typename Type>
-inline bool Matrix<Type>::areSameSize_(const MatrixType<Type>& mtrx1, const MatrixType<Type>& mtrx2) const noexcept
+inline bool Matrix<Type>::areSameSize_(
+    const MatrixType<Type>& mtrx1, 
+    const MatrixType<Type>& mtrx2
+)
+    const noexcept
 {
     bool result;
 
@@ -92,7 +114,9 @@ inline bool Matrix<Type>::areSameSize_(const MatrixType<Type>& mtrx1, const Matr
 // マトリックスの各行が同じサイズかどうかをチェックするテンプレート関数
 template<typename Type>
 
-inline void Matrix<Type>::validateMatrix_(const MatrixType<Type>& mtrx)
+inline void Matrix<Type>::validateMatrix_(
+    const MatrixType<Type>& mtrx
+)
 {
     if (mtrx.empty())
         return;
@@ -113,7 +137,10 @@ inline Matrix<Type> Matrix<Type>::transpose()
 
 // 指定された2つの行を入れ替える関数
 template<typename Type>
-inline Matrix<Type>& Matrix<Type>::swapRow(const size_t& swapRow1, const size_t& swapRow2)
+inline Matrix<Type>& Matrix<Type>::swapRow(
+    const size_t& swapRow1, 
+    const size_t& swapRow2
+)
 {
     this->swapRow_(this->matrix_, swapRow1, swapRow2);
     return *this;
@@ -121,7 +148,10 @@ inline Matrix<Type>& Matrix<Type>::swapRow(const size_t& swapRow1, const size_t&
 
 // 指定された2つの列を入れ替える関数
 template<typename Type>
-inline Matrix<Type>& Matrix<Type>::swapCol(const size_t& swapCol1, const size_t& swapCol2)
+inline Matrix<Type>& Matrix<Type>::swapCol(
+    const size_t& swapCol1,
+    const size_t& swapCol2
+)
 {
     this->swapCol_(this->matrix_, swapCol1, swapCol2);
     return *this;
@@ -129,7 +159,10 @@ inline Matrix<Type>& Matrix<Type>::swapCol(const size_t& swapCol1, const size_t&
 
 // マトリックスのサイズを変更する関数
 template<typename Type>
-inline Matrix<Type>& Matrix<Type>::resize(const size_t& row, const size_t& col)
+inline Matrix<Type>& Matrix<Type>::resize(
+    const size_t& row, 
+    const size_t& col
+)
 {
     this->matrix_.resize(row, RowType<Type>(col, 0));
     return *this;
@@ -151,7 +184,9 @@ const size_t Matrix<Type>::cols()
 
 // 指定された行の参照を取得する関数
 template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(const size_t& rowNum)
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(
+    const size_t& rowNum
+)
 {
     std::vector<std::reference_wrapper<Type>> resultRef;
     resultRef.reserve(this->cols());
@@ -164,7 +199,9 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(const size
 
 // 指定された列の参照を取得する関数
 template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(const size_t& colNum)
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(
+    const size_t& colNum
+)
 {
     std::vector<std::reference_wrapper<Type>> resultRef;
     resultRef.reserve(this->rows());
@@ -177,7 +214,9 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(const size
 
 // マトリックスの全要素に対して指定された関数を適用する関数（引数なし版）
 template<typename Type>
-inline Matrix<Type>& Matrix<Type>::forEach(std::function<Type()> func)
+inline Matrix<Type>& Matrix<Type>::forEach(
+    std::function<Type()> func
+)
 {
     for (auto& row : this->matrix_) {
         for (auto& elem : row)
@@ -189,7 +228,9 @@ inline Matrix<Type>& Matrix<Type>::forEach(std::function<Type()> func)
 
 // マトリックスの全要素に対して指定された関数を適用する関数（引数あり版）
 template<typename Type>
-Matrix<Type>& Matrix<Type>::forEach(std::function<Type(size_t, size_t, Type&)> func)
+Matrix<Type>& Matrix<Type>::forEach(
+    std::function<Type(size_t, size_t, Type&)> func
+)
 {
     for (size_t row = 0; row < this->rows(); row++)
     {

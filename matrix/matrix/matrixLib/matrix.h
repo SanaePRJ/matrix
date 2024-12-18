@@ -15,7 +15,7 @@ public:
     template<typename rowType    > using RowType     = std::vector<rowType>; // 行型
     template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>; // 行型(初期化)
 
-    template<typename matrixType = Type> using MatrixType         = std::vector<RowType<matrixType>>; // 行列型
+    template<typename matrixType     = Type> using MatrixType     = std::vector<RowType<matrixType>>; // 行列型
     template<typename matrixInitType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixInitType>>; // 行列型(初期化)
 
 private:
@@ -23,17 +23,17 @@ private:
     MatrixType<> matrix_;
 
 public:
-    // matrixCtor.hpp
-    Matrix() {};                     // デフォルトコンストラクタ
+// matrixCtor.hpp
+    Matrix() {}; // デフォルトコンストラクタ
 
     Matrix(const MatrixInitType<>&); // パラメタ付コンストラクタ 初期化
-    Matrix(const MatrixType<>&    );
+    Matrix(const MatrixType<>&); 
     Matrix(const std::pair<size_t,size_t>&); // パラメタ付コンストラクタ サイズ指定
 
     Matrix(const Matrix<Type>&);     // コピーコンストラクタ
     Matrix(Matrix<Type>&&) noexcept; // moveコンストラクタ
 
-    // matrixOps.hpp
+// matrixOps.hpp
     Matrix<Type>& operator = (const MatrixInitType<Type>&);
     Matrix<Type>& operator = (const Matrix        <Type>&);
     Matrix<Type>& operator <<(const MatrixInitType<Type>&);
@@ -42,9 +42,8 @@ public:
     Matrix<Type>& operator = (Matrix<Type>&&);
     Matrix<Type>& operator <<(Matrix<Type>&&);
 
-    RowType<Type>& operator [](size_t); // 行アクセス
+    RowType<Type>& operator [](const size_t&); // 行アクセス
 
-    // 破壊的処理
     Matrix<Type>& operator +=(const Matrix<Type>&); // 加算
     Matrix<Type>& operator -=(const Matrix<Type>&); // 減算
     Matrix<Type>& operator *=(const Matrix<Type>&); // 乗算
@@ -52,7 +51,6 @@ public:
     Matrix<Type>& operator /=(const Matrix<Type>&); // アダマール除算
     Matrix<Type>& operator *=(const Type&);         // スカラ倍
 
-    // 非破壊的処理
     Matrix<Type> operator +(const Matrix<Type>&); // 加算
     Matrix<Type> operator -(const Matrix<Type>&); // 減算
     Matrix<Type> operator *(const Matrix<Type>&); // 乗算
@@ -60,7 +58,7 @@ public:
     Matrix<Type> operator /(const Matrix<Type>&); // アダマール除算
     Matrix<Type> operator *(const Type&);         // スカラ倍
 
-    // matrixCalc.hpp
+// matrixCalc.hpp
 private:
     void add_(MatrixType<Type>&, const MatrixType<Type>&); // 加算
     void sub_(MatrixType<Type>&, const MatrixType<Type>&); // 減算
@@ -74,8 +72,8 @@ private:
 
     template<typename calcType>
     void scalarCalc_(MatrixType<Type>&, const Type&);
-public:
 
+public:
     Matrix<Type>& add(const Matrix<Type>&); // 加算
     Matrix<Type>& sub(const Matrix<Type>&); // 減算
     Matrix<Type>& mul(const Matrix<Type>&); // 乗算
@@ -86,27 +84,28 @@ public:
     template<typename calcType>
     Matrix<Type>& scalarCalc(const Matrix<Type>&); // スカラ計算
 
-    // matrixDec.hpp
+// matrixDec.hpp
+public:
     std::vector<Matrix<Type>&> luDec();   // LU分解
     Matrix<Type>               inverse(); // 逆行列
 
-    // matrixUtils.hpp
+// matrixUtils.hpp
 private:
     template<typename CopyType = Type>
-    void copyMatrix_(MatrixType<CopyType>&, const MatrixType<CopyType>&); // 各要素をコピー
+    void    copyMatrix_(MatrixType<CopyType>&, const MatrixType<CopyType>&); // 各要素をコピー
 
      size_t rows_(const MatrixType<Type>&) const noexcept;
      size_t cols_(const MatrixType<Type>&) const noexcept;
 
-     void swapRow_(MatrixType<Type>&,const size_t&,const size_t&);
-     void swapCol_(MatrixType<Type>&,const size_t&, const size_t&);
+     void   swapRow_(MatrixType<Type>&,const size_t&,const size_t&);
+     void   swapCol_(MatrixType<Type>&,const size_t&, const size_t&);
      MatrixType<Type> transpose_(const MatrixType<Type>&);
 
     bool areSameSize_(const MatrixType<Type>&, const MatrixType<Type>&) const noexcept;
     void validateMatrix_(const MatrixType<Type>&);
 
 public:
-    Matrix<Type>  transpose();                            // 転置
+    Matrix<Type>  transpose();                           // 転置
     Matrix<Type>& swapRow(const size_t&, const size_t&); // 行入れ替え
     Matrix<Type>& swapCol(const size_t&, const size_t&); // 列入れ替え
 
@@ -128,11 +127,10 @@ public:
 #include <iomanip>
 // std::coutで出力
 template<typename CharT, typename Traits, typename MatrixType = double>
-std::basic_ostream<CharT, Traits>& operator <<
-(
+std::basic_ostream<CharT, Traits>& operator <<(
     std::basic_ostream<CharT, Traits>& ArgOstream,
     Matrix<MatrixType> Matrix
-    )
+)
 {
     for (size_t Row = 0; Row < Matrix.rows(); Row++) {
         for (MatrixType Column : Matrix[Row])

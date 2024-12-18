@@ -7,7 +7,9 @@
 
 // 代入演算子 = 初期化リスト用
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(const MatrixInitType<Type>& init)
+Matrix<Type>& Matrix<Type>::operator=(
+    const MatrixInitType<Type>& init
+)
 {
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
@@ -17,27 +19,33 @@ Matrix<Type>& Matrix<Type>::operator=(const MatrixInitType<Type>& init)
 
 // コピー代入演算子 =
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(const Matrix<Type>& other)
+Matrix<Type>& Matrix<Type>::operator=(
+    const Matrix<Type>& other
+)
 {
-    if (this != &other) {
+    if (this != &other)
         copyMatrix_(this->matrix_, other.matrix_);
-    }
+
     return *this;
 }
 
 // ムーブ代入演算子 =
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(Matrix<Type>&& other)
+Matrix<Type>& Matrix<Type>::operator=(
+    Matrix<Type>&& other
+ )
 {
-    if (this != &other) {
+    if (this != &other)
         this->matrix_ = std::move(other.matrix_);
-    }
+
     return *this;
 }
 
 // 代入演算子 << 初期化リスト用
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(const MatrixInitType<Type>& init)
+Matrix<Type>& Matrix<Type>::operator<<(
+    const MatrixInitType<Type>& init
+)
 {
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
@@ -47,34 +55,42 @@ Matrix<Type>& Matrix<Type>::operator<<(const MatrixInitType<Type>& init)
 
 // 代入演算子 << コピー
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(const Matrix<Type>& other)
+Matrix<Type>& Matrix<Type>::operator<<(
+    const Matrix<Type>& other
+)
 {
-    if (this != &other) {
+    if (this != &other)
         this->matrix_ = other.matrix_;
-    }
+    
     return *this;
 }
 
 // ムーブ代入演算子 <<
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(Matrix<Type>&& other)
+Matrix<Type>& Matrix<Type>::operator<<(
+    Matrix<Type>&& other
+)
 {
-    if (this != &other) {
+    if (this != &other)
         this->matrix_ = std::move(other.matrix_);
-    }
+    
     return *this;
 }
 
 // 行アクセスオペレーター
 template<typename Type>
-typename Matrix<Type>::RowType<Type>& Matrix<Type>::operator[](size_t index)
+typename Matrix<Type>::RowType<Type>& Matrix<Type>::operator[](
+    const size_t& index
+)
 {
     return this->matrix_[index];
 }
 
 // 足し算代入演算子 +=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator+=(const Matrix<Type>& mtrx)
+Matrix<Type>& Matrix<Type>::operator+=(
+    const Matrix<Type>& mtrx
+)
 {
     this->add(mtrx);
     return *this;
@@ -82,7 +98,9 @@ Matrix<Type>& Matrix<Type>::operator+=(const Matrix<Type>& mtrx)
 
 // 引き算代入演算子 -=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator-=(const Matrix<Type>& mtrx)
+Matrix<Type>& Matrix<Type>::operator-=(
+    const Matrix<Type>& mtrx
+)
 {
     this->sub(mtrx);
     return *this;
@@ -90,7 +108,9 @@ Matrix<Type>& Matrix<Type>::operator-=(const Matrix<Type>& mtrx)
 
 // 掛け算代入演算子 *=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator*=(const Matrix<Type>& mtrx)
+Matrix<Type>& Matrix<Type>::operator*=(
+    const Matrix<Type>& mtrx
+)
 {
     this->mul(mtrx);
     return *this;
@@ -98,7 +118,9 @@ Matrix<Type>& Matrix<Type>::operator*=(const Matrix<Type>& mtrx)
 
 // アダマール積代入演算子 ^=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator^=(const Matrix<Type>& mtrx)
+Matrix<Type>& Matrix<Type>::operator^=(
+    const Matrix<Type>& mtrx
+)
 {
     this->hadamardMul(mtrx);
     return *this;
@@ -106,7 +128,9 @@ Matrix<Type>& Matrix<Type>::operator^=(const Matrix<Type>& mtrx)
 
 // アダマール除算代入演算子 /=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator/=(const Matrix<Type>& mtrx)
+Matrix<Type>& Matrix<Type>::operator/=(
+    const Matrix<Type>& mtrx
+)
 {
     this->hadamardDiv(mtrx);
     return *this;
@@ -114,7 +138,9 @@ Matrix<Type>& Matrix<Type>::operator/=(const Matrix<Type>& mtrx)
 
 // スカラー掛け算代入演算子 *=
 template<typename Type>
-Matrix<Type>& Matrix<Type>::operator*=(const Type& scalar)
+Matrix<Type>& Matrix<Type>::operator*=(
+    const Type& scalar
+)
 {
     this->scalarMul(scalar);
     return *this;
@@ -122,7 +148,9 @@ Matrix<Type>& Matrix<Type>::operator*=(const Type& scalar)
 
 // 足し算演算子 +
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator+(const Matrix<Type>& mtrx)
+Matrix<Type> Matrix<Type>::operator+(
+    const Matrix<Type>& mtrx
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
@@ -132,7 +160,9 @@ Matrix<Type> Matrix<Type>::operator+(const Matrix<Type>& mtrx)
 
 // 引き算演算子 -
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator-(const Matrix<Type>& mtrx)
+Matrix<Type> Matrix<Type>::operator-(
+    const Matrix<Type>& mtrx
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
@@ -142,7 +172,9 @@ Matrix<Type> Matrix<Type>::operator-(const Matrix<Type>& mtrx)
 
 // 掛け算演算子 *
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator*(const Matrix<Type>& mtrx)
+Matrix<Type> Matrix<Type>::operator*(
+    const Matrix<Type>& mtrx
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
@@ -152,7 +184,9 @@ Matrix<Type> Matrix<Type>::operator*(const Matrix<Type>& mtrx)
 
 // アダマール積演算子 ^
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator^(const Matrix<Type>& mtrx)
+Matrix<Type> Matrix<Type>::operator^(
+    const Matrix<Type>& mtrx
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
@@ -162,7 +196,9 @@ Matrix<Type> Matrix<Type>::operator^(const Matrix<Type>& mtrx)
 
 // アダマール除算演算子 /
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator/(const Matrix<Type>& mtrx)
+Matrix<Type> Matrix<Type>::operator/(
+    const Matrix<Type>& mtrx
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
@@ -172,7 +208,9 @@ Matrix<Type> Matrix<Type>::operator/(const Matrix<Type>& mtrx)
 
 // スカラー掛け算演算子 *
 template<typename Type>
-Matrix<Type> Matrix<Type>::operator*(const Type& scalar)
+Matrix<Type> Matrix<Type>::operator*(
+    const Type& scalar
+)
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);

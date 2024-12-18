@@ -7,8 +7,7 @@
 
 
 template<typename Type>
-inline void Matrix<Type>::add_
-(
+inline void Matrix<Type>::add_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -17,8 +16,7 @@ inline void Matrix<Type>::add_
 }
 
 template<typename Type>
-inline void Matrix<Type>::sub_
-(
+inline void Matrix<Type>::sub_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -27,8 +25,7 @@ inline void Matrix<Type>::sub_
 }
 
 template<typename Type>
-typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_
-(
+typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_(
     const MatrixType<Type>& matrix1,
     const MatrixType<Type>& matrix2
 )
@@ -60,8 +57,7 @@ typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_
 }
 
 template<typename Type>
-inline void Matrix<Type>::hadamardMul_
-(
+inline void Matrix<Type>::hadamardMul_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -70,8 +66,7 @@ inline void Matrix<Type>::hadamardMul_
 }
 
 template<typename Type>
-inline void Matrix<Type>::hadamardDiv_
-(
+inline void Matrix<Type>::hadamardDiv_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -81,8 +76,7 @@ inline void Matrix<Type>::hadamardDiv_
 
 template<typename Type>
 template<typename calcType>
-void Matrix<Type>::calcMatrix_
-(
+void Matrix<Type>::calcMatrix_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -98,8 +92,7 @@ void Matrix<Type>::calcMatrix_
 
 template<typename Type>
 template<typename calcType>
-void Matrix<Type>::scalarCalc_
-(
+void Matrix<Type>::scalarCalc_(
     MatrixType<Type>& dest,
     const Type& source
 )
@@ -111,8 +104,7 @@ void Matrix<Type>::scalarCalc_
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::add
-(
+Matrix<Type>& Matrix<Type>::add(
     const Matrix<Type>& mtrx
 )
 {
@@ -122,8 +114,7 @@ Matrix<Type>& Matrix<Type>::add
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::sub
-(
+Matrix<Type>& Matrix<Type>::sub(
     const Matrix<Type>& mtrx
 )
 {
@@ -133,8 +124,7 @@ Matrix<Type>& Matrix<Type>::sub
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::mul
-(
+Matrix<Type>& Matrix<Type>::mul(
     const Matrix<Type>& mtrx
 )
 {
@@ -144,8 +134,7 @@ Matrix<Type>& Matrix<Type>::mul
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::scalarMul
-(
+Matrix<Type>& Matrix<Type>::scalarMul(
     const Type& source
 )
 {
@@ -155,8 +144,7 @@ Matrix<Type>& Matrix<Type>::scalarMul
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::hadamardMul
-(
+Matrix<Type>& Matrix<Type>::hadamardMul(
     const Matrix<Type>& source
 )
 {
@@ -166,7 +154,9 @@ Matrix<Type>& Matrix<Type>::hadamardMul
 }
 
 template<typename Type>
-Matrix<Type>& Matrix<Type>::hadamardDiv(const Matrix<Type>& source)
+Matrix<Type>& Matrix<Type>::hadamardDiv(
+    const Matrix<Type>& source
+)
 {
     this->hadamardDiv_<Type>(this->matrix_, source);
 
@@ -175,7 +165,9 @@ Matrix<Type>& Matrix<Type>::hadamardDiv(const Matrix<Type>& source)
 
 template<typename Type>
 template<typename calcType>
-Matrix<Type>& Matrix<Type>::scalarCalc(const Matrix<Type>& source)
+Matrix<Type>& Matrix<Type>::scalarCalc(
+    const Matrix<Type>& source
+)
 {
     this->scalarCalc_<Type, calcType>(this->matrix_, source);
 
