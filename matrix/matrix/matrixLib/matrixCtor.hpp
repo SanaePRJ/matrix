@@ -5,62 +5,95 @@
 #include "matrix.h"
 
 
-//サイズを指定して0行列を生成する。
+/**
+ * @brief Constructs a zero matrix of the specified size.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param size A pair specifying the number of rows and columns.
+ */
 template<typename Type>
 Matrix<Type>::Matrix(
-	const std::pair<size_t,size_t>& size
+    const std::pair<size_t, size_t>& size
 )
-	: matrix_(size.first, std::vector<Type>(size.second, 0))
+    : matrix_(size.first, std::vector<Type>(size.second, 0))
 {
 
 }
 
-//以下のように定義することができる。
-//{
-//	{0, 0},
-//	{0, 0},
-//	{0, 0}
-//}
+/**
+ * @brief Constructs a matrix using an initializer list.
+ *
+ * This constructor allows the creation of matrices with a list like:
+ * @code
+ * {
+ *     {0, 0},
+ *     {0, 0},
+ *     {0, 0}
+ * }
+ * @endcode
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param init The initializer list to define the matrix.
+ */
 template<typename Type>
 Matrix<Type>::Matrix(
-	const MatrixInitType<Type>& init
+    const MatrixInitType<Type>& init
 )
-	:matrix_(init.begin(), init.end())
+    : matrix_(init.begin(), init.end())
 {
-	this->validateMatrix_(this->matrix_);
+    this->validateMatrix_(this->matrix_);
 }
 
+/**
+ * @brief Constructs a matrix using another matrix-like structure.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param init The input matrix structure.
+ */
 template<typename Type>
 inline Matrix<Type>::Matrix(
-	const MatrixType<>& init
+    const MatrixType<>& init
 )
-	:matrix_(init.begin(), init.end())
+    : matrix_(init.begin(), init.end())
 {
-	this->validateMatrix_(this->matrix_);
+    this->validateMatrix_(this->matrix_);
 }
 
-// コピーコンストラクタ
+/**
+ * @brief Copy constructor for the Matrix class.
+ *
+ * Creates a new matrix as a copy of another matrix.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param other The matrix to copy.
+ */
 template<typename Type>
 Matrix<Type>::Matrix(
-	const Matrix& other
+    const Matrix& other
 )
 {
-	matrix_.resize(other.matrix_.size());
+    matrix_.resize(other.matrix_.size());
 
-	// コピー
-	copyMatrix_(matrix_, other.matrix_);
+    // Copy the data
+    copyMatrix_(matrix_, other.matrix_);
 }
 
-
-// moveコンストラクタ
+/**
+ * @brief Move constructor for the Matrix class.
+ *
+ * Transfers the resources of another matrix to the current matrix.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param other The matrix to move.
+ */
 template<typename Type>
 Matrix<Type>::Matrix(
-	Matrix<Type>&& other
+    Matrix<Type>&& other
 )
-	noexcept
+    noexcept
 {
-	// リソースの移動
-	matrix_ = std::move(other.matrix_);
+    // Move the resources
+    matrix_ = std::move(other.matrix_);
 }
 
 

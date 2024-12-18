@@ -1,0 +1,208 @@
+\doxysection{matrix\+Ops.\+hpp}
+\hypertarget{matrix_ops_8hpp_source}{}\label{matrix_ops_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ MATRIXCPP\_MATRIXOP\_HPP}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ MATRIXCPP\_MATRIXOP\_HPP}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{matrix_8h}{matrix.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00017}00017\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00018}\mbox{\hyperlink{class_matrix_a2308805969d4f6ce9dc4bcc6ac45d167}{00018}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a2308805969d4f6ce9dc4bcc6ac45d167}{Matrix<Type>::operator=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix_af96c52f76af23ba2ae4d23f4ffc28f9f}{MatrixInitType<Type>}}\&\ init}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00020}00020\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00022}00022\ \ \ \ \ this-\/>matrix\_.clear();}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00023}00023\ \ \ \ \ this-\/>matrix\_.assign(init.begin(),\ init.end());}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00024}00024\ \ \ \ \ this-\/>validateMatrix\_(this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00037}00037\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00038}\mbox{\hyperlink{class_matrix_a8bf0342e762d2b66373b6ca9670c0bef}{00038}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a2308805969d4f6ce9dc4bcc6ac45d167}{Matrix<Type>::operator=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ other}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00040}00040\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00043}00043\ \ \ \ \ \ \ \ \ copyMatrix\_(this-\/>matrix\_,\ other.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00057}00057\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00058}\mbox{\hyperlink{class_matrix_a6b3110f8ca0b7a3cd69a465c548e73a4}{00058}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a2308805969d4f6ce9dc4bcc6ac45d167}{Matrix<Type>::operator=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00059}00059\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\&\ other}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00060}00060\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00061}00061\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ this-\/>matrix\_\ =\ std::move(other.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00077}00077\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00078}00078\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6b3110f8ca0b7a3cd69a465c548e73a4}{Matrix<Type>::operator<<}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{const}\ MatrixInitType<Type>\&\ init}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00080}00080\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00082}00082\ \ \ \ \ this-\/>matrix\_.clear();}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00083}00083\ \ \ \ \ this-\/>matrix\_.assign(init.begin(),\ init.end());}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00084}00084\ \ \ \ \ this-\/>validateMatrix\_(this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00097}00097\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00098}00098\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6b3110f8ca0b7a3cd69a465c548e73a4}{Matrix<Type>::operator<<}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ other}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00100}00100\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00103}00103\ \ \ \ \ \ \ \ \ this-\/>matrix\_\ =\ other.matrix\_;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00117}00117\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00118}00118\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6b3110f8ca0b7a3cd69a465c548e73a4}{Matrix<Type>::operator<<}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\&\ other}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00120}00120\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00121}00121\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00123}00123\ \ \ \ \ \ \ \ \ this-\/>matrix\_\ =\ std::move(other.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00137}00137\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00138}\mbox{\hyperlink{class_matrix_a6a4773207b42e6a22a4998b2f44c224e}{00138}}\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{class_matrix_a646da410e814a3566f0b4bea5819ec69}{Matrix<Type>::RowType}}<Type>\&\ \mbox{\hyperlink{class_matrix_a6a4773207b42e6a22a4998b2f44c224e}{Matrix<Type>::operator[]}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00139}00139\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ index}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00140}00140\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00141}00141\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>matrix\_[index];}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00154}00154\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00155}\mbox{\hyperlink{class_matrix_a0112ae48beba1be582239392c23c3204}{00155}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a0112ae48beba1be582239392c23c3204}{Matrix<Type>::operator+=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00156}00156\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00157}00157\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00158}00158\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00159}00159\ \ \ \ \ this-\/>add(mtrx);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00172}00172\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00173}\mbox{\hyperlink{class_matrix_a69a6ae42e5f098d069a9a0e4e6399ba8}{00173}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a69a6ae42e5f098d069a9a0e4e6399ba8}{Matrix<Type>::operator-\/=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00174}00174\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00175}00175\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00176}00176\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00177}00177\ \ \ \ \ this-\/>sub(mtrx);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00190}00190\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00191}\mbox{\hyperlink{class_matrix_a6990508e9b1323dfaa4021c20ca5a528}{00191}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6990508e9b1323dfaa4021c20ca5a528}{Matrix<Type>::operator*=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00192}00192\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00193}00193\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00194}00194\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00195}00195\ \ \ \ \ this-\/>mul(mtrx);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00208}00208\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00209}\mbox{\hyperlink{class_matrix_acf72070412729d9903214ee76e222cf7}{00209}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_acf72070412729d9903214ee76e222cf7}{Matrix<Type>::operator\string^=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00210}00210\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00211}00211\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00212}00212\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00213}00213\ \ \ \ \ this-\/>hadamardMul(mtrx);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00226}00226\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00227}\mbox{\hyperlink{class_matrix_a64cba484ae8824eddb971bf8acef26be}{00227}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a64cba484ae8824eddb971bf8acef26be}{Matrix<Type>::operator/=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00228}00228\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00229}00229\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00230}00230\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00231}00231\ \ \ \ \ this-\/>hadamardDiv(mtrx);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00232}00232\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00233}00233\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00244}00244\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00245}\mbox{\hyperlink{class_matrix_a8683edfe3e9580400560434883bbf185}{00245}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6990508e9b1323dfaa4021c20ca5a528}{Matrix<Type>::operator*=}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00246}00246\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ scalar}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00247}00247\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00248}00248\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00249}00249\ \ \ \ \ this-\/>scalarMul(scalar);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00251}00251\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00262}00262\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00263}\mbox{\hyperlink{class_matrix_ac2022bd4f7fd292b2a19bde0b0c2cd9e}{00263}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_ac2022bd4f7fd292b2a19bde0b0c2cd9e}{Matrix<Type>::operator+}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00264}00264\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00265}00265\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00266}00266\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00267}00267\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00268}00268\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00269}00269\ \ \ \ \ this-\/>add\_(result,\ mtrx.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00270}00270\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00271}00271\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00282}00282\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00283}\mbox{\hyperlink{class_matrix_aa756500bccad5b6515427e8484a9069c}{00283}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_aa756500bccad5b6515427e8484a9069c}{Matrix<Type>::operator-\/}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00284}00284\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00285}00285\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00287}00287\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00288}00288\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00289}00289\ \ \ \ \ this-\/>sub\_(result,\ mtrx.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00290}00290\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00291}00291\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00302}00302\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00303}\mbox{\hyperlink{class_matrix_ae83b4ae6fba207f358e337d54a86cf9b}{00303}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_ae83b4ae6fba207f358e337d54a86cf9b}{Matrix<Type>::operator*}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00304}00304\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00305}00305\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00306}00306\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00307}00307\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00308}00308\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00309}00309\ \ \ \ \ this-\/>mul\_(result,\ mtrx.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00311}00311\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00322}00322\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00323}\mbox{\hyperlink{class_matrix_ace4e3fdccdd3bfb2bc8138d71dae8710}{00323}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_ace4e3fdccdd3bfb2bc8138d71dae8710}{Matrix<Type>::operator\string^}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00324}00324\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00325}00325\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00326}00326\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00327}00327\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00328}00328\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00329}00329\ \ \ \ \ this-\/>hadamardMul\_(result,\ mtrx.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00330}00330\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00331}00331\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00342}00342\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00343}\mbox{\hyperlink{class_matrix_a26fe936054b9a5801e0c9c430e1f72ae}{00343}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_a26fe936054b9a5801e0c9c430e1f72ae}{Matrix<Type>::operator/}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00344}00344\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00345}00345\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00346}00346\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00347}00347\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00348}00348\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00349}00349\ \ \ \ \ this-\/>hadamardDiv\_(result,\ mtrx.matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00350}00350\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00351}00351\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00362}00362\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type>}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00363}\mbox{\hyperlink{class_matrix_a0a1ec98810d39bc0829f54aab1bc5345}{00363}}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\ \mbox{\hyperlink{class_matrix_ae83b4ae6fba207f358e337d54a86cf9b}{Matrix<Type>::operator*}}(}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00364}00364\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ scalar}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00365}00365\ )}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00366}00366\ \{}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00367}00367\ \ \ \ \ \mbox{\hyperlink{class_matrix_aa81e2b889146ee50d69fbf30b453399e}{MatrixType<Type>}}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00368}00368\ \ \ \ \ this-\/>copyMatrix\_(result,\ this-\/>matrix\_);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00369}00369\ \ \ \ \ this-\/>scalarCalc\_<std::multiplies>(result,\ scalar);}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00371}00371\ \}}
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{matrix_ops_8hpp_source_l00374}00374\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
