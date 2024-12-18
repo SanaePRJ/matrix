@@ -120,11 +120,8 @@ public:
     std::vector<std::reference_wrapper<Type>> rowRef(const size_t&); // 行参照
     std::vector<std::reference_wrapper<Type>> colRef(const size_t&); // 列参照
 
-    template<typename execPolicy = DefPolType>
-    Matrix<Type>& forEach(std::function<Type()>()); // 各要素への操作
-
-    template<typename execPolicy = DefPolType>
-    Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>()); // 各要素への操作(行,列,そのポイントの値)
+    Matrix<Type>& forEach(std::function<Type()>); // 各要素への操作
+    Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>); // 各要素への操作(行,列,そのポイントの値)
 };
 
 
