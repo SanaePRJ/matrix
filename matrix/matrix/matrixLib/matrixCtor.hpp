@@ -25,7 +25,17 @@ Matrix<Type>::Matrix
 )
 	:matrix_(init.begin(), init.end())
 {
-	//バリデート
+	this->validateMatrix_(this->matrix_);
+}
+
+template<typename Type>
+inline Matrix<Type>::Matrix
+(
+	const MatrixType<>& init
+)
+	:matrix_(init.begin(), init.end())
+{
+	this->validateMatrix_(this->matrix_);
 }
 
 // コピーコンストラクタ
@@ -35,7 +45,6 @@ Matrix<Type>::Matrix
 	const Matrix& other
 )
 {
-	// リサイズ
 	matrix_.resize(other.matrix_.size());
 
 	// コピー

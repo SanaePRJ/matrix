@@ -9,7 +9,8 @@ template<typename Type>
 template<typename CopyType_>
 void Matrix<Type>::copyMatrix_
 (
-	MatrixType<CopyType_>& dest, const MatrixType<CopyType_>& src
+	MatrixType<CopyType_>& dest, 
+	const MatrixType<CopyType_>& src
 )
 {
 	// マトリックスの次元をリサイズ
@@ -20,21 +21,83 @@ void Matrix<Type>::copyMatrix_
 
 template<typename Type>
 template<typename Type_>
-inline size_t Matrix<Type>::rows_(const MatrixType<Type_>& mtrx) const noexcept
+inline size_t Matrix<Type>::rows_
+(
+	const MatrixType<Type_>& mtrx
+)
+	const noexcept
 {
 	return mtrx.size();
 }
 
 template<typename Type>
 template<typename Type_>
-inline size_t Matrix<Type>::cols_(const MatrixType<Type_>& mtrx) const noexcept
+inline size_t Matrix<Type>::cols_
+(
+	const MatrixType<Type_>& mtrx
+)
+	const noexcept
 {
 	return mtrx.empty() ? 0 : mtrx.at(0).size();
 }
 
 template<typename Type>
+template<typename Type_>
+inline void Matrix<Type>::swapRow_
+(
+	MatrixType<Type_>& matrix, 
+	const size_t& swapRow1, 
+	const size_t& swapRow2
+)
+{
+	if (swapRow1 >= this->rows_(matrix) || swapRow2 >= this->rows_(matrix))
+		throw std::out_of_range("Row index out of range.");
+
+	std::swap(matrix[swapRow1], matrix[swapRow2]);
+}
+
+template<typename Type>
+template<typename Type_>
+inline void Matrix<Type>::swapCol_
+(
+	MatrixType<Type_>& matrix, 
+	const size_t& swapCol1,
+	const size_t& swapCol2
+)
+{
+	if (matrix.empty() || swapCol1 >= this->cols_(matrix) || swapCol2 >= this->cols_(matrix))
+		throw std::out_of_range("Column index out of range.");
+
+	for (auto& row : matrix)
+		std::swap(row[swapCol1], row[swapCol2]);
+}
+
+template<typename Type>
+template<typename Type_>
+inline typename Matrix<Type>::template MatrixType<Type_> Matrix<Type>::transpose_
+(
+	const MatrixType<Type_>& mtrx
+)
+{
+	MatrixType<Type_> newMtrx(this->cols_(mtrx), RowType<Type_>(this->rows_(mtrx)));
+
+	for (size_t row = 0; row < this->rows_(mtrx); row++) {
+		for (size_t col = 0; col < this->cols_(mtrx); col++) {
+			newMtrx[col][row] = mtrx[row][col];
+		}
+	}
+
+	return newMtrx;
+}
+
+template<typename Type>
 template<typename Type1_, typename Type2_>
-inline bool Matrix<Type>::areSameSize_(const MatrixType<Type1_>& mtrx1, const MatrixType<Type2_>& mtrx2) const noexcept
+inline bool Matrix<Type>::areSameSize_
+(
+	const MatrixType<Type1_>& mtrx1,
+	const MatrixType<Type2_>& mtrx2
+)
+	const noexcept
 {
 	bool result;
 
@@ -46,7 +109,10 @@ inline bool Matrix<Type>::areSameSize_(const MatrixType<Type1_>& mtrx1, const Ma
 
 template<typename Type>
 template<typename Type_>
-inline void Matrix<Type>::validateMatrix_(const MatrixType<Type_>& mtrx)
+inline void Matrix<Type>::validateMatrix_
+(
+	const MatrixType<Type_>& mtrx
+)
 {
 	if (mtrx.empty())
 		return;
@@ -56,6 +122,12 @@ inline void Matrix<Type>::validateMatrix_(const MatrixType<Type_>& mtrx)
 		if (row.size() != baseSize)
 			throw std::invalid_argument("invalid matrix.");
 	}
+}
+
+template<typename Type>
+inline Matrix<Type> Matrix<Type>::transpose()
+{
+	return this->transpose_(this->matrix_);
 }
 
 // 行数取得
@@ -73,7 +145,10 @@ const size_t Matrix<Type>::cols()
 }
 
 template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(const size_t& rowNum)
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef
+(
+	const size_t& rowNum
+)
 {
 	std::vector<std::reference_wrapper<Type>> resultRef; 
 	resultRef.reserve(this->cols()); 
@@ -85,7 +160,10 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(const size
 }
 
 template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(const size_t& colNum)
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef
+(
+	const size_t& colNum
+)
 {
 	std::vector<std::reference_wrapper<Type>> resultRef; 
 	resultRef.reserve(this->rows()); 
@@ -97,7 +175,10 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(const size
 }
 
 template<typename Type>
-inline Matrix<Type>& Matrix<Type>::forEach(std::function<Type()> func)
+inline Matrix<Type>& Matrix<Type>::forEach
+(
+	std::function<Type()> func
+)
 {
 	for (auto& row : this->matrix_) { 
 		for (auto& elem : row)
@@ -108,7 +189,10 @@ inline Matrix<Type>& Matrix<Type>::forEach(std::function<Type()> func)
 }
 
 template<typename Type> 
-Matrix<Type>& Matrix<Type>::forEach(std::function<Type(size_t, size_t, Type&)> func) 
+Matrix<Type>& Matrix<Type>::forEach
+(
+	std::function<Type(size_t, size_t, Type&)> func
+) 
 {
 	for (size_t row = 0; row < this->rows(); row++) 
 	{

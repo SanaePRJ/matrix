@@ -22,5 +22,6 @@ int main()
 
     auto firstRow = m4[0][0];
 
+    std::cout << m4.transpose();
     std::cout << firstRow << std::endl;
 }

@@ -12,8 +12,7 @@ Matrix<Type>& Matrix<Type>::operator=(const MatrixInitType<Type>& init)
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
 
-    // 必要なバリデートをここに追加
-    // validateMatrix_(this->matrix_);
+    this->validateMatrix_(this->matrix_);
 
     return *this;
 }
@@ -45,8 +44,7 @@ Matrix<Type>& Matrix<Type>::operator<<(const MatrixInitType<Type>& init)
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
 
-    // 必要なバリデートをここに追加
-    // validateMatrix_(this->matrix_);
+    this->validateMatrix_(this->matrix_);
 
     return *this;
 }
