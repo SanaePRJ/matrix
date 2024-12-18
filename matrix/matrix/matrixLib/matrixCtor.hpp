@@ -7,7 +7,7 @@
 template<typename Type>
 Matrix<Type>::Matrix
 (
-	const Size& size
+	const std::pair<size_t,size_t>& size
 )
 	:matrix_(size.first, std::vector<Type>(size.second, 0))
 {}

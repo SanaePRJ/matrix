@@ -18,8 +18,6 @@ public:
     template<typename matrixType = Type> using MatrixType         = std::vector<RowType<matrixType>>; // 行列型
     template<typename matrixInitType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixInitType>>; // 行列型(初期化)
 
-    using Size = std::pair<size_t, size_t>; // サイズ指定
-
 private:
     // データ格納変数
     MatrixType<> matrix_;
@@ -30,7 +28,7 @@ public:
 
     Matrix(const MatrixInitType<>&); // パラメタ付コンストラクタ 初期化
     Matrix(const MatrixType<>&    );
-    Matrix(const Size&);             // パラメタ付コンストラクタ サイズ指定
+    Matrix(const std::pair<size_t,size_t>&); // パラメタ付コンストラクタ サイズ指定
 
     Matrix(const Matrix<Type>&);     // コピーコンストラクタ
     Matrix(Matrix<Type>&&) noexcept; // moveコンストラクタ
