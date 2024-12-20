@@ -13,8 +13,8 @@
  * @param dest The destination matrix where the result will be stored.
  * @param source The source matrix to be added.
  */
-template<typename Type>
-inline void Matrix<Type>::add_(
+template<typename Type,typename DcmpType>
+inline void Matrix<Type,DcmpType>::add_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -29,8 +29,8 @@ inline void Matrix<Type>::add_(
  * @param dest The destination matrix where the result will be stored.
  * @param source The source matrix to be subtracted.
  */
-template<typename Type>
-inline void Matrix<Type>::sub_(
+template<typename Type,typename DcmpType>
+inline void Matrix<Type,DcmpType>::sub_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -47,8 +47,8 @@ inline void Matrix<Type>::sub_(
  * @return The resulting matrix after multiplication.
  * @throws std::invalid_argument If the number of columns in the first matrix is not equal to the number of rows in the second matrix.
  */
-template<typename Type>
-typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_(
+template<typename Type,typename DcmpType>
+typename Matrix<Type,DcmpType>::template MatrixType<Type> Matrix<Type,DcmpType>::mul_(
     const MatrixType<Type>& matrix1,
     const MatrixType<Type>& matrix2
 )
@@ -62,11 +62,11 @@ typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_(
 
     MatrixType<Type> result(rsltRows, RowType<Type>(rsltCols));
 
-    auto calcLambda = [&matrix1, &matrix2](const size_t& posRow, const size_t& posCol) {
+    auto calcLambda = [&matrix1, &matrix2, &crSize](const size_t& posRow, const size_t& posCol) {
         Type resultMatrix = 0;
-        for (size_t i = 0; i < matrix1[0].size(); i++) {
+        for (size_t i = 0; i < crSize; i++)
             resultMatrix += matrix1[posRow][i] * matrix2[i][posCol];
-        }
+
         return resultMatrix;
         };
 
@@ -86,8 +86,8 @@ typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::mul_(
  * @param dest The destination matrix where the result will be stored.
  * @param source The source matrix to multiply.
  */
-template<typename Type>
-inline void Matrix<Type>::hadamardMul_(
+template<typename Type,typename DcmpType>
+inline void Matrix<Type,DcmpType>::hadamardMul_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -102,8 +102,8 @@ inline void Matrix<Type>::hadamardMul_(
  * @param dest The destination matrix where the result will be stored.
  * @param source The source matrix to divide.
  */
-template<typename Type>
-inline void Matrix<Type>::hadamardDiv_(
+template<typename Type,typename DcmpType>
+inline void Matrix<Type,DcmpType>::hadamardDiv_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -120,9 +120,9 @@ inline void Matrix<Type>::hadamardDiv_(
  * @param source The source matrix for the operation.
  * @throws std::invalid_argument If the matrices are not of the same size.
  */
-template<typename Type>
+template<typename Type,typename DcmpType>
 template<typename calcType>
-void Matrix<Type>::calcMatrix_(
+void Matrix<Type,DcmpType>::calcMatrix_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -144,9 +144,9 @@ void Matrix<Type>::calcMatrix_(
  * @param dest The destination matrix where the result will be stored.
  * @param source The scalar value to use in the operation.
  */
-template<typename Type>
+template<typename Type,typename DcmpType>
 template<typename calcType>
-void Matrix<Type>::scalarCalc_(
+void Matrix<Type,DcmpType>::scalarCalc_(
     MatrixType<Type>& dest,
     const Type& source
 )
@@ -164,11 +164,12 @@ void Matrix<Type>::scalarCalc_(
  * @param mtrx The matrix to add.
  * @return A reference to the current matrix after addition.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::add(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::add(
     const Matrix<Type>& mtrx
 )
 {
+    
     this->add_(this->matrix_, mtrx.matrix_);
 
     return *this;
@@ -181,11 +182,12 @@ Matrix<Type>& Matrix<Type>::add(
  * @param mtrx The matrix to subtract.
  * @return A reference to the current matrix after subtraction.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::sub(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::sub(
     const Matrix<Type>& mtrx
 )
 {
+    
     this->sub_(this->matrix_, mtrx.matrix_);
 
     return *this;
@@ -198,8 +200,8 @@ Matrix<Type>& Matrix<Type>::sub(
  * @param mtrx The matrix to multiply with.
  * @return A reference to the current matrix after multiplication.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::mul(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::mul(
     const Matrix<Type>& mtrx
 )
 {
@@ -215,8 +217,8 @@ Matrix<Type>& Matrix<Type>::mul(
  * @param source The scalar value to multiply with.
  * @return A reference to the current matrix after scalar multiplication.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::scalarMul(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::scalarMul(
     const Type& source
 )
 {
@@ -232,8 +234,8 @@ Matrix<Type>& Matrix<Type>::scalarMul(
  * @param source The matrix to perform the Hadamard product with.
  * @return A reference to the current matrix after the operation.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::hadamardMul(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::hadamardMul(
     const Matrix<Type>& source
 )
 {
@@ -249,8 +251,8 @@ Matrix<Type>& Matrix<Type>::hadamardMul(
  * @param source The matrix to divide by.
  * @return A reference to the current matrix after the operation.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::hadamardDiv(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::hadamardDiv(
     const Matrix<Type>& source
 )
 {
@@ -267,9 +269,9 @@ Matrix<Type>& Matrix<Type>::hadamardDiv(
  * @param source The matrix to use in the operation.
  * @return A reference to the current matrix after the operation.
  */
-template<typename Type>
+template<typename Type,typename DcmpType>
 template<typename calcType>
-Matrix<Type>& Matrix<Type>::scalarCalc(
+Matrix<Type>& Matrix<Type,DcmpType>::scalarCalc(
     const Matrix<Type>& source
 )
 {
