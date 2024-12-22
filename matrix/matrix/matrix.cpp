@@ -108,7 +108,59 @@ void testIdentityMatrix() {
     std::cout << "IdentityMatrix test passed." << std::endl;
 }
 
+#include <chrono>
+#include <random>
+static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
+{
+    using namespace std::chrono;
+
+    std::default_random_engine       engine;      //エンジン
+    std::normal_distribution<double> dist(0, 1);  //平均0,標準偏差1
+
+    //n*n行列を作成
+    Matrix<double> buf0 = std::pair<size_t, size_t>{ n,n };
+    Matrix<double> buf1 = std::pair<size_t, size_t>{ n,n };
+
+    buf0.forEach([&engine, &dist]()->double {return dist(engine); });
+    buf1.forEach([&engine, &dist]()->double {return dist(engine); });
+
+    auto calc = [&buf0, &buf1, &engine, &dist, &Func]() {
+        auto buf_time0 = system_clock::now();
+
+        Func(buf0, buf1);
+
+        auto buf_time1 = system_clock::now();
+
+        return duration_cast<milliseconds>(buf_time1 - buf_time0).count();
+        };
+
+    std::cout << "CPU演算テスト:" << std::endl;
+
+    //1スレッドでの計算
+    //buf0.thread = 1;
+    //std::cout << buf0.thread << "スレッドでの計算:";
+
+    double time1 = static_cast<double>(calc());
+    std::cout << time1 << "ミリ秒かかりました。" << std::endl;
+
+    /*
+    //複数スレッドでの計算
+    for (size_t i = 2; i <= std::thread::hardware_concurrency(); i++) {
+        buf0.thread = i;
+
+        std::cout << buf0.thread << "スレッドでの計算:";
+        double time2 = static_cast<double>(calc());
+        std::cout << time2 << "ミリ秒かかりました。->";
+
+        std::cout << (time1 / time2) << "倍高速化できました。" << std::endl;
+    }
+    */
+
+    system("pause");
+}
+
 int main() {
+    // mulSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
     testDefaultConstructor();
     testInitListConstructor();
     testSizeConstructor();
