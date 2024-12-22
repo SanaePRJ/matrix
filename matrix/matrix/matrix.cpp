@@ -1,6 +1,7 @@
-#include "matrixLib/matrix"
 #include <cassert>
 #include <iostream>
+
+#include "matrixLib/matrix"
 
 void testDefaultConstructor() {
     Matrix<int> matrix;
@@ -70,13 +71,11 @@ void testTranspose() {
     std::cout << "Transpose test passed." << std::endl;
 }
 
-/*
 void testDeterminant() {
     Matrix<int> matrix({ {1, 2}, {3, 4} });
     assert(matrix.det() == -2);
     std::cout << "Determinant test passed." << std::endl;
 }
-*/
 
 void testInverse() {
     Matrix<double> matrix({ {4, 7}, {2, 6} });
@@ -118,10 +117,11 @@ int main() {
     testAssignmentOperator();
     testAddOperator();
     testTranspose();
-    //testDeterminant();
+    testDeterminant();
     testInverse();
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
+   
     return 0;
 }

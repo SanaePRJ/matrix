@@ -3,11 +3,10 @@
 
 
 #include "matrix.h"
-#include <iostream>
 
 
-template<typename Type,typename DcmpType>
-inline std::vector<typename Matrix<Type,DcmpType>::MatrixType<DcmpType>> Matrix<Type,DcmpType>::luDec_(
+template<typename Type, typename DcmpType>
+inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix<Type, DcmpType>::luDec_(
     const MatrixType<Type>& mtrx,
     DcmpType epsilon
 )
@@ -16,10 +15,11 @@ inline std::vector<typename Matrix<Type,DcmpType>::MatrixType<DcmpType>> Matrix<
     if (mtrx == this->matrix_ && this->matrixHash(this->matrix_) == this->dcmpHash_)
         return this->dcmp_;
 
+    // 正方行列であることを確認
     if (this->rows_(mtrx) != this->cols_(mtrx))
         throw std::invalid_argument("Must be a square matrix.");
 
-    // すべての列に対して lmbdRowFrom 行を lmbdNum 倍したものを lmbdRowTo 行へ加算する。
+    // 行操作関数
     auto applyRowOperation = [&](MatrixType<DcmpType>& lmbdMtrx, size_t lmbdRowFrom, size_t lmbdRowTo, DcmpType lmbdNum)
         {
             for (size_t col = 0; col < this->cols_(lmbdMtrx); col++)
@@ -28,46 +28,47 @@ inline std::vector<typename Matrix<Type,DcmpType>::MatrixType<DcmpType>> Matrix<
 
     const size_t size = this->rows_(mtrx);
 
-    // 単位行列取得
-    MatrixType<DcmpType> mtrxL = this->identity_<DcmpType>(size);
+    // 初期化: 単位行列、ゼロ行列、U行列
+    MatrixType<DcmpType> mtrxP = this->identity_<DcmpType>(size); // 単位行列
+    MatrixType<DcmpType> mtrxL(size, RowType<DcmpType>(size, 0)); // ゼロ行列
     MatrixType<DcmpType> mtrxU;
     this->copyMatrix_(mtrxU, mtrx);
 
     for (size_t col = 0; col < size; col++) {
-        // baseRow行を他の行へ加算し0にする。
         const size_t baseRow = col;
 
         // ピボット選択
-        size_t pivotRow = std::distance(mtrxU.begin(), std::max_element(mtrxU.begin() + col, mtrxU.end(), [&](const auto& row1, const auto& row2)
-            {
-                return std::abs(row1[col]) < std::abs(row2[col]);
+        if (std::abs(mtrxU[baseRow][baseRow]) < epsilon) {
+            auto it = std::max_element(mtrxU.begin() + baseRow + 1, mtrxU.end(),
+                [&](auto& row1, auto& row2) { return std::abs(row1[col]) < std::abs(row2[col]); });
+
+            if (it != mtrxU.end()) {
+                size_t pivotRow = std::distance(mtrxU.begin(), it);
+                this->swapRow_(mtrxU, baseRow, pivotRow);
+                this->swapRow_(mtrxP, baseRow, pivotRow);
+                this->swapRow_(mtrxL, baseRow, pivotRow);
             }
-        ));
-        if (baseRow != pivotRow) {
-            this->swapRow_(mtrxU, baseRow, pivotRow);
-            this->swapRow_(mtrxL, baseRow, pivotRow);
         }
 
-        // 正則行列でない場合近似解を出す。
         if (std::abs(mtrxU[baseRow][baseRow]) < epsilon)
             mtrxU[baseRow][baseRow] = (mtrxU[baseRow][baseRow] >= 0) ? epsilon : -epsilon;
 
         for (size_t row = baseRow + 1; row < size; row++) {
-            // 0 = A[row][col] + A[baseRow][col]*mulNum
-            // mulNum = -A[row][col] / A[baseRow][col]
-            DcmpType mulNum = (- 1 * mtrxU[row][col]) / mtrxU[baseRow][col];
-
+            DcmpType mulNum = -mtrxU[row][col] / mtrxU[baseRow][col];
             applyRowOperation(mtrxU, baseRow, row, mulNum);
-            mtrxL[row][col] = (- 1 * mulNum);
+            mtrxL[row][col] = -mulNum;
         }
     }
 
-    std::vector<MatrixType<DcmpType>>result{ mtrxL, mtrxU };
+    for (size_t i = 0; i < size; i++)
+        mtrxL[i][i] = 1;
 
-    // matrix_のときハッシュを登録
+    std::vector<MatrixType<DcmpType>> result{ mtrxL, mtrxU };
+
+    // キャッシュの保存
     if (mtrx == this->matrix_) {
         this->dcmpHash_ = this->matrixHash(this->matrix_);
-        this->dcmp_     = result;
+        this->dcmp_ = result;
     }
 
     return result;
@@ -127,9 +128,30 @@ inline typename Matrix<Type,DcmpType>::MatrixType<DcmpType> Matrix<Type,DcmpType
     return result;
 }
 
+template<typename Type, typename DcmpType>
+inline DcmpType Matrix<Type, DcmpType>::det_(
+    const MatrixType<Type>& mtrx,
+    DcmpType epsilon
+) 
+{
+    if (this->rows_(mtrx) != this->cols_(mtrx))
+        throw std::invalid_argument("Must be a square matrix.");
+    
+    MatrixType<DcmpType> mtrxU = this->luDec_(mtrx,epsilon)[1];
+    DcmpType rslt = 1;
+
+    for (size_t i = 0; i < mtrxU.size(); i++)
+        rslt *= mtrxU[i][i];
+
+    return rslt;
+}
+
 template<typename Type,typename DcmpType>
-inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec() {
-    this->luDec_(this->matrix_);
+inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec(
+    DcmpType epsilon
+) 
+{
+    this->luDec_(this->matrix_,epsilon);
 
     std::vector<Matrix<DcmpType>> matrices;
     matrices.push_back(Matrix<DcmpType>(dcmp_[0]));
@@ -139,9 +161,28 @@ inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec() {
 }
 
 template<typename Type,typename DcmpType>
-inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse()
+inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse(
+    DcmpType epsilon
+)
 {
-    return Matrix<DcmpType>(this->inverse_(this->matrix_,1e-6));
+    return Matrix<DcmpType>(this->inverse_(this->matrix_,epsilon));
+}
+
+template<typename Type, typename DcmpType>
+inline DcmpType Matrix<Type, DcmpType>::det(
+    DcmpType epsilon
+)
+{
+    if (this->rows() != this->cols())
+        throw std::invalid_argument("Must be a square matrix.");
+
+    MatrixType<DcmpType> mtrxU = this->luDec_(this->matrix_,epsilon)[1];
+    DcmpType rslt = 1;
+
+    for (size_t i = 0; i < mtrxU.size(); i++)
+        rslt *= mtrxU[i][i];
+
+    return rslt;
 }
 
 

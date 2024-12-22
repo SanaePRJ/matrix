@@ -119,8 +119,9 @@ private:
     template<typename calcType>
     void scalarCalc_(MatrixType<Type>&, const Type&); ///< スカラ演算
 
-    std::vector<MatrixType<DcmpType>> luDec_(const MatrixType<Type>&,DcmpType epsilon = 1e-9); ///< LU分解
-    MatrixType<DcmpType> inverse_(const MatrixType<Type>&,DcmpType epsilon = 1e-9); ///< 逆行列
+    std::vector<MatrixType<DcmpType>> luDec_  (const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< LU分解
+    MatrixType<DcmpType>              inverse_(const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< 逆行列
+    DcmpType                          det_    (const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< 行列式
 
 public:
     Matrix<Type>& add(const Matrix<Type>&); ///< 加算
@@ -132,8 +133,9 @@ public:
     template<typename calcType>
     Matrix<Type>& scalarCalc (const Matrix<Type>&); ///< スカラ計算
 
-    std::vector<Matrix<DcmpType>> luDec();   ///< LU分解
-    Matrix<DcmpType>              inverse(); ///< 逆行列
+    std::vector<Matrix<DcmpType>> luDec  (DcmpType epsilon = 1e-9); ///< LU分解
+    Matrix<DcmpType>              inverse(DcmpType epsilon = 1e-9); ///< 逆行列
+    DcmpType                      det    (DcmpType epsilon = 1e-9); ///< 行列式
 
 private:
     template<typename CopyType1,typename CopyType2>
@@ -168,8 +170,6 @@ public:
 
     const size_t rows() const; ///< 行数取得
     const size_t cols() const; ///< 列数取得
-
-    Type det(); ///< 行列式
 
     std::vector<std::reference_wrapper<Type>> rowRef(const size_t&); ///< 行参照
     std::vector<std::reference_wrapper<Type>> colRef(const size_t&); ///< 列参照
