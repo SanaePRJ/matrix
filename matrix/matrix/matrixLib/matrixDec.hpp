@@ -1,19 +1,17 @@
 #ifndef MATRIXCPP_MATRIXDEC_HPP
 #define MATRIXCPP_MATRIXDEC_HPP
 
-
 #include "matrix.h"
 
-
 /**
- * @brief LU分解を行う内部関数
+ * @brief Internal function to perform LU decomposition
  *
- * @tparam Type 入力行列の要素型
- * @tparam DcmpType 計算時の要素型
- * @param mtrx 分解対象の行列
- * @param epsilon 許容される最小値（ピボット選択時に使用）
- * @return LU分解されたL行列とU行列のベクトル
- * @exception std::invalid_argument 非正方行列の場合にスローされる
+ * @tparam Type Element type of the input matrix
+ * @tparam DcmpType Element type used during computation
+ * @param mtrx The matrix to be decomposed
+ * @param epsilon The smallest permissible value (used in pivot selection)
+ * @return A vector containing the L and U matrices resulting from LU decomposition
+ * @exception std::invalid_argument Thrown if the matrix is not square
  */
 template<typename Type, typename DcmpType>
 inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix<Type, DcmpType>::luDec_(
@@ -73,7 +71,7 @@ inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix
     for (size_t i = 0; i < size; i++)
         mtrxL[i][i] = 1;
 
-    std::vector<MatrixType<DcmpType>> result{ mtrxL, mtrxU };
+    std::vector<MatrixType<DcmpType>> result{ mtrxL, mtrxU, mtrxP };
 
     // キャッシュの保存
     if (mtrx == this->matrix_) {
@@ -85,14 +83,14 @@ inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix
 }
 
 /**
- * @brief 行列の逆行列を求める内部関数
+ * @brief Internal function to calculate the inverse of a matrix
  *
- * @tparam Type 入力行列の要素型
- * @tparam DcmpType 計算時の要素型
- * @param mtrx 対象の行列
- * @param epsilon 許容される最小値（LU分解時に使用）
- * @return 計算された逆行列
- * @exception std::invalid_argument 非正方行列の場合にスローされる
+ * @tparam Type Element type of the input matrix
+ * @tparam DcmpType Element type used during computation
+ * @param mtrx The matrix to be inverted
+ * @param epsilon The smallest permissible value (used in LU decomposition)
+ * @return The calculated inverse matrix
+ * @exception std::invalid_argument Thrown if the matrix is not square
  */
 template<typename Type,typename DcmpType>
 inline typename Matrix<Type,DcmpType>::MatrixType<DcmpType> Matrix<Type,DcmpType>::inverse_(
@@ -149,14 +147,14 @@ inline typename Matrix<Type,DcmpType>::MatrixType<DcmpType> Matrix<Type,DcmpType
 }
 
 /**
- * @brief 行列の行列式を計算する内部関数
+ * @brief Internal function to calculate the determinant of a matrix
  *
- * @tparam Type 入力行列の要素型
- * @tparam DcmpType 計算時の要素型
- * @param mtrx 対象の行列
- * @param epsilon 許容される最小値（LU分解時に使用）
- * @return 行列式の値
- * @exception std::invalid_argument 非正方行列の場合にスローされる
+ * @tparam Type Element type of the input matrix
+ * @tparam DcmpType Element type used during computation
+ * @param mtrx The matrix for which the determinant is to be calculated
+ * @param epsilon The smallest permissible value (used in LU decomposition)
+ * @return The value of the determinant
+ * @exception std::invalid_argument Thrown if the matrix is not square
  */
 template<typename Type, typename DcmpType>
 inline DcmpType Matrix<Type, DcmpType>::det_(
@@ -177,12 +175,12 @@ inline DcmpType Matrix<Type, DcmpType>::det_(
 }
 
 /**
- * @brief LU分解を行う公開メンバ関数
+ * @brief Public member function to perform LU decomposition
  *
- * @tparam Type 行列要素の型
- * @tparam DcmpType 計算時の型
- * @param epsilon 許容される最小値（ピボット選択時に使用）
- * @return 分解されたL行列とU行列を格納するベクトル
+ * @tparam Type Type of the matrix elements
+ * @tparam DcmpType Type used during computation
+ * @param epsilon The smallest permissible value (used in pivot selection)
+ * @return A vector containing the decomposed L and U matrices
  */
 template<typename Type,typename DcmpType>
 inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec(
@@ -199,12 +197,12 @@ inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec(
 }
 
 /**
- * @brief 行列の逆行列を求める公開メンバ関数
+ * @brief Public member function to calculate the inverse of a matrix
  *
- * @tparam Type 行列要素の型
- * @tparam DcmpType 計算時の型
- * @param epsilon 許容される最小値（LU分解時に使用）
- * @return 計算された逆行列
+ * @tparam Type Type of the matrix elements
+ * @tparam DcmpType Type used during computation
+ * @param epsilon The smallest permissible value (used in LU decomposition)
+ * @return The calculated inverse matrix
  */
 template<typename Type,typename DcmpType>
 inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse(
@@ -215,12 +213,12 @@ inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse(
 }
 
 /**
- * @brief 行列の行列式を計算する公開メンバ関数
+ * @brief Public member function to calculate the determinant of a matrix
  *
- * @tparam Type 行列要素の型
- * @tparam DcmpType 計算時の型
- * @param epsilon 許容される最小値（LU分解時に使用）
- * @return 行列式の値
+ * @tparam Type Type of the matrix elements
+ * @tparam DcmpType Type used during computation
+ * @param epsilon The smallest permissible value (used in LU decomposition)
+ * @return The value of the determinant
  */
 template<typename Type, typename DcmpType>
 inline DcmpType Matrix<Type, DcmpType>::det(
@@ -238,6 +236,5 @@ inline DcmpType Matrix<Type, DcmpType>::det(
 
     return rslt;
 }
-
 
 #endif

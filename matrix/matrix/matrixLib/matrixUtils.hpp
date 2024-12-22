@@ -1,9 +1,7 @@
 #ifndef MATRIXCPP_MATRIXUTILS_HPP
 #define MATRIXCPP_MATRIXUTILS_HPP
 
-
 #include "matrix.h"
-
 
 /**
  * @brief Copies the contents of a source matrix to a destination matrix.
@@ -421,6 +419,5 @@ inline typename Matrix<Type_> Matrix<Type,DcmpType>::identity(const size_t& size
 
     return result;
 }
-
 
 #endif

@@ -2,7 +2,7 @@
 \hypertarget{class_matrix}{}\label{class_matrix}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 
 
-Matrixクラスのテンプレート定義  
+Template definition for the \doxylink{class_matrix}{Matrix} class.  
 
 
 
@@ -13,129 +13,129 @@ Matrixクラスのテンプレート定義
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename row\+Type $>$ }\\using \mbox{\hyperlink{class_matrix_a0aeed7ee6e2890e44b30062c85419591}{Row\+Type}} = std\+::vector$<$row\+Type$>$
-\begin{DoxyCompactList}\small\item\em 型エイリアス宣言 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Type alias declaration. \end{DoxyCompactList}\item 
 \Hypertarget{class_matrix_a592db8985a8bc4c6774249eef53b6eb5}\label{class_matrix_a592db8985a8bc4c6774249eef53b6eb5} 
 {\footnotesize template$<$typename row\+Init\+Type $>$ }\\using {\bfseries Row\+Init\+Type} = std\+::initializer\+\_\+list$<$row\+Init\+Type$>$
-\begin{DoxyCompactList}\small\item\em 行型(初期化) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Row type (initialization) \end{DoxyCompactList}\item 
 \Hypertarget{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}\label{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86} 
 {\footnotesize template$<$typename matrix\+Type  = Type$>$ }\\using {\bfseries Matrix\+Type} = std\+::vector$<$\mbox{\hyperlink{class_matrix_a0aeed7ee6e2890e44b30062c85419591}{Row\+Type}}$<$matrix\+Type$>$$>$
-\begin{DoxyCompactList}\small\item\em 行列型 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \doxylink{class_matrix}{Matrix} type. \end{DoxyCompactList}\item 
 \Hypertarget{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}\label{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6} 
 {\footnotesize template$<$typename matrix\+Init\+Type  = Type$>$ }\\using {\bfseries Matrix\+Init\+Type} = std\+::initializer\+\_\+list$<$\mbox{\hyperlink{class_matrix_a592db8985a8bc4c6774249eef53b6eb5}{Row\+Init\+Type}}$<$matrix\+Init\+Type$>$$>$
-\begin{DoxyCompactList}\small\item\em 行列型(初期化) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_matrix}{Matrix} type (initialization) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \Hypertarget{class_matrix_ac3eff1b832efd85e192a325165093528}\label{class_matrix_ac3eff1b832efd85e192a325165093528} 
 {\bfseries Matrix} ()
-\begin{DoxyCompactList}\small\item\em デフォルトコンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_a0782748e121418a9f5a97da278870222}{Matrix}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$$>$ \&init)
-\begin{DoxyCompactList}\small\item\em 初期化用のパラメタ付コンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructor with parameters for initialization. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_a705e879db52bfe007a58f40d38212ad4}{Matrix}} (const \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix\+Type}}$<$$>$ \&matrix)
-\begin{DoxyCompactList}\small\item\em コピーコンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_ac62823ceebbeefccd7167bc991e6e0ff}{Matrix}} (const std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \&size)
-\begin{DoxyCompactList}\small\item\em サイズ指定のパラメタ付コンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructor with size specification. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_ae7c8ee2d692835142e98b73b03e37a12}{Matrix}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$ \&other)
-\begin{DoxyCompactList}\small\item\em コピーコンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_a9bf0f336b35af484d032bd0e9cfe95ec}{Matrix}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&other) noexcept
-\begin{DoxyCompactList}\small\item\em ムーブコンストラクタ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_af51a94cce88d38e56cabe195c8182546}{operator=}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 演算子オーバーロード \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Operator overloads. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a9b24a8dc9c02fab08530c24786f662b7}{operator=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 代入演算子 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a6fae11037c845951bfc48a54d2b95c57}{operator$<$$<$}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em ストリーム広谷演算子 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stream insertion operator. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a5a3d8ebd995f9012bd5dcd4dddf85015}{operator$<$$<$}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em ストリーム広谷演算子 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Stream insertion operator. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2f43eb2c09dc62c66b345359ce34522b}{operator=}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&)
-\begin{DoxyCompactList}\small\item\em ムーブ代入 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Move assignment. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b}{operator$<$$<$}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&)
-\begin{DoxyCompactList}\small\item\em ムーブストリーム \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Move stream insertion. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix_a0aeed7ee6e2890e44b30062c85419591}{Row\+Type}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2cb987d40cc2202a8b98aa19e58b9f81}{operator\mbox{[}$\,$\mbox{]}}} (const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 行アクセス \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Row access. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a494ca7c6987fb9ce5f802791df94b3ae}{operator+=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 加算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Addition. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a6e5c20a3862b33333ab1fbaebcead8ad}{operator-\/=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 減算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Subtraction. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a87975f2053ff32caf540d56fc9a33b8d}{operator\texorpdfstring{$\ast$}{*}=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 乗算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_aceb7efeee7605cfb1e75a5411d728a48}{operator\texorpdfstring{$^\wedge$}{\string^}=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール組み合わせ算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard product. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2d3ecfaa70de3212a6953c1747875813}{operator/=}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール除算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard division. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a011c4e90d2d78529acd91f6b5c437ce2}{operator\texorpdfstring{$\ast$}{*}=}} (const Type \&)
-\begin{DoxyCompactList}\small\item\em スカラ倍 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Scalar multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_a960d10ceec89b2e1688c8cf89464c05a}{operator+}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 加算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Addition. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_a4a4a342ac468c7894ae502e26fd9aa0c}{operator-\/}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 減算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Subtraction. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_a6297aee72655d7f4c3ec982b93c2d2d0}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 乗算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_a959398a790bc8808991a15d065d04ea5}{operator\texorpdfstring{$^\wedge$}{\string^}}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール組み合わせ算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard product. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_afc4f81cd4ec76cc3df1e5c24718396b5}{operator/}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール除算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard division. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_ad4f9a758fd4027461151f58c3c292240}{operator\texorpdfstring{$\ast$}{*}}} (const Type \&)
-\begin{DoxyCompactList}\small\item\em スカラ倍 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Scalar multiplication. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Type\+\_\+ $>$ }\\\mbox{\hyperlink{class_matrix_ab40501649a1246a8fe57727516231afb}{operator Matrix$<$ Type\+\_\+ $>$}} ()
-\begin{DoxyCompactList}\small\item\em 型変換 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Type conversion. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a6a23864aa392e4fe742c03ad9cc1bfb7}{add}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 加算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Addition. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a344d58a411291a928c6b3679bb1b7753}{sub}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 減算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Subtraction. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a17448a39bb88b1ae47ea6a25059da797}{mul}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em 乗算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a33dbc11f4e852bdf5f01c935ccedf54f}{scalar\+Mul}} (const Type \&)
-\begin{DoxyCompactList}\small\item\em スカラ倍 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Scalar multiplication. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_aee906ae982a11c3bd9e99e5f8201aa72}{hadamard\+Mul}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール組み合わせ \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard product. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2b093abef2bdb077d263e8567738f5b0}{hadamard\+Div}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em アダマール除算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Hadamard division. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename calc\+Type $>$ }\\\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a612baf65a8d94a00683c8e4bedf53a60}{scalar\+Calc}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
-\begin{DoxyCompactList}\small\item\em スカラ計算 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Scalar calculation. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Dcmp\+Type $>$ $>$ \mbox{\hyperlink{class_matrix_af84b6d4591325b9010384152e42db0c9}{lu\+Dec}} (Dcmp\+Type epsilon=1e-\/9)
-\begin{DoxyCompactList}\small\item\em LU分解 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em LU decomposition. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Dcmp\+Type $>$ \mbox{\hyperlink{class_matrix_acdef22f1a972fd304eb2d4b2a5261990}{inverse}} (Dcmp\+Type epsilon=1e-\/9)
-\begin{DoxyCompactList}\small\item\em 逆行列 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Inverse matrix. \end{DoxyCompactList}\item 
 Dcmp\+Type \mbox{\hyperlink{class_matrix_a0fb1ba800985204475cba8787c34cd1d}{det}} (Dcmp\+Type epsilon=1e-\/9)
-\begin{DoxyCompactList}\small\item\em 行列式 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Determinant. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \mbox{\hyperlink{class_matrix_a711e9f3be5a0507fdb8ab1a9f3dec63d}{transpose}} ()
-\begin{DoxyCompactList}\small\item\em 転置 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Transpose. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a6590af6f43ecd38a96020e6f38c8f8de}{swap\+Row}} (const size\+\_\+t \&, const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 行入れ替え \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Swap rows. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a46ef8c6605000947071e1a4bda747f12}{swap\+Col}} (const size\+\_\+t \&, const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 列入れ替え \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Swap columns. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2d444ed3c69531d4d024c5eb5aad6bc9}{resize}} (const size\+\_\+t \&, const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em サイズ変更 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Resize matrix. \end{DoxyCompactList}\item 
 const size\+\_\+t \mbox{\hyperlink{class_matrix_af7ea283626fefd99241f5abe1ff71e0f}{rows}} () const
-\begin{DoxyCompactList}\small\item\em 行数取得 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the number of rows. \end{DoxyCompactList}\item 
 const size\+\_\+t \mbox{\hyperlink{class_matrix_a3f25d3388e5f8cc7a7156eda076f7a6e}{cols}} () const
-\begin{DoxyCompactList}\small\item\em 列数取得 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Get the number of columns. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ Type $>$ $>$ \mbox{\hyperlink{class_matrix_a68f381c8dae827ae6aed294cf7dffbf2}{row\+Ref}} (const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 行参照 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Row reference. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ Type $>$ $>$ \mbox{\hyperlink{class_matrix_a2cf3c1885570eaccae25f2aea82bd8ce}{col\+Ref}} (const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 列参照 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Column reference. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a1e6061824de55107bd1879e94fab0fbd}{for\+Each}} (std\+::function$<$ Type()$>$)
-\begin{DoxyCompactList}\small\item\em 各要素への操作 \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Apply operation to each element. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a0c8a82f37c0da15ddcea2b912d11137c}{for\+Each}} (std\+::function$<$ Type(size\+\_\+t, size\+\_\+t, Type \&)$>$)
-\begin{DoxyCompactList}\small\item\em 各要素への操作(行,列,そのポイントの値) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Apply operation to each element (row, column, value) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename Type\+\_\+  = Type$>$ }\\static \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type\+\_\+ $>$ \mbox{\hyperlink{class_matrix_a1c18c4afc325808a00d4e16da82d91f0}{identity}} (const size\+\_\+t \&)
-\begin{DoxyCompactList}\small\item\em 単位行列生成 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Generate identity matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \subsubsection*{template$<$typename Type, typename Dcmp\+Type = double$>$\newline
 class Matrix$<$ Type, Dcmp\+Type $>$}
-Matrixクラスのテンプレート定義 
+Template definition for the \doxylink{class_matrix}{Matrix} class. 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Type} & 行列の要素の型 \\
+{\em Type} & Type of the matrix elements \\
 \hline
-{\em Dcmp\+Type} & 分解時に使用する型 \\
+{\em Dcmp\+Type} & Type used during decomposition \\
 \hline
 \end{DoxyTemplParams}
 
@@ -151,9 +151,9 @@ using \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\+::\+Row\+
 
 
 
-型エイリアス宣言 
+Type alias declaration. 
 
-行型 
+Row type 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_matrix_a0782748e121418a9f5a97da278870222}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
@@ -165,11 +165,11 @@ template$<$typename Type , typename Dcmp\+Type  = double$>$ \\
 
 
 
-初期化用のパラメタ付コンストラクタ 
+Constructor with parameters for initialization. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em init} & 初期化リスト \\
+{\em init} & Initializer list \\
 \hline
 \end{DoxyParams}
 \Hypertarget{class_matrix_a705e879db52bfe007a58f40d38212ad4}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
@@ -181,13 +181,13 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-コピーコンストラクタ 
+Copy constructor. 
 
 Constructs a matrix using another matrix-\/like structure.
 
 
 \begin{DoxyParams}{Parameters}
-{\em matrix} & コピー元の行列\\
+{\em matrix} & \doxylink{class_matrix}{Matrix} to copy from\\
 \hline
 \end{DoxyParams}
 
@@ -209,13 +209,13 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-サイズ指定のパラメタ付コンストラクタ 
+Constructor with size specification. 
 
 Constructs a zero matrix of the specified size.
 
 
 \begin{DoxyParams}{Parameters}
-{\em size} & 行列のサイズ\\
+{\em size} & Size of the matrix\\
 \hline
 \end{DoxyParams}
 
@@ -237,13 +237,13 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-コピーコンストラクタ 
+Copy constructor. 
 
 Copy constructor for the \doxylink{class_matrix}{Matrix} class.
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & コピー元の行列\\
+{\em other} & \doxylink{class_matrix}{Matrix} to copy from\\
 \hline
 \end{DoxyParams}
 Creates a new matrix as a copy of another matrix.
@@ -267,13 +267,13 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-ムーブコンストラクタ 
+Move constructor. 
 
 Move constructor for the \doxylink{class_matrix}{Matrix} class.
 
 
 \begin{DoxyParams}{Parameters}
-{\em other} & ムーブ元の行列\\
+{\em other} & \doxylink{class_matrix}{Matrix} to move from\\
 \hline
 \end{DoxyParams}
 Transfers the resources of another matrix to the current matrix.
@@ -300,7 +300,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-加算 
+Addition. 
 
 Adds another matrix to the current matrix.
 
@@ -326,7 +326,7 @@ std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ Type $>$ $>$ \mbox{\hyperlink{
 
 
 
-列参照 
+Column reference. 
 
 Retrieves references to all elements in the specified column.
 
@@ -352,7 +352,7 @@ const size\+\_\+t \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>
 
 
 
-列数取得 
+Get the number of columns. 
 
 Retrieves the number of columns in the current matrix.
 
@@ -373,24 +373,24 @@ Dcmp\+Type \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\+::de
 
 
 
-行列式 
+Determinant. 
 
-�s��̍s�񎮂��v�\+Z������\+J�����o�֐�
+Public member function to calculate the determinant of a matrix.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Type} & �s��v�f�̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Type} & Type of the matrix elements \\
 \hline
-{\em Dcmp\+Type} & �v�\+Z���̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Dcmp\+Type} & Type used during computation \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em epsilon} & ���e�����ŏ��l�i\+LU�������Ɏg�p�j \\
+{\em epsilon} & The smallest permissible value (used in LU decomposition) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-�s�񎮂̒l 
+The value of the determinant 
 \end{DoxyReturn}
 \Hypertarget{class_matrix_a1e6061824de55107bd1879e94fab0fbd}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!forEach@{forEach}}
 \index{forEach@{forEach}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
@@ -401,7 +401,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-各要素への操作 
+Apply operation to each element. 
 
 Applies a function to all elements of the matrix (no arguments).
 
@@ -427,7 +427,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-各要素への操作(行,列,そのポイントの値) 
+Apply operation to each element (row, column, value) 
 
 Applies a function to all elements of the matrix (with arguments).
 
@@ -453,7 +453,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール除算 
+Hadamard division. 
 
 Performs an element-\/wise division with another matrix.
 
@@ -479,7 +479,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール組み合わせ 
+Hadamard product. 
 
 Performs an element-\/wise multiplication (Hadamard product) with another matrix.
 
@@ -506,7 +506,7 @@ template$<$typename Type\+\_\+ $>$ \\
 
 
 
-単位行列生成 
+Generate identity matrix. 
 
 Creates an identity matrix of a given size.
 
@@ -538,24 +538,24 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-逆行列 
+Inverse matrix. 
 
-�s��̋t�s������߂���\+J�����o�֐�
+Public member function to calculate the inverse of a matrix.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Type} & �s��v�f�̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Type} & Type of the matrix elements \\
 \hline
-{\em Dcmp\+Type} & �v�\+Z���̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Dcmp\+Type} & Type used during computation \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em epsilon} & ���e�����ŏ��l�i\+LU�������Ɏg�p�j \\
+{\em epsilon} & The smallest permissible value (used in LU decomposition) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-�v�\+Z���ꂽ�t�s�� 
+The calculated inverse matrix 
 \end{DoxyReturn}
 \Hypertarget{class_matrix_af84b6d4591325b9010384152e42db0c9}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!luDec@{luDec}}
 \index{luDec@{luDec}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
@@ -566,24 +566,24 @@ std\+::vector$<$ \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Dcmp\+Type $>$ $>$ \
 
 
 
-LU分解 
+LU decomposition. 
 
-LU�������s�����\+J�����o�֐�
+Public member function to perform LU decomposition.
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em Type} & �s��v�f�̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Type} & Type of the matrix elements \\
 \hline
-{\em Dcmp\+Type} & �v�\+Z���̌\texorpdfstring{$^\wedge$}{\string^} \\
+{\em Dcmp\+Type} & Type used during computation \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em epsilon} & ���e�����ŏ��l�i�s�\{�b�g�\+I�����Ɏg�p�j \\
+{\em epsilon} & The smallest permissible value (used in pivot selection) \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-�������ꂽ\+L�s���\+U�s����i�\mbox{[}����x�\+N�g�� 
+A vector containing the decomposed L and U matrices 
 \end{DoxyReturn}
 \Hypertarget{class_matrix_a17448a39bb88b1ae47ea6a25059da797}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!mul@{mul}}
 \index{mul@{mul}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
@@ -594,7 +594,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-乗算 
+Multiplication. 
 
 Multiplies the current matrix with another matrix.
 
@@ -621,7 +621,7 @@ template$<$typename Type\+\_\+ $>$ \\
 
 
 
-型変換 
+Type conversion. 
 
 Converts the current matrix to a matrix of a different type.
 
@@ -648,7 +648,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-乗算 
+Multiplication. 
 
 Multiplication operator.
 
@@ -676,7 +676,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-スカラ倍 
+Scalar multiplication. 
 
 Scalar multiplication operator.
 
@@ -704,7 +704,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-乗算 
+Multiplication. 
 
 Multiplication assignment operator.
 
@@ -732,7 +732,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-スカラ倍 
+Scalar multiplication. 
 
 Scalar multiplication assignment operator.
 
@@ -760,7 +760,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-加算 
+Addition. 
 
 Addition operator.
 
@@ -788,7 +788,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-加算 
+Addition. 
 
 Addition assignment operator.
 
@@ -816,7 +816,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-減算 
+Subtraction. 
 
 Subtraction operator.
 
@@ -844,7 +844,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-減算 
+Subtraction. 
 
 Subtraction assignment operator.
 
@@ -872,7 +872,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール除算 
+Hadamard division. 
 
 Hadamard division operator.
 
@@ -900,7 +900,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール除算 
+Hadamard division. 
 
 Hadamard division assignment operator.
 
@@ -928,7 +928,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-ストリーム広谷演算子 
+Stream insertion operator. 
 
 Copy assignment operator using {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}.
 
@@ -956,7 +956,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-ストリーム広谷演算子 
+Stream insertion operator. 
 
 Assignment operator for initializer lists using {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}.
 
@@ -984,7 +984,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-ムーブストリーム 
+Move stream insertion. 
 
 Move assignment operator using {\ttfamily \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}}.
 
@@ -1012,7 +1012,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-代入演算子 
+Assignment operator. 
 
 Copy assignment operator.
 
@@ -1040,11 +1040,11 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-演算子オーバーロード 
+Operator overloads. 
 
 Assignment operator for initializer lists.
 
-代入演算子
+Assignment operator
 
 Assigns the contents of an initializer list to the matrix.
 
@@ -1070,7 +1070,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-ムーブ代入 
+Move assignment. 
 
 Move assignment operator.
 
@@ -1098,7 +1098,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-行アクセス 
+Row access. 
 
 Row access operator.
 
@@ -1126,7 +1126,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール組み合わせ算 
+Hadamard product. 
 
 Hadamard product operator.
 
@@ -1154,7 +1154,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-アダマール組み合わせ算 
+Hadamard product. 
 
 Hadamard product assignment operator.
 
@@ -1182,7 +1182,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-サイズ変更 
+Resize matrix. 
 
 Resizes the matrix to the specified dimensions.
 
@@ -1210,7 +1210,7 @@ std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ Type $>$ $>$ \mbox{\hyperlink{
 
 
 
-行参照 
+Row reference. 
 
 Retrieves references to all elements in the specified row.
 
@@ -1236,7 +1236,7 @@ const size\+\_\+t \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>
 
 
 
-行数取得 
+Get the number of rows. 
 
 Retrieves the number of rows in the current matrix.
 
@@ -1258,7 +1258,7 @@ template$<$typename calc\+Type $>$ \\
 
 
 
-スカラ計算 
+Scalar calculation. 
 
 Performs a scalar operation on the current matrix with another matrix.
 
@@ -1286,7 +1286,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-スカラ倍 
+Scalar multiplication. 
 
 Multiplies each element of the current matrix by a scalar value.
 
@@ -1312,7 +1312,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-減算 
+Subtraction. 
 
 Subtracts another matrix from the current matrix.
 
@@ -1338,7 +1338,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-列入れ替え 
+Swap columns. 
 
 Swaps two columns in the current matrix.
 
@@ -1366,7 +1366,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-行入れ替え 
+Swap rows. 
 
 Swaps two rows in the current matrix.
 
@@ -1394,7 +1394,7 @@ template$<$typename Type , typename Dcmp\+Type $>$ \\
 
 
 
-転置 
+Transpose. 
 
 Transposes the current matrix.
 

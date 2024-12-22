@@ -2,30 +2,30 @@
 \hypertarget{matrix_8h}{}\label{matrix_8h}\index{matrix.h@{matrix.h}}
 
 
-Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメンバの定義を行います。  
+Defines the \doxylink{class_matrix}{Matrix} class, including member function prototypes and other member definitions.  
 
 
 {\ttfamily \#include $<$iomanip$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$functional$>$}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{class_matrix}{Matrix$<$ Type, Dcmp\+Type $>$}}
-\begin{DoxyCompactList}\small\item\em Matrixクラスのテンプレート定義 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Template definition for the \doxylink{class_matrix}{Matrix} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 {\footnotesize template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ }\\std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& \mbox{\hyperlink{matrix_8h_ab13a0018bfcf28a5d96672a3c3a94f0e}{operator$<$$<$}} (std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&ostrm, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Matrix\+Type $>$ mtrx)
-\begin{DoxyCompactList}\small\item\em 行列を出力するためのオーバーロード \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Overload for outputting a matrix. \end{DoxyCompactList}\item 
 \Hypertarget{matrix_8h_a467645980d2f607c012e4329ca8bdf31}\label{matrix_8h_a467645980d2f607c012e4329ca8bdf31} 
 {\footnotesize template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ }\\std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& {\bfseries operator$<$$<$} (std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&ostrm, std\+::vector$<$ std\+::vector$<$ Matrix\+Type $>$ $>$ mtrx)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメンバの定義を行います。 
+Defines the \doxylink{class_matrix}{Matrix} class, including member function prototypes and other member definitions. 
 
 
 
@@ -39,24 +39,24 @@ std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& operator$<$$<$ (\begin{DoxyPar
 
 
 
-行列を出力するためのオーバーロード 
+Overload for outputting a matrix. 
 
 
 \begin{DoxyTemplParams}{Template Parameters}
-{\em CharT} & 出力ストリームの文字型 \\
+{\em CharT} & Character type of the output stream \\
 \hline
-{\em Traits} & 出力ストリームの特性 \\
+{\em Traits} & Traits of the output stream \\
 \hline
-{\em Matrix\+Type} & 行列の要素型 \\
+{\em Matrix\+Type} & Element type of the matrix \\
 \hline
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em ostrm} & 出力ストリーム \\
+{\em ostrm} & Output stream \\
 \hline
-{\em mtrx} & 行列オブジェクト \\
+{\em mtrx} & \doxylink{class_matrix}{Matrix} object \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-出力ストリーム 
+Output stream 
 \end{DoxyReturn}
