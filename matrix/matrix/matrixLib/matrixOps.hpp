@@ -14,14 +14,15 @@
  * @param init The initializer list to assign.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator=(
     const MatrixInitType<Type>& init
 )
 {
     this->matrix_.clear();
     this->matrix_.assign(init.begin(), init.end());
     this->validateMatrix_(this->matrix_);
+
     return *this;
 }
 
@@ -34,8 +35,8 @@ Matrix<Type>& Matrix<Type>::operator=(
  * @param other The matrix to copy.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator=(
     const Matrix<Type>& other
 )
 {
@@ -54,8 +55,8 @@ Matrix<Type>& Matrix<Type>::operator=(
  * @param other The matrix to move.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator=(
     Matrix<Type>&& other
 )
 {
@@ -74,8 +75,8 @@ Matrix<Type>& Matrix<Type>::operator=(
  * @param init The initializer list to assign.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator<<(
     const MatrixInitType<Type>& init
 )
 {
@@ -94,8 +95,8 @@ Matrix<Type>& Matrix<Type>::operator<<(
  * @param other The matrix to copy.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator<<(
     const Matrix<Type>& other
 )
 {
@@ -114,8 +115,8 @@ Matrix<Type>& Matrix<Type>::operator<<(
  * @param other The matrix to move.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator<<(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator<<(
     Matrix<Type>&& other
 )
 {
@@ -134,8 +135,8 @@ Matrix<Type>& Matrix<Type>::operator<<(
  * @param index The index of the row to access.
  * @return Reference to the row.
  */
-template<typename Type>
-typename Matrix<Type>::RowType<Type>& Matrix<Type>::operator[](
+template<typename Type,typename DcmpType>
+typename Matrix<Type,DcmpType>::RowType<Type>& Matrix<Type,DcmpType>::operator[](
     const size_t& index
 )
 {
@@ -151,8 +152,8 @@ typename Matrix<Type>::RowType<Type>& Matrix<Type>::operator[](
  * @param mtrx The matrix to add.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator+=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator+=(
     const Matrix<Type>& mtrx
 )
 {
@@ -169,8 +170,8 @@ Matrix<Type>& Matrix<Type>::operator+=(
  * @param mtrx The matrix to subtract.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator-=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator-=(
     const Matrix<Type>& mtrx
 )
 {
@@ -187,8 +188,8 @@ Matrix<Type>& Matrix<Type>::operator-=(
  * @param mtrx The matrix to multiply.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator*=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator*=(
     const Matrix<Type>& mtrx
 )
 {
@@ -205,8 +206,8 @@ Matrix<Type>& Matrix<Type>::operator*=(
  * @param mtrx The matrix for the Hadamard product.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator^=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator^=(
     const Matrix<Type>& mtrx
 )
 {
@@ -223,8 +224,8 @@ Matrix<Type>& Matrix<Type>::operator^=(
  * @param mtrx The matrix for element-wise division.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator/=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator/=(
     const Matrix<Type>& mtrx
 )
 {
@@ -241,8 +242,8 @@ Matrix<Type>& Matrix<Type>::operator/=(
  * @param scalar The scalar value to multiply by.
  * @return Reference to the modified matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::operator*=(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::operator*=(
     const Type& scalar
 )
 {
@@ -259,8 +260,8 @@ Matrix<Type>& Matrix<Type>::operator*=(
  * @param mtrx The matrix to add.
  * @return A new matrix representing the result of the addition.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator+(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator+(
     const Matrix<Type>& mtrx
 )
 {
@@ -279,8 +280,8 @@ Matrix<Type> Matrix<Type>::operator+(
  * @param mtrx The matrix to subtract.
  * @return A new matrix representing the result of the subtraction.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator-(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator-(
     const Matrix<Type>& mtrx
 )
 {
@@ -299,15 +300,13 @@ Matrix<Type> Matrix<Type>::operator-(
  * @param mtrx The matrix to multiply.
  * @return A new matrix representing the result of the multiplication.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator*(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator*(
     const Matrix<Type>& mtrx
 )
 {
-    MatrixType<Type> result;
-    this->copyMatrix_(result, this->matrix_);
-    this->mul_(result, mtrx.matrix_);
-    return result;
+    MatrixType<Type> result = this->mul_(this->matrix_, mtrx.matrix_);
+    return Matrix<Type>(result);
 }
 
 /**
@@ -319,8 +318,8 @@ Matrix<Type> Matrix<Type>::operator*(
  * @param mtrx The matrix for the Hadamard product.
  * @return A new matrix representing the result of the Hadamard product.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator^(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator^(
     const Matrix<Type>& mtrx
 )
 {
@@ -339,8 +338,8 @@ Matrix<Type> Matrix<Type>::operator^(
  * @param mtrx The matrix for element-wise division.
  * @return A new matrix representing the result of the Hadamard division.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator/(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator/(
     const Matrix<Type>& mtrx
 )
 {
@@ -359,14 +358,37 @@ Matrix<Type> Matrix<Type>::operator/(
  * @param scalar The scalar value to multiply by.
  * @return A new matrix representing the result of the scalar multiplication.
  */
-template<typename Type>
-Matrix<Type> Matrix<Type>::operator*(
+template<typename Type,typename DcmpType>
+Matrix<Type> Matrix<Type,DcmpType>::operator*(
     const Type& scalar
 )
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
     this->scalarCalc_<std::multiplies>(result, scalar);
+    return result;
+}
+
+/**
+ * @brief Converts the current matrix to a matrix of a different type.
+ *
+ * This operator performs a type conversion for the elements of the matrix,
+ * creating a new matrix where each element is cast to the specified target type.
+ *
+ * @tparam Type_ The target type for the elements in the resulting matrix.
+ * @tparam Type The type of elements in the current matrix.
+ * @tparam DcmpType The type used for computations within the current matrix.
+ * @return A new matrix of type `Matrix<Type_>` with the same dimensions as the original.
+ */
+template <typename Type,typename DcmpType>
+template <typename Type_>
+inline Matrix<Type,DcmpType>::operator Matrix<Type_>() {
+    Matrix<Type_> result(std::make_pair(this->rows(), this->cols()));
+
+    for (size_t i = 0; i < this->rows(); i++)
+        for (size_t j = 0; j < this->cols(); j++)
+            result[i][j] = static_cast<Type_>(this->matrix_[i][j]);
+
     return result;
 }
 

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['matrix_0',['Matrix',['../class_matrix.html',1,'Matrix&lt; Type &gt;'],['../class_matrix.html#ae653bc04255a76bf5275bfce4aec0e5f',1,'Matrix::Matrix()'],['../class_matrix.html#adf88f80a32245483f2eeb55923ae7489',1,'Matrix::Matrix(const MatrixInitType&lt;&gt; &amp;init)'],['../class_matrix.html#a7b52caaf3c19fac13b617bd6ddd2b44d',1,'Matrix::Matrix(const MatrixType&lt;&gt; &amp;matrix)'],['../class_matrix.html#a2fd8499c09b65c9164dc2994804ddeb8',1,'Matrix::Matrix(const std::pair&lt; size_t, size_t &gt; &amp;size)'],['../class_matrix.html#af0adabc4699ef85f44c781d676a05ff7',1,'Matrix::Matrix(const Matrix&lt; Type &gt; &amp;other)'],['../class_matrix.html#a9d1b3df01a35796698dd2121e286048d',1,'Matrix::Matrix(Matrix&lt; Type &gt; &amp;&amp;other) noexcept']]],
+  ['matrix_0',['Matrix',['../class_matrix.html',1,'Matrix&lt; Type, DcmpType &gt;'],['../class_matrix.html#ac3eff1b832efd85e192a325165093528',1,'Matrix::Matrix()'],['../class_matrix.html#a0782748e121418a9f5a97da278870222',1,'Matrix::Matrix(const MatrixInitType&lt;&gt; &amp;init)'],['../class_matrix.html#a705e879db52bfe007a58f40d38212ad4',1,'Matrix::Matrix(const MatrixType&lt;&gt; &amp;matrix)'],['../class_matrix.html#ac62823ceebbeefccd7167bc991e6e0ff',1,'Matrix::Matrix(const std::pair&lt; size_t, size_t &gt; &amp;size)'],['../class_matrix.html#ae7c8ee2d692835142e98b73b03e37a12',1,'Matrix::Matrix(const Matrix&lt; Type, DcmpType &gt; &amp;other)'],['../class_matrix.html#a9bf0f336b35af484d032bd0e9cfe95ec',1,'Matrix::Matrix(Matrix&lt; Type &gt; &amp;&amp;other) noexcept']]],
   ['matrix_2eh_1',['matrix.h',['../matrix_8h.html',1,'']]],
-  ['matrixinittype_2',['MatrixInitType',['../class_matrix.html#af96c52f76af23ba2ae4d23f4ffc28f9f',1,'Matrix']]],
-  ['matrixtype_3',['MatrixType',['../class_matrix.html#aa81e2b889146ee50d69fbf30b453399e',1,'Matrix']]],
-  ['mul_4',['mul',['../class_matrix.html#ad88c42a62a3bf7db6d60fb87e25b9f29',1,'Matrix']]]
+  ['matrixinittype_2',['MatrixInitType',['../class_matrix.html#ad7551bfbed0b1f1f6ffd5a6ec625cad6',1,'Matrix']]],
+  ['matrixtype_3',['MatrixType',['../class_matrix.html#a8fc4bb8f74074a6a081f4884f7c6ad86',1,'Matrix']]],
+  ['mul_4',['mul',['../class_matrix.html#a17448a39bb88b1ae47ea6a25059da797',1,'Matrix']]]
 ];

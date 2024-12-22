@@ -13,16 +13,19 @@
  * @param dest The destination matrix.
  * @param src The source matrix.
  */
-template<typename Type>
-template<typename CopyType>
-void Matrix<Type>::copyMatrix_(
-    MatrixType<CopyType>& dest,
-    const MatrixType<CopyType>& src
+template<typename Type,typename DcmpType>
+template<typename CopyType1,typename CopyType2>
+void Matrix<Type,DcmpType>::copyMatrix_(
+    MatrixType<CopyType1>& dest,
+    const MatrixType<CopyType2>& src
 )
 {
-    dest.resize(src.size());
+    dest.resize(src.size()); 
 
-    std::copy(src.begin(), src.end(), dest.begin());
+    for (size_t i = 0; i < src.size(); ++i) {
+        dest[i].resize(src[i].size()); 
+        std::copy(src[i].begin(), src[i].end(), dest[i].begin()); 
+    }
 }
 
 /**
@@ -32,9 +35,10 @@ void Matrix<Type>::copyMatrix_(
  * @param mtrx The matrix.
  * @return The number of rows in the matrix.
  */
-template<typename Type>
-inline size_t Matrix<Type>::rows_(
-    const MatrixType<Type>& mtrx
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline size_t Matrix<Type,DcmpType>::rows_(
+    const MatrixType<Type_>& mtrx
 )
 const noexcept
 {
@@ -48,9 +52,10 @@ const noexcept
  * @param mtrx The matrix.
  * @return The number of columns in the matrix.
  */
-template<typename Type>
-inline size_t Matrix<Type>::cols_(
-    const MatrixType<Type>& mtrx
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline size_t Matrix<Type,DcmpType>::cols_(
+    const MatrixType<Type_>& mtrx
 )
 const noexcept
 {
@@ -66,9 +71,10 @@ const noexcept
  * @param swapRow2 The index of the second row to swap.
  * @throws std::out_of_range If any row index is out of range.
  */
-template<typename Type>
-inline void Matrix<Type>::swapRow_(
-    MatrixType<Type>& matrix,
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline void Matrix<Type,DcmpType>::swapRow_(
+    MatrixType<Type_>& matrix,
     const size_t& swapRow1,
     const size_t& swapRow2
 )
@@ -88,9 +94,10 @@ inline void Matrix<Type>::swapRow_(
  * @param swapCol2 The index of the second column to swap.
  * @throws std::out_of_range If any column index is out of range.
  */
-template<typename Type>
-inline void Matrix<Type>::swapCol_(
-    MatrixType<Type>& matrix,
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline void Matrix<Type,DcmpType>::swapCol_(
+    MatrixType<Type_>& matrix,
     const size_t& swapCol1,
     const size_t& swapCol2
 )
@@ -109,8 +116,8 @@ inline void Matrix<Type>::swapCol_(
  * @param mtrx The matrix to transpose.
  * @return The transposed matrix.
  */
-template<typename Type>
-inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_(
+template<typename Type,typename DcmpType>
+inline typename Matrix<Type,DcmpType>::template MatrixType<Type> Matrix<Type,DcmpType>::transpose_(
     const MatrixType<Type>& mtrx
 )
 {
@@ -133,8 +140,8 @@ inline typename Matrix<Type>::template MatrixType<Type> Matrix<Type>::transpose_
  * @param mtrx2 The second matrix.
  * @return True if the matrices have the same dimensions, false otherwise.
  */
-template<typename Type>
-inline bool Matrix<Type>::areSameSize_(
+template<typename Type,typename DcmpType>
+inline bool Matrix<Type,DcmpType>::areSameSize_(
     const MatrixType<Type>& mtrx1,
     const MatrixType<Type>& mtrx2
 )
@@ -153,8 +160,8 @@ const noexcept
  * @param mtrx The matrix to validate.
  * @throws std::invalid_argument If rows have differing numbers of columns.
  */
-template<typename Type>
-inline void Matrix<Type>::validateMatrix_(
+template<typename Type,typename DcmpType>
+inline void Matrix<Type,DcmpType>::validateMatrix_(
     const MatrixType<Type>& mtrx
 )
 {
@@ -169,13 +176,58 @@ inline void Matrix<Type>::validateMatrix_(
 }
 
 /**
+ * @brief Generates an identity matrix of a given size.
+ *
+ * @tparam Type_ The type of elements in the matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DcmpType The type used for computations within the Matrix object.
+ * @param size The size of the identity matrix (number of rows and columns).
+ * @return A square identity matrix of the specified size.
+ */
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline typename Matrix<Type,DcmpType>::MatrixType<Type_> Matrix<Type,DcmpType>::identity_(const size_t& size)
+{
+    MatrixType<Type_> result(size,RowType<Type_>(size,0));
+
+    for (size_t i = 0; i < size; i++)
+        result[i][i] = 1;
+
+    return result;
+}
+
+/**
+ * @brief Computes a hash value for a given matrix.
+ *
+ * This function generates a hash value based on the matrix elements, making it useful for caching or quick comparisons.
+ * The hashing process uses a combination of element-wise hashes and a constant derived from the golden ratio to reduce collisions.
+ *
+ * @tparam Type_ The type of elements in the matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DCMPType The type used for computations within the Matrix object.
+ * @param mtrx The matrix to be hashed.
+ * @return A hash value representing the matrix.
+ */
+template<typename Type, typename DCMPType>
+template<typename Type_>
+inline size_t Matrix<Type, DCMPType>::matrixHash(const MatrixType<Type_>& mtrx)
+{
+    size_t hash = 0;
+    for (const auto& row : mtrx) {
+        for (const auto& elem : row)
+            hash ^= std::hash<Type_>{}(elem)+0x9e3779b9 + (hash << 6) + (hash >> 2); // 各要素をハッシュ化して結合 0x9e3779b9:黄金比
+    }
+    return hash;
+}
+
+/**
  * @brief Transposes the current matrix.
  *
  * @tparam Type The type of the matrix.
  * @return The transposed matrix.
  */
-template<typename Type>
-inline Matrix<Type> Matrix<Type>::transpose()
+template<typename Type,typename DcmpType>
+inline Matrix<Type> Matrix<Type,DcmpType>::transpose()
 {
     return this->transpose_(this->matrix_);
 }
@@ -188,12 +240,14 @@ inline Matrix<Type> Matrix<Type>::transpose()
  * @param swapRow2 The index of the second row to swap.
  * @return A reference to the current matrix.
  */
-template<typename Type>
-inline Matrix<Type>& Matrix<Type>::swapRow(
+template<typename Type,typename DcmpType>
+inline Matrix<Type>& Matrix<Type,DcmpType>::swapRow(
     const size_t& swapRow1,
     const size_t& swapRow2
 )
 {
+    
+
     this->swapRow_(this->matrix_, swapRow1, swapRow2);
     return *this;
 }
@@ -206,12 +260,14 @@ inline Matrix<Type>& Matrix<Type>::swapRow(
  * @param swapCol2 The index of the second column to swap.
  * @return A reference to the current matrix.
  */
-template<typename Type>
-inline Matrix<Type>& Matrix<Type>::swapCol(
+template<typename Type,typename DcmpType>
+inline Matrix<Type>& Matrix<Type,DcmpType>::swapCol(
     const size_t& swapCol1,
     const size_t& swapCol2
 )
 {
+    
+
     this->swapCol_(this->matrix_, swapCol1, swapCol2);
     return *this;
 }
@@ -224,12 +280,14 @@ inline Matrix<Type>& Matrix<Type>::swapCol(
  * @param col The number of columns.
  * @return A reference to the current matrix.
  */
-template<typename Type>
-inline Matrix<Type>& Matrix<Type>::resize(
+template<typename Type,typename DcmpType>
+inline Matrix<Type>& Matrix<Type,DcmpType>::resize(
     const size_t& row,
     const size_t& col
 )
 {
+    
+
     this->matrix_.resize(row, RowType<Type>(col, 0));
     return *this;
 }
@@ -240,8 +298,8 @@ inline Matrix<Type>& Matrix<Type>::resize(
  * @tparam Type The type of the matrix.
  * @return The number of rows.
  */
-template<typename Type>
-const size_t Matrix<Type>::rows()
+template<typename Type,typename DcmpType>
+const size_t Matrix<Type,DcmpType>::rows() const
 {
     return this->rows_(this->matrix_);
 }
@@ -252,8 +310,8 @@ const size_t Matrix<Type>::rows()
  * @tparam Type The type of the matrix.
  * @return The number of columns.
  */
-template<typename Type>
-const size_t Matrix<Type>::cols()
+template<typename Type,typename DcmpType>
+const size_t Matrix<Type,DcmpType>::cols() const
 {
     return this->cols_(this->matrix_);
 }
@@ -265,8 +323,8 @@ const size_t Matrix<Type>::cols()
  * @param rowNum The index of the row.
  * @return A vector of references to the elements in the row.
  */
-template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(
+template<typename Type,typename DcmpType>
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type,DcmpType>::rowRef(
     const size_t& rowNum
 )
 {
@@ -286,8 +344,8 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::rowRef(
  * @param colNum The index of the column.
  * @return A vector of references to the elements in the column.
  */
-template<typename Type>
-inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(
+template<typename Type,typename DcmpType>
+inline std::vector<std::reference_wrapper<Type>> Matrix<Type,DcmpType>::colRef(
     const size_t& colNum
 )
 {
@@ -307,8 +365,8 @@ inline std::vector<std::reference_wrapper<Type>> Matrix<Type>::colRef(
  * @param func The function to apply.
  * @return A reference to the current matrix.
  */
-template<typename Type>
-inline Matrix<Type>& Matrix<Type>::forEach(
+template<typename Type,typename DcmpType>
+inline Matrix<Type>& Matrix<Type,DcmpType>::forEach(
     std::function<Type()> func
 )
 {
@@ -327,8 +385,8 @@ inline Matrix<Type>& Matrix<Type>::forEach(
  * @param func The function to apply. It takes the row, column, and current element as arguments.
  * @return A reference to the current matrix.
  */
-template<typename Type>
-Matrix<Type>& Matrix<Type>::forEach(
+template<typename Type,typename DcmpType>
+Matrix<Type>& Matrix<Type,DcmpType>::forEach(
     std::function<Type(size_t, size_t, Type&)> func
 )
 {
@@ -339,6 +397,29 @@ Matrix<Type>& Matrix<Type>::forEach(
     }
 
     return *this;
+}
+
+/**
+ * @brief Creates an identity matrix of a given size.
+ *
+ * This function generates a square identity matrix, where all diagonal elements are set to 1
+ * and all other elements are set to 0.
+ *
+ * @tparam Type_ The type of elements in the identity matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DcmpType The type used for computations within the Matrix object.
+ * @param size The size of the identity matrix (number of rows and columns).
+ * @return A square identity matrix of the specified size as a `Matrix<Type_>`.
+ */
+template<typename Type,typename DcmpType>
+template<typename Type_>
+inline typename Matrix<Type_> Matrix<Type,DcmpType>::identity(const size_t& size)
+{
+    Matrix<Type_> result(std::make_pair(size,size));
+    for (size_t i = 0; i < size; i++)
+        result[i][i] = 1;
+
+    return result;
 }
 
 

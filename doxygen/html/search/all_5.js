@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['inverse_0',['inverse',['../class_matrix.html#a619856041d4c98bb633e03946e37f662',1,'Matrix']]]
+  ['identity_0',['identity',['../class_matrix.html#a1c18c4afc325808a00d4e16da82d91f0',1,'Matrix']]],
+  ['inverse_1',['inverse',['../class_matrix.html#acdef22f1a972fd304eb2d4b2a5261990',1,'Matrix']]]
 ];

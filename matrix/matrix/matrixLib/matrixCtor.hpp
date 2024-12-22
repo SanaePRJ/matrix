@@ -11,8 +11,8 @@
  * @tparam Type The data type of the matrix elements.
  * @param size A pair specifying the number of rows and columns.
  */
-template<typename Type>
-Matrix<Type>::Matrix(
+template<typename Type,typename DcmpType>
+Matrix<Type,DcmpType>::Matrix(
     const std::pair<size_t, size_t>& size
 )
     : matrix_(size.first, std::vector<Type>(size.second, 0))
@@ -35,8 +35,8 @@ Matrix<Type>::Matrix(
  * @tparam Type The data type of the matrix elements.
  * @param init The initializer list to define the matrix.
  */
-template<typename Type>
-Matrix<Type>::Matrix(
+template<typename Type,typename DcmpType>
+Matrix<Type,DcmpType>::Matrix(
     const MatrixInitType<Type>& init
 )
     : matrix_(init.begin(), init.end())
@@ -50,8 +50,8 @@ Matrix<Type>::Matrix(
  * @tparam Type The data type of the matrix elements.
  * @param init The input matrix structure.
  */
-template<typename Type>
-inline Matrix<Type>::Matrix(
+template<typename Type,typename DcmpType>
+inline Matrix<Type,DcmpType>::Matrix(
     const MatrixType<>& init
 )
     : matrix_(init.begin(), init.end())
@@ -67,8 +67,8 @@ inline Matrix<Type>::Matrix(
  * @tparam Type The data type of the matrix elements.
  * @param other The matrix to copy.
  */
-template<typename Type>
-Matrix<Type>::Matrix(
+template<typename Type,typename DcmpType>
+Matrix<Type,DcmpType>::Matrix(
     const Matrix& other
 )
 {
@@ -86,8 +86,8 @@ Matrix<Type>::Matrix(
  * @tparam Type The data type of the matrix elements.
  * @param other The matrix to move.
  */
-template<typename Type>
-Matrix<Type>::Matrix(
+template<typename Type,typename DcmpType>
+Matrix<Type,DcmpType>::Matrix(
     Matrix<Type>&& other
 )
     noexcept
