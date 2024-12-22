@@ -1,9 +1,7 @@
 #ifndef MATRIXCPP_MATRIXCTOR_HPP
 #define MATRIXCPP_MATRIXCTOR_HPP
 
-
 #include "matrix.h"
-
 
 /**
  * @brief Constructs a zero matrix of the specified size.
@@ -17,7 +15,6 @@ Matrix<Type,DcmpType>::Matrix(
 )
     : matrix_(size.first, std::vector<Type>(size.second, 0))
 {
-
 }
 
 /**
@@ -95,6 +92,5 @@ Matrix<Type,DcmpType>::Matrix(
     // Move the resources
     matrix_ = std::move(other.matrix_);
 }
-
 
 #endif

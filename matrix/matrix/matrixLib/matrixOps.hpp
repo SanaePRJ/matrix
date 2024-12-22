@@ -1,9 +1,7 @@
 #ifndef MATRIXCPP_MATRIXOP_HPP
 #define MATRIXCPP_MATRIXOP_HPP
 
-
 #include "matrix.h"
-
 
 /**
  * @brief Assignment operator for initializer lists.
@@ -391,6 +389,5 @@ inline Matrix<Type,DcmpType>::operator Matrix<Type_>() {
 
     return result;
 }
-
 
 #endif

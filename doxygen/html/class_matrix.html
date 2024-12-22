@@ -93,7 +93,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Matrixクラスのテンプレート定義  
+<p>Template definition for the <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> class.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="matrix_8h_source.html">matrix.h</a>&gt;</code></p>
@@ -102,182 +102,182 @@ $(function(){ initResizable(false); });
 Public Types</h2></td></tr>
 <tr class="memitem:a0aeed7ee6e2890e44b30062c85419591" id="r_a0aeed7ee6e2890e44b30062c85419591"><td class="memTemplParams" colspan="2">template&lt;typename rowType &gt; </td></tr>
 <tr class="memitem:a0aeed7ee6e2890e44b30062c85419591"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a> = std::vector&lt;rowType&gt;</td></tr>
-<tr class="memdesc:a0aeed7ee6e2890e44b30062c85419591"><td class="mdescLeft">&#160;</td><td class="mdescRight">型エイリアス宣言  <br /></td></tr>
+<tr class="memdesc:a0aeed7ee6e2890e44b30062c85419591"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias declaration.  <br /></td></tr>
 <tr class="separator:a0aeed7ee6e2890e44b30062c85419591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a592db8985a8bc4c6774249eef53b6eb5" id="r_a592db8985a8bc4c6774249eef53b6eb5"><td class="memTemplParams" colspan="2"><a id="a592db8985a8bc4c6774249eef53b6eb5" name="a592db8985a8bc4c6774249eef53b6eb5"></a>
 template&lt;typename rowInitType &gt; </td></tr>
 <tr class="memitem:a592db8985a8bc4c6774249eef53b6eb5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>RowInitType</b> = std::initializer_list&lt;rowInitType&gt;</td></tr>
-<tr class="memdesc:a592db8985a8bc4c6774249eef53b6eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">行型(初期化) <br /></td></tr>
+<tr class="memdesc:a592db8985a8bc4c6774249eef53b6eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row type (initialization) <br /></td></tr>
 <tr class="separator:a592db8985a8bc4c6774249eef53b6eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fc4bb8f74074a6a081f4884f7c6ad86" id="r_a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memTemplParams" colspan="2"><a id="a8fc4bb8f74074a6a081f4884f7c6ad86" name="a8fc4bb8f74074a6a081f4884f7c6ad86"></a>
 template&lt;typename matrixType  = Type&gt; </td></tr>
 <tr class="memitem:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixType</b> = std::vector&lt;<a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a>&lt;matrixType&gt;&gt;</td></tr>
-<tr class="memdesc:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型 <br /></td></tr>
+<tr class="memdesc:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> type. <br /></td></tr>
 <tr class="separator:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7551bfbed0b1f1f6ffd5a6ec625cad6" id="r_ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memTemplParams" colspan="2"><a id="ad7551bfbed0b1f1f6ffd5a6ec625cad6" name="ad7551bfbed0b1f1f6ffd5a6ec625cad6"></a>
 template&lt;typename matrixInitType  = Type&gt; </td></tr>
 <tr class="memitem:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixInitType</b> = std::initializer_list&lt;<a class="el" href="#a592db8985a8bc4c6774249eef53b6eb5">RowInitType</a>&lt;matrixInitType&gt;&gt;</td></tr>
-<tr class="memdesc:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型(初期化) <br /></td></tr>
+<tr class="memdesc:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> type (initialization) <br /></td></tr>
 <tr class="separator:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac3eff1b832efd85e192a325165093528" id="r_ac3eff1b832efd85e192a325165093528"><td class="memItemLeft" align="right" valign="top"><a id="ac3eff1b832efd85e192a325165093528" name="ac3eff1b832efd85e192a325165093528"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Matrix</b> ()</td></tr>
-<tr class="memdesc:ac3eff1b832efd85e192a325165093528"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ <br /></td></tr>
+<tr class="memdesc:ac3eff1b832efd85e192a325165093528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
 <tr class="separator:ac3eff1b832efd85e192a325165093528"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0782748e121418a9f5a97da278870222" id="r_a0782748e121418a9f5a97da278870222"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0782748e121418a9f5a97da278870222">Matrix</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;init)</td></tr>
-<tr class="memdesc:a0782748e121418a9f5a97da278870222"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化用のパラメタ付コンストラクタ  <br /></td></tr>
+<tr class="memdesc:a0782748e121418a9f5a97da278870222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for initialization.  <br /></td></tr>
 <tr class="separator:a0782748e121418a9f5a97da278870222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a705e879db52bfe007a58f40d38212ad4" id="r_a705e879db52bfe007a58f40d38212ad4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705e879db52bfe007a58f40d38212ad4">Matrix</a> (const <a class="el" href="#a8fc4bb8f74074a6a081f4884f7c6ad86">MatrixType</a>&lt;&gt; &amp;matrix)</td></tr>
-<tr class="memdesc:a705e879db52bfe007a58f40d38212ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="memdesc:a705e879db52bfe007a58f40d38212ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
 <tr class="separator:a705e879db52bfe007a58f40d38212ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62823ceebbeefccd7167bc991e6e0ff" id="r_ac62823ceebbeefccd7167bc991e6e0ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62823ceebbeefccd7167bc991e6e0ff">Matrix</a> (const std::pair&lt; size_t, size_t &gt; &amp;size)</td></tr>
-<tr class="memdesc:ac62823ceebbeefccd7167bc991e6e0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ指定のパラメタ付コンストラクタ  <br /></td></tr>
+<tr class="memdesc:ac62823ceebbeefccd7167bc991e6e0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with size specification.  <br /></td></tr>
 <tr class="separator:ac62823ceebbeefccd7167bc991e6e0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7c8ee2d692835142e98b73b03e37a12" id="r_ae7c8ee2d692835142e98b73b03e37a12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c8ee2d692835142e98b73b03e37a12">Matrix</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt; &amp;other)</td></tr>
-<tr class="memdesc:ae7c8ee2d692835142e98b73b03e37a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="memdesc:ae7c8ee2d692835142e98b73b03e37a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
 <tr class="separator:ae7c8ee2d692835142e98b73b03e37a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bf0f336b35af484d032bd0e9cfe95ec" id="r_a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bf0f336b35af484d032bd0e9cfe95ec">Matrix</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;other) noexcept</td></tr>
-<tr class="memdesc:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
+<tr class="memdesc:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <br /></td></tr>
 <tr class="separator:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af51a94cce88d38e56cabe195c8182546" id="r_af51a94cce88d38e56cabe195c8182546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af51a94cce88d38e56cabe195c8182546">operator=</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:af51a94cce88d38e56cabe195c8182546"><td class="mdescLeft">&#160;</td><td class="mdescRight">演算子オーバーロード  <br /></td></tr>
+<tr class="memdesc:af51a94cce88d38e56cabe195c8182546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator overloads.  <br /></td></tr>
 <tr class="separator:af51a94cce88d38e56cabe195c8182546"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b24a8dc9c02fab08530c24786f662b7" id="r_a9b24a8dc9c02fab08530c24786f662b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b24a8dc9c02fab08530c24786f662b7">operator=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a9b24a8dc9c02fab08530c24786f662b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">代入演算子  <br /></td></tr>
+<tr class="memdesc:a9b24a8dc9c02fab08530c24786f662b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator.  <br /></td></tr>
 <tr class="separator:a9b24a8dc9c02fab08530c24786f662b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fae11037c845951bfc48a54d2b95c57" id="r_a6fae11037c845951bfc48a54d2b95c57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fae11037c845951bfc48a54d2b95c57">operator&lt;&lt;</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6fae11037c845951bfc48a54d2b95c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストリーム広谷演算子  <br /></td></tr>
+<tr class="memdesc:a6fae11037c845951bfc48a54d2b95c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion operator.  <br /></td></tr>
 <tr class="separator:a6fae11037c845951bfc48a54d2b95c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a3d8ebd995f9012bd5dcd4dddf85015" id="r_a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3d8ebd995f9012bd5dcd4dddf85015">operator&lt;&lt;</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストリーム広谷演算子  <br /></td></tr>
+<tr class="memdesc:a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion operator.  <br /></td></tr>
 <tr class="separator:a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f43eb2c09dc62c66b345359ce34522b" id="r_a2f43eb2c09dc62c66b345359ce34522b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f43eb2c09dc62c66b345359ce34522b">operator=</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
-<tr class="memdesc:a2f43eb2c09dc62c66b345359ce34522b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブ代入  <br /></td></tr>
+<tr class="memdesc:a2f43eb2c09dc62c66b345359ce34522b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment.  <br /></td></tr>
 <tr class="separator:a2f43eb2c09dc62c66b345359ce34522b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b" id="r_a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b">operator&lt;&lt;</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
-<tr class="memdesc:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブストリーム  <br /></td></tr>
+<tr class="memdesc:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move stream insertion.  <br /></td></tr>
 <tr class="separator:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cb987d40cc2202a8b98aa19e58b9f81" id="r_a2cb987d40cc2202a8b98aa19e58b9f81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb987d40cc2202a8b98aa19e58b9f81">operator[]</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a2cb987d40cc2202a8b98aa19e58b9f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">行アクセス  <br /></td></tr>
+<tr class="memdesc:a2cb987d40cc2202a8b98aa19e58b9f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row access.  <br /></td></tr>
 <tr class="separator:a2cb987d40cc2202a8b98aa19e58b9f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a494ca7c6987fb9ce5f802791df94b3ae" id="r_a494ca7c6987fb9ce5f802791df94b3ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a494ca7c6987fb9ce5f802791df94b3ae">operator+=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a494ca7c6987fb9ce5f802791df94b3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="memdesc:a494ca7c6987fb9ce5f802791df94b3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition.  <br /></td></tr>
 <tr class="separator:a494ca7c6987fb9ce5f802791df94b3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e5c20a3862b33333ab1fbaebcead8ad" id="r_a6e5c20a3862b33333ab1fbaebcead8ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e5c20a3862b33333ab1fbaebcead8ad">operator-=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6e5c20a3862b33333ab1fbaebcead8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="memdesc:a6e5c20a3862b33333ab1fbaebcead8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction.  <br /></td></tr>
 <tr class="separator:a6e5c20a3862b33333ab1fbaebcead8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87975f2053ff32caf540d56fc9a33b8d" id="r_a87975f2053ff32caf540d56fc9a33b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87975f2053ff32caf540d56fc9a33b8d">operator*=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a87975f2053ff32caf540d56fc9a33b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="memdesc:a87975f2053ff32caf540d56fc9a33b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication.  <br /></td></tr>
 <tr class="separator:a87975f2053ff32caf540d56fc9a33b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceb7efeee7605cfb1e75a5411d728a48" id="r_aceb7efeee7605cfb1e75a5411d728a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aceb7efeee7605cfb1e75a5411d728a48">operator^=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:aceb7efeee7605cfb1e75a5411d728a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ算  <br /></td></tr>
+<tr class="memdesc:aceb7efeee7605cfb1e75a5411d728a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard product.  <br /></td></tr>
 <tr class="separator:aceb7efeee7605cfb1e75a5411d728a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d3ecfaa70de3212a6953c1747875813" id="r_a2d3ecfaa70de3212a6953c1747875813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d3ecfaa70de3212a6953c1747875813">operator/=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a2d3ecfaa70de3212a6953c1747875813"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="memdesc:a2d3ecfaa70de3212a6953c1747875813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard division.  <br /></td></tr>
 <tr class="separator:a2d3ecfaa70de3212a6953c1747875813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a011c4e90d2d78529acd91f6b5c437ce2" id="r_a011c4e90d2d78529acd91f6b5c437ce2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a011c4e90d2d78529acd91f6b5c437ce2">operator*=</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:a011c4e90d2d78529acd91f6b5c437ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="memdesc:a011c4e90d2d78529acd91f6b5c437ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar multiplication.  <br /></td></tr>
 <tr class="separator:a011c4e90d2d78529acd91f6b5c437ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a960d10ceec89b2e1688c8cf89464c05a" id="r_a960d10ceec89b2e1688c8cf89464c05a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960d10ceec89b2e1688c8cf89464c05a">operator+</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a960d10ceec89b2e1688c8cf89464c05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="memdesc:a960d10ceec89b2e1688c8cf89464c05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition.  <br /></td></tr>
 <tr class="separator:a960d10ceec89b2e1688c8cf89464c05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a4a342ac468c7894ae502e26fd9aa0c" id="r_a4a4a342ac468c7894ae502e26fd9aa0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a4a342ac468c7894ae502e26fd9aa0c">operator-</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a4a4a342ac468c7894ae502e26fd9aa0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="memdesc:a4a4a342ac468c7894ae502e26fd9aa0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction.  <br /></td></tr>
 <tr class="separator:a4a4a342ac468c7894ae502e26fd9aa0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6297aee72655d7f4c3ec982b93c2d2d0" id="r_a6297aee72655d7f4c3ec982b93c2d2d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6297aee72655d7f4c3ec982b93c2d2d0">operator*</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6297aee72655d7f4c3ec982b93c2d2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="memdesc:a6297aee72655d7f4c3ec982b93c2d2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication.  <br /></td></tr>
 <tr class="separator:a6297aee72655d7f4c3ec982b93c2d2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a959398a790bc8808991a15d065d04ea5" id="r_a959398a790bc8808991a15d065d04ea5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a959398a790bc8808991a15d065d04ea5">operator^</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a959398a790bc8808991a15d065d04ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ算  <br /></td></tr>
+<tr class="memdesc:a959398a790bc8808991a15d065d04ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard product.  <br /></td></tr>
 <tr class="separator:a959398a790bc8808991a15d065d04ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc4f81cd4ec76cc3df1e5c24718396b5" id="r_afc4f81cd4ec76cc3df1e5c24718396b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc4f81cd4ec76cc3df1e5c24718396b5">operator/</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:afc4f81cd4ec76cc3df1e5c24718396b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="memdesc:afc4f81cd4ec76cc3df1e5c24718396b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard division.  <br /></td></tr>
 <tr class="separator:afc4f81cd4ec76cc3df1e5c24718396b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f9a758fd4027461151f58c3c292240" id="r_ad4f9a758fd4027461151f58c3c292240"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f9a758fd4027461151f58c3c292240">operator*</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:ad4f9a758fd4027461151f58c3c292240"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="memdesc:ad4f9a758fd4027461151f58c3c292240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar multiplication.  <br /></td></tr>
 <tr class="separator:ad4f9a758fd4027461151f58c3c292240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab40501649a1246a8fe57727516231afb" id="r_ab40501649a1246a8fe57727516231afb"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
 <tr class="memitem:ab40501649a1246a8fe57727516231afb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab40501649a1246a8fe57727516231afb">operator Matrix&lt; Type_ &gt;</a> ()</td></tr>
-<tr class="memdesc:ab40501649a1246a8fe57727516231afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">型変換  <br /></td></tr>
+<tr class="memdesc:ab40501649a1246a8fe57727516231afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type conversion.  <br /></td></tr>
 <tr class="separator:ab40501649a1246a8fe57727516231afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a23864aa392e4fe742c03ad9cc1bfb7" id="r_a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a23864aa392e4fe742c03ad9cc1bfb7">add</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="memdesc:a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition.  <br /></td></tr>
 <tr class="separator:a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a344d58a411291a928c6b3679bb1b7753" id="r_a344d58a411291a928c6b3679bb1b7753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344d58a411291a928c6b3679bb1b7753">sub</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a344d58a411291a928c6b3679bb1b7753"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="memdesc:a344d58a411291a928c6b3679bb1b7753"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction.  <br /></td></tr>
 <tr class="separator:a344d58a411291a928c6b3679bb1b7753"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17448a39bb88b1ae47ea6a25059da797" id="r_a17448a39bb88b1ae47ea6a25059da797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17448a39bb88b1ae47ea6a25059da797">mul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a17448a39bb88b1ae47ea6a25059da797"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="memdesc:a17448a39bb88b1ae47ea6a25059da797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication.  <br /></td></tr>
 <tr class="separator:a17448a39bb88b1ae47ea6a25059da797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33dbc11f4e852bdf5f01c935ccedf54f" id="r_a33dbc11f4e852bdf5f01c935ccedf54f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33dbc11f4e852bdf5f01c935ccedf54f">scalarMul</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:a33dbc11f4e852bdf5f01c935ccedf54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="memdesc:a33dbc11f4e852bdf5f01c935ccedf54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar multiplication.  <br /></td></tr>
 <tr class="separator:a33dbc11f4e852bdf5f01c935ccedf54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee906ae982a11c3bd9e99e5f8201aa72" id="r_aee906ae982a11c3bd9e99e5f8201aa72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee906ae982a11c3bd9e99e5f8201aa72">hadamardMul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:aee906ae982a11c3bd9e99e5f8201aa72"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ  <br /></td></tr>
+<tr class="memdesc:aee906ae982a11c3bd9e99e5f8201aa72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard product.  <br /></td></tr>
 <tr class="separator:aee906ae982a11c3bd9e99e5f8201aa72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b093abef2bdb077d263e8567738f5b0" id="r_a2b093abef2bdb077d263e8567738f5b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b093abef2bdb077d263e8567738f5b0">hadamardDiv</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a2b093abef2bdb077d263e8567738f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="memdesc:a2b093abef2bdb077d263e8567738f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard division.  <br /></td></tr>
 <tr class="separator:a2b093abef2bdb077d263e8567738f5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60" id="r_a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplParams" colspan="2">template&lt;typename calcType &gt; </td></tr>
 <tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a612baf65a8d94a00683c8e4bedf53a60">scalarCalc</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a612baf65a8d94a00683c8e4bedf53a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ計算  <br /></td></tr>
+<tr class="memdesc:a612baf65a8d94a00683c8e4bedf53a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar calculation.  <br /></td></tr>
 <tr class="separator:a612baf65a8d94a00683c8e4bedf53a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af84b6d4591325b9010384152e42db0c9" id="r_af84b6d4591325b9010384152e42db0c9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af84b6d4591325b9010384152e42db0c9">luDec</a> (DcmpType epsilon=1e-9)</td></tr>
-<tr class="memdesc:af84b6d4591325b9010384152e42db0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU分解  <br /></td></tr>
+<tr class="memdesc:af84b6d4591325b9010384152e42db0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU decomposition.  <br /></td></tr>
 <tr class="separator:af84b6d4591325b9010384152e42db0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdef22f1a972fd304eb2d4b2a5261990" id="r_acdef22f1a972fd304eb2d4b2a5261990"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdef22f1a972fd304eb2d4b2a5261990">inverse</a> (DcmpType epsilon=1e-9)</td></tr>
-<tr class="memdesc:acdef22f1a972fd304eb2d4b2a5261990"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆行列  <br /></td></tr>
+<tr class="memdesc:acdef22f1a972fd304eb2d4b2a5261990"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inverse matrix.  <br /></td></tr>
 <tr class="separator:acdef22f1a972fd304eb2d4b2a5261990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fb1ba800985204475cba8787c34cd1d" id="r_a0fb1ba800985204475cba8787c34cd1d"><td class="memItemLeft" align="right" valign="top">DcmpType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb1ba800985204475cba8787c34cd1d">det</a> (DcmpType epsilon=1e-9)</td></tr>
-<tr class="memdesc:a0fb1ba800985204475cba8787c34cd1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列式  <br /></td></tr>
+<tr class="memdesc:a0fb1ba800985204475cba8787c34cd1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determinant.  <br /></td></tr>
 <tr class="separator:a0fb1ba800985204475cba8787c34cd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a711e9f3be5a0507fdb8ab1a9f3dec63d" id="r_a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a711e9f3be5a0507fdb8ab1a9f3dec63d">transpose</a> ()</td></tr>
-<tr class="memdesc:a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">転置  <br /></td></tr>
+<tr class="memdesc:a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose.  <br /></td></tr>
 <tr class="separator:a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6590af6f43ecd38a96020e6f38c8f8de" id="r_a6590af6f43ecd38a96020e6f38c8f8de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6590af6f43ecd38a96020e6f38c8f8de">swapRow</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:a6590af6f43ecd38a96020e6f38c8f8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">行入れ替え  <br /></td></tr>
+<tr class="memdesc:a6590af6f43ecd38a96020e6f38c8f8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap rows.  <br /></td></tr>
 <tr class="separator:a6590af6f43ecd38a96020e6f38c8f8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ef8c6605000947071e1a4bda747f12" id="r_a46ef8c6605000947071e1a4bda747f12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ef8c6605000947071e1a4bda747f12">swapCol</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:a46ef8c6605000947071e1a4bda747f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">列入れ替え  <br /></td></tr>
+<tr class="memdesc:a46ef8c6605000947071e1a4bda747f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap columns.  <br /></td></tr>
 <tr class="separator:a46ef8c6605000947071e1a4bda747f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d444ed3c69531d4d024c5eb5aad6bc9" id="r_a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d444ed3c69531d4d024c5eb5aad6bc9">resize</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ変更  <br /></td></tr>
+<tr class="memdesc:a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize matrix.  <br /></td></tr>
 <tr class="separator:a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ea283626fefd99241f5abe1ff71e0f" id="r_af7ea283626fefd99241f5abe1ff71e0f"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7ea283626fefd99241f5abe1ff71e0f">rows</a> () const</td></tr>
-<tr class="memdesc:af7ea283626fefd99241f5abe1ff71e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">行数取得  <br /></td></tr>
+<tr class="memdesc:af7ea283626fefd99241f5abe1ff71e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of rows.  <br /></td></tr>
 <tr class="separator:af7ea283626fefd99241f5abe1ff71e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f25d3388e5f8cc7a7156eda076f7a6e" id="r_a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f25d3388e5f8cc7a7156eda076f7a6e">cols</a> () const</td></tr>
-<tr class="memdesc:a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">列数取得  <br /></td></tr>
+<tr class="memdesc:a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of columns.  <br /></td></tr>
 <tr class="separator:a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f381c8dae827ae6aed294cf7dffbf2" id="r_a68f381c8dae827ae6aed294cf7dffbf2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68f381c8dae827ae6aed294cf7dffbf2">rowRef</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a68f381c8dae827ae6aed294cf7dffbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">行参照  <br /></td></tr>
+<tr class="memdesc:a68f381c8dae827ae6aed294cf7dffbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Row reference.  <br /></td></tr>
 <tr class="separator:a68f381c8dae827ae6aed294cf7dffbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cf3c1885570eaccae25f2aea82bd8ce" id="r_a2cf3c1885570eaccae25f2aea82bd8ce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cf3c1885570eaccae25f2aea82bd8ce">colRef</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a2cf3c1885570eaccae25f2aea82bd8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">列参照  <br /></td></tr>
+<tr class="memdesc:a2cf3c1885570eaccae25f2aea82bd8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column reference.  <br /></td></tr>
 <tr class="separator:a2cf3c1885570eaccae25f2aea82bd8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e6061824de55107bd1879e94fab0fbd" id="r_a1e6061824de55107bd1879e94fab0fbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e6061824de55107bd1879e94fab0fbd">forEach</a> (std::function&lt; Type()&gt;)</td></tr>
-<tr class="memdesc:a1e6061824de55107bd1879e94fab0fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作  <br /></td></tr>
+<tr class="memdesc:a1e6061824de55107bd1879e94fab0fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply operation to each element.  <br /></td></tr>
 <tr class="separator:a1e6061824de55107bd1879e94fab0fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c8a82f37c0da15ddcea2b912d11137c" id="r_a0c8a82f37c0da15ddcea2b912d11137c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c8a82f37c0da15ddcea2b912d11137c">forEach</a> (std::function&lt; Type(size_t, size_t, Type &amp;)&gt;)</td></tr>
-<tr class="memdesc:a0c8a82f37c0da15ddcea2b912d11137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作(行,列,そのポイントの値)  <br /></td></tr>
+<tr class="memdesc:a0c8a82f37c0da15ddcea2b912d11137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply operation to each element (row, column, value)  <br /></td></tr>
 <tr class="separator:a0c8a82f37c0da15ddcea2b912d11137c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c18c4afc325808a00d4e16da82d91f0" id="r_a1c18c4afc325808a00d4e16da82d91f0"><td class="memTemplParams" colspan="2">template&lt;typename Type_  = Type&gt; </td></tr>
 <tr class="memitem:a1c18c4afc325808a00d4e16da82d91f0"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="class_matrix.html">Matrix</a>&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1c18c4afc325808a00d4e16da82d91f0">identity</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a1c18c4afc325808a00d4e16da82d91f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">単位行列生成  <br /></td></tr>
+<tr class="memdesc:a1c18c4afc325808a00d4e16da82d91f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate identity matrix.  <br /></td></tr>
 <tr class="separator:a1c18c4afc325808a00d4e16da82d91f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Type, typename DcmpType = double&gt;<br />
-class Matrix&lt; Type, DcmpType &gt;</div><p>Matrixクラスのテンプレート定義 </p>
+class Matrix&lt; Type, DcmpType &gt;</div><p>Template definition for the <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> class. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type</td><td>行列の要素の型 </td></tr>
-    <tr><td class="paramname">DcmpType</td><td>分解時に使用する型 </td></tr>
+    <tr><td class="paramname">Type</td><td>Type of the matrix elements </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>Type used during decomposition </td></tr>
   </table>
   </dd>
 </dl>
@@ -298,8 +298,8 @@ template&lt;typename rowType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>型エイリアス宣言 </p>
-<p>行型 </p>
+<p>Type alias declaration. </p>
+<p>Row type </p>
 
 </div>
 </div>
@@ -321,10 +321,10 @@ template&lt;typename Type , typename DcmpType  = double&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>初期化用のパラメタ付コンストラクタ </p>
+<p>Constructor with parameters for initialization. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">init</td><td>初期化リスト </td></tr>
+    <tr><td class="paramname">init</td><td>Initializer list </td></tr>
   </table>
   </dd>
 </dl>
@@ -356,11 +356,11 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>コピーコンストラクタ </p>
+<p>Copy constructor. </p>
 <p>Constructs a matrix using another matrix-like structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">matrix</td><td>コピー元の行列</td></tr>
+    <tr><td class="paramname">matrix</td><td><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> to copy from</td></tr>
   </table>
   </dd>
 </dl>
@@ -396,11 +396,11 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>サイズ指定のパラメタ付コンストラクタ </p>
+<p>Constructor with size specification. </p>
 <p>Constructs a zero matrix of the specified size.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">size</td><td>行列のサイズ</td></tr>
+    <tr><td class="paramname">size</td><td>Size of the matrix</td></tr>
   </table>
   </dd>
 </dl>
@@ -436,11 +436,11 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>コピーコンストラクタ </p>
-<p>Copy constructor for the <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> class.</p>
+<p>Copy constructor. </p>
+<p>Copy constructor for the <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> class.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>コピー元の行列</td></tr>
+    <tr><td class="paramname">other</td><td><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> to copy from</td></tr>
   </table>
   </dd>
 </dl>
@@ -485,11 +485,11 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>ムーブコンストラクタ </p>
-<p>Move constructor for the <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> class.</p>
+<p>Move constructor. </p>
+<p>Move constructor for the <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> class.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>ムーブ元の行列</td></tr>
+    <tr><td class="paramname">other</td><td><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> to move from</td></tr>
   </table>
   </dd>
 </dl>
@@ -527,7 +527,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>加算 </p>
+<p>Addition. </p>
 <p>Adds another matrix to the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -570,7 +570,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>列参照 </p>
+<p>Column reference. </p>
 <p>Retrieves references to all elements in the specified column.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -605,7 +605,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>列数取得 </p>
+<p>Get the number of columns. </p>
 <p>Retrieves the number of columns in the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -642,22 +642,22 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>行列式 </p>
-<p>�s��̍s�񎮂��v�Z������J�����o�֐�</p>
+<p>Determinant. </p>
+<p>Public member function to calculate the determinant of a matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
-    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+    <tr><td class="paramname">Type</td><td>Type of the matrix elements </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>Type used during computation </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�iLU�������Ɏg�p�j </td></tr>
+    <tr><td class="paramname">epsilon</td><td>The smallest permissible value (used in LU decomposition) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>�s�񎮂̒l </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the determinant </dd></dl>
 
 </div>
 </div>
@@ -686,7 +686,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>各要素への操作 </p>
+<p>Apply operation to each element. </p>
 <p>Applies a function to all elements of the matrix (no arguments).</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -721,7 +721,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>各要素への操作(行,列,そのポイントの値) </p>
+<p>Apply operation to each element (row, column, value) </p>
 <p>Applies a function to all elements of the matrix (with arguments).</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -756,7 +756,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール除算 </p>
+<p>Hadamard division. </p>
 <p>Performs an element-wise division with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -791,7 +791,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール組み合わせ </p>
+<p>Hadamard product. </p>
 <p>Performs an element-wise multiplication (Hadamard product) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -836,14 +836,14 @@ template&lt;typename Type_ &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>単位行列生成 </p>
+<p>Generate identity matrix. </p>
 <p>Creates an identity matrix of a given size.</p>
 <p>This function generates a square identity matrix, where all diagonal elements are set to 1 and all other elements are set to 0.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type_</td><td>The type of elements in the identity matrix. </td></tr>
-    <tr><td class="paramname">Type</td><td>The type of the parent <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> object. </td></tr>
-    <tr><td class="paramname">DcmpType</td><td>The type used for computations within the <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> object. </td></tr>
+    <tr><td class="paramname">Type</td><td>The type of the parent <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> object. </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>The type used for computations within the <a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> object. </td></tr>
   </table>
   </dd>
 </dl>
@@ -853,7 +853,7 @@ template&lt;typename Type_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A square identity matrix of the specified size as a <code><a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a>&lt;Type_&gt;</code>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A square identity matrix of the specified size as a <code><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a>&lt;Type_&gt;</code>. </dd></dl>
 
 </div>
 </div>
@@ -882,22 +882,22 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>逆行列 </p>
-<p>�s��̋t�s������߂���J�����o�֐�</p>
+<p>Inverse matrix. </p>
+<p>Public member function to calculate the inverse of a matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
-    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+    <tr><td class="paramname">Type</td><td>Type of the matrix elements </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>Type used during computation </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�iLU�������Ɏg�p�j </td></tr>
+    <tr><td class="paramname">epsilon</td><td>The smallest permissible value (used in LU decomposition) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>�v�Z���ꂽ�t�s�� </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The calculated inverse matrix </dd></dl>
 
 </div>
 </div>
@@ -926,22 +926,22 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>LU分解 </p>
-<p>LU�������s�����J�����o�֐�</p>
+<p>LU decomposition. </p>
+<p>Public member function to perform LU decomposition.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
-    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+    <tr><td class="paramname">Type</td><td>Type of the matrix elements </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>Type used during computation </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�i�s�{�b�g�I�����Ɏg�p�j </td></tr>
+    <tr><td class="paramname">epsilon</td><td>The smallest permissible value (used in pivot selection) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>�������ꂽL�s���U�s����i�[����x�N�g�� </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector containing the decomposed L and U matrices </dd></dl>
 
 </div>
 </div>
@@ -962,7 +962,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>乗算 </p>
+<p>Multiplication. </p>
 <p>Multiplies the current matrix with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1007,7 +1007,7 @@ template&lt;typename Type_ &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>型変換 </p>
+<p>Type conversion. </p>
 <p>Converts the current matrix to a matrix of a different type.</p>
 <p>This operator performs a type conversion for the elements of the matrix, creating a new matrix where each element is cast to the specified target type.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1018,7 +1018,7 @@ template&lt;typename Type_ &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A new matrix of type <code><a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a>&lt;Type_&gt;</code> with the same dimensions as the original. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix of type <code><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a>&lt;Type_&gt;</code> with the same dimensions as the original. </dd></dl>
 
 </div>
 </div>
@@ -1039,7 +1039,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>乗算 </p>
+<p>Multiplication. </p>
 <p>Multiplication operator.</p>
 <p>Multiplies this matrix by another matrix and returns the result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1075,7 +1075,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>スカラ倍 </p>
+<p>Scalar multiplication. </p>
 <p>Scalar multiplication operator.</p>
 <p>Multiplies all elements of this matrix by a scalar value and returns the result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1111,7 +1111,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>乗算 </p>
+<p>Multiplication. </p>
 <p>Multiplication assignment operator.</p>
 <p>Multiplies this matrix by another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1147,7 +1147,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>スカラ倍 </p>
+<p>Scalar multiplication. </p>
 <p>Scalar multiplication assignment operator.</p>
 <p>Multiplies all elements of this matrix by a scalar value.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1183,7 +1183,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>加算 </p>
+<p>Addition. </p>
 <p>Addition operator.</p>
 <p>Adds this matrix to another matrix and returns the result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1219,7 +1219,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>加算 </p>
+<p>Addition. </p>
 <p>Addition assignment operator.</p>
 <p>Adds another matrix to this matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1255,7 +1255,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>減算 </p>
+<p>Subtraction. </p>
 <p>Subtraction operator.</p>
 <p>Subtracts another matrix from this matrix and returns the result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1291,7 +1291,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>減算 </p>
+<p>Subtraction. </p>
 <p>Subtraction assignment operator.</p>
 <p>Subtracts another matrix from this matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1327,7 +1327,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール除算 </p>
+<p>Hadamard division. </p>
 <p>Hadamard division operator.</p>
 <p>Performs element-wise division by another matrix and returns the result.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1363,7 +1363,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール除算 </p>
+<p>Hadamard division. </p>
 <p>Hadamard division assignment operator.</p>
 <p>Performs element-wise division by another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1399,7 +1399,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>ストリーム広谷演算子 </p>
+<p>Stream insertion operator. </p>
 <p>Copy assignment operator using <code>&lt;&lt;</code>.</p>
 <p>Copies the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1435,7 +1435,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>ストリーム広谷演算子 </p>
+<p>Stream insertion operator. </p>
 <p>Assignment operator for initializer lists using <code>&lt;&lt;</code>.</p>
 <p>Assigns the contents of an initializer list to the matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1471,7 +1471,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>ムーブストリーム </p>
+<p>Move stream insertion. </p>
 <p>Move assignment operator using <code>&lt;&lt;</code>.</p>
 <p>Moves the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1507,7 +1507,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>代入演算子 </p>
+<p>Assignment operator. </p>
 <p>Copy assignment operator.</p>
 <p>Copies the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1543,9 +1543,9 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>演算子オーバーロード </p>
+<p>Operator overloads. </p>
 <p>Assignment operator for initializer lists.</p>
-<p>代入演算子</p>
+<p>Assignment operator</p>
 <p>Assigns the contents of an initializer list to the matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1580,7 +1580,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>ムーブ代入 </p>
+<p>Move assignment. </p>
 <p>Move assignment operator.</p>
 <p>Moves the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1616,7 +1616,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>行アクセス </p>
+<p>Row access. </p>
 <p>Row access operator.</p>
 <p>Provides access to a specific row of the matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1652,7 +1652,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール組み合わせ算 </p>
+<p>Hadamard product. </p>
 <p>Hadamard product operator.</p>
 <p>Performs the Hadamard product (element-wise multiplication) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1688,7 +1688,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール組み合わせ算 </p>
+<p>Hadamard product. </p>
 <p>Hadamard product assignment operator.</p>
 <p>Performs the Hadamard product (element-wise multiplication) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1736,7 +1736,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>サイズ変更 </p>
+<p>Resize matrix. </p>
 <p>Resizes the matrix to the specified dimensions.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1780,7 +1780,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>行参照 </p>
+<p>Row reference. </p>
 <p>Retrieves references to all elements in the specified row.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1815,7 +1815,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>行数取得 </p>
+<p>Get the number of rows. </p>
 <p>Retrieves the number of rows in the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1846,7 +1846,7 @@ template&lt;typename calcType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>スカラ計算 </p>
+<p>Scalar calculation. </p>
 <p>Performs a scalar operation on the current matrix with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1882,7 +1882,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>スカラ倍 </p>
+<p>Scalar multiplication. </p>
 <p>Multiplies each element of the current matrix by a scalar value.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1917,7 +1917,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>減算 </p>
+<p>Subtraction. </p>
 <p>Subtracts another matrix from the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1964,7 +1964,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>列入れ替え </p>
+<p>Swap columns. </p>
 <p>Swaps two columns in the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -2012,7 +2012,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>行入れ替え </p>
+<p>Swap rows. </p>
 <p>Swaps two rows in the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -2056,7 +2056,7 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>転置 </p>
+<p>Transpose. </p>
 <p>Transposes the current matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">

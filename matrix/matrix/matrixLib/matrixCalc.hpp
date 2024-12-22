@@ -1,10 +1,7 @@
 #ifndef MATRIXCPP_MATRIXCALC_HPP
 #define MATRIXCPP_MATRIXCALC_HPP
 
-
 #include "matrix.h"
-#include <algorithm>
-
 
 /**
  * @brief Adds the elements of two matrices and stores the result in the destination matrix.
@@ -279,6 +276,5 @@ Matrix<Type>& Matrix<Type,DcmpType>::scalarCalc(
 
     return *this;
 }
-
 
 #endif
