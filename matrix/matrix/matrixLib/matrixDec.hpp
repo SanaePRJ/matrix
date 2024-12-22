@@ -5,6 +5,16 @@
 #include "matrix.h"
 
 
+/**
+ * @brief LU分解を行う内部関数
+ *
+ * @tparam Type 入力行列の要素型
+ * @tparam DcmpType 計算時の要素型
+ * @param mtrx 分解対象の行列
+ * @param epsilon 許容される最小値（ピボット選択時に使用）
+ * @return LU分解されたL行列とU行列のベクトル
+ * @exception std::invalid_argument 非正方行列の場合にスローされる
+ */
 template<typename Type, typename DcmpType>
 inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix<Type, DcmpType>::luDec_(
     const MatrixType<Type>& mtrx,
@@ -74,6 +84,16 @@ inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix
     return result;
 }
 
+/**
+ * @brief 行列の逆行列を求める内部関数
+ *
+ * @tparam Type 入力行列の要素型
+ * @tparam DcmpType 計算時の要素型
+ * @param mtrx 対象の行列
+ * @param epsilon 許容される最小値（LU分解時に使用）
+ * @return 計算された逆行列
+ * @exception std::invalid_argument 非正方行列の場合にスローされる
+ */
 template<typename Type,typename DcmpType>
 inline typename Matrix<Type,DcmpType>::MatrixType<DcmpType> Matrix<Type,DcmpType>::inverse_(
 	const MatrixType<Type>& mtrx,
@@ -128,6 +148,16 @@ inline typename Matrix<Type,DcmpType>::MatrixType<DcmpType> Matrix<Type,DcmpType
     return result;
 }
 
+/**
+ * @brief 行列の行列式を計算する内部関数
+ *
+ * @tparam Type 入力行列の要素型
+ * @tparam DcmpType 計算時の要素型
+ * @param mtrx 対象の行列
+ * @param epsilon 許容される最小値（LU分解時に使用）
+ * @return 行列式の値
+ * @exception std::invalid_argument 非正方行列の場合にスローされる
+ */
 template<typename Type, typename DcmpType>
 inline DcmpType Matrix<Type, DcmpType>::det_(
     const MatrixType<Type>& mtrx,
@@ -146,6 +176,14 @@ inline DcmpType Matrix<Type, DcmpType>::det_(
     return rslt;
 }
 
+/**
+ * @brief LU分解を行う公開メンバ関数
+ *
+ * @tparam Type 行列要素の型
+ * @tparam DcmpType 計算時の型
+ * @param epsilon 許容される最小値（ピボット選択時に使用）
+ * @return 分解されたL行列とU行列を格納するベクトル
+ */
 template<typename Type,typename DcmpType>
 inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec(
     DcmpType epsilon
@@ -160,6 +198,14 @@ inline std::vector<Matrix<DcmpType>> Matrix<Type,DcmpType>::luDec(
     return matrices;
 }
 
+/**
+ * @brief 行列の逆行列を求める公開メンバ関数
+ *
+ * @tparam Type 行列要素の型
+ * @tparam DcmpType 計算時の型
+ * @param epsilon 許容される最小値（LU分解時に使用）
+ * @return 計算された逆行列
+ */
 template<typename Type,typename DcmpType>
 inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse(
     DcmpType epsilon
@@ -168,6 +214,14 @@ inline Matrix<DcmpType> Matrix<Type,DcmpType>::inverse(
     return Matrix<DcmpType>(this->inverse_(this->matrix_,epsilon));
 }
 
+/**
+ * @brief 行列の行列式を計算する公開メンバ関数
+ *
+ * @tparam Type 行列要素の型
+ * @tparam DcmpType 計算時の型
+ * @param epsilon 許容される最小値（LU分解時に使用）
+ * @return 行列式の値
+ */
 template<typename Type, typename DcmpType>
 inline DcmpType Matrix<Type, DcmpType>::det(
     DcmpType epsilon

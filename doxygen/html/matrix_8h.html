@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>matrixCpp: matrix.h File Reference</title>
+<title>My Project: matrix.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">matrixCpp<span id="projectnumber">&#160;0</span>
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -102,24 +102,26 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html">Matrix&lt; Type &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html">Matrix&lt; Type, DcmpType &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Matrixクラスのテンプレート定義  <a href="class_matrix.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac5a0d65da58b60c8a87151e05d23239e" id="r_ac5a0d65da58b60c8a87151e05d23239e"><td class="memTemplParams" colspan="2">template&lt;typename CharT , typename Traits , typename MatrixType  = double&gt; </td></tr>
-<tr class="memitem:ac5a0d65da58b60c8a87151e05d23239e"><td class="memTemplItemLeft" align="right" valign="top">std::basic_ostream&lt; CharT, Traits &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ac5a0d65da58b60c8a87151e05d23239e">operator&lt;&lt;</a> (std::basic_ostream&lt; CharT, Traits &gt; &amp;ArgOstream, <a class="el" href="class_matrix.html">Matrix</a>&lt; MatrixType &gt; <a class="el" href="class_matrix.html">Matrix</a>)</td></tr>
-<tr class="memdesc:ac5a0d65da58b60c8a87151e05d23239e"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列を出力するためのオーバーロード  <br /></td></tr>
-<tr class="separator:ac5a0d65da58b60c8a87151e05d23239e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab13a0018bfcf28a5d96672a3c3a94f0e" id="r_ab13a0018bfcf28a5d96672a3c3a94f0e"><td class="memTemplParams" colspan="2">template&lt;typename CharT , typename Traits , typename MatrixType  = double&gt; </td></tr>
+<tr class="memitem:ab13a0018bfcf28a5d96672a3c3a94f0e"><td class="memTemplItemLeft" align="right" valign="top">std::basic_ostream&lt; CharT, Traits &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab13a0018bfcf28a5d96672a3c3a94f0e">operator&lt;&lt;</a> (std::basic_ostream&lt; CharT, Traits &gt; &amp;ostrm, <a class="el" href="class_matrix.html">Matrix</a>&lt; MatrixType &gt; mtrx)</td></tr>
+<tr class="memdesc:ab13a0018bfcf28a5d96672a3c3a94f0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列を出力するためのオーバーロード  <br /></td></tr>
+<tr class="separator:ab13a0018bfcf28a5d96672a3c3a94f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467645980d2f607c012e4329ca8bdf31" id="r_a467645980d2f607c012e4329ca8bdf31"><td class="memTemplParams" colspan="2"><a id="a467645980d2f607c012e4329ca8bdf31" name="a467645980d2f607c012e4329ca8bdf31"></a>
+template&lt;typename CharT , typename Traits , typename MatrixType  = double&gt; </td></tr>
+<tr class="memitem:a467645980d2f607c012e4329ca8bdf31"><td class="memTemplItemLeft" align="right" valign="top">std::basic_ostream&lt; CharT, Traits &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::basic_ostream&lt; CharT, Traits &gt; &amp;ostrm, std::vector&lt; std::vector&lt; MatrixType &gt; &gt; mtrx)</td></tr>
+<tr class="separator:a467645980d2f607c012e4329ca8bdf31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメンバの定義を行います。 </p>
-
-<p class="definition">Definition in file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ac5a0d65da58b60c8a87151e05d23239e" name="ac5a0d65da58b60c8a87151e05d23239e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5a0d65da58b60c8a87151e05d23239e">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+<a id="ab13a0018bfcf28a5d96672a3c3a94f0e" name="ab13a0018bfcf28a5d96672a3c3a94f0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab13a0018bfcf28a5d96672a3c3a94f0e">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,12 +131,12 @@ template&lt;typename CharT , typename Traits , typename MatrixType  = double&gt;
         <tr>
           <td class="memname">std::basic_ostream&lt; CharT, Traits &gt; &amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">std::basic_ostream&lt; CharT, Traits &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ArgOstream</em></span>, </td>
+          <td class="paramtype">std::basic_ostream&lt; CharT, Traits &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ostrm</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a>&lt; MatrixType &gt;</td>          <td class="paramname"><span class="paramname"><em>Matrix</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a>&lt; MatrixType &gt;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -150,14 +152,12 @@ template&lt;typename CharT , typename Traits , typename MatrixType  = double&gt;
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ArgOstream</td><td>出力ストリーム </td></tr>
-    <tr><td class="paramname"><a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a></td><td>行列オブジェクト </td></tr>
+    <tr><td class="paramname">ostrm</td><td>出力ストリーム </td></tr>
+    <tr><td class="paramname">mtrx</td><td>行列オブジェクト </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>出力ストリーム </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00001">1</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
 
 </div>
 </div>

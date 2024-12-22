@@ -12,13 +12,16 @@ Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメン
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{class_matrix}{Matrix$<$ Type $>$}}
+class \mbox{\hyperlink{class_matrix}{Matrix$<$ Type, Dcmp\+Type $>$}}
 \begin{DoxyCompactList}\small\item\em Matrixクラスのテンプレート定義 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\footnotesize template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ }\\std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& \mbox{\hyperlink{matrix_8h_ac5a0d65da58b60c8a87151e05d23239e}{operator$<$$<$}} (std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&Arg\+Ostream, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Matrix\+Type $>$ \mbox{\hyperlink{class_matrix}{Matrix}})
-\begin{DoxyCompactList}\small\item\em 行列を出力するためのオーバーロード \end{DoxyCompactList}\end{DoxyCompactItemize}
+{\footnotesize template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ }\\std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& \mbox{\hyperlink{matrix_8h_ab13a0018bfcf28a5d96672a3c3a94f0e}{operator$<$$<$}} (std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&ostrm, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Matrix\+Type $>$ mtrx)
+\begin{DoxyCompactList}\small\item\em 行列を出力するためのオーバーロード \end{DoxyCompactList}\item 
+\Hypertarget{matrix_8h_a467645980d2f607c012e4329ca8bdf31}\label{matrix_8h_a467645980d2f607c012e4329ca8bdf31} 
+{\footnotesize template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ }\\std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& {\bfseries operator$<$$<$} (std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&ostrm, std\+::vector$<$ std\+::vector$<$ Matrix\+Type $>$ $>$ mtrx)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -26,17 +29,13 @@ Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメン
 
 
 
-Definition in file \mbox{\hyperlink{matrix_8h_source}{matrix.\+h}}.
-
-
-
 \doxysubsection{Function Documentation}
-\Hypertarget{matrix_8h_ac5a0d65da58b60c8a87151e05d23239e}\index{matrix.h@{matrix.h}!operator$<$$<$@{operator$<$$<$}}
+\Hypertarget{matrix_8h_ab13a0018bfcf28a5d96672a3c3a94f0e}\index{matrix.h@{matrix.h}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!matrix.h@{matrix.h}}
 \doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
-{\footnotesize\ttfamily \label{matrix_8h_ac5a0d65da58b60c8a87151e05d23239e} 
+{\footnotesize\ttfamily \label{matrix_8h_ab13a0018bfcf28a5d96672a3c3a94f0e} 
 template$<$typename CharT , typename Traits , typename Matrix\+Type  = double$>$ \\
-std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&}]{Arg\+Ostream}{, }\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Matrix\+Type $>$}]{Matrix}{}\end{DoxyParamCaption})}
+std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \&}]{ostrm}{, }\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Matrix\+Type $>$}]{mtrx}{}\end{DoxyParamCaption})}
 
 
 
@@ -53,15 +52,11 @@ std\+::basic\+\_\+ostream$<$ CharT, Traits $>$ \& operator$<$$<$ (\begin{DoxyPar
 \end{DoxyTemplParams}
 
 \begin{DoxyParams}{Parameters}
-{\em Arg\+Ostream} & 出力ストリーム \\
+{\em ostrm} & 出力ストリーム \\
 \hline
-{\em \doxylink{class_matrix}{Matrix}} & 行列オブジェクト \\
+{\em mtrx} & 行列オブジェクト \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 出力ストリーム 
 \end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{matrix_8h_source_l00001}{1}} of file \mbox{\hyperlink{matrix_8h_source}{matrix.\+h}}.
-

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['det_0',['det',['../class_matrix.html#a017601f5c316b097f0ea4da5078d5301',1,'Matrix']]]
+  ['det_0',['det',['../class_matrix.html#a0fb1ba800985204475cba8787c34cd1d',1,'Matrix']]]
 ];

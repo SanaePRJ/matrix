@@ -175,6 +175,15 @@ inline void Matrix<Type,DcmpType>::validateMatrix_(
     }
 }
 
+/**
+ * @brief Generates an identity matrix of a given size.
+ *
+ * @tparam Type_ The type of elements in the matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DcmpType The type used for computations within the Matrix object.
+ * @param size The size of the identity matrix (number of rows and columns).
+ * @return A square identity matrix of the specified size.
+ */
 template<typename Type,typename DcmpType>
 template<typename Type_>
 inline typename Matrix<Type,DcmpType>::MatrixType<Type_> Matrix<Type,DcmpType>::identity_(const size_t& size)
@@ -187,6 +196,18 @@ inline typename Matrix<Type,DcmpType>::MatrixType<Type_> Matrix<Type,DcmpType>::
     return result;
 }
 
+/**
+ * @brief Computes a hash value for a given matrix.
+ *
+ * This function generates a hash value based on the matrix elements, making it useful for caching or quick comparisons.
+ * The hashing process uses a combination of element-wise hashes and a constant derived from the golden ratio to reduce collisions.
+ *
+ * @tparam Type_ The type of elements in the matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DCMPType The type used for computations within the Matrix object.
+ * @param mtrx The matrix to be hashed.
+ * @return A hash value representing the matrix.
+ */
 template<typename Type, typename DCMPType>
 template<typename Type_>
 inline size_t Matrix<Type, DCMPType>::matrixHash(const MatrixType<Type_>& mtrx)
@@ -378,6 +399,18 @@ Matrix<Type>& Matrix<Type,DcmpType>::forEach(
     return *this;
 }
 
+/**
+ * @brief Creates an identity matrix of a given size.
+ *
+ * This function generates a square identity matrix, where all diagonal elements are set to 1
+ * and all other elements are set to 0.
+ *
+ * @tparam Type_ The type of elements in the identity matrix.
+ * @tparam Type The type of the parent Matrix object.
+ * @tparam DcmpType The type used for computations within the Matrix object.
+ * @param size The size of the identity matrix (number of rows and columns).
+ * @return A square identity matrix of the specified size as a `Matrix<Type_>`.
+ */
 template<typename Type,typename DcmpType>
 template<typename Type_>
 inline typename Matrix<Type_> Matrix<Type,DcmpType>::identity(const size_t& size)

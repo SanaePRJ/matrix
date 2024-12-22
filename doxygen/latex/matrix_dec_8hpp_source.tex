@@ -1,12 +1,194 @@
 \doxysection{matrix\+Dec.\+hpp}
 \hypertarget{matrix_dec_8hpp_source}{}\label{matrix_dec_8hpp_source}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ MATRIXCPP\_MATRIXDEC\_HPP}}
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#define\ MATRIXCPP\_MATRIXDEC\_HPP}}
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00003}00003\ }
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00004}00004\ }
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00005}00005\ }
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{matrix_dec_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MATRIXCPP\_MATRIXDEC\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MATRIXCPP\_MATRIXDEC\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{matrix_8h}{matrix.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00019\ \textcolor{keyword}{inline}\ std::vector<typename\ Matrix<Type,\ DcmpType>::MatrixType<DcmpType>>\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::luDec\_}}(}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ mtrx,}
+\DoxyCodeLine{00021\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00022\ )}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ キャッシュの有効性を確認}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{if}\ (mtrx\ ==\ this-\/>matrix\_\ \&\&\ this-\/>matrixHash(this-\/>matrix\_)\ ==\ this-\/>dcmpHash\_)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>dcmp\_;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ 正方行列であることを確認}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>rows\_(mtrx)\ !=\ this-\/>cols\_(mtrx))}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Must\ be\ a\ square\ matrix."{}});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ 行操作関数}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{auto}\ applyRowOperation\ =\ [\&](MatrixType<DcmpType>\&\ lmbdMtrx,\ \textcolor{keywordtype}{size\_t}\ lmbdRowFrom,\ \textcolor{keywordtype}{size\_t}\ lmbdRowTo,\ DcmpType\ lmbdNum)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ this-\/>cols\_(lmbdMtrx);\ col++)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lmbdMtrx[lmbdRowTo][col]\ +=\ lmbdNum\ *\ lmbdMtrx[lmbdRowFrom][col];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\ =\ this-\/>rows\_(mtrx);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ 初期化: 単位行列、ゼロ行列、U行列}}
+\DoxyCodeLine{00042\ \ \ \ \ MatrixType<DcmpType>\ mtrxP\ =\ this-\/>identity\_<DcmpType>(size);\ \textcolor{comment}{//\ 単位行列}}
+\DoxyCodeLine{00043\ \ \ \ \ MatrixType<DcmpType>\ mtrxL(size,\ RowType<DcmpType>(size,\ 0));\ \textcolor{comment}{//\ ゼロ行列}}
+\DoxyCodeLine{00044\ \ \ \ \ MatrixType<DcmpType>\ mtrxU;}
+\DoxyCodeLine{00045\ \ \ \ \ this-\/>copyMatrix\_(mtrxU,\ mtrx);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ size;\ col++)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ baseRow\ =\ col;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ピソ{ット選択}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(mtrxU[baseRow][baseRow])\ <\ epsilon)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::max\_element(mtrxU.begin()\ +\ baseRow\ +\ 1,\ mtrxU.end(),}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [\&](\textcolor{keyword}{auto}\&\ row1,\ \textcolor{keyword}{auto}\&\ row2)\ \{\ return\ std::abs(row1[col])\ <\ std::abs(row2[col]);\ \});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ mtrxU.end())\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pivotRow\ =\ std::distance(mtrxU.begin(),\ it);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>swapRow\_(mtrxU,\ baseRow,\ pivotRow);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>swapRow\_(mtrxP,\ baseRow,\ pivotRow);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>swapRow\_(mtrxL,\ baseRow,\ pivotRow);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(mtrxU[baseRow][baseRow])\ <\ epsilon)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxU[baseRow][baseRow]\ =\ (mtrxU[baseRow][baseRow]\ >=\ 0)\ ?\ epsilon\ :\ -\/epsilon;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ baseRow\ +\ 1;\ row\ <\ size;\ row++)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ DcmpType\ mulNum\ =\ -\/mtrxU[row][col]\ /\ mtrxU[baseRow][col];}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ applyRowOperation(mtrxU,\ baseRow,\ row,\ mulNum);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxL[row][col]\ =\ -\/mulNum;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ i++)}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ mtrxL[i][i]\ =\ 1;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<MatrixType<DcmpType>>\ result\{\ mtrxL,\ mtrxU\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ キャッシュの保存}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (mtrx\ ==\ this-\/>matrix\_)\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ this-\/>dcmpHash\_\ =\ this-\/>matrixHash(this-\/>matrix\_);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ this-\/>dcmp\_\ =\ result;}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00085\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00098\ \textcolor{keyword}{inline}\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix<Type,DcmpType>::MatrixType}}<DcmpType>\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::inverse\_}}(}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ mtrx,}
+\DoxyCodeLine{00100\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00101\ )}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>rows\_(mtrx)\ !=\ this-\/>cols\_(mtrx))}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Must\ be\ a\ square\ matrix."{}});}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\ =\ this-\/>rows\_(mtrx);}
+\DoxyCodeLine{00107\ \ \ \ \ std::vector<MatrixType<DcmpType>>\ mtrxLU\ =\ this-\/>luDec\_(mtrx,epsilon);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ MatrixType<DcmpType>\&\ mtrxL\ =\ mtrxLU[0];}
+\DoxyCodeLine{00110\ \ \ \ \ MatrixType<DcmpType>\&\ mtrxU\ =\ mtrxLU[1];}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ MatrixType<DcmpType>\ result(size,\ RowType<DcmpType>(size,\ 0));}
+\DoxyCodeLine{00113\ \ \ \ \ MatrixType<DcmpType>\ identMtrx\ =\ this-\/>identity\_<DcmpType>(size);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ 各列ごとに逆行列を求める}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ size;\ col++)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 単位行列の列ベクトルを取り出す}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ RowType<DcmpType>\ e(size,\ 0);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ e[col]\ =\ 1;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 前進代入を行う}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ RowType<DcmpType>\ mtrxY(size,\ 0);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ i++)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxY[i]\ =\ e[i];}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ i;\ j++)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mtrxY[i]\ -\/=\ mtrxL[i][j]\ *\ mtrxY[j];}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxY[i]\ /=\ mtrxL[i][i];}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 後退代入を行う}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ RowType<DcmpType>\ mtrxX(size,\ 0);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ i\ =\ size\ -\/\ 1;\ i\ >=\ 0;\ i-\/-\/)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxX[i]\ =\ mtrxY[i];}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ i\ +\ 1;\ j\ <\ size;\ j++)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mtrxX[i]\ -\/=\ mtrxU[i][j]\ *\ mtrxX[j];}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ mtrxX[i]\ /=\ mtrxU[i][i];}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 結果をStore行列の列にコピーする}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ i++)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ result[i][col]\ =\ mtrxX[i];}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00149\ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00162\ \textcolor{keyword}{inline}\ DcmpType\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::det\_}}(}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ mtrx,}
+\DoxyCodeLine{00164\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00165\ )\ }
+\DoxyCodeLine{00166\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>rows\_(mtrx)\ !=\ this-\/>cols\_(mtrx))}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Must\ be\ a\ square\ matrix."{}});}
+\DoxyCodeLine{00169\ \ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ MatrixType<DcmpType>\ mtrxU\ =\ this-\/>luDec\_(mtrx,epsilon)[1];}
+\DoxyCodeLine{00171\ \ \ \ \ DcmpType\ rslt\ =\ 1;}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ mtrxU.size();\ i++)}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ rslt\ *=\ mtrxU[i][i];}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{return}\ rslt;}
+\DoxyCodeLine{00177\ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00188\ \textcolor{keyword}{inline}\ std::vector<Matrix<DcmpType>>\ \mbox{\hyperlink{class_matrix_af84b6d4591325b9010384152e42db0c9}{Matrix<Type,DcmpType>::luDec}}(}
+\DoxyCodeLine{00189\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00190\ )\ }
+\DoxyCodeLine{00191\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ this-\/>luDec\_(this-\/>matrix\_,epsilon);}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ std::vector<Matrix<DcmpType>>\ matrices;}
+\DoxyCodeLine{00195\ \ \ \ \ matrices.push\_back(\mbox{\hyperlink{class_matrix}{Matrix<DcmpType>}}(dcmp\_[0]));}
+\DoxyCodeLine{00196\ \ \ \ \ matrices.push\_back(\mbox{\hyperlink{class_matrix}{Matrix<DcmpType>}}(dcmp\_[1]));}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{return}\ matrices;}
+\DoxyCodeLine{00199\ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00209\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00210\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{class_matrix}{Matrix<DcmpType>}}\ \mbox{\hyperlink{class_matrix_acdef22f1a972fd304eb2d4b2a5261990}{Matrix<Type,DcmpType>::inverse}}(}
+\DoxyCodeLine{00211\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00212\ )}
+\DoxyCodeLine{00213\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_matrix}{Matrix<DcmpType>}}(this-\/>inverse\_(this-\/>matrix\_,epsilon));}
+\DoxyCodeLine{00215\ \}}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00225\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00226\ \textcolor{keyword}{inline}\ DcmpType\ \mbox{\hyperlink{class_matrix_a0fb1ba800985204475cba8787c34cd1d}{Matrix<Type,\ DcmpType>::det}}(}
+\DoxyCodeLine{00227\ \ \ \ \ DcmpType\ epsilon}
+\DoxyCodeLine{00228\ )}
+\DoxyCodeLine{00229\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>rows()\ !=\ this-\/>cols())}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Must\ be\ a\ square\ matrix."{}});}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{MatrixType<DcmpType>}}\ mtrxU\ =\ this-\/>luDec\_(this-\/>matrix\_,epsilon)[1];}
+\DoxyCodeLine{00234\ \ \ \ \ DcmpType\ rslt\ =\ 1;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ mtrxU.size();\ i++)}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ rslt\ *=\ mtrxU[i][i];}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{return}\ rslt;}
+\DoxyCodeLine{00240\ \}}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

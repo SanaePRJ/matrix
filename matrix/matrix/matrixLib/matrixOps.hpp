@@ -369,6 +369,17 @@ Matrix<Type> Matrix<Type,DcmpType>::operator*(
     return result;
 }
 
+/**
+ * @brief Converts the current matrix to a matrix of a different type.
+ *
+ * This operator performs a type conversion for the elements of the matrix,
+ * creating a new matrix where each element is cast to the specified target type.
+ *
+ * @tparam Type_ The target type for the elements in the resulting matrix.
+ * @tparam Type The type of elements in the current matrix.
+ * @tparam DcmpType The type used for computations within the current matrix.
+ * @return A new matrix of type `Matrix<Type_>` with the same dimensions as the original.
+ */
 template <typename Type,typename DcmpType>
 template <typename Type_>
 inline Matrix<Type,DcmpType>::operator Matrix<Type_>() {

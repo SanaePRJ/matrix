@@ -3,16 +3,13 @@
  * @brief Matrixクラスの定義, メンバ関数のプロトタイプ宣言などメンバの定義を行います。
  */
 
-
 #ifndef MATRIXCPP_MATRIX_H
 #define MATRIXCPP_MATRIX_H
-
 
 #include <iomanip>
 #include <vector>
 #include <utility>
 #include <functional>
-
 
  /**
   * @brief Matrixクラスのテンプレート定義
@@ -24,16 +21,16 @@ template<typename Type, typename DcmpType = double>
 class Matrix {
 public:
     /// 型エイリアス宣言
-    template<typename rowType    > using RowType     = std::vector<rowType>;               ///< 行型
+    template<typename rowType    > using RowType = std::vector<rowType>;               ///< 行型
     template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>; ///< 行型(初期化)
 
-    template<typename matrixType     = Type> using MatrixType     = std::vector<RowType<matrixType>>;                   ///< 行列型
+    template<typename matrixType = Type> using MatrixType = std::vector<RowType<matrixType>>;                   ///< 行列型
     template<typename matrixInitType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixInitType>>; ///< 行列型(初期化)
 
 private:
     MatrixType<> matrix_; ///< データ格納変数
 
-    size_t dcmpHash_ = 0;
+    size_t dcmpHash_ = 0; ///< LU分解のハッシュ値
     std::vector<MatrixType<DcmpType>> dcmp_; ///< 分解後データ格納変数
 
 public:
@@ -68,7 +65,7 @@ public:
      *
      * @param other コピー元の行列
      */
-    Matrix(const Matrix<Type,DcmpType>& other);
+    Matrix(const Matrix<Type, DcmpType>& other);
 
     /**
      * @brief ムーブコンストラクタ
@@ -78,27 +75,27 @@ public:
     Matrix(Matrix<Type>&& other) noexcept;
 
     /// 演算子オーバーロード
-    Matrix<Type>& operator=(const MatrixInitType<Type>&);
-    Matrix<Type>& operator=(const Matrix<Type>&);
-    Matrix<Type>& operator<<(const MatrixInitType<Type>&);
-    Matrix<Type>& operator<<(const Matrix<Type>&);
+    Matrix<Type>& operator=(const MatrixInitType<Type>&); ///< 代入演算子
+    Matrix<Type>& operator=(const Matrix<Type>&);         ///< 代入演算子
+    Matrix<Type>& operator<<(const MatrixInitType<Type>&);///< ストリーム広谷演算子
+    Matrix<Type>& operator<<(const Matrix<Type>&);        ///< ストリーム広谷演算子
 
-    Matrix<Type>& operator=(Matrix<Type>&&);
-    Matrix<Type>& operator<<(Matrix<Type>&&);
+    Matrix<Type>& operator=(Matrix<Type>&&); ///< ムーブ代入
+    Matrix<Type>& operator<<(Matrix<Type>&&); ///< ムーブストリーム
 
     RowType<Type>& operator[](const size_t&); ///< 行アクセス
 
     Matrix<Type>& operator+=(const Matrix<Type>&); ///< 加算
     Matrix<Type>& operator-=(const Matrix<Type>&); ///< 減算
     Matrix<Type>& operator*=(const Matrix<Type>&); ///< 乗算
-    Matrix<Type>& operator^=(const Matrix<Type>&); ///< アダマール積
+    Matrix<Type>& operator^=(const Matrix<Type>&); ///< アダマール組み合わせ算
     Matrix<Type>& operator/=(const Matrix<Type>&); ///< アダマール除算
     Matrix<Type>& operator*=(const Type&);         ///< スカラ倍
 
     Matrix<Type> operator+(const Matrix<Type>&); ///< 加算
     Matrix<Type> operator-(const Matrix<Type>&); ///< 減算
     Matrix<Type> operator*(const Matrix<Type>&); ///< 乗算
-    Matrix<Type> operator^(const Matrix<Type>&); ///< アダマール積
+    Matrix<Type> operator^(const Matrix<Type>&); ///< アダマール組み合わせ算
     Matrix<Type> operator/(const Matrix<Type>&); ///< アダマール除算
     Matrix<Type> operator*(const Type&);         ///< スカラ倍
 
@@ -106,39 +103,39 @@ public:
     explicit operator Matrix<Type_>(); ///< 型変換
 
 private:
-    void add_(MatrixType<Type>&, const MatrixType<Type>&); ///< 加算
-    void sub_(MatrixType<Type>&, const MatrixType<Type>&); ///< 減算
-    MatrixType<Type> mul_(const MatrixType<Type>&, const MatrixType<Type>&); ///< 乗算
+    void add_(MatrixType<Type>&, const MatrixType<Type>&); ///< 加算操作
+    void sub_(MatrixType<Type>&, const MatrixType<Type>&); ///< 減算操作
+    MatrixType<Type> mul_(const MatrixType<Type>&, const MatrixType<Type>&); ///< 乗算操作
 
-    void hadamardMul_(MatrixType<Type>&, const MatrixType<Type>&); ///< アダマール積
+    void hadamardMul_(MatrixType<Type>&, const MatrixType<Type>&); ///< アダマール組み合わせ
     void hadamardDiv_(MatrixType<Type>&, const MatrixType<Type>&); ///< アダマール除算
 
     template<typename calcType>
-    void calcMatrix_(MatrixType<Type>&, const MatrixType<Type>&); ///< 四則演算
+    void calcMatrix_(MatrixType<Type>&, const MatrixType<Type>&); ///< 四前算操作
 
     template<typename calcType>
-    void scalarCalc_(MatrixType<Type>&, const Type&); ///< スカラ演算
+    void scalarCalc_(MatrixType<Type>&, const Type&); ///< スカラ操作
 
-    std::vector<MatrixType<DcmpType>> luDec_  (const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< LU分解
+    std::vector<MatrixType<DcmpType>> luDec_(const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< LU分解
     MatrixType<DcmpType>              inverse_(const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< 逆行列
-    DcmpType                          det_    (const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< 行列式
+    DcmpType                          det_(const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< 行列式
 
 public:
     Matrix<Type>& add(const Matrix<Type>&); ///< 加算
     Matrix<Type>& sub(const Matrix<Type>&); ///< 減算
     Matrix<Type>& mul(const Matrix<Type>&); ///< 乗算
-    Matrix<Type>& scalarMul  (const Type&); ///< スカラ倍
-    Matrix<Type>& hadamardMul(const Matrix<Type>&); ///< アダマール積
+    Matrix<Type>& scalarMul(const Type&); ///< スカラ倍
+    Matrix<Type>& hadamardMul(const Matrix<Type>&); ///< アダマール組み合わせ
     Matrix<Type>& hadamardDiv(const Matrix<Type>&); ///< アダマール除算
     template<typename calcType>
-    Matrix<Type>& scalarCalc (const Matrix<Type>&); ///< スカラ計算
+    Matrix<Type>& scalarCalc(const Matrix<Type>&); ///< スカラ計算
 
-    std::vector<Matrix<DcmpType>> luDec  (DcmpType epsilon = 1e-9); ///< LU分解
+    std::vector<Matrix<DcmpType>> luDec(DcmpType epsilon = 1e-9); ///< LU分解
     Matrix<DcmpType>              inverse(DcmpType epsilon = 1e-9); ///< 逆行列
-    DcmpType                      det    (DcmpType epsilon = 1e-9); ///< 行列式
+    DcmpType                      det(DcmpType epsilon = 1e-9); ///< 行列式
 
 private:
-    template<typename CopyType1,typename CopyType2>
+    template<typename CopyType1, typename CopyType2>
     void copyMatrix_(MatrixType<CopyType1>&, const MatrixType<CopyType2>&); ///< 各要素をコピー
 
     template<typename Type_ = Type>
@@ -152,14 +149,14 @@ private:
     void swapCol_(MatrixType<Type_>&, const size_t&, const size_t&); ///< 列入れ替え
     MatrixType<Type> transpose_(const MatrixType<Type>&);            ///< 転置
 
-    bool areSameSize_   (const MatrixType<Type>&, const MatrixType<Type>&) const noexcept; ///< サイズ比較
+    bool areSameSize_(const MatrixType<Type>&, const MatrixType<Type>&) const noexcept; ///< サイズ比較
     void validateMatrix_(const MatrixType<Type>&); ///< 行列のバリデーション
 
     template<typename Type_ = Type>
     static MatrixType<Type_> identity_(const size_t&); //< 単位行列生成
 
     template<typename Type_ = Type>
-    size_t matrixHash(const MatrixType<Type_>&);
+    size_t matrixHash(const MatrixType<Type_>&); ///< 行列ハッシュ値生成
 
 public:
     Matrix<Type>  transpose();                           ///< 転置
@@ -181,22 +178,21 @@ public:
     static Matrix<Type_> identity(const size_t&); ///< 単位行列生成
 };
 
-
 /**
  * @brief 行列を出力するためのオーバーロード
  *
  * @tparam CharT 出力ストリームの文字型
  * @tparam Traits 出力ストリームの特性
  * @tparam MatrixType 行列の要素型
- * @param ArgOstream 出力ストリーム
- * @param Matrix 行列オブジェクト
+ * @param ostrm 出力ストリーム
+ * @param mtrx 行列オブジェクト
  * @return 出力ストリーム
  */
 template<typename CharT, typename Traits, typename MatrixType = double>
 std::basic_ostream<CharT, Traits>& operator <<(
     std::basic_ostream<CharT, Traits>& ostrm,
     Matrix<MatrixType> mtrx
-)
+    )
 {
     for (size_t row = 0; row < mtrx.rows(); row++) {
         for (MatrixType col : mtrx[row])

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>matrixCpp: Matrix&lt; Type &gt; Class Template Reference</title>
+<title>My Project: Matrix&lt; Type, DcmpType &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">matrixCpp<span id="projectnumber">&#160;0</span>
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -87,8 +87,9 @@ $(function(){ initResizable(false); });
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_matrix-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Matrix&lt; Type &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">Matrix&lt; Type, DcmpType &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -99,255 +100,200 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a646da410e814a3566f0b4bea5819ec69" id="r_a646da410e814a3566f0b4bea5819ec69"><td class="memTemplParams" colspan="2">template&lt;typename rowType &gt; </td></tr>
-<tr class="memitem:a646da410e814a3566f0b4bea5819ec69"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a646da410e814a3566f0b4bea5819ec69">RowType</a> = std::vector&lt;rowType&gt;</td></tr>
-<tr class="memdesc:a646da410e814a3566f0b4bea5819ec69"><td class="mdescLeft">&#160;</td><td class="mdescRight">型エイリアス宣言  <br /></td></tr>
-<tr class="separator:a646da410e814a3566f0b4bea5819ec69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa21a53a21d50c2ab52a31e418356b64d" id="r_aa21a53a21d50c2ab52a31e418356b64d"><td class="memTemplParams" colspan="2">template&lt;typename rowInitType &gt; </td></tr>
-<tr class="memitem:aa21a53a21d50c2ab52a31e418356b64d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa21a53a21d50c2ab52a31e418356b64d">RowInitType</a> = std::initializer_list&lt;rowInitType&gt;</td></tr>
-<tr class="memdesc:aa21a53a21d50c2ab52a31e418356b64d"><td class="mdescLeft">&#160;</td><td class="mdescRight">行型(初期化)  <br /></td></tr>
-<tr class="separator:aa21a53a21d50c2ab52a31e418356b64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa81e2b889146ee50d69fbf30b453399e" id="r_aa81e2b889146ee50d69fbf30b453399e"><td class="memTemplParams" colspan="2">template&lt;typename matrixType  = Type&gt; </td></tr>
-<tr class="memitem:aa81e2b889146ee50d69fbf30b453399e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aa81e2b889146ee50d69fbf30b453399e">MatrixType</a> = std::vector&lt;<a class="el" href="#a646da410e814a3566f0b4bea5819ec69">RowType</a>&lt;matrixType&gt;&gt;</td></tr>
-<tr class="memdesc:aa81e2b889146ee50d69fbf30b453399e"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型  <br /></td></tr>
-<tr class="separator:aa81e2b889146ee50d69fbf30b453399e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af96c52f76af23ba2ae4d23f4ffc28f9f" id="r_af96c52f76af23ba2ae4d23f4ffc28f9f"><td class="memTemplParams" colspan="2">template&lt;typename matrixInitType  = Type&gt; </td></tr>
-<tr class="memitem:af96c52f76af23ba2ae4d23f4ffc28f9f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a> = std::initializer_list&lt;<a class="el" href="#aa21a53a21d50c2ab52a31e418356b64d">RowInitType</a>&lt;matrixInitType&gt;&gt;</td></tr>
-<tr class="memdesc:af96c52f76af23ba2ae4d23f4ffc28f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型(初期化)  <br /></td></tr>
-<tr class="separator:af96c52f76af23ba2ae4d23f4ffc28f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aeed7ee6e2890e44b30062c85419591" id="r_a0aeed7ee6e2890e44b30062c85419591"><td class="memTemplParams" colspan="2">template&lt;typename rowType &gt; </td></tr>
+<tr class="memitem:a0aeed7ee6e2890e44b30062c85419591"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a> = std::vector&lt;rowType&gt;</td></tr>
+<tr class="memdesc:a0aeed7ee6e2890e44b30062c85419591"><td class="mdescLeft">&#160;</td><td class="mdescRight">型エイリアス宣言  <br /></td></tr>
+<tr class="separator:a0aeed7ee6e2890e44b30062c85419591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a592db8985a8bc4c6774249eef53b6eb5" id="r_a592db8985a8bc4c6774249eef53b6eb5"><td class="memTemplParams" colspan="2"><a id="a592db8985a8bc4c6774249eef53b6eb5" name="a592db8985a8bc4c6774249eef53b6eb5"></a>
+template&lt;typename rowInitType &gt; </td></tr>
+<tr class="memitem:a592db8985a8bc4c6774249eef53b6eb5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>RowInitType</b> = std::initializer_list&lt;rowInitType&gt;</td></tr>
+<tr class="memdesc:a592db8985a8bc4c6774249eef53b6eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">行型(初期化) <br /></td></tr>
+<tr class="separator:a592db8985a8bc4c6774249eef53b6eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fc4bb8f74074a6a081f4884f7c6ad86" id="r_a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memTemplParams" colspan="2"><a id="a8fc4bb8f74074a6a081f4884f7c6ad86" name="a8fc4bb8f74074a6a081f4884f7c6ad86"></a>
+template&lt;typename matrixType  = Type&gt; </td></tr>
+<tr class="memitem:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixType</b> = std::vector&lt;<a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a>&lt;matrixType&gt;&gt;</td></tr>
+<tr class="memdesc:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型 <br /></td></tr>
+<tr class="separator:a8fc4bb8f74074a6a081f4884f7c6ad86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7551bfbed0b1f1f6ffd5a6ec625cad6" id="r_ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memTemplParams" colspan="2"><a id="ad7551bfbed0b1f1f6ffd5a6ec625cad6" name="ad7551bfbed0b1f1f6ffd5a6ec625cad6"></a>
+template&lt;typename matrixInitType  = Type&gt; </td></tr>
+<tr class="memitem:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixInitType</b> = std::initializer_list&lt;<a class="el" href="#a592db8985a8bc4c6774249eef53b6eb5">RowInitType</a>&lt;matrixInitType&gt;&gt;</td></tr>
+<tr class="memdesc:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列型(初期化) <br /></td></tr>
+<tr class="separator:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae653bc04255a76bf5275bfce4aec0e5f" id="r_ae653bc04255a76bf5275bfce4aec0e5f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae653bc04255a76bf5275bfce4aec0e5f">Matrix</a> ()</td></tr>
-<tr class="memdesc:ae653bc04255a76bf5275bfce4aec0e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ  <br /></td></tr>
-<tr class="separator:ae653bc04255a76bf5275bfce4aec0e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf88f80a32245483f2eeb55923ae7489" id="r_adf88f80a32245483f2eeb55923ae7489"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf88f80a32245483f2eeb55923ae7489">Matrix</a> (const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt;&gt; &amp;init)</td></tr>
-<tr class="memdesc:adf88f80a32245483f2eeb55923ae7489"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化用のパラメタ付コンストラクタ  <br /></td></tr>
-<tr class="separator:adf88f80a32245483f2eeb55923ae7489"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b52caaf3c19fac13b617bd6ddd2b44d" id="r_a7b52caaf3c19fac13b617bd6ddd2b44d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b52caaf3c19fac13b617bd6ddd2b44d">Matrix</a> (const <a class="el" href="#aa81e2b889146ee50d69fbf30b453399e">MatrixType</a>&lt;&gt; &amp;matrix)</td></tr>
-<tr class="memdesc:a7b52caaf3c19fac13b617bd6ddd2b44d"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
-<tr class="separator:a7b52caaf3c19fac13b617bd6ddd2b44d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fd8499c09b65c9164dc2994804ddeb8" id="r_a2fd8499c09b65c9164dc2994804ddeb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fd8499c09b65c9164dc2994804ddeb8">Matrix</a> (const std::pair&lt; size_t, size_t &gt; &amp;size)</td></tr>
-<tr class="memdesc:a2fd8499c09b65c9164dc2994804ddeb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ指定のパラメタ付コンストラクタ  <br /></td></tr>
-<tr class="separator:a2fd8499c09b65c9164dc2994804ddeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0adabc4699ef85f44c781d676a05ff7" id="r_af0adabc4699ef85f44c781d676a05ff7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0adabc4699ef85f44c781d676a05ff7">Matrix</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;other)</td></tr>
-<tr class="memdesc:af0adabc4699ef85f44c781d676a05ff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
-<tr class="separator:af0adabc4699ef85f44c781d676a05ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d1b3df01a35796698dd2121e286048d" id="r_a9d1b3df01a35796698dd2121e286048d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d1b3df01a35796698dd2121e286048d">Matrix</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;other) noexcept</td></tr>
-<tr class="memdesc:a9d1b3df01a35796698dd2121e286048d"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
-<tr class="separator:a9d1b3df01a35796698dd2121e286048d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2308805969d4f6ce9dc4bcc6ac45d167" id="r_a2308805969d4f6ce9dc4bcc6ac45d167"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2308805969d4f6ce9dc4bcc6ac45d167">operator=</a> (const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a2308805969d4f6ce9dc4bcc6ac45d167"><td class="mdescLeft">&#160;</td><td class="mdescRight">演算子オーバーロード  <br /></td></tr>
-<tr class="separator:a2308805969d4f6ce9dc4bcc6ac45d167"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bf0342e762d2b66373b6ca9670c0bef" id="r_a8bf0342e762d2b66373b6ca9670c0bef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8bf0342e762d2b66373b6ca9670c0bef">operator=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a8bf0342e762d2b66373b6ca9670c0bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <br /></td></tr>
-<tr class="separator:a8bf0342e762d2b66373b6ca9670c0bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b3110f8ca0b7a3cd69a465c548e73a4" id="r_a6b3110f8ca0b7a3cd69a465c548e73a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b3110f8ca0b7a3cd69a465c548e73a4">operator&lt;&lt;</a> (const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6b3110f8ca0b7a3cd69a465c548e73a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator for initializer lists using <code>&lt;&lt;</code>.  <br /></td></tr>
-<tr class="separator:a6b3110f8ca0b7a3cd69a465c548e73a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa876655379a15ddd98b8dac2b68b7e3e" id="r_aa876655379a15ddd98b8dac2b68b7e3e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa876655379a15ddd98b8dac2b68b7e3e">operator&lt;&lt;</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:aa876655379a15ddd98b8dac2b68b7e3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator using <code>&lt;&lt;</code>.  <br /></td></tr>
-<tr class="separator:aa876655379a15ddd98b8dac2b68b7e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb8b164d9d1cfc6d2363fb7c711bd7f8" id="r_acb8b164d9d1cfc6d2363fb7c711bd7f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb8b164d9d1cfc6d2363fb7c711bd7f8">operator=</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
-<tr class="memdesc:acb8b164d9d1cfc6d2363fb7c711bd7f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator.  <br /></td></tr>
-<tr class="separator:acb8b164d9d1cfc6d2363fb7c711bd7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0543e7f993195bd84b2f0b8f2dc1ffa7" id="r_a0543e7f993195bd84b2f0b8f2dc1ffa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0543e7f993195bd84b2f0b8f2dc1ffa7">operator&lt;&lt;</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
-<tr class="memdesc:a0543e7f993195bd84b2f0b8f2dc1ffa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator using <code>&lt;&lt;</code>.  <br /></td></tr>
-<tr class="separator:a0543e7f993195bd84b2f0b8f2dc1ffa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a4773207b42e6a22a4998b2f44c224e" id="r_a6a4773207b42e6a22a4998b2f44c224e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a646da410e814a3566f0b4bea5819ec69">RowType</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a4773207b42e6a22a4998b2f44c224e">operator[]</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a6a4773207b42e6a22a4998b2f44c224e"><td class="mdescLeft">&#160;</td><td class="mdescRight">行アクセス  <br /></td></tr>
-<tr class="separator:a6a4773207b42e6a22a4998b2f44c224e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0112ae48beba1be582239392c23c3204" id="r_a0112ae48beba1be582239392c23c3204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0112ae48beba1be582239392c23c3204">operator+=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a0112ae48beba1be582239392c23c3204"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
-<tr class="separator:a0112ae48beba1be582239392c23c3204"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69a6ae42e5f098d069a9a0e4e6399ba8" id="r_a69a6ae42e5f098d069a9a0e4e6399ba8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69a6ae42e5f098d069a9a0e4e6399ba8">operator-=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a69a6ae42e5f098d069a9a0e4e6399ba8"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
-<tr class="separator:a69a6ae42e5f098d069a9a0e4e6399ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6990508e9b1323dfaa4021c20ca5a528" id="r_a6990508e9b1323dfaa4021c20ca5a528"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6990508e9b1323dfaa4021c20ca5a528">operator*=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a6990508e9b1323dfaa4021c20ca5a528"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
-<tr class="separator:a6990508e9b1323dfaa4021c20ca5a528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf72070412729d9903214ee76e222cf7" id="r_acf72070412729d9903214ee76e222cf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf72070412729d9903214ee76e222cf7">operator^=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:acf72070412729d9903214ee76e222cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール積  <br /></td></tr>
-<tr class="separator:acf72070412729d9903214ee76e222cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64cba484ae8824eddb971bf8acef26be" id="r_a64cba484ae8824eddb971bf8acef26be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64cba484ae8824eddb971bf8acef26be">operator/=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a64cba484ae8824eddb971bf8acef26be"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
-<tr class="separator:a64cba484ae8824eddb971bf8acef26be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8683edfe3e9580400560434883bbf185" id="r_a8683edfe3e9580400560434883bbf185"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8683edfe3e9580400560434883bbf185">operator*=</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:a8683edfe3e9580400560434883bbf185"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
-<tr class="separator:a8683edfe3e9580400560434883bbf185"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2022bd4f7fd292b2a19bde0b0c2cd9e" id="r_ac2022bd4f7fd292b2a19bde0b0c2cd9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2022bd4f7fd292b2a19bde0b0c2cd9e">operator+</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:ac2022bd4f7fd292b2a19bde0b0c2cd9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
-<tr class="separator:ac2022bd4f7fd292b2a19bde0b0c2cd9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa756500bccad5b6515427e8484a9069c" id="r_aa756500bccad5b6515427e8484a9069c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa756500bccad5b6515427e8484a9069c">operator-</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:aa756500bccad5b6515427e8484a9069c"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
-<tr class="separator:aa756500bccad5b6515427e8484a9069c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae83b4ae6fba207f358e337d54a86cf9b" id="r_ae83b4ae6fba207f358e337d54a86cf9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae83b4ae6fba207f358e337d54a86cf9b">operator*</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:ae83b4ae6fba207f358e337d54a86cf9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
-<tr class="separator:ae83b4ae6fba207f358e337d54a86cf9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace4e3fdccdd3bfb2bc8138d71dae8710" id="r_ace4e3fdccdd3bfb2bc8138d71dae8710"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace4e3fdccdd3bfb2bc8138d71dae8710">operator^</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:ace4e3fdccdd3bfb2bc8138d71dae8710"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール積  <br /></td></tr>
-<tr class="separator:ace4e3fdccdd3bfb2bc8138d71dae8710"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26fe936054b9a5801e0c9c430e1f72ae" id="r_a26fe936054b9a5801e0c9c430e1f72ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26fe936054b9a5801e0c9c430e1f72ae">operator/</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a26fe936054b9a5801e0c9c430e1f72ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
-<tr class="separator:a26fe936054b9a5801e0c9c430e1f72ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a1ec98810d39bc0829f54aab1bc5345" id="r_a0a1ec98810d39bc0829f54aab1bc5345"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a1ec98810d39bc0829f54aab1bc5345">operator*</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:a0a1ec98810d39bc0829f54aab1bc5345"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
-<tr class="separator:a0a1ec98810d39bc0829f54aab1bc5345"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9f0f735f8e473839c7f061951ecbe9f" id="r_ab9f0f735f8e473839c7f061951ecbe9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9f0f735f8e473839c7f061951ecbe9f">add</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:ab9f0f735f8e473839c7f061951ecbe9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
-<tr class="separator:ab9f0f735f8e473839c7f061951ecbe9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb1a84bbbaf657a0b780d38a82640b59" id="r_acb1a84bbbaf657a0b780d38a82640b59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1a84bbbaf657a0b780d38a82640b59">sub</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:acb1a84bbbaf657a0b780d38a82640b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
-<tr class="separator:acb1a84bbbaf657a0b780d38a82640b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad88c42a62a3bf7db6d60fb87e25b9f29" id="r_ad88c42a62a3bf7db6d60fb87e25b9f29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad88c42a62a3bf7db6d60fb87e25b9f29">mul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:ad88c42a62a3bf7db6d60fb87e25b9f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
-<tr class="separator:ad88c42a62a3bf7db6d60fb87e25b9f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2259adabfedf0e65294ada34b58c42ea" id="r_a2259adabfedf0e65294ada34b58c42ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2259adabfedf0e65294ada34b58c42ea">scalarMul</a> (const Type &amp;)</td></tr>
-<tr class="memdesc:a2259adabfedf0e65294ada34b58c42ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
-<tr class="separator:a2259adabfedf0e65294ada34b58c42ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87985b2ce79aae86bfba65cec1ece803" id="r_a87985b2ce79aae86bfba65cec1ece803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87985b2ce79aae86bfba65cec1ece803">hadamardMul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a87985b2ce79aae86bfba65cec1ece803"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール積  <br /></td></tr>
-<tr class="separator:a87985b2ce79aae86bfba65cec1ece803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a982f01bbab9d94a4282d5123a3605278" id="r_a982f01bbab9d94a4282d5123a3605278"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a982f01bbab9d94a4282d5123a3605278">hadamardDiv</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a982f01bbab9d94a4282d5123a3605278"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
-<tr class="separator:a982f01bbab9d94a4282d5123a3605278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d71cdead75e9f0ad0671f51c701cbe4" id="r_a4d71cdead75e9f0ad0671f51c701cbe4"><td class="memTemplParams" colspan="2">template&lt;typename calcType &gt; </td></tr>
-<tr class="memitem:a4d71cdead75e9f0ad0671f51c701cbe4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4d71cdead75e9f0ad0671f51c701cbe4">scalarCalc</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a4d71cdead75e9f0ad0671f51c701cbe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ計算  <br /></td></tr>
-<tr class="separator:a4d71cdead75e9f0ad0671f51c701cbe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad05af2546036d521f863178c4917fd70" id="r_ad05af2546036d521f863178c4917fd70"><td class="memItemLeft" align="right" valign="top"><a id="ad05af2546036d521f863178c4917fd70" name="ad05af2546036d521f863178c4917fd70"></a>
-std::vector&lt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>luDec</b> ()</td></tr>
-<tr class="memdesc:ad05af2546036d521f863178c4917fd70"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU分解 <br /></td></tr>
-<tr class="separator:ad05af2546036d521f863178c4917fd70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a619856041d4c98bb633e03946e37f662" id="r_a619856041d4c98bb633e03946e37f662"><td class="memItemLeft" align="right" valign="top"><a id="a619856041d4c98bb633e03946e37f662" name="a619856041d4c98bb633e03946e37f662"></a>
-<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>inverse</b> ()</td></tr>
-<tr class="memdesc:a619856041d4c98bb633e03946e37f662"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆行列 <br /></td></tr>
-<tr class="separator:a619856041d4c98bb633e03946e37f662"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcdd3ee444edf1ece0467532979f0974" id="r_afcdd3ee444edf1ece0467532979f0974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcdd3ee444edf1ece0467532979f0974">transpose</a> ()</td></tr>
-<tr class="memdesc:afcdd3ee444edf1ece0467532979f0974"><td class="mdescLeft">&#160;</td><td class="mdescRight">転置  <br /></td></tr>
-<tr class="separator:afcdd3ee444edf1ece0467532979f0974"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee906bced1369395c92c7dcdb0e3e43d" id="r_aee906bced1369395c92c7dcdb0e3e43d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee906bced1369395c92c7dcdb0e3e43d">swapRow</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:aee906bced1369395c92c7dcdb0e3e43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">行入れ替え  <br /></td></tr>
-<tr class="separator:aee906bced1369395c92c7dcdb0e3e43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a3affac49ff864840e3f831370ac86a" id="r_a7a3affac49ff864840e3f831370ac86a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a3affac49ff864840e3f831370ac86a">swapCol</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:a7a3affac49ff864840e3f831370ac86a"><td class="mdescLeft">&#160;</td><td class="mdescRight">列入れ替え  <br /></td></tr>
-<tr class="separator:a7a3affac49ff864840e3f831370ac86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56df0ef7ff1e113d6e525b4cd8445b93" id="r_a56df0ef7ff1e113d6e525b4cd8445b93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56df0ef7ff1e113d6e525b4cd8445b93">resize</a> (const size_t &amp;, const size_t &amp;)</td></tr>
-<tr class="memdesc:a56df0ef7ff1e113d6e525b4cd8445b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ変更  <br /></td></tr>
-<tr class="separator:a56df0ef7ff1e113d6e525b4cd8445b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab354bd507e3b643b65a9f469b91c230a" id="r_ab354bd507e3b643b65a9f469b91c230a"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab354bd507e3b643b65a9f469b91c230a">rows</a> ()</td></tr>
-<tr class="memdesc:ab354bd507e3b643b65a9f469b91c230a"><td class="mdescLeft">&#160;</td><td class="mdescRight">行数取得  <br /></td></tr>
-<tr class="separator:ab354bd507e3b643b65a9f469b91c230a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e107af215c28187982a2404bdf82948" id="r_a9e107af215c28187982a2404bdf82948"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e107af215c28187982a2404bdf82948">cols</a> ()</td></tr>
-<tr class="memdesc:a9e107af215c28187982a2404bdf82948"><td class="mdescLeft">&#160;</td><td class="mdescRight">列数取得  <br /></td></tr>
-<tr class="separator:a9e107af215c28187982a2404bdf82948"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a017601f5c316b097f0ea4da5078d5301" id="r_a017601f5c316b097f0ea4da5078d5301"><td class="memItemLeft" align="right" valign="top"><a id="a017601f5c316b097f0ea4da5078d5301" name="a017601f5c316b097f0ea4da5078d5301"></a>
-Type&#160;</td><td class="memItemRight" valign="bottom"><b>det</b> ()</td></tr>
-<tr class="memdesc:a017601f5c316b097f0ea4da5078d5301"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列式 <br /></td></tr>
-<tr class="separator:a017601f5c316b097f0ea4da5078d5301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83349c43266b1f95b9dc8c2c06557d39" id="r_a83349c43266b1f95b9dc8c2c06557d39"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83349c43266b1f95b9dc8c2c06557d39">rowRef</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a83349c43266b1f95b9dc8c2c06557d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">行参照  <br /></td></tr>
-<tr class="separator:a83349c43266b1f95b9dc8c2c06557d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d025dfffa9cd511a25662c2356dc051" id="r_a4d025dfffa9cd511a25662c2356dc051"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d025dfffa9cd511a25662c2356dc051">colRef</a> (const size_t &amp;)</td></tr>
-<tr class="memdesc:a4d025dfffa9cd511a25662c2356dc051"><td class="mdescLeft">&#160;</td><td class="mdescRight">列参照  <br /></td></tr>
-<tr class="separator:a4d025dfffa9cd511a25662c2356dc051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01a1bf022c92178a835930e8e64896f4" id="r_a01a1bf022c92178a835930e8e64896f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01a1bf022c92178a835930e8e64896f4">forEach</a> (std::function&lt; Type()&gt;)</td></tr>
-<tr class="memdesc:a01a1bf022c92178a835930e8e64896f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作  <br /></td></tr>
-<tr class="separator:a01a1bf022c92178a835930e8e64896f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd9d2c6162b83752ef817611bf0b60b5" id="r_afd9d2c6162b83752ef817611bf0b60b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd9d2c6162b83752ef817611bf0b60b5">forEach</a> (std::function&lt; Type(size_t, size_t, Type &amp;)&gt;)</td></tr>
-<tr class="memdesc:afd9d2c6162b83752ef817611bf0b60b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作(行,列,そのポイントの値)  <br /></td></tr>
-<tr class="separator:afd9d2c6162b83752ef817611bf0b60b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3eff1b832efd85e192a325165093528" id="r_ac3eff1b832efd85e192a325165093528"><td class="memItemLeft" align="right" valign="top"><a id="ac3eff1b832efd85e192a325165093528" name="ac3eff1b832efd85e192a325165093528"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Matrix</b> ()</td></tr>
+<tr class="memdesc:ac3eff1b832efd85e192a325165093528"><td class="mdescLeft">&#160;</td><td class="mdescRight">デフォルトコンストラクタ <br /></td></tr>
+<tr class="separator:ac3eff1b832efd85e192a325165093528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0782748e121418a9f5a97da278870222" id="r_a0782748e121418a9f5a97da278870222"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0782748e121418a9f5a97da278870222">Matrix</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;init)</td></tr>
+<tr class="memdesc:a0782748e121418a9f5a97da278870222"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化用のパラメタ付コンストラクタ  <br /></td></tr>
+<tr class="separator:a0782748e121418a9f5a97da278870222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705e879db52bfe007a58f40d38212ad4" id="r_a705e879db52bfe007a58f40d38212ad4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705e879db52bfe007a58f40d38212ad4">Matrix</a> (const <a class="el" href="#a8fc4bb8f74074a6a081f4884f7c6ad86">MatrixType</a>&lt;&gt; &amp;matrix)</td></tr>
+<tr class="memdesc:a705e879db52bfe007a58f40d38212ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:a705e879db52bfe007a58f40d38212ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62823ceebbeefccd7167bc991e6e0ff" id="r_ac62823ceebbeefccd7167bc991e6e0ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62823ceebbeefccd7167bc991e6e0ff">Matrix</a> (const std::pair&lt; size_t, size_t &gt; &amp;size)</td></tr>
+<tr class="memdesc:ac62823ceebbeefccd7167bc991e6e0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ指定のパラメタ付コンストラクタ  <br /></td></tr>
+<tr class="separator:ac62823ceebbeefccd7167bc991e6e0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c8ee2d692835142e98b73b03e37a12" id="r_ae7c8ee2d692835142e98b73b03e37a12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c8ee2d692835142e98b73b03e37a12">Matrix</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt; &amp;other)</td></tr>
+<tr class="memdesc:ae7c8ee2d692835142e98b73b03e37a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">コピーコンストラクタ  <br /></td></tr>
+<tr class="separator:ae7c8ee2d692835142e98b73b03e37a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf0f336b35af484d032bd0e9cfe95ec" id="r_a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bf0f336b35af484d032bd0e9cfe95ec">Matrix</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブコンストラクタ  <br /></td></tr>
+<tr class="separator:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af51a94cce88d38e56cabe195c8182546" id="r_af51a94cce88d38e56cabe195c8182546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af51a94cce88d38e56cabe195c8182546">operator=</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:af51a94cce88d38e56cabe195c8182546"><td class="mdescLeft">&#160;</td><td class="mdescRight">演算子オーバーロード  <br /></td></tr>
+<tr class="separator:af51a94cce88d38e56cabe195c8182546"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b24a8dc9c02fab08530c24786f662b7" id="r_a9b24a8dc9c02fab08530c24786f662b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b24a8dc9c02fab08530c24786f662b7">operator=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a9b24a8dc9c02fab08530c24786f662b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">代入演算子  <br /></td></tr>
+<tr class="separator:a9b24a8dc9c02fab08530c24786f662b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fae11037c845951bfc48a54d2b95c57" id="r_a6fae11037c845951bfc48a54d2b95c57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fae11037c845951bfc48a54d2b95c57">operator&lt;&lt;</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a6fae11037c845951bfc48a54d2b95c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストリーム広谷演算子  <br /></td></tr>
+<tr class="separator:a6fae11037c845951bfc48a54d2b95c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a3d8ebd995f9012bd5dcd4dddf85015" id="r_a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3d8ebd995f9012bd5dcd4dddf85015">operator&lt;&lt;</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="mdescLeft">&#160;</td><td class="mdescRight">ストリーム広谷演算子  <br /></td></tr>
+<tr class="separator:a5a3d8ebd995f9012bd5dcd4dddf85015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f43eb2c09dc62c66b345359ce34522b" id="r_a2f43eb2c09dc62c66b345359ce34522b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f43eb2c09dc62c66b345359ce34522b">operator=</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
+<tr class="memdesc:a2f43eb2c09dc62c66b345359ce34522b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブ代入  <br /></td></tr>
+<tr class="separator:a2f43eb2c09dc62c66b345359ce34522b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b" id="r_a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b">operator&lt;&lt;</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;)</td></tr>
+<tr class="memdesc:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ムーブストリーム  <br /></td></tr>
+<tr class="separator:a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb987d40cc2202a8b98aa19e58b9f81" id="r_a2cb987d40cc2202a8b98aa19e58b9f81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">RowType</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb987d40cc2202a8b98aa19e58b9f81">operator[]</a> (const size_t &amp;)</td></tr>
+<tr class="memdesc:a2cb987d40cc2202a8b98aa19e58b9f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">行アクセス  <br /></td></tr>
+<tr class="separator:a2cb987d40cc2202a8b98aa19e58b9f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a494ca7c6987fb9ce5f802791df94b3ae" id="r_a494ca7c6987fb9ce5f802791df94b3ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a494ca7c6987fb9ce5f802791df94b3ae">operator+=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a494ca7c6987fb9ce5f802791df94b3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="separator:a494ca7c6987fb9ce5f802791df94b3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5c20a3862b33333ab1fbaebcead8ad" id="r_a6e5c20a3862b33333ab1fbaebcead8ad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e5c20a3862b33333ab1fbaebcead8ad">operator-=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a6e5c20a3862b33333ab1fbaebcead8ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="separator:a6e5c20a3862b33333ab1fbaebcead8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87975f2053ff32caf540d56fc9a33b8d" id="r_a87975f2053ff32caf540d56fc9a33b8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87975f2053ff32caf540d56fc9a33b8d">operator*=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a87975f2053ff32caf540d56fc9a33b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="separator:a87975f2053ff32caf540d56fc9a33b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb7efeee7605cfb1e75a5411d728a48" id="r_aceb7efeee7605cfb1e75a5411d728a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aceb7efeee7605cfb1e75a5411d728a48">operator^=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:aceb7efeee7605cfb1e75a5411d728a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ算  <br /></td></tr>
+<tr class="separator:aceb7efeee7605cfb1e75a5411d728a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d3ecfaa70de3212a6953c1747875813" id="r_a2d3ecfaa70de3212a6953c1747875813"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d3ecfaa70de3212a6953c1747875813">operator/=</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a2d3ecfaa70de3212a6953c1747875813"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="separator:a2d3ecfaa70de3212a6953c1747875813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a011c4e90d2d78529acd91f6b5c437ce2" id="r_a011c4e90d2d78529acd91f6b5c437ce2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a011c4e90d2d78529acd91f6b5c437ce2">operator*=</a> (const Type &amp;)</td></tr>
+<tr class="memdesc:a011c4e90d2d78529acd91f6b5c437ce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="separator:a011c4e90d2d78529acd91f6b5c437ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a960d10ceec89b2e1688c8cf89464c05a" id="r_a960d10ceec89b2e1688c8cf89464c05a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a960d10ceec89b2e1688c8cf89464c05a">operator+</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a960d10ceec89b2e1688c8cf89464c05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="separator:a960d10ceec89b2e1688c8cf89464c05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4a342ac468c7894ae502e26fd9aa0c" id="r_a4a4a342ac468c7894ae502e26fd9aa0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a4a342ac468c7894ae502e26fd9aa0c">operator-</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a4a4a342ac468c7894ae502e26fd9aa0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="separator:a4a4a342ac468c7894ae502e26fd9aa0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6297aee72655d7f4c3ec982b93c2d2d0" id="r_a6297aee72655d7f4c3ec982b93c2d2d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6297aee72655d7f4c3ec982b93c2d2d0">operator*</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a6297aee72655d7f4c3ec982b93c2d2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="separator:a6297aee72655d7f4c3ec982b93c2d2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a959398a790bc8808991a15d065d04ea5" id="r_a959398a790bc8808991a15d065d04ea5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a959398a790bc8808991a15d065d04ea5">operator^</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a959398a790bc8808991a15d065d04ea5"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ算  <br /></td></tr>
+<tr class="separator:a959398a790bc8808991a15d065d04ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc4f81cd4ec76cc3df1e5c24718396b5" id="r_afc4f81cd4ec76cc3df1e5c24718396b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc4f81cd4ec76cc3df1e5c24718396b5">operator/</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:afc4f81cd4ec76cc3df1e5c24718396b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="separator:afc4f81cd4ec76cc3df1e5c24718396b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f9a758fd4027461151f58c3c292240" id="r_ad4f9a758fd4027461151f58c3c292240"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f9a758fd4027461151f58c3c292240">operator*</a> (const Type &amp;)</td></tr>
+<tr class="memdesc:ad4f9a758fd4027461151f58c3c292240"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="separator:ad4f9a758fd4027461151f58c3c292240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40501649a1246a8fe57727516231afb" id="r_ab40501649a1246a8fe57727516231afb"><td class="memTemplParams" colspan="2">template&lt;typename Type_ &gt; </td></tr>
+<tr class="memitem:ab40501649a1246a8fe57727516231afb"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#ab40501649a1246a8fe57727516231afb">operator Matrix&lt; Type_ &gt;</a> ()</td></tr>
+<tr class="memdesc:ab40501649a1246a8fe57727516231afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">型変換  <br /></td></tr>
+<tr class="separator:ab40501649a1246a8fe57727516231afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a23864aa392e4fe742c03ad9cc1bfb7" id="r_a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a23864aa392e4fe742c03ad9cc1bfb7">add</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">加算  <br /></td></tr>
+<tr class="separator:a6a23864aa392e4fe742c03ad9cc1bfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a344d58a411291a928c6b3679bb1b7753" id="r_a344d58a411291a928c6b3679bb1b7753"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344d58a411291a928c6b3679bb1b7753">sub</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a344d58a411291a928c6b3679bb1b7753"><td class="mdescLeft">&#160;</td><td class="mdescRight">減算  <br /></td></tr>
+<tr class="separator:a344d58a411291a928c6b3679bb1b7753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17448a39bb88b1ae47ea6a25059da797" id="r_a17448a39bb88b1ae47ea6a25059da797"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17448a39bb88b1ae47ea6a25059da797">mul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a17448a39bb88b1ae47ea6a25059da797"><td class="mdescLeft">&#160;</td><td class="mdescRight">乗算  <br /></td></tr>
+<tr class="separator:a17448a39bb88b1ae47ea6a25059da797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33dbc11f4e852bdf5f01c935ccedf54f" id="r_a33dbc11f4e852bdf5f01c935ccedf54f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33dbc11f4e852bdf5f01c935ccedf54f">scalarMul</a> (const Type &amp;)</td></tr>
+<tr class="memdesc:a33dbc11f4e852bdf5f01c935ccedf54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ倍  <br /></td></tr>
+<tr class="separator:a33dbc11f4e852bdf5f01c935ccedf54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee906ae982a11c3bd9e99e5f8201aa72" id="r_aee906ae982a11c3bd9e99e5f8201aa72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee906ae982a11c3bd9e99e5f8201aa72">hadamardMul</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:aee906ae982a11c3bd9e99e5f8201aa72"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール組み合わせ  <br /></td></tr>
+<tr class="separator:aee906ae982a11c3bd9e99e5f8201aa72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b093abef2bdb077d263e8567738f5b0" id="r_a2b093abef2bdb077d263e8567738f5b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b093abef2bdb077d263e8567738f5b0">hadamardDiv</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a2b093abef2bdb077d263e8567738f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">アダマール除算  <br /></td></tr>
+<tr class="separator:a2b093abef2bdb077d263e8567738f5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60" id="r_a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplParams" colspan="2">template&lt;typename calcType &gt; </td></tr>
+<tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a612baf65a8d94a00683c8e4bedf53a60">scalarCalc</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
+<tr class="memdesc:a612baf65a8d94a00683c8e4bedf53a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">スカラ計算  <br /></td></tr>
+<tr class="separator:a612baf65a8d94a00683c8e4bedf53a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af84b6d4591325b9010384152e42db0c9" id="r_af84b6d4591325b9010384152e42db0c9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af84b6d4591325b9010384152e42db0c9">luDec</a> (DcmpType epsilon=1e-9)</td></tr>
+<tr class="memdesc:af84b6d4591325b9010384152e42db0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU分解  <br /></td></tr>
+<tr class="separator:af84b6d4591325b9010384152e42db0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdef22f1a972fd304eb2d4b2a5261990" id="r_acdef22f1a972fd304eb2d4b2a5261990"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdef22f1a972fd304eb2d4b2a5261990">inverse</a> (DcmpType epsilon=1e-9)</td></tr>
+<tr class="memdesc:acdef22f1a972fd304eb2d4b2a5261990"><td class="mdescLeft">&#160;</td><td class="mdescRight">逆行列  <br /></td></tr>
+<tr class="separator:acdef22f1a972fd304eb2d4b2a5261990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb1ba800985204475cba8787c34cd1d" id="r_a0fb1ba800985204475cba8787c34cd1d"><td class="memItemLeft" align="right" valign="top">DcmpType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb1ba800985204475cba8787c34cd1d">det</a> (DcmpType epsilon=1e-9)</td></tr>
+<tr class="memdesc:a0fb1ba800985204475cba8787c34cd1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">行列式  <br /></td></tr>
+<tr class="separator:a0fb1ba800985204475cba8787c34cd1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a711e9f3be5a0507fdb8ab1a9f3dec63d" id="r_a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a711e9f3be5a0507fdb8ab1a9f3dec63d">transpose</a> ()</td></tr>
+<tr class="memdesc:a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="mdescLeft">&#160;</td><td class="mdescRight">転置  <br /></td></tr>
+<tr class="separator:a711e9f3be5a0507fdb8ab1a9f3dec63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6590af6f43ecd38a96020e6f38c8f8de" id="r_a6590af6f43ecd38a96020e6f38c8f8de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6590af6f43ecd38a96020e6f38c8f8de">swapRow</a> (const size_t &amp;, const size_t &amp;)</td></tr>
+<tr class="memdesc:a6590af6f43ecd38a96020e6f38c8f8de"><td class="mdescLeft">&#160;</td><td class="mdescRight">行入れ替え  <br /></td></tr>
+<tr class="separator:a6590af6f43ecd38a96020e6f38c8f8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ef8c6605000947071e1a4bda747f12" id="r_a46ef8c6605000947071e1a4bda747f12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ef8c6605000947071e1a4bda747f12">swapCol</a> (const size_t &amp;, const size_t &amp;)</td></tr>
+<tr class="memdesc:a46ef8c6605000947071e1a4bda747f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">列入れ替え  <br /></td></tr>
+<tr class="separator:a46ef8c6605000947071e1a4bda747f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d444ed3c69531d4d024c5eb5aad6bc9" id="r_a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d444ed3c69531d4d024c5eb5aad6bc9">resize</a> (const size_t &amp;, const size_t &amp;)</td></tr>
+<tr class="memdesc:a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">サイズ変更  <br /></td></tr>
+<tr class="separator:a2d444ed3c69531d4d024c5eb5aad6bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7ea283626fefd99241f5abe1ff71e0f" id="r_af7ea283626fefd99241f5abe1ff71e0f"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7ea283626fefd99241f5abe1ff71e0f">rows</a> () const</td></tr>
+<tr class="memdesc:af7ea283626fefd99241f5abe1ff71e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">行数取得  <br /></td></tr>
+<tr class="separator:af7ea283626fefd99241f5abe1ff71e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f25d3388e5f8cc7a7156eda076f7a6e" id="r_a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f25d3388e5f8cc7a7156eda076f7a6e">cols</a> () const</td></tr>
+<tr class="memdesc:a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">列数取得  <br /></td></tr>
+<tr class="separator:a3f25d3388e5f8cc7a7156eda076f7a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f381c8dae827ae6aed294cf7dffbf2" id="r_a68f381c8dae827ae6aed294cf7dffbf2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68f381c8dae827ae6aed294cf7dffbf2">rowRef</a> (const size_t &amp;)</td></tr>
+<tr class="memdesc:a68f381c8dae827ae6aed294cf7dffbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">行参照  <br /></td></tr>
+<tr class="separator:a68f381c8dae827ae6aed294cf7dffbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf3c1885570eaccae25f2aea82bd8ce" id="r_a2cf3c1885570eaccae25f2aea82bd8ce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cf3c1885570eaccae25f2aea82bd8ce">colRef</a> (const size_t &amp;)</td></tr>
+<tr class="memdesc:a2cf3c1885570eaccae25f2aea82bd8ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">列参照  <br /></td></tr>
+<tr class="separator:a2cf3c1885570eaccae25f2aea82bd8ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e6061824de55107bd1879e94fab0fbd" id="r_a1e6061824de55107bd1879e94fab0fbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e6061824de55107bd1879e94fab0fbd">forEach</a> (std::function&lt; Type()&gt;)</td></tr>
+<tr class="memdesc:a1e6061824de55107bd1879e94fab0fbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作  <br /></td></tr>
+<tr class="separator:a1e6061824de55107bd1879e94fab0fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c8a82f37c0da15ddcea2b912d11137c" id="r_a0c8a82f37c0da15ddcea2b912d11137c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c8a82f37c0da15ddcea2b912d11137c">forEach</a> (std::function&lt; Type(size_t, size_t, Type &amp;)&gt;)</td></tr>
+<tr class="memdesc:a0c8a82f37c0da15ddcea2b912d11137c"><td class="mdescLeft">&#160;</td><td class="mdescRight">各要素への操作(行,列,そのポイントの値)  <br /></td></tr>
+<tr class="separator:a0c8a82f37c0da15ddcea2b912d11137c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a1c18c4afc325808a00d4e16da82d91f0" id="r_a1c18c4afc325808a00d4e16da82d91f0"><td class="memTemplParams" colspan="2">template&lt;typename Type_  = Type&gt; </td></tr>
+<tr class="memitem:a1c18c4afc325808a00d4e16da82d91f0"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="class_matrix.html">Matrix</a>&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1c18c4afc325808a00d4e16da82d91f0">identity</a> (const size_t &amp;)</td></tr>
+<tr class="memdesc:a1c18c4afc325808a00d4e16da82d91f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">単位行列生成  <br /></td></tr>
+<tr class="separator:a1c18c4afc325808a00d4e16da82d91f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type&gt;<br />
-class Matrix&lt; Type &gt;</div><p>Matrixクラスのテンプレート定義 </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Type, typename DcmpType = double&gt;<br />
+class Matrix&lt; Type, DcmpType &gt;</div><p>Matrixクラスのテンプレート定義 </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>行列の要素の型 </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>分解時に使用する型 </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00023">23</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="af96c52f76af23ba2ae4d23f4ffc28f9f" name="af96c52f76af23ba2ae4d23f4ffc28f9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af96c52f76af23ba2ae4d23f4ffc28f9f">&#9670;&#160;</a></span>MatrixInitType</h2>
+<a id="a0aeed7ee6e2890e44b30062c85419591" name="a0aeed7ee6e2890e44b30062c85419591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aeed7ee6e2890e44b30062c85419591">&#9670;&#160;</a></span>RowType</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
-<div class="memtemplate">
-template&lt;typename matrixInitType  = Type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::MatrixInitType = std::initializer_list&lt;<a class="el" href="#aa21a53a21d50c2ab52a31e418356b64d">RowInitType</a>&lt;matrixInitType&gt;&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>行列型(初期化) </p>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00030">30</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
-
-</div>
-</div>
-<a id="aa81e2b889146ee50d69fbf30b453399e" name="aa81e2b889146ee50d69fbf30b453399e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa81e2b889146ee50d69fbf30b453399e">&#9670;&#160;</a></span>MatrixType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type &gt; </div>
-<div class="memtemplate">
-template&lt;typename matrixType  = Type&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::MatrixType = std::vector&lt;<a class="el" href="#a646da410e814a3566f0b4bea5819ec69">RowType</a>&lt;matrixType&gt;&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>行列型 </p>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00029">29</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
-
-</div>
-</div>
-<a id="aa21a53a21d50c2ab52a31e418356b64d" name="aa21a53a21d50c2ab52a31e418356b64d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa21a53a21d50c2ab52a31e418356b64d">&#9670;&#160;</a></span>RowInitType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type &gt; </div>
-<div class="memtemplate">
-template&lt;typename rowInitType &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::RowInitType = std::initializer_list&lt;rowInitType&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>行型(初期化) </p>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00027">27</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
-
-</div>
-</div>
-<a id="a646da410e814a3566f0b4bea5819ec69" name="a646da410e814a3566f0b4bea5819ec69"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a646da410e814a3566f0b4bea5819ec69">&#9670;&#160;</a></span>RowType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType  = double&gt; </div>
 <div class="memtemplate">
 template&lt;typename rowType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::RowType = std::vector&lt;rowType&gt;</td>
+          <td class="memname">using <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::RowType = std::vector&lt;rowType&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -355,54 +301,21 @@ template&lt;typename rowType &gt; </div>
 <p>型エイリアス宣言 </p>
 <p>行型 </p>
 
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00026">26</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ae653bc04255a76bf5275bfce4aec0e5f" name="ae653bc04255a76bf5275bfce4aec0e5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae653bc04255a76bf5275bfce4aec0e5f">&#9670;&#160;</a></span>Matrix() <span class="overload">[1/6]</span></h2>
+<a id="a0782748e121418a9f5a97da278870222" name="a0782748e121418a9f5a97da278870222"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0782748e121418a9f5a97da278870222">&#9670;&#160;</a></span>Matrix() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename Type , typename DcmpType  = double&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>デフォルトコンストラクタ </p>
-
-<p class="definition">Definition at line <a class="el" href="matrix_8h_source.html#l00039">39</a> of file <a class="el" href="matrix_8h_source.html">matrix.h</a>.</p>
-
-</div>
-</div>
-<a id="adf88f80a32245483f2eeb55923ae7489" name="adf88f80a32245483f2eeb55923ae7489"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf88f80a32245483f2eeb55923ae7489">&#9670;&#160;</a></span>Matrix() <span class="overload">[2/6]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Type &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -418,21 +331,21 @@ template&lt;typename Type &gt; </div>
 
 </div>
 </div>
-<a id="a7b52caaf3c19fac13b617bd6ddd2b44d" name="a7b52caaf3c19fac13b617bd6ddd2b44d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b52caaf3c19fac13b617bd6ddd2b44d">&#9670;&#160;</a></span>Matrix() <span class="overload">[3/6]</span></h2>
+<a id="a705e879db52bfe007a58f40d38212ad4" name="a705e879db52bfe007a58f40d38212ad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a705e879db52bfe007a58f40d38212ad4">&#9670;&#160;</a></span>Matrix() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#aa81e2b889146ee50d69fbf30b453399e">MatrixType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#a8fc4bb8f74074a6a081f4884f7c6ad86">MatrixType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -464,20 +377,18 @@ template&lt;typename Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ctor_8hpp_source.html#l00054">54</a> of file <a class="el" href="matrix_ctor_8hpp_source.html">matrixCtor.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a2fd8499c09b65c9164dc2994804ddeb8" name="a2fd8499c09b65c9164dc2994804ddeb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fd8499c09b65c9164dc2994804ddeb8">&#9670;&#160;</a></span>Matrix() <span class="overload">[4/6]</span></h2>
+<a id="ac62823ceebbeefccd7167bc991e6e0ff" name="ac62823ceebbeefccd7167bc991e6e0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62823ceebbeefccd7167bc991e6e0ff">&#9670;&#160;</a></span>Matrix() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
           <td class="paramtype">const std::pair&lt; size_t, size_t &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
@@ -506,22 +417,20 @@ template&lt;typename Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ctor_8hpp_source.html#l00015">15</a> of file <a class="el" href="matrix_ctor_8hpp_source.html">matrixCtor.hpp</a>.</p>
-
 </div>
 </div>
-<a id="af0adabc4699ef85f44c781d676a05ff7" name="af0adabc4699ef85f44c781d676a05ff7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0adabc4699ef85f44c781d676a05ff7">&#9670;&#160;</a></span>Matrix() <span class="overload">[5/6]</span></h2>
+<a id="ae7c8ee2d692835142e98b73b03e37a12" name="ae7c8ee2d692835142e98b73b03e37a12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c8ee2d692835142e98b73b03e37a12">&#9670;&#160;</a></span>Matrix() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -549,23 +458,21 @@ template&lt;typename Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ctor_8hpp_source.html#l00071">71</a> of file <a class="el" href="matrix_ctor_8hpp_source.html">matrixCtor.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a9d1b3df01a35796698dd2121e286048d" name="a9d1b3df01a35796698dd2121e286048d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d1b3df01a35796698dd2121e286048d">&#9670;&#160;</a></span>Matrix() <span class="overload">[6/6]</span></h2>
+<a id="a9bf0f336b35af484d032bd0e9cfe95ec" name="a9bf0f336b35af484d032bd0e9cfe95ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bf0f336b35af484d032bd0e9cfe95ec">&#9670;&#160;</a></span>Matrix() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
@@ -600,21 +507,19 @@ template&lt;typename Type &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ctor_8hpp_source.html#l00090">90</a> of file <a class="el" href="matrix_ctor_8hpp_source.html">matrixCtor.hpp</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab9f0f735f8e473839c7f061951ecbe9f" name="ab9f0f735f8e473839c7f061951ecbe9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9f0f735f8e473839c7f061951ecbe9f">&#9670;&#160;</a></span>add()</h2>
+<a id="a6a23864aa392e4fe742c03ad9cc1bfb7" name="a6a23864aa392e4fe742c03ad9cc1bfb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a23864aa392e4fe742c03ad9cc1bfb7">&#9670;&#160;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::add </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::add </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -638,23 +543,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after addition. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00168">168</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a4d025dfffa9cd511a25662c2356dc051" name="a4d025dfffa9cd511a25662c2356dc051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d025dfffa9cd511a25662c2356dc051">&#9670;&#160;</a></span>colRef()</h2>
+<a id="a2cf3c1885570eaccae25f2aea82bd8ce" name="a2cf3c1885570eaccae25f2aea82bd8ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf3c1885570eaccae25f2aea82bd8ce">&#9670;&#160;</a></span>colRef()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::colRef </td>
+          <td class="memname">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::colRef </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>colNum</em></span></td><td>)</td>
           <td></td>
@@ -683,23 +586,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of references to the elements in the column. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00290">290</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a9e107af215c28187982a2404bdf82948" name="a9e107af215c28187982a2404bdf82948"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e107af215c28187982a2404bdf82948">&#9670;&#160;</a></span>cols()</h2>
+<a id="a3f25d3388e5f8cc7a7156eda076f7a6e" name="a3f25d3388e5f8cc7a7156eda076f7a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f25d3388e5f8cc7a7156eda076f7a6e">&#9670;&#160;</a></span>cols()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const size_t <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::cols </td>
+          <td class="memname">const size_t <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::cols </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -714,23 +615,65 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of columns. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00256">256</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a01a1bf022c92178a835930e8e64896f4" name="a01a1bf022c92178a835930e8e64896f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01a1bf022c92178a835930e8e64896f4">&#9670;&#160;</a></span>forEach() <span class="overload">[1/2]</span></h2>
+<a id="a0fb1ba800985204475cba8787c34cd1d" name="a0fb1ba800985204475cba8787c34cd1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb1ba800985204475cba8787c34cd1d">&#9670;&#160;</a></span>det()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::forEach </td>
+          <td class="memname">DcmpType <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::det </td>
+          <td>(</td>
+          <td class="paramtype">DcmpType</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1e-9</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>行列式 </p>
+<p>�s��̍s�񎮂��v�Z������J�����o�֐�</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�iLU�������Ɏg�p�j </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>�s�񎮂̒l </dd></dl>
+
+</div>
+</div>
+<a id="a1e6061824de55107bd1879e94fab0fbd" name="a1e6061824de55107bd1879e94fab0fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e6061824de55107bd1879e94fab0fbd">&#9670;&#160;</a></span>forEach() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename DcmpType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::forEach </td>
           <td>(</td>
           <td class="paramtype">std::function&lt; Type()&gt;</td>          <td class="paramname"><span class="paramname"><em>func</em></span></td><td>)</td>
           <td></td>
@@ -759,20 +702,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00311">311</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="afd9d2c6162b83752ef817611bf0b60b5" name="afd9d2c6162b83752ef817611bf0b60b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd9d2c6162b83752ef817611bf0b60b5">&#9670;&#160;</a></span>forEach() <span class="overload">[2/2]</span></h2>
+<a id="a0c8a82f37c0da15ddcea2b912d11137c" name="a0c8a82f37c0da15ddcea2b912d11137c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c8a82f37c0da15ddcea2b912d11137c">&#9670;&#160;</a></span>forEach() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::forEach </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::forEach </td>
           <td>(</td>
           <td class="paramtype">std::function&lt; Type(size_t, size_t, Type &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>func</em></span></td><td>)</td>
           <td></td>
@@ -796,20 +737,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00331">331</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a982f01bbab9d94a4282d5123a3605278" name="a982f01bbab9d94a4282d5123a3605278"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a982f01bbab9d94a4282d5123a3605278">&#9670;&#160;</a></span>hadamardDiv()</h2>
+<a id="a2b093abef2bdb077d263e8567738f5b0" name="a2b093abef2bdb077d263e8567738f5b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b093abef2bdb077d263e8567738f5b0">&#9670;&#160;</a></span>hadamardDiv()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::hadamardDiv </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::hadamardDiv </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
           <td></td>
@@ -833,20 +772,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after the operation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00253">253</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a87985b2ce79aae86bfba65cec1ece803" name="a87985b2ce79aae86bfba65cec1ece803"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87985b2ce79aae86bfba65cec1ece803">&#9670;&#160;</a></span>hadamardMul()</h2>
+<a id="aee906ae982a11c3bd9e99e5f8201aa72" name="aee906ae982a11c3bd9e99e5f8201aa72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee906ae982a11c3bd9e99e5f8201aa72">&#9670;&#160;</a></span>hadamardMul()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::hadamardMul </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::hadamardMul </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
           <td></td>
@@ -854,7 +791,7 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール積 </p>
+<p>アダマール組み合わせ </p>
 <p>Performs an element-wise multiplication (Hadamard product) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -870,20 +807,154 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after the operation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00236">236</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="ad88c42a62a3bf7db6d60fb87e25b9f29" name="ad88c42a62a3bf7db6d60fb87e25b9f29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad88c42a62a3bf7db6d60fb87e25b9f29">&#9670;&#160;</a></span>mul()</h2>
+<a id="a1c18c4afc325808a00d4e16da82d91f0" name="a1c18c4afc325808a00d4e16da82d91f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c18c4afc325808a00d4e16da82d91f0">&#9670;&#160;</a></span>identity()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::mul </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type_ &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::identity </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>単位行列生成 </p>
+<p>Creates an identity matrix of a given size.</p>
+<p>This function generates a square identity matrix, where all diagonal elements are set to 1 and all other elements are set to 0.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>The type of elements in the identity matrix. </td></tr>
+    <tr><td class="paramname">Type</td><td>The type of the parent <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> object. </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>The type used for computations within the <a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a> object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size of the identity matrix (number of rows and columns). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A square identity matrix of the specified size as a <code><a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a>&lt;Type_&gt;</code>. </dd></dl>
+
+</div>
+</div>
+<a id="acdef22f1a972fd304eb2d4b2a5261990" name="acdef22f1a972fd304eb2d4b2a5261990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdef22f1a972fd304eb2d4b2a5261990">&#9670;&#160;</a></span>inverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename DcmpType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::inverse </td>
+          <td>(</td>
+          <td class="paramtype">DcmpType</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1e-9</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>逆行列 </p>
+<p>�s��̋t�s������߂���J�����o�֐�</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�iLU�������Ɏg�p�j </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>�v�Z���ꂽ�t�s�� </dd></dl>
+
+</div>
+</div>
+<a id="af84b6d4591325b9010384152e42db0c9" name="af84b6d4591325b9010384152e42db0c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af84b6d4591325b9010384152e42db0c9">&#9670;&#160;</a></span>luDec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename DcmpType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt; &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::luDec </td>
+          <td>(</td>
+          <td class="paramtype">DcmpType</td>          <td class="paramname"><span class="paramname"><em>epsilon</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1e-9</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>LU分解 </p>
+<p>LU�������s�����J�����o�֐�</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type</td><td>�s��v�f�̌^ </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>�v�Z���̌^ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">epsilon</td><td>���e�����ŏ��l�i�s�{�b�g�I�����Ɏg�p�j </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>�������ꂽL�s���U�s����i�[����x�N�g�� </dd></dl>
+
+</div>
+</div>
+<a id="a17448a39bb88b1ae47ea6a25059da797" name="a17448a39bb88b1ae47ea6a25059da797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17448a39bb88b1ae47ea6a25059da797">&#9670;&#160;</a></span>mul()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename DcmpType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::mul </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -907,20 +978,60 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after multiplication. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00202">202</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="ae83b4ae6fba207f358e337d54a86cf9b" name="ae83b4ae6fba207f358e337d54a86cf9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae83b4ae6fba207f358e337d54a86cf9b">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+<a id="ab40501649a1246a8fe57727516231afb" name="ab40501649a1246a8fe57727516231afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab40501649a1246a8fe57727516231afb">&#9670;&#160;</a></span>operator Matrix&lt; Type_ &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
+<div class="memtemplate">
+template&lt;typename Type_ &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator* </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator <a class="el" href="class_matrix.html">Matrix</a>&lt; Type_ &gt; </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>型変換 </p>
+<p>Converts the current matrix to a matrix of a different type.</p>
+<p>This operator performs a type conversion for the elements of the matrix, creating a new matrix where each element is cast to the specified target type.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Type_</td><td>The target type for the elements in the resulting matrix. </td></tr>
+    <tr><td class="paramname">Type</td><td>The type of elements in the current matrix. </td></tr>
+    <tr><td class="paramname">DcmpType</td><td>The type used for computations within the current matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new matrix of type <code><a class="el" href="class_matrix.html" title="Matrixクラスのテンプレート定義">Matrix</a>&lt;Type_&gt;</code> with the same dimensions as the original. </dd></dl>
+
+</div>
+</div>
+<a id="a6297aee72655d7f4c3ec982b93c2d2d0" name="a6297aee72655d7f4c3ec982b93c2d2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6297aee72655d7f4c3ec982b93c2d2d0">&#9670;&#160;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Type , typename DcmpType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator* </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -945,20 +1056,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the multiplication. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00303">303</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a0a1ec98810d39bc0829f54aab1bc5345" name="a0a1ec98810d39bc0829f54aab1bc5345"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a1ec98810d39bc0829f54aab1bc5345">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
+<a id="ad4f9a758fd4027461151f58c3c292240" name="ad4f9a758fd4027461151f58c3c292240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f9a758fd4027461151f58c3c292240">&#9670;&#160;</a></span>operator*() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator* </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator* </td>
           <td>(</td>
           <td class="paramtype">const Type &amp;</td>          <td class="paramname"><span class="paramname"><em>scalar</em></span></td><td>)</td>
           <td></td>
@@ -983,20 +1092,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the scalar multiplication. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00363">363</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a6990508e9b1323dfaa4021c20ca5a528" name="a6990508e9b1323dfaa4021c20ca5a528"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6990508e9b1323dfaa4021c20ca5a528">&#9670;&#160;</a></span>operator*=() <span class="overload">[1/2]</span></h2>
+<a id="a87975f2053ff32caf540d56fc9a33b8d" name="a87975f2053ff32caf540d56fc9a33b8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87975f2053ff32caf540d56fc9a33b8d">&#9670;&#160;</a></span>operator*=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator*= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator*= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1021,20 +1128,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00191">191</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a8683edfe3e9580400560434883bbf185" name="a8683edfe3e9580400560434883bbf185"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8683edfe3e9580400560434883bbf185">&#9670;&#160;</a></span>operator*=() <span class="overload">[2/2]</span></h2>
+<a id="a011c4e90d2d78529acd91f6b5c437ce2" name="a011c4e90d2d78529acd91f6b5c437ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a011c4e90d2d78529acd91f6b5c437ce2">&#9670;&#160;</a></span>operator*=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator*= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator*= </td>
           <td>(</td>
           <td class="paramtype">const Type &amp;</td>          <td class="paramname"><span class="paramname"><em>scalar</em></span></td><td>)</td>
           <td></td>
@@ -1059,20 +1164,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00245">245</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="ac2022bd4f7fd292b2a19bde0b0c2cd9e" name="ac2022bd4f7fd292b2a19bde0b0c2cd9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2022bd4f7fd292b2a19bde0b0c2cd9e">&#9670;&#160;</a></span>operator+()</h2>
+<a id="a960d10ceec89b2e1688c8cf89464c05a" name="a960d10ceec89b2e1688c8cf89464c05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a960d10ceec89b2e1688c8cf89464c05a">&#9670;&#160;</a></span>operator+()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator+ </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator+ </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1097,20 +1200,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the addition. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00263">263</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a0112ae48beba1be582239392c23c3204" name="a0112ae48beba1be582239392c23c3204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0112ae48beba1be582239392c23c3204">&#9670;&#160;</a></span>operator+=()</h2>
+<a id="a494ca7c6987fb9ce5f802791df94b3ae" name="a494ca7c6987fb9ce5f802791df94b3ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a494ca7c6987fb9ce5f802791df94b3ae">&#9670;&#160;</a></span>operator+=()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator+= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator+= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1135,20 +1236,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00155">155</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="aa756500bccad5b6515427e8484a9069c" name="aa756500bccad5b6515427e8484a9069c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa756500bccad5b6515427e8484a9069c">&#9670;&#160;</a></span>operator-()</h2>
+<a id="a4a4a342ac468c7894ae502e26fd9aa0c" name="a4a4a342ac468c7894ae502e26fd9aa0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4a342ac468c7894ae502e26fd9aa0c">&#9670;&#160;</a></span>operator-()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator- </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator- </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1173,20 +1272,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the subtraction. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00283">283</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a69a6ae42e5f098d069a9a0e4e6399ba8" name="a69a6ae42e5f098d069a9a0e4e6399ba8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69a6ae42e5f098d069a9a0e4e6399ba8">&#9670;&#160;</a></span>operator-=()</h2>
+<a id="a6e5c20a3862b33333ab1fbaebcead8ad" name="a6e5c20a3862b33333ab1fbaebcead8ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5c20a3862b33333ab1fbaebcead8ad">&#9670;&#160;</a></span>operator-=()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator-= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator-= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1211,20 +1308,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00173">173</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a26fe936054b9a5801e0c9c430e1f72ae" name="a26fe936054b9a5801e0c9c430e1f72ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26fe936054b9a5801e0c9c430e1f72ae">&#9670;&#160;</a></span>operator/()</h2>
+<a id="afc4f81cd4ec76cc3df1e5c24718396b5" name="afc4f81cd4ec76cc3df1e5c24718396b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc4f81cd4ec76cc3df1e5c24718396b5">&#9670;&#160;</a></span>operator/()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator/ </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator/ </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1249,20 +1344,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the Hadamard division. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00343">343</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a64cba484ae8824eddb971bf8acef26be" name="a64cba484ae8824eddb971bf8acef26be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64cba484ae8824eddb971bf8acef26be">&#9670;&#160;</a></span>operator/=()</h2>
+<a id="a2d3ecfaa70de3212a6953c1747875813" name="a2d3ecfaa70de3212a6953c1747875813"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3ecfaa70de3212a6953c1747875813">&#9670;&#160;</a></span>operator/=()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator/= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator/= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1287,20 +1380,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00227">227</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="aa876655379a15ddd98b8dac2b68b7e3e" name="aa876655379a15ddd98b8dac2b68b7e3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa876655379a15ddd98b8dac2b68b7e3e">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
+<a id="a5a3d8ebd995f9012bd5dcd4dddf85015" name="a5a3d8ebd995f9012bd5dcd4dddf85015"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3d8ebd995f9012bd5dcd4dddf85015">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator&lt;&lt; </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator&lt;&lt; </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
@@ -1308,7 +1399,8 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Copy assignment operator using <code>&lt;&lt;</code>. </p>
+<p>ストリーム広谷演算子 </p>
+<p>Copy assignment operator using <code>&lt;&lt;</code>.</p>
 <p>Copies the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1324,28 +1416,27 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00058">58</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a6b3110f8ca0b7a3cd69a465c548e73a4" name="a6b3110f8ca0b7a3cd69a465c548e73a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b3110f8ca0b7a3cd69a465c548e73a4">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
+<a id="a6fae11037c845951bfc48a54d2b95c57" name="a6fae11037c845951bfc48a54d2b95c57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fae11037c845951bfc48a54d2b95c57">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator&lt;&lt; </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Assignment operator for initializer lists using <code>&lt;&lt;</code>. </p>
+<p>ストリーム広谷演算子 </p>
+<p>Assignment operator for initializer lists using <code>&lt;&lt;</code>.</p>
 <p>Assigns the contents of an initializer list to the matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1361,20 +1452,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00058">58</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a0543e7f993195bd84b2f0b8f2dc1ffa7" name="a0543e7f993195bd84b2f0b8f2dc1ffa7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0543e7f993195bd84b2f0b8f2dc1ffa7">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
+<a id="a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b" name="a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612f57c1a7dc0cf5c2e7c2ed2bfa4e4b">&#9670;&#160;</a></span>operator&lt;&lt;() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator&lt;&lt; </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator&lt;&lt; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
@@ -1382,7 +1471,8 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Move assignment operator using <code>&lt;&lt;</code>. </p>
+<p>ムーブストリーム </p>
+<p>Move assignment operator using <code>&lt;&lt;</code>.</p>
 <p>Moves the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1398,20 +1488,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00058">58</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a8bf0342e762d2b66373b6ca9670c0bef" name="a8bf0342e762d2b66373b6ca9670c0bef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bf0342e762d2b66373b6ca9670c0bef">&#9670;&#160;</a></span>operator=() <span class="overload">[1/3]</span></h2>
+<a id="a9b24a8dc9c02fab08530c24786f662b7" name="a9b24a8dc9c02fab08530c24786f662b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b24a8dc9c02fab08530c24786f662b7">&#9670;&#160;</a></span>operator=() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
@@ -1419,7 +1507,8 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Copy assignment operator. </p>
+<p>代入演算子 </p>
+<p>Copy assignment operator.</p>
 <p>Copies the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1435,22 +1524,20 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00038">38</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a2308805969d4f6ce9dc4bcc6ac45d167" name="a2308805969d4f6ce9dc4bcc6ac45d167"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2308805969d4f6ce9dc4bcc6ac45d167">&#9670;&#160;</a></span>operator=() <span class="overload">[2/3]</span></h2>
+<a id="af51a94cce88d38e56cabe195c8182546" name="af51a94cce88d38e56cabe195c8182546"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51a94cce88d38e56cabe195c8182546">&#9670;&#160;</a></span>operator=() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#af96c52f76af23ba2ae4d23f4ffc28f9f">MatrixInitType</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1458,6 +1545,7 @@ template&lt;typename Type &gt; </div>
 
 <p>演算子オーバーロード </p>
 <p>Assignment operator for initializer lists.</p>
+<p>代入演算子</p>
 <p>Assigns the contents of an initializer list to the matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1473,20 +1561,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00018">18</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="acb8b164d9d1cfc6d2363fb7c711bd7f8" name="acb8b164d9d1cfc6d2363fb7c711bd7f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb8b164d9d1cfc6d2363fb7c711bd7f8">&#9670;&#160;</a></span>operator=() <span class="overload">[3/3]</span></h2>
+<a id="a2f43eb2c09dc62c66b345359ce34522b" name="a2f43eb2c09dc62c66b345359ce34522b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f43eb2c09dc62c66b345359ce34522b">&#9670;&#160;</a></span>operator=() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator= </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
           <td></td>
@@ -1494,7 +1580,8 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Move assignment operator. </p>
+<p>ムーブ代入 </p>
+<p>Move assignment operator.</p>
 <p>Moves the contents of another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1510,20 +1597,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00058">58</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a6a4773207b42e6a22a4998b2f44c224e" name="a6a4773207b42e6a22a4998b2f44c224e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a4773207b42e6a22a4998b2f44c224e">&#9670;&#160;</a></span>operator[]()</h2>
+<a id="a2cb987d40cc2202a8b98aa19e58b9f81" name="a2cb987d40cc2202a8b98aa19e58b9f81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb987d40cc2202a8b98aa19e58b9f81">&#9670;&#160;</a></span>operator[]()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;<a class="el" href="#a646da410e814a3566f0b4bea5819ec69">::RowType</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator[] </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="#a0aeed7ee6e2890e44b30062c85419591">::RowType</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
           <td></td>
@@ -1548,20 +1633,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the row. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00138">138</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="ace4e3fdccdd3bfb2bc8138d71dae8710" name="ace4e3fdccdd3bfb2bc8138d71dae8710"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace4e3fdccdd3bfb2bc8138d71dae8710">&#9670;&#160;</a></span>operator^()</h2>
+<a id="a959398a790bc8808991a15d065d04ea5" name="a959398a790bc8808991a15d065d04ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a959398a790bc8808991a15d065d04ea5">&#9670;&#160;</a></span>operator^()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator^ </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator^ </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1569,7 +1652,7 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール積 </p>
+<p>アダマール組み合わせ算 </p>
 <p>Hadamard product operator.</p>
 <p>Performs the Hadamard product (element-wise multiplication) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1586,20 +1669,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A new matrix representing the result of the Hadamard product. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00323">323</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="acf72070412729d9903214ee76e222cf7" name="acf72070412729d9903214ee76e222cf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf72070412729d9903214ee76e222cf7">&#9670;&#160;</a></span>operator^=()</h2>
+<a id="aceb7efeee7605cfb1e75a5411d728a48" name="aceb7efeee7605cfb1e75a5411d728a48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb7efeee7605cfb1e75a5411d728a48">&#9670;&#160;</a></span>operator^=()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::operator^= </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::operator^= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1607,7 +1688,7 @@ template&lt;typename Type &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>アダマール積 </p>
+<p>アダマール組み合わせ算 </p>
 <p>Hadamard product assignment operator.</p>
 <p>Performs the Hadamard product (element-wise multiplication) with another matrix.</p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
@@ -1624,23 +1705,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the modified matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_ops_8hpp_source.html#l00209">209</a> of file <a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a56df0ef7ff1e113d6e525b4cd8445b93" name="a56df0ef7ff1e113d6e525b4cd8445b93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56df0ef7ff1e113d6e525b4cd8445b93">&#9670;&#160;</a></span>resize()</h2>
+<a id="a2d444ed3c69531d4d024c5eb5aad6bc9" name="a2d444ed3c69531d4d024c5eb5aad6bc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d444ed3c69531d4d024c5eb5aad6bc9">&#9670;&#160;</a></span>resize()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::resize </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::resize </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>row</em></span>, </td>
         </tr>
@@ -1674,23 +1753,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00228">228</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a83349c43266b1f95b9dc8c2c06557d39" name="a83349c43266b1f95b9dc8c2c06557d39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83349c43266b1f95b9dc8c2c06557d39">&#9670;&#160;</a></span>rowRef()</h2>
+<a id="a68f381c8dae827ae6aed294cf7dffbf2" name="a68f381c8dae827ae6aed294cf7dffbf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f381c8dae827ae6aed294cf7dffbf2">&#9670;&#160;</a></span>rowRef()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::rowRef </td>
+          <td class="memname">std::vector&lt; std::reference_wrapper&lt; Type &gt; &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::rowRef </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>rowNum</em></span></td><td>)</td>
           <td></td>
@@ -1719,23 +1796,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A vector of references to the elements in the row. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00269">269</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="ab354bd507e3b643b65a9f469b91c230a" name="ab354bd507e3b643b65a9f469b91c230a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab354bd507e3b643b65a9f469b91c230a">&#9670;&#160;</a></span>rows()</h2>
+<a id="af7ea283626fefd99241f5abe1ff71e0f" name="af7ea283626fefd99241f5abe1ff71e0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ea283626fefd99241f5abe1ff71e0f">&#9670;&#160;</a></span>rows()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const size_t <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::rows </td>
+          <td class="memname">const size_t <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::rows </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1750,22 +1825,20 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of rows. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00244">244</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a4d71cdead75e9f0ad0671f51c701cbe4" name="a4d71cdead75e9f0ad0671f51c701cbe4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d71cdead75e9f0ad0671f51c701cbe4">&#9670;&#160;</a></span>scalarCalc()</h2>
+<a id="a612baf65a8d94a00683c8e4bedf53a60" name="a612baf65a8d94a00683c8e4bedf53a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a612baf65a8d94a00683c8e4bedf53a60">&#9670;&#160;</a></span>scalarCalc()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <div class="memtemplate">
 template&lt;typename calcType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::scalarCalc </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::scalarCalc </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
           <td></td>
@@ -1790,20 +1863,18 @@ template&lt;typename calcType &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after the operation. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00272">272</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a2259adabfedf0e65294ada34b58c42ea" name="a2259adabfedf0e65294ada34b58c42ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2259adabfedf0e65294ada34b58c42ea">&#9670;&#160;</a></span>scalarMul()</h2>
+<a id="a33dbc11f4e852bdf5f01c935ccedf54f" name="a33dbc11f4e852bdf5f01c935ccedf54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33dbc11f4e852bdf5f01c935ccedf54f">&#9670;&#160;</a></span>scalarMul()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::scalarMul </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::scalarMul </td>
           <td>(</td>
           <td class="paramtype">const Type &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
           <td></td>
@@ -1827,20 +1898,18 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after scalar multiplication. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00219">219</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="acb1a84bbbaf657a0b780d38a82640b59" name="acb1a84bbbaf657a0b780d38a82640b59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb1a84bbbaf657a0b780d38a82640b59">&#9670;&#160;</a></span>sub()</h2>
+<a id="a344d58a411291a928c6b3679bb1b7753" name="a344d58a411291a928c6b3679bb1b7753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a344d58a411291a928c6b3679bb1b7753">&#9670;&#160;</a></span>sub()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::sub </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::sub </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>mtrx</em></span></td><td>)</td>
           <td></td>
@@ -1864,23 +1933,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix after subtraction. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_calc_8hpp_source.html#l00185">185</a> of file <a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a>.</p>
-
 </div>
 </div>
-<a id="a7a3affac49ff864840e3f831370ac86a" name="a7a3affac49ff864840e3f831370ac86a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a3affac49ff864840e3f831370ac86a">&#9670;&#160;</a></span>swapCol()</h2>
+<a id="a46ef8c6605000947071e1a4bda747f12" name="a46ef8c6605000947071e1a4bda747f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46ef8c6605000947071e1a4bda747f12">&#9670;&#160;</a></span>swapCol()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::swapCol </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::swapCol </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>swapCol1</em></span>, </td>
         </tr>
@@ -1914,23 +1981,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00210">210</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="aee906bced1369395c92c7dcdb0e3e43d" name="aee906bced1369395c92c7dcdb0e3e43d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee906bced1369395c92c7dcdb0e3e43d">&#9670;&#160;</a></span>swapRow()</h2>
+<a id="a6590af6f43ecd38a96020e6f38c8f8de" name="a6590af6f43ecd38a96020e6f38c8f8de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6590af6f43ecd38a96020e6f38c8f8de">&#9670;&#160;</a></span>swapRow()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::swapRow </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::swapRow </td>
           <td>(</td>
           <td class="paramtype">const size_t &amp;</td>          <td class="paramname"><span class="paramname"><em>swapRow1</em></span>, </td>
         </tr>
@@ -1964,23 +2029,21 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the current matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00192">192</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
-<a id="afcdd3ee444edf1ece0467532979f0974" name="afcdd3ee444edf1ece0467532979f0974"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcdd3ee444edf1ece0467532979f0974">&#9670;&#160;</a></span>transpose()</h2>
+<a id="a711e9f3be5a0507fdb8ab1a9f3dec63d" name="a711e9f3be5a0507fdb8ab1a9f3dec63d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a711e9f3be5a0507fdb8ab1a9f3dec63d">&#9670;&#160;</a></span>transpose()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Type &gt; </div>
+template&lt;typename Type , typename DcmpType &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt;::transpose </td>
+          <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::transpose </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -2003,14 +2066,13 @@ template&lt;typename Type &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The transposed matrix. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="matrix_utils_8hpp_source.html#l00178">178</a> of file <a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="matrix_8h_source.html">matrix.h</a></li>
 <li><a class="el" href="matrix_calc_8hpp_source.html">matrixCalc.hpp</a></li>
 <li><a class="el" href="matrix_ctor_8hpp_source.html">matrixCtor.hpp</a></li>
+<li><a class="el" href="matrix_dec_8hpp_source.html">matrixDec.hpp</a></li>
 <li><a class="el" href="matrix_ops_8hpp_source.html">matrixOps.hpp</a></li>
 <li><a class="el" href="matrix_utils_8hpp_source.html">matrixUtils.hpp</a></li>
 </ul>
