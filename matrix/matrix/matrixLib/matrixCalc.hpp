@@ -3,10 +3,6 @@
 
 #include "matrix.h"
 
-#if __has_include("execution")
-    #include <execution>
-#endif
-
 /**
  * @brief Adds the elements of two matrices and stores the result in the destination matrix.
  *
@@ -73,12 +69,12 @@ typename Matrix<Type, DcmpType>::template MatrixType<Type> Matrix<Type, DcmpType
 
     for (size_t row = 0; row < rsltRows; row++) {
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
-        std::transform(
-            std::execution::par_unseq, result[row].begin(), result[row].end(), result[row].begin(), [&, row](Type& col) {
-                const size_t colIdx = &col - &result[row][0];
-                return calcLambda(row, colIdx);
-            }
-        );
+		std::visit([&](auto&& policy) {
+			std::transform(policy, result[row].begin(), result[row].end(), result[row].begin(), [&, row](Type& col) {
+				const size_t colIdx = &col - &result[row][0];
+				return calcLambda(row, colIdx);
+				});
+			}, execPolicy);
 #else
         for (size_t col = 0; col < rsltCols; col++)
             result[row][col] = calcLambda(row, col);
@@ -140,10 +136,12 @@ void Matrix<Type, DcmpType>::calcMatrix_(
         throw std::invalid_argument("The number of rows and columns of data1 and data2 must be equal.");
 
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
-    auto rowCalcLambda = [&dest, &source](const size_t row) { 
-        std::transform(std::execution::par_unseq, dest[row].begin(), dest[row].end(), source[row].begin(), dest[row].begin(), calcType()); 
-        };
-    std::for_each(std::execution::par_unseq, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+    std::visit([&](auto&& policy) {
+        auto rowCalcLambda = [&](const size_t row) {
+            std::transform(policy, dest[row].begin(), dest[row].end(), source[row].begin(), dest[row].begin(), calcType());
+            };
+        std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+        }, execPolicy);
 #else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(source); ++col)
@@ -168,11 +166,12 @@ void Matrix<Type,DcmpType>::scalarCalc_(
 )
 {
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
-    auto rowCalcLambda = [&dest, &source](const size_t row) {
-        std::transform(std::execution::par_unseq, dest[row].begin(), dest[row].end(), dest[row].begin(), [&](const Type& d) {return calcType()(d,source); });
-        };
-
-    std::for_each(std::execution::par_unseq, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+    std::visit([&](auto&& policy) {
+        auto rowCalcLambda = [&dest, &source](const size_t row) {
+            std::transform(policy, dest[row].begin(), dest[row].end(), dest[row].begin(), [&](const Type& d) {return calcType()(d, source); });
+            };
+        std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+        }, execPolicy);
 #else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(dest); ++col)

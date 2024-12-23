@@ -1,5 +1,7 @@
 #include <cassert>
+#include <chrono>
 #include <iostream>
+#include <random>
 
 #include "matrixLib/matrix"
 
@@ -108,8 +110,7 @@ void testIdentityMatrix() {
     std::cout << "IdentityMatrix test passed." << std::endl;
 }
 
-#include <chrono>
-#include <random>
+
 static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
 {
     using namespace std::chrono;
@@ -121,8 +122,8 @@ static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&,
     Matrix<double> buf0 = std::pair<size_t, size_t>{ n,n };
     Matrix<double> buf1 = std::pair<size_t, size_t>{ n,n };
 
-    buf0.forEach([&engine, &dist]()->double {return dist(engine); });
-    buf1.forEach([&engine, &dist]()->double {return dist(engine); });
+    buf0.forEach([&engine, &dist](){return dist(engine); });
+    buf1.forEach([&engine, &dist](){return dist(engine); });
 
     auto calc = [&buf0, &buf1, &engine, &dist, &Func]() {
         auto buf_time0 = system_clock::now();
@@ -134,33 +135,25 @@ static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&,
         return duration_cast<milliseconds>(buf_time1 - buf_time0).count();
         };
 
-    std::cout << "CPU演算テスト:" << std::endl;
+    std::cout << "CPU calculation speedup test:" << std::endl;
 
-    //1スレッドでの計算
-    //buf0.thread = 1;
-    //std::cout << buf0.thread << "スレッドでの計算:";
+    std::cout << "execution::seq" << std::endl;
+	buf0.execPolicy = std::execution::seq;
+    const double time1 = static_cast<double>(calc());
+    std::cout << time1 << "ms" << std::endl;
 
-    double time1 = static_cast<double>(calc());
-    std::cout << time1 << "ミリ秒かかりました。" << std::endl;
+    std::cout << "execution::par" << std::endl;
+    buf0.execPolicy = std::execution::par;
+    const double time2 = static_cast<double>(calc());
+    std::cout << time2 << "ms\t" << (time1 / time2) << "faster!!" << std::endl;
 
-    /*
-    //複数スレッドでの計算
-    for (size_t i = 2; i <= std::thread::hardware_concurrency(); i++) {
-        buf0.thread = i;
-
-        std::cout << buf0.thread << "スレッドでの計算:";
-        double time2 = static_cast<double>(calc());
-        std::cout << time2 << "ミリ秒かかりました。->";
-
-        std::cout << (time1 / time2) << "倍高速化できました。" << std::endl;
-    }
-    */
-
-    system("pause");
+    std::cout << "execution::par_unseq" << std::endl;
+    buf0.execPolicy = std::execution::par_unseq;
+    const double time3 = static_cast<double>(calc());
+    std::cout << time3 << "ms\t" << (time1 / time3) << "faster!!" << std::endl;
 }
 
 int main() {
-    // mulSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
     testDefaultConstructor();
     testInitListConstructor();
     testSizeConstructor();
@@ -174,6 +167,7 @@ int main() {
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
+    mulSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
    
     return 0;
 }

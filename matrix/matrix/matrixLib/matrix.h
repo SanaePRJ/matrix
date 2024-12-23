@@ -11,6 +11,11 @@
 #include <iomanip>
 #include <vector>
 
+#if __has_include("execution")
+    #include <execution>
+    #include <variant>
+#endif
+
  /**
   * @brief Template definition for the Matrix class
   *
@@ -26,6 +31,14 @@ public:
 
     template<typename matrixType = Type>     using MatrixType     = std::vector<RowType<matrixType>>;                   ///< Matrix type
     template<typename matrixInitType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixInitType>>; ///< Matrix type (initialization)
+
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+    std::variant< 
+        std::execution::sequenced_policy, 
+        std::execution::parallel_policy, 
+        std::execution::parallel_unsequenced_policy 
+    > execPolicy = std::execution::par_unseq;
+#endif
 
 private:
     MatrixType<> matrix_; ///< Data storage variable
