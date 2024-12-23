@@ -111,8 +111,9 @@ void testIdentityMatrix() {
 }
 
 
-static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
+static void calcSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
 {
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     using namespace std::chrono;
 
     std::default_random_engine       engine;      //ƒGƒ“ƒWƒ“
@@ -151,6 +152,7 @@ static void mulSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&,
     buf0.execPolicy = std::execution::par_unseq;
     const double time3 = static_cast<double>(calc());
     std::cout << time3 << "ms\t" << (time1 / time3) << "faster!!" << std::endl;
+#endif
 }
 
 int main() {
@@ -167,7 +169,7 @@ int main() {
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
-    mulSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
+    calcSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
    
     return 0;
 }
