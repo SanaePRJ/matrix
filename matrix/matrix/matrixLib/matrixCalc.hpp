@@ -44,8 +44,8 @@ inline void Matrix<Type,DcmpType>::sub_(
  * @return The resulting matrix after multiplication.
  * @throws std::invalid_argument If the number of columns in the first matrix is not equal to the number of rows in the second matrix.
  */
-template<typename Type,typename DcmpType>
-typename Matrix<Type,DcmpType>::template MatrixType<Type> Matrix<Type,DcmpType>::mul_(
+template<typename Type, typename DcmpType>
+typename Matrix<Type, DcmpType>::template MatrixType<Type> Matrix<Type, DcmpType>::mul_(
     const MatrixType<Type>& matrix1,
     const MatrixType<Type>& matrix2
 )
@@ -68,9 +68,17 @@ typename Matrix<Type,DcmpType>::template MatrixType<Type> Matrix<Type,DcmpType>:
         };
 
     for (size_t row = 0; row < rsltRows; row++) {
-        for (size_t col = 0; col < rsltCols; col++) {
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+		std::visit([&](auto&& policy) {
+			std::transform(policy, result[row].begin(), result[row].end(), result[row].begin(), [&, row](Type& col) {
+				const size_t colIdx = &col - &result[row][0];
+				return calcLambda(row, colIdx);
+				});
+			}, execPolicy);
+#else
+        for (size_t col = 0; col < rsltCols; col++)
             result[row][col] = calcLambda(row, col);
-        }
+#endif
     }
 
     return result;
@@ -119,7 +127,7 @@ inline void Matrix<Type,DcmpType>::hadamardDiv_(
  */
 template<typename Type,typename DcmpType>
 template<typename calcType>
-void Matrix<Type,DcmpType>::calcMatrix_(
+void Matrix<Type, DcmpType>::calcMatrix_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
 )
@@ -127,10 +135,19 @@ void Matrix<Type,DcmpType>::calcMatrix_(
     if (!this->areSameSize_(dest, source))
         throw std::invalid_argument("The number of rows and columns of data1 and data2 must be equal.");
 
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+    std::visit([&](auto&& policy) {
+        auto rowCalcLambda = [&](const size_t row) {
+            std::transform(policy, dest[row].begin(), dest[row].end(), source[row].begin(), dest[row].begin(), calcType());
+            };
+        std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+        }, execPolicy);
+#else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(source); ++col)
             dest[row][col] = calcType()(dest[row][col], source[row][col]);
     }
+#endif
 }
 
 /**
@@ -148,10 +165,19 @@ void Matrix<Type,DcmpType>::scalarCalc_(
     const Type& source
 )
 {
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+    std::visit([&](auto&& policy) {
+        auto rowCalcLambda = [&dest, &source](const size_t row) {
+            std::transform(policy, dest[row].begin(), dest[row].end(), dest[row].begin(), [&](const Type& d) {return calcType()(d, source); });
+            };
+        std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
+        }, execPolicy);
+#else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(dest); ++col)
             dest[row][col] = calcType()(dest[row][col], source);
     }
+#endif
 }
 
 /**
@@ -165,8 +191,7 @@ template<typename Type,typename DcmpType>
 Matrix<Type>& Matrix<Type,DcmpType>::add(
     const Matrix<Type>& mtrx
 )
-{
-    
+{ 
     this->add_(this->matrix_, mtrx.matrix_);
 
     return *this;
@@ -184,7 +209,6 @@ Matrix<Type>& Matrix<Type,DcmpType>::sub(
     const Matrix<Type>& mtrx
 )
 {
-    
     this->sub_(this->matrix_, mtrx.matrix_);
 
     return *this;
@@ -236,7 +260,7 @@ Matrix<Type>& Matrix<Type,DcmpType>::hadamardMul(
     const Matrix<Type>& source
 )
 {
-    this->hadamardMul_<Type>(this->matrix_, source);
+    this->hadamardMul_(this->matrix_, source);
 
     return *this;
 }
@@ -253,7 +277,7 @@ Matrix<Type>& Matrix<Type,DcmpType>::hadamardDiv(
     const Matrix<Type>& source
 )
 {
-    this->hadamardDiv_<Type>(this->matrix_, source);
+    this->hadamardDiv_(this->matrix_, source);
 
     return *this;
 }

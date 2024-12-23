@@ -1,5 +1,7 @@
 #include <cassert>
+#include <chrono>
 #include <iostream>
+#include <random>
 
 #include "matrixLib/matrix"
 
@@ -108,6 +110,51 @@ void testIdentityMatrix() {
     std::cout << "IdentityMatrix test passed." << std::endl;
 }
 
+
+static void calcSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
+{
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+    using namespace std::chrono;
+
+    std::default_random_engine       engine;      //エンジン
+    std::normal_distribution<double> dist(0, 1);  //平均0,標準偏差1
+
+    //n*n行列を作成
+    Matrix<double> buf0 = std::pair<size_t, size_t>{ n,n };
+    Matrix<double> buf1 = std::pair<size_t, size_t>{ n,n };
+
+    buf0.forEach([&engine, &dist](){return dist(engine); });
+    buf1.forEach([&engine, &dist](){return dist(engine); });
+
+    auto calc = [&buf0, &buf1, &engine, &dist, &Func]() {
+        auto buf_time0 = system_clock::now();
+
+        Func(buf0, buf1);
+
+        auto buf_time1 = system_clock::now();
+
+        return duration_cast<milliseconds>(buf_time1 - buf_time0).count();
+        };
+
+    std::cout << "CPU calculation speedup test:" << std::endl;
+
+    std::cout << "execution::seq" << std::endl;
+	buf0.execPolicy = std::execution::seq;
+    const double time1 = static_cast<double>(calc());
+    std::cout << time1 << "ms" << std::endl;
+
+    std::cout << "execution::par" << std::endl;
+    buf0.execPolicy = std::execution::par;
+    const double time2 = static_cast<double>(calc());
+    std::cout << time2 << "ms\t" << (time1 / time2) << "faster!!" << std::endl;
+
+    std::cout << "execution::par_unseq" << std::endl;
+    buf0.execPolicy = std::execution::par_unseq;
+    const double time3 = static_cast<double>(calc());
+    std::cout << time3 << "ms\t" << (time1 / time3) << "faster!!" << std::endl;
+#endif
+}
+
 int main() {
     testDefaultConstructor();
     testInitListConstructor();
@@ -122,6 +169,7 @@ int main() {
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
+    calcSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
    
     return 0;
 }
