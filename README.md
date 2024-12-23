@@ -3,7 +3,7 @@
 このプロジェクトは**シンプル**な実装かつ**軽量**な行列操作を可能とするライブラリの開発を目的としています。
 
 > [!NOTE]
-> コンパイラはMSVC2022 C++17とします。
+> コンパイラはMSVC2022 Cpp14 or 17とします。
 
 ## 貢献方法
 開発に協力してくださる方は以下の方法でお願いします。
@@ -27,8 +27,6 @@ class Matrix{
 Matrix<int> mint;
 Matrix<double> mdouble;
 ```
-
-また[templateの特殊化](https://en.wikipedia.org/wiki/Partial_template_specialization)を行い`float`や`double`のような実数型が指定された場合のみ使用できるメソッドが存在します。  
 
 ## 実装
  - データの格納
@@ -145,29 +143,161 @@ Type Matrix<Type>::testFuncPublic(const Matrix& a,const Matrix& b){
 ```
 
 ## 機能一覧
-|操作          |演算子 |関数          |引数                  |返り値型                                          |特殊化|
-|----          |----   |----          |----                  |----                                              |----  |
-|代入          |=,<<   |None          |`MatrixInitType<Type>`|`Matrix<Type>&`                                   |No    |
-|コピー        |=,<<   |None          |`const Matrix<Type>&` |`Matrix<Type>&`                                   |No    |
-|ムーブ代入    |=      |None          |`Matrix<Type>&&`      |`Matrix<Type>&`                                   |No    |
-|行参照        |[]     |rowRef        |`size_t`              |`std::vector<Type>`/`std::reference_wrapper<Type>`|No    |
-|列参照        |None   |colRef        |`size_t`              |`std::vector<Type>`/`std::reference_wrapper<Type>`|No    |
-|加算          |+ , += |add           |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|減算          |- , -= |sub           |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|乗算          |* , *= |mul           |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|スカラ倍      |* , *= |scalarMul     |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|アダマール積  |^ , ^= |hadamardMul   |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|アダマール除算|/ , /= |hadamardDiv   |`const Matrix<Type>&` |`Matrix<Type>`/`Matrix<Type>&`                    |No    |
-|LU分解        |None   |luDec         |`void`                |`std::vector<Matrix<Type>>`                       |Yes   |
-|行列式        |None   |det           |`void`                |`ty`                                              |No    |
-|逆行列        |None   |inverse       |`void`                |`Matrix<Type>`                                    |Yes   |
-|転置          |None   |transpose     |`void`                |`Matrix<Type>`                                    |No    |
-|行入れ替え    |None   |swapRow       |`size_t`,`size_t`     |`Matrix<Type>&`                                   |No    |
-|列入れ替え    |None   |swapCol       |`size_t`,`size_t`     |`Matrix<Type>&`                                   |No    |
-|サイズ変更    |None   |resize        |`size_t`,`size_t`     |`Matrix<Type>&`                                   |No    |
-|行サイズ取得  |None   |rows          |`void`                |`size_t`                                          |No    |
-|列サイズ取得  |None   |cols          |`void`                |`size_t`                                          |No    |
-|各要素への操作|None   |forEach       |`std::function<ty()>` |`Matrix<Type>&`                                   |No    |
-|各要素への操作|None   |forEach       |`std::function<ty(size_t,size_t,ty&)>`|`Matrix<Type>&`                   |No    |
+### コンストラクタ
+- `Matrix() = default;`  
+  デフォルトコンストラクタ
+
+- `Matrix(const MatrixInitType<>&);`  
+  初期化用のパラメータ付きコンストラクタ
+
+- `Matrix(const MatrixType<>&);`  
+  コピーコンストラクタ
+
+- `Matrix(const std::pair<size_t, size_t>&);`  
+  サイズ指定のパラメータ付きコンストラクタ
+
+- `Matrix(const Matrix<Type, DcmpType>&);`  
+  コピーコンストラクタ
+
+- `Matrix(Matrix<Type>&&) noexcept;`  
+  ムーブコンストラクタ
+
+### 演算子オーバーロード
+- `Matrix<Type>& operator=(const MatrixInitType<Type>&);`  
+  代入演算子
+
+- `Matrix<Type>& operator=(const Matrix<Type>&);`  
+  代入演算子
+
+- `Matrix<Type>& operator<<(const MatrixInitType<Type>&);`  
+  ストリーム挿入演算子
+
+- `Matrix<Type>& operator<<(const Matrix<Type>&);`  
+  ストリーム挿入演算子
+
+- `Matrix<Type>& operator=(Matrix<Type>&&);`  
+  ムーブ代入演算子
+
+- `Matrix<Type>& operator<<(Matrix<Type>&&);`  
+  ムーブストリーム挿入演算子
+
+- `RowType<Type>& operator[](const size_t&);`  
+  行アクセス
+
+- `Matrix<Type>& operator+=(const Matrix<Type>&);`  
+  加算
+
+- `Matrix<Type>& operator-=(const Matrix<Type>&);`  
+  減算
+
+- `Matrix<Type>& operator*=(const Matrix<Type>&);`  
+  乗算
+
+- `Matrix<Type>& operator^=(const Matrix<Type>&);`  
+  アダマール積
+
+- `Matrix<Type>& operator/=(const Matrix<Type>&);`  
+  アダマール除算
+
+- `Matrix<Type>& operator*=(const Type&);`  
+  スカラ乗算
+
+- `Matrix<Type> operator+(const Matrix<Type>&);`  
+  加算
+
+- `Matrix<Type> operator-(const Matrix<Type>&);`  
+  減算
+
+- `Matrix<Type> operator*(const Matrix<Type>&);`  
+  乗算
+
+- `Matrix<Type> operator^(const Matrix<Type>&);`  
+  アダマール積
+
+- `Matrix<Type> operator/(const Matrix<Type>&);`  
+  アダマール除算
+
+- `Matrix<Type> operator*(const Type&);`  
+  スカラ乗算
+
+- `template<typename Type_>`  
+  `explicit operator Matrix<Type_>();`  
+  型変換
+
+### メンバ関数
+- `Matrix<Type>& add(const Matrix<Type>&);`  
+  加算
+
+- `Matrix<Type>& sub(const Matrix<Type>&);`  
+  減算
+
+- `Matrix<Type>& mul(const Matrix<Type>&);`  
+  乗算
+
+- `Matrix<Type>& scalarMul(const Type&);`  
+  スカラ乗算
+
+- `Matrix<Type>& hadamardMul(const Matrix<Type>&);`  
+  アダマール積
+
+- `Matrix<Type>& hadamardDiv(const Matrix<Type>&);`  
+  アダマール除算
+
+- `template<typename calcType>`  
+  `Matrix<Type>& scalarCalc(const Matrix<Type>&);`  
+  スカラ計算
+
+- `std::vector<Matrix<DcmpType>> luDec(DcmpType epsilon = 1e-9);`  
+  LU分解
+
+- `Matrix<DcmpType> inverse(DcmpType epsilon = 1e-9);`  
+  逆行列
+
+- `DcmpType det(DcmpType epsilon = 1e-9);`  
+  行列式
+
+- `Matrix<Type> transpose();`  
+  転置
+
+- `Matrix<Type>& swapRow(const size_t&, const size_t&);`  
+  行の入れ替え
+
+- `Matrix<Type>& swapCol(const size_t&, const size_t&);`  
+  列の入れ替え
+
+- `Matrix<Type>& resize(const size_t&, const size_t&);`  
+  サイズ変更
+
+- `const size_t rows() const;`  
+  行数の取得
+
+- `const size_t cols() const;`  
+  列数の取得
+
+- `std::vector<std::reference_wrapper<Type>> rowRef(const size_t&);`  
+  行参照
+
+- `std::vector<std::reference_wrapper<Type>> colRef(const size_t&);`  
+  列参照
+
+- `Matrix<Type>& forEach(std::function<Type()>);`  
+  各要素への操作
+
+- `Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>);`  
+  各要素への操作（行、列、そのポイントの値）
+
+- `template<typename Type_ = Type>`  
+  `static Matrix<Type_> identity(const size_t&);`  
+  単位行列生成
+
+### ストリーム出力オーバーロード
+- `template<typename CharT, typename Traits, typename MatrixType = double>`  
+  `std::basic_ostream<CharT, Traits>& operator <<(std::basic_ostream<CharT, Traits>&, Matrix<MatrixType>);`  
+  行列の出力オーバーロード
+
+- `template<typename CharT, typename Traits, typename MatrixType = double>`  
+  `std::basic_ostream<CharT, Traits>& operator <<(std::basic_ostream<CharT, Traits>&, std::vector<std::vector<MatrixType>>);`  
+  2次元ベクトルの出力オーバーロード
+
 > [!NOTE]
 > 他の分解法は追加予定[`QR分解`,`コレスキー分解`,`固有値分解`,`SVD分解`,`ジョルダン標準形`](https://en.wikipedia.org/wiki/Matrix_decomposition)
