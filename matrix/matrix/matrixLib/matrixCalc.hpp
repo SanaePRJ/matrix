@@ -261,7 +261,7 @@ Matrix<Type>& Matrix<Type,DcmpType>::hadamardMul(
     const Matrix<Type>& source
 )
 {
-    this->hadamardMul_<Type>(this->matrix_, source);
+    this->hadamardMul_(this->matrix_, source);
 
     return *this;
 }
@@ -278,7 +278,7 @@ Matrix<Type>& Matrix<Type,DcmpType>::hadamardDiv(
     const Matrix<Type>& source
 )
 {
-    this->hadamardDiv_<Type>(this->matrix_, source);
+    this->hadamardDiv_(this->matrix_, source);
 
     return *this;
 }

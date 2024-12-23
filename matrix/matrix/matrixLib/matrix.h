@@ -6,10 +6,10 @@
 #ifndef MATRIXCPP_MATRIX_H
 #define MATRIXCPP_MATRIX_H
 
-#include <iomanip>
-#include <vector>
 #include <algorithm>
 #include <functional>
+#include <iomanip>
+#include <vector>
 
  /**
   * @brief Template definition for the Matrix class
@@ -37,42 +37,42 @@ public:
     /**
      * @brief Default constructor
      */
-    Matrix() {};
+    Matrix() = default;
 
     /**
      * @brief Constructor with parameters for initialization
      *
      * @param init Initializer list
      */
-    Matrix(const MatrixInitType<>& init);
+    Matrix(const MatrixInitType<>&);
 
     /**
      * @brief Copy constructor
      *
      * @param matrix Matrix to copy from
      */
-    Matrix(const MatrixType<>& matrix);
+    Matrix(const MatrixType<>&);
 
     /**
      * @brief Constructor with size specification
      *
      * @param size Size of the matrix
      */
-    Matrix(const std::pair<size_t, size_t>& size);
+    Matrix(const std::pair<size_t, size_t>&);
 
     /**
      * @brief Copy constructor
      *
      * @param other Matrix to copy from
      */
-    Matrix(const Matrix<Type, DcmpType>& other);
+    Matrix(const Matrix<Type, DcmpType>&);
 
     /**
      * @brief Move constructor
      *
      * @param other Matrix to move from
      */
-    Matrix(Matrix<Type>&& other) noexcept;
+    Matrix(Matrix<Type>&&) noexcept;
 
     /// Operator overloads
     Matrix<Type>& operator=(const MatrixInitType<Type>&); ///< Assignment operator
@@ -194,7 +194,7 @@ template<typename CharT, typename Traits, typename MatrixType = double>
 std::basic_ostream<CharT, Traits>& operator <<(
     std::basic_ostream<CharT, Traits>& ostrm,
     Matrix<MatrixType> mtrx
-    )
+)
 {
     for (size_t row = 0; row < mtrx.rows(); row++) {
         for (MatrixType col : mtrx[row])
@@ -210,7 +210,7 @@ template<typename CharT, typename Traits, typename MatrixType = double>
 std::basic_ostream<CharT, Traits>& operator <<(
     std::basic_ostream<CharT, Traits>& ostrm,
     std::vector<std::vector<MatrixType>> mtrx
-    )
+)
 {
     for (std::vector<MatrixType>& row : mtrx) {
         for (MatrixType& col : row)
