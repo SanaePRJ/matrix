@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="header">
+      <UniqueIdentifier>{613d8fa6-e1bb-4e9d-aedd-3995cd24feca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="matrixLib\matrix.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixLib\matrixCalc.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixLib\matrixCtor.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixLib\matrixDec.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixLib\matrixUtils.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="matrixLib\matrixOps.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

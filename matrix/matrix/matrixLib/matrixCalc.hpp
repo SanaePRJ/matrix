@@ -117,16 +117,64 @@ inline void Matrix<Type,DcmpType>::hadamardDiv_(
 }
 
 /**
+* @brief Performs an element-wise calculation on two matrices using a specified operation and stores the result in the destination matrix.
+* 
+* @tparam Type The data type of the matrix elements.
+* @tparam CalcType The type of the operation to perform (e.g., addition, subtraction).
+* @param dest The destination matrix where the result will be stored.
+*/
+template<typename Type, typename DcmpType>
+template<typename CalcType>
+inline void Matrix<Type, DcmpType>::calcMatrixGPU_(
+    MatrixType<Type>& dest,
+    const MatrixType<Type>& source
+)
+{
+	std::cout << "UseGPU" << std::endl;
+#if __has_include("sycl.hpp")
+	try {
+        FlatMatrixType<Type> result = this->flatten_(dest);
+        FlatMatrixType<Type> sourceFlat = this->flatten_(source);
+        CalcType calcType;
+
+        // Create buffers for the flattened matrices and the operation type
+        {
+            sycl::buffer<Type> buf_result(result.data(), sycl::range<1>(result.size()));
+            sycl::buffer<Type> buf_source(sourceFlat.data(), sycl::range<1>(sourceFlat.size()));
+            sycl::buffer<CalcType> buf_calcType(&calcType, sycl::range<1>(1));
+
+            queue.submit([&](sycl::handler& cgh) {
+                auto acc_result = buf_result.template get_access<sycl::access::mode::read_write>(cgh);
+                auto acc_source = buf_source.template get_access<sycl::access::mode::read>(cgh);
+                auto acc_calcType = buf_calcType.template get_access<sycl::access::mode::read>(cgh);
+
+                cgh.parallel_for<class matrix_calc>(sycl::range<1>(result.size()), [=](sycl::id<1> idx) {
+                    acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[idx]);
+                    });
+                }).wait_and_throw();
+        }
+
+        dest = this->unflatten_(result, this->rows_(dest), this->cols_(dest));
+    }
+    catch (const sycl::exception& e) {
+        throw std::runtime_error(e.what());
+    }
+#else
+	throw std::runtime_error("GPU is not supported on this platform.");
+#endif
+}
+
+/**
  * @brief Performs an element-wise calculation on two matrices using a specified operation and stores the result in the destination matrix.
  *
  * @tparam Type The data type of the matrix elements.
- * @tparam calcType The type of the operation to perform (e.g., addition, subtraction).
+ * @tparam CalcType The type of the operation to perform (e.g., addition, subtraction).
  * @param dest The destination matrix where the result will be stored.
  * @param source The source matrix for the operation.
  * @throws std::invalid_argument If the matrices are not of the same size.
  */
 template<typename Type,typename DcmpType>
-template<typename calcType>
+template<typename CalcType>
 void Matrix<Type, DcmpType>::calcMatrix_(
     MatrixType<Type>& dest,
     const MatrixType<Type>& source
@@ -135,17 +183,22 @@ void Matrix<Type, DcmpType>::calcMatrix_(
     if (!this->areSameSize_(dest, source))
         throw std::invalid_argument("The number of rows and columns of data1 and data2 must be equal.");
 
+    if (useGPU) {
+		this->calcMatrixGPU_<CalcType>(dest, source);
+        return;
+    }
+
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     std::visit([&](auto&& policy) {
         auto rowCalcLambda = [&](const size_t row) {
-            std::transform(policy, dest[row].begin(), dest[row].end(), source[row].begin(), dest[row].begin(), calcType());
+            std::transform(policy, dest[row].begin(), dest[row].end(), source[row].begin(), dest[row].begin(), CalcType());
             };
         std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
         }, execPolicy);
 #else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(source); ++col)
-            dest[row][col] = calcType()(dest[row][col], source[row][col]);
+            dest[row][col] = CalcType()(dest[row][col], source[row][col]);
     }
 #endif
 }
@@ -154,28 +207,79 @@ void Matrix<Type, DcmpType>::calcMatrix_(
  * @brief Performs an element-wise calculation on a matrix with a scalar value using a specified operation.
  *
  * @tparam Type The data type of the matrix elements.
- * @tparam calcType The type of the operation to perform (e.g., multiplication, division).
+ * @tparam CalcType The type of the operation to perform (e.g., multiplication, division).
+ * @param dest The destination matrix where the result will be stored.
+ * @param source The scalar value to use in the operation.
+ */
+template<typename Type, typename DcmpType>
+template<typename CalcType>
+inline void Matrix<Type, DcmpType>::scalarCalcGPU_(
+    MatrixType<Type>& dest,
+    const Type& source
+)
+{
+    std::cout << "scalarUseGPU" << std::endl;
+#if __has_include("sycl.hpp")
+    try {
+        FlatMatrixType<Type> result = this->flatten_(dest);
+        CalcType calcType;
+
+        // Create buffers for the flattened matrix and the operation type
+        {
+            sycl::buffer<Type>     buf_result(result.data(), sycl::range<1>(result.size()));
+            sycl::buffer<Type>     buf_source(&source, sycl::range<1>(1));
+            sycl::buffer<CalcType> buf_calcType(&calcType, sycl::range<1>(1));
+            
+            queue.submit([&](sycl::handler& cgh) {
+                auto acc_result = buf_result.template get_access<sycl::access::mode::read_write>(cgh);
+                auto acc_calcType = buf_calcType.template get_access<sycl::access::mode::read>(cgh);
+                auto acc_source = buf_source.template get_access<sycl::access::mode::read>(cgh);
+
+                cgh.parallel_for<class matrix_scalar_calc>(sycl::range<1>(result.size()), [=](sycl::id<1> idx) {
+                    acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[0]);
+                    });
+                }).wait_and_throw();
+        }
+        dest = this->unflatten_(result, this->rows_(dest), this->cols_(dest));
+    }
+    catch (const sycl::exception& e) {
+        throw std::runtime_error(e.what());
+    }
+#else
+    throw std::runtime_error("GPU is not supported on this platform.");
+#endif
+}
+
+/**
+ * @brief Performs an element-wise calculation on a matrix with a scalar value using a specified operation.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @tparam CalcType The type of the operation to perform (e.g., multiplication, division).
  * @param dest The destination matrix where the result will be stored.
  * @param source The scalar value to use in the operation.
  */
 template<typename Type,typename DcmpType>
-template<typename calcType>
+template<typename CalcType>
 void Matrix<Type,DcmpType>::scalarCalc_(
     MatrixType<Type>& dest,
     const Type& source
 )
 {
+	if (useGPU) {
+		this->scalarCalcGPU_<CalcType>(dest, source);
+		return;
+	}
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     std::visit([&](auto&& policy) {
-        auto rowCalcLambda = [&dest, &source](const size_t row) {
-            std::transform(policy, dest[row].begin(), dest[row].end(), dest[row].begin(), [&](const Type& d) {return calcType()(d, source); });
+        auto rowCalcLambda = [&](const size_t row) {
+            std::transform(policy, dest[row].begin(), dest[row].end(), dest[row].begin(), [&](const Type& d) {return CalcType()(d, source); });
             };
         std::for_each(policy, dest.begin(), dest.end(), [&rowCalcLambda, row = 0](RowType<Type>&) mutable { rowCalcLambda(row); ++row; });
         }, execPolicy);
 #else
     for (size_t row = 0; row < this->rows_(dest); ++row) {
         for (size_t col = 0; col < this->cols_(dest); ++col)
-            dest[row][col] = calcType()(dest[row][col], source);
+            dest[row][col] = CalcType()(dest[row][col], source);
     }
 #endif
 }
@@ -243,7 +347,7 @@ Matrix<Type>& Matrix<Type,DcmpType>::scalarMul(
     const Type& source
 )
 {
-    this->scalarCalc_<Type, std::multiplies<Type>>(this->matrix_, source);
+    this->scalarCalc_<std::multiplies<Type>>(this->matrix_, source);
 
     return *this;
 }
@@ -286,17 +390,17 @@ Matrix<Type>& Matrix<Type,DcmpType>::hadamardDiv(
  * @brief Performs a scalar operation on the current matrix with another matrix.
  *
  * @tparam Type The data type of the matrix elements.
- * @tparam calcType The type of the operation to perform.
+ * @tparam CalcType The type of the operation to perform.
  * @param source The matrix to use in the operation.
  * @return A reference to the current matrix after the operation.
  */
 template<typename Type,typename DcmpType>
-template<typename calcType>
+template<typename CalcType>
 Matrix<Type>& Matrix<Type,DcmpType>::scalarCalc(
-    const Matrix<Type>& source
+    const Type& source
 )
 {
-    this->scalarCalc_<Type, calcType>(this->matrix_, source);
+    this->scalarCalc_<CalcType>(this->matrix_, source);
 
     return *this;
 }
