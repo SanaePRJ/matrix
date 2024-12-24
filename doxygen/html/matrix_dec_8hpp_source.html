@@ -99,7 +99,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>)</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// キャッシュの有効性を確認</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (mtrx == this-&gt;matrix_ &amp;&amp; this-&gt;matrixHash(this-&gt;matrix_) == this-&gt;dcmpHash_)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (mtrx == this-&gt;matrix_ &amp;&amp; this-&gt;matrixHash_(this-&gt;matrix_) == this-&gt;dcmpHash_)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">return</span> this-&gt;dcmp_;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// 正方行列であることを確認</span></div>
@@ -154,7 +154,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// キャッシュの保存</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (mtrx == this-&gt;matrix_) {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        this-&gt;dcmpHash_ = this-&gt;matrixHash(this-&gt;matrix_);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        this-&gt;dcmpHash_ = this-&gt;matrixHash_(this-&gt;matrix_);</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        this-&gt;dcmp_ = result;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
@@ -279,9 +279,9 @@ $(function(){ initResizable(false); });
 </div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Template definition for the Matrix class.</div><div class="ttdef"><b>Definition</b> matrix.h:21</div></div>
+<div class="ttc" id="aclass_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">Template definition for the Matrix class.</div><div class="ttdef"><b>Definition</b> matrix.h:30</div></div>
 <div class="ttc" id="aclass_matrix_html_a0fb1ba800985204475cba8787c34cd1d"><div class="ttname"><a href="class_matrix.html#a0fb1ba800985204475cba8787c34cd1d">Matrix::det</a></div><div class="ttdeci">DcmpType det(DcmpType epsilon=1e-9)</div><div class="ttdoc">Determinant.</div><div class="ttdef"><b>Definition</b> matrixDec.hpp:224</div></div>
-<div class="ttc" id="aclass_matrix_html_a8fc4bb8f74074a6a081f4884f7c6ad86"><div class="ttname"><a href="class_matrix.html#a8fc4bb8f74074a6a081f4884f7c6ad86">Matrix::MatrixType</a></div><div class="ttdeci">std::vector&lt; RowType&lt; matrixType &gt; &gt; MatrixType</div><div class="ttdoc">Matrix type.</div><div class="ttdef"><b>Definition</b> matrix.h:27</div></div>
+<div class="ttc" id="aclass_matrix_html_a8fc4bb8f74074a6a081f4884f7c6ad86"><div class="ttname"><a href="class_matrix.html#a8fc4bb8f74074a6a081f4884f7c6ad86">Matrix::MatrixType</a></div><div class="ttdeci">std::vector&lt; RowType&lt; matrixType &gt; &gt; MatrixType</div><div class="ttdoc">Matrix type.</div><div class="ttdef"><b>Definition</b> matrix.h:36</div></div>
 <div class="ttc" id="aclass_matrix_html_acdef22f1a972fd304eb2d4b2a5261990"><div class="ttname"><a href="class_matrix.html#acdef22f1a972fd304eb2d4b2a5261990">Matrix::inverse</a></div><div class="ttdeci">Matrix&lt; DcmpType &gt; inverse(DcmpType epsilon=1e-9)</div><div class="ttdoc">Inverse matrix.</div><div class="ttdef"><b>Definition</b> matrixDec.hpp:208</div></div>
 <div class="ttc" id="aclass_matrix_html_af84b6d4591325b9010384152e42db0c9"><div class="ttname"><a href="class_matrix.html#af84b6d4591325b9010384152e42db0c9">Matrix::luDec</a></div><div class="ttdeci">std::vector&lt; Matrix&lt; DcmpType &gt; &gt; luDec(DcmpType epsilon=1e-9)</div><div class="ttdoc">LU decomposition.</div><div class="ttdef"><b>Definition</b> matrixDec.hpp:186</div></div>
 <div class="ttc" id="amatrix_8h_html"><div class="ttname"><a href="matrix_8h.html">matrix.h</a></div><div class="ttdoc">Defines the Matrix class, including member function prototypes and other member definitions.</div></div>

@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrixDPC++.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="matrixLib\matrix.h" />
     <ClInclude Include="matrixLib\matrixCalc.hpp" />
     <ClInclude Include="matrixLib\matrixCtor.hpp" />
     <ClInclude Include="matrixLib\matrixDec.hpp" />
     <ClInclude Include="matrixLib\matrixOps.hpp" />
     <ClInclude Include="matrixLib\matrixUtils.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="matrix.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{dcf6177e-cf27-47e2-b9f9-5bbb96a74b95}</ProjectGuid>

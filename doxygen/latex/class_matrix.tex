@@ -22,22 +22,25 @@ Template definition for the \doxylink{class_matrix}{Matrix} class.
 \begin{DoxyCompactList}\small\item\em \doxylink{class_matrix}{Matrix} type. \end{DoxyCompactList}\item 
 \Hypertarget{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}\label{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6} 
 {\footnotesize template$<$typename matrix\+Init\+Type  = Type$>$ }\\using {\bfseries Matrix\+Init\+Type} = std\+::initializer\+\_\+list$<$\mbox{\hyperlink{class_matrix_a592db8985a8bc4c6774249eef53b6eb5}{Row\+Init\+Type}}$<$matrix\+Init\+Type$>$$>$
-\begin{DoxyCompactList}\small\item\em \doxylink{class_matrix}{Matrix} type (initialization) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_matrix}{Matrix} type (initialization) \end{DoxyCompactList}\item 
+\Hypertarget{class_matrix_a1c14242f40822fbd385e717bb9b03c58}\label{class_matrix_a1c14242f40822fbd385e717bb9b03c58} 
+{\footnotesize template$<$typename flat\+Matrix\+Type  = Type$>$ }\\using {\bfseries Flat\+Matrix\+Type} = std\+::vector$<$flat\+Matrix\+Type$>$
+\begin{DoxyCompactList}\small\item\em Flat matrix type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_matrix_ac3eff1b832efd85e192a325165093528}\label{class_matrix_ac3eff1b832efd85e192a325165093528} 
-{\bfseries Matrix} ()
+\Hypertarget{class_matrix_ae121c1129aeda263557ba717578ff5c3}\label{class_matrix_ae121c1129aeda263557ba717578ff5c3} 
+{\bfseries Matrix} ()=default
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_matrix_a0782748e121418a9f5a97da278870222}{Matrix}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$$>$ \&init)
+\mbox{\hyperlink{class_matrix_a66f028630a259b0f1fd5e6a2b981e646}{Matrix}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$$>$ \&)
 \begin{DoxyCompactList}\small\item\em Constructor with parameters for initialization. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_matrix_a705e879db52bfe007a58f40d38212ad4}{Matrix}} (const \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix\+Type}}$<$$>$ \&matrix)
+\mbox{\hyperlink{class_matrix_a12b6a98487d0e0da6378889aff4aa283}{Matrix}} (const \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix\+Type}}$<$$>$ \&)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_matrix_ac62823ceebbeefccd7167bc991e6e0ff}{Matrix}} (const std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \&size)
+\mbox{\hyperlink{class_matrix_a1e328062067d41422a3046e1ddeb3f23}{Matrix}} (const std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \&)
 \begin{DoxyCompactList}\small\item\em Constructor with size specification. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_matrix_ae7c8ee2d692835142e98b73b03e37a12}{Matrix}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$ \&other)
+\mbox{\hyperlink{class_matrix_a96f86a90804b79d4a4265ddefaf5338b}{Matrix}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$ \&)
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_matrix_a9bf0f336b35af484d032bd0e9cfe95ec}{Matrix}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&other) noexcept
+\mbox{\hyperlink{class_matrix_afaf452f1b876da41422f712f7bbe6a73}{Matrix}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&) noexcept
 \begin{DoxyCompactList}\small\item\em Move constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_af51a94cce88d38e56cabe195c8182546}{operator=}} (const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$ Type $>$ \&)
 \begin{DoxyCompactList}\small\item\em Operator overloads. \end{DoxyCompactList}\item 
@@ -91,7 +94,7 @@ Template definition for the \doxylink{class_matrix}{Matrix} class.
 \begin{DoxyCompactList}\small\item\em Hadamard product. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a2b093abef2bdb077d263e8567738f5b0}{hadamard\+Div}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
 \begin{DoxyCompactList}\small\item\em Hadamard division. \end{DoxyCompactList}\item 
-{\footnotesize template$<$typename calc\+Type $>$ }\\\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a612baf65a8d94a00683c8e4bedf53a60}{scalar\+Calc}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&)
+{\footnotesize template$<$typename Calc\+Type $>$ }\\\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix_a404b00bb5231dc3f5ecc96a8c3dd87e6}{scalar\+Calc}} (const Type \&)
 \begin{DoxyCompactList}\small\item\em Scalar calculation. \end{DoxyCompactList}\item 
 std\+::vector$<$ \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Dcmp\+Type $>$ $>$ \mbox{\hyperlink{class_matrix_af84b6d4591325b9010384152e42db0c9}{lu\+Dec}} (Dcmp\+Type epsilon=1e-\/9)
 \begin{DoxyCompactList}\small\item\em LU decomposition. \end{DoxyCompactList}\item 
@@ -124,6 +127,12 @@ std\+::vector$<$ std\+::reference\+\_\+wrapper$<$ Type $>$ $>$ \mbox{\hyperlink{
 \item 
 {\footnotesize template$<$typename Type\+\_\+  = Type$>$ }\\static \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type\+\_\+ $>$ \mbox{\hyperlink{class_matrix_a1c18c4afc325808a00d4e16da82d91f0}{identity}} (const size\+\_\+t \&)
 \begin{DoxyCompactList}\small\item\em Generate identity matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_matrix_a080c4c9d5b3f618b05bc2383dbcf9a07}\label{class_matrix_a080c4c9d5b3f618b05bc2383dbcf9a07} 
+const bool {\bfseries use\+GPU} = false
+\begin{DoxyCompactList}\small\item\em Cna\textquotesingle{}t use GPU. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -156,12 +165,12 @@ Type alias declaration.
 Row type 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_matrix_a0782748e121418a9f5a97da278870222}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
+\Hypertarget{class_matrix_a66f028630a259b0f1fd5e6a2b981e646}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
 \index{Matrix@{Matrix}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
-{\footnotesize\ttfamily \label{class_matrix_a0782748e121418a9f5a97da278870222} 
+{\footnotesize\ttfamily \label{class_matrix_a66f028630a259b0f1fd5e6a2b981e646} 
 template$<$typename Type , typename Dcmp\+Type  = double$>$ \\
-\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$$>$ \&}]{init}{}\end{DoxyParamCaption})}
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix_ad7551bfbed0b1f1f6ffd5a6ec625cad6}{Matrix\+Init\+Type}}$<$$>$ \&}]{}{}\end{DoxyParamCaption})}
 
 
 
@@ -172,10 +181,10 @@ Constructor with parameters for initialization.
 {\em init} & Initializer list \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_matrix_a705e879db52bfe007a58f40d38212ad4}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
+\Hypertarget{class_matrix_a12b6a98487d0e0da6378889aff4aa283}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
 \index{Matrix@{Matrix}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
-{\footnotesize\ttfamily \label{class_matrix_a705e879db52bfe007a58f40d38212ad4} 
+{\footnotesize\ttfamily \label{class_matrix_a12b6a98487d0e0da6378889aff4aa283} 
 template$<$typename Type , typename Dcmp\+Type $>$ \\
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix\+Type}}$<$$>$ \&}]{init}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
@@ -200,10 +209,10 @@ Constructs a matrix using another matrix-\/like structure.
 {\em init} & The input matrix structure. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_matrix_ac62823ceebbeefccd7167bc991e6e0ff}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
+\Hypertarget{class_matrix_a1e328062067d41422a3046e1ddeb3f23}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
 \index{Matrix@{Matrix}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
-{\footnotesize\ttfamily \label{class_matrix_ac62823ceebbeefccd7167bc991e6e0ff} 
+{\footnotesize\ttfamily \label{class_matrix_a1e328062067d41422a3046e1ddeb3f23} 
 template$<$typename Type , typename Dcmp\+Type $>$ \\
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ size\+\_\+t, size\+\_\+t $>$ \&}]{size}{}\end{DoxyParamCaption})}
 
@@ -228,10 +237,10 @@ Constructs a zero matrix of the specified size.
 {\em size} & A pair specifying the number of rows and columns. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_matrix_ae7c8ee2d692835142e98b73b03e37a12}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
+\Hypertarget{class_matrix_a96f86a90804b79d4a4265ddefaf5338b}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
 \index{Matrix@{Matrix}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
-{\footnotesize\ttfamily \label{class_matrix_ae7c8ee2d692835142e98b73b03e37a12} 
+{\footnotesize\ttfamily \label{class_matrix_a96f86a90804b79d4a4265ddefaf5338b} 
 template$<$typename Type , typename Dcmp\+Type $>$ \\
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$ \&}]{other}{}\end{DoxyParamCaption})}
 
@@ -258,10 +267,10 @@ Creates a new matrix as a copy of another matrix.
 {\em other} & The matrix to copy. \\
 \hline
 \end{DoxyParams}
-\Hypertarget{class_matrix_a9bf0f336b35af484d032bd0e9cfe95ec}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
+\Hypertarget{class_matrix_afaf452f1b876da41422f712f7bbe6a73}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!Matrix@{Matrix}}
 \index{Matrix@{Matrix}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
-{\footnotesize\ttfamily \label{class_matrix_a9bf0f336b35af484d032bd0e9cfe95ec} 
+{\footnotesize\ttfamily \label{class_matrix_afaf452f1b876da41422f712f7bbe6a73} 
 template$<$typename Type , typename Dcmp\+Type $>$ \\
 \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\mbox{\hyperlink{class_matrix}{\+::\+Matrix}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
 
@@ -1248,13 +1257,13 @@ Retrieves the number of rows in the current matrix.
 \begin{DoxyReturn}{Returns}
 The number of rows. 
 \end{DoxyReturn}
-\Hypertarget{class_matrix_a612baf65a8d94a00683c8e4bedf53a60}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!scalarCalc@{scalarCalc}}
+\Hypertarget{class_matrix_a404b00bb5231dc3f5ecc96a8c3dd87e6}\index{Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}!scalarCalc@{scalarCalc}}
 \index{scalarCalc@{scalarCalc}!Matrix$<$ Type, DcmpType $>$@{Matrix$<$ Type, DcmpType $>$}}
 \doxysubsubsection{\texorpdfstring{scalarCalc()}{scalarCalc()}}
-{\footnotesize\ttfamily \label{class_matrix_a612baf65a8d94a00683c8e4bedf53a60} 
+{\footnotesize\ttfamily \label{class_matrix_a404b00bb5231dc3f5ecc96a8c3dd87e6} 
 template$<$typename Type , typename Dcmp\+Type $>$ \\
-template$<$typename calc\+Type $>$ \\
-\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\+::scalar\+Calc (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \&}]{source}{}\end{DoxyParamCaption})}
+template$<$typename Calc\+Type $>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type $>$ \& \mbox{\hyperlink{class_matrix}{Matrix}}$<$ Type, Dcmp\+Type $>$\+::scalar\+Calc (\begin{DoxyParamCaption}\item[{const Type \&}]{source}{}\end{DoxyParamCaption})}
 
 
 
@@ -1266,7 +1275,7 @@ Performs a scalar operation on the current matrix with another matrix.
 \begin{DoxyTemplParams}{Template Parameters}
 {\em Type} & The data type of the matrix elements. \\
 \hline
-{\em calc\+Type} & The type of the operation to perform. \\
+{\em Calc\+Type} & The type of the operation to perform. \\
 \hline
 \end{DoxyTemplParams}
 

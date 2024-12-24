@@ -64,6 +64,14 @@ void testAddOperator() {
     std::cout << "AddOperator test passed." << std::endl;
 }
 
+void testScalarOperator() {
+    Matrix<int> matrix({ {1, 2}, {3, 4} });
+    Matrix<int> result = matrix * 3;
+    assert(result[0][0] == 3);
+    assert(result[1][1] == 12);
+    std::cout << "ScalarOperator test passed." << std::endl;
+}
+
 void testTranspose() {
     Matrix<int> matrix({ {1, 2, 3}, {4, 5, 6} });
     Matrix<int> transposed = matrix.transpose();
@@ -111,17 +119,21 @@ void testIdentityMatrix() {
 }
 
 
-static void calcSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&, Matrix<double>&)> Func)
+static void calcSpeedTest(size_t n, std::function<Matrix<float>(Matrix<float>&, Matrix<float>&)> Func)
 {
 #if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     using namespace std::chrono;
 
     std::default_random_engine       engine;      //エンジン
-    std::normal_distribution<double> dist(0, 1);  //平均0,標準偏差1
+    std::normal_distribution<float>  dist(0, 1);  //平均0,標準偏差1
 
     //n*n行列を作成
-    Matrix<double> buf0 = std::pair<size_t, size_t>{ n,n };
-    Matrix<double> buf1 = std::pair<size_t, size_t>{ n,n };
+    Matrix<float> buf0 = std::pair<size_t, size_t>{ n,n };
+    Matrix<float> buf1 = std::pair<size_t, size_t>{ n,n };
+
+#if __has_include("sycl.hpp")
+	buf0.useGPU = false;
+#endif
 
     buf0.forEach([&engine, &dist](){return dist(engine); });
     buf1.forEach([&engine, &dist](){return dist(engine); });
@@ -152,6 +164,13 @@ static void calcSpeedTest(size_t n, std::function<Matrix<double>(Matrix<double>&
     buf0.execPolicy = std::execution::par_unseq;
     const double time3 = static_cast<double>(calc());
     std::cout << time3 << "ms\t" << (time1 / time3) << "faster!!" << std::endl;
+
+#if __has_include("sycl.hpp")
+	std::cout << "execution::sycl" << std::endl;
+	buf0.useGPU = true;
+	const double time4 = static_cast<double>(calc());
+	std::cout << time4 << "ms\t" << (time1 / time4) << "faster!!" << std::endl;
+#endif
 #endif
 }
 
@@ -163,13 +182,14 @@ int main() {
     testMoveConstructor();
     testAssignmentOperator();
     testAddOperator();
+	testScalarOperator();
     testTranspose();
     testDeterminant();
     testInverse();
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
-    calcSpeedTest(5000, [](Matrix<double>& arg1, Matrix<double>& arg2) {return arg1 * arg2; });
+    calcSpeedTest(1000, [](Matrix<float>& arg1, Matrix<float>& arg2) {return arg1 * arg2; });
    
     return 0;
 }

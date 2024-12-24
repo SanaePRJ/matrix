@@ -88,6 +88,7 @@ $(function(){ initResizable(false); });
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_matrix-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Matrix&lt; Type, DcmpType &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -119,28 +120,33 @@ template&lt;typename matrixInitType  = Type&gt; </td></tr>
 <tr class="memitem:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixInitType</b> = std::initializer_list&lt;<a class="el" href="#a592db8985a8bc4c6774249eef53b6eb5">RowInitType</a>&lt;matrixInitType&gt;&gt;</td></tr>
 <tr class="memdesc:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix.html" title="Template definition for the Matrix class.">Matrix</a> type (initialization) <br /></td></tr>
 <tr class="separator:ad7551bfbed0b1f1f6ffd5a6ec625cad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c14242f40822fbd385e717bb9b03c58" id="r_a1c14242f40822fbd385e717bb9b03c58"><td class="memTemplParams" colspan="2"><a id="a1c14242f40822fbd385e717bb9b03c58" name="a1c14242f40822fbd385e717bb9b03c58"></a>
+template&lt;typename flatMatrixType  = Type&gt; </td></tr>
+<tr class="memitem:a1c14242f40822fbd385e717bb9b03c58"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>FlatMatrixType</b> = std::vector&lt;flatMatrixType&gt;</td></tr>
+<tr class="memdesc:a1c14242f40822fbd385e717bb9b03c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flat matrix type. <br /></td></tr>
+<tr class="separator:a1c14242f40822fbd385e717bb9b03c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac3eff1b832efd85e192a325165093528" id="r_ac3eff1b832efd85e192a325165093528"><td class="memItemLeft" align="right" valign="top"><a id="ac3eff1b832efd85e192a325165093528" name="ac3eff1b832efd85e192a325165093528"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Matrix</b> ()</td></tr>
-<tr class="memdesc:ac3eff1b832efd85e192a325165093528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
-<tr class="separator:ac3eff1b832efd85e192a325165093528"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0782748e121418a9f5a97da278870222" id="r_a0782748e121418a9f5a97da278870222"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0782748e121418a9f5a97da278870222">Matrix</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;init)</td></tr>
-<tr class="memdesc:a0782748e121418a9f5a97da278870222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for initialization.  <br /></td></tr>
-<tr class="separator:a0782748e121418a9f5a97da278870222"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a705e879db52bfe007a58f40d38212ad4" id="r_a705e879db52bfe007a58f40d38212ad4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705e879db52bfe007a58f40d38212ad4">Matrix</a> (const <a class="el" href="#a8fc4bb8f74074a6a081f4884f7c6ad86">MatrixType</a>&lt;&gt; &amp;matrix)</td></tr>
-<tr class="memdesc:a705e879db52bfe007a58f40d38212ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
-<tr class="separator:a705e879db52bfe007a58f40d38212ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac62823ceebbeefccd7167bc991e6e0ff" id="r_ac62823ceebbeefccd7167bc991e6e0ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62823ceebbeefccd7167bc991e6e0ff">Matrix</a> (const std::pair&lt; size_t, size_t &gt; &amp;size)</td></tr>
-<tr class="memdesc:ac62823ceebbeefccd7167bc991e6e0ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with size specification.  <br /></td></tr>
-<tr class="separator:ac62823ceebbeefccd7167bc991e6e0ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c8ee2d692835142e98b73b03e37a12" id="r_ae7c8ee2d692835142e98b73b03e37a12"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c8ee2d692835142e98b73b03e37a12">Matrix</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt; &amp;other)</td></tr>
-<tr class="memdesc:ae7c8ee2d692835142e98b73b03e37a12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
-<tr class="separator:ae7c8ee2d692835142e98b73b03e37a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bf0f336b35af484d032bd0e9cfe95ec" id="r_a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bf0f336b35af484d032bd0e9cfe95ec">Matrix</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;other) noexcept</td></tr>
-<tr class="memdesc:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <br /></td></tr>
-<tr class="separator:a9bf0f336b35af484d032bd0e9cfe95ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae121c1129aeda263557ba717578ff5c3" id="r_ae121c1129aeda263557ba717578ff5c3"><td class="memItemLeft" align="right" valign="top"><a id="ae121c1129aeda263557ba717578ff5c3" name="ae121c1129aeda263557ba717578ff5c3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Matrix</b> ()=default</td></tr>
+<tr class="memdesc:ae121c1129aeda263557ba717578ff5c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. <br /></td></tr>
+<tr class="separator:ae121c1129aeda263557ba717578ff5c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66f028630a259b0f1fd5e6a2b981e646" id="r_a66f028630a259b0f1fd5e6a2b981e646"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66f028630a259b0f1fd5e6a2b981e646">Matrix</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;)</td></tr>
+<tr class="memdesc:a66f028630a259b0f1fd5e6a2b981e646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters for initialization.  <br /></td></tr>
+<tr class="separator:a66f028630a259b0f1fd5e6a2b981e646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b6a98487d0e0da6378889aff4aa283" id="r_a12b6a98487d0e0da6378889aff4aa283"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a12b6a98487d0e0da6378889aff4aa283">Matrix</a> (const <a class="el" href="#a8fc4bb8f74074a6a081f4884f7c6ad86">MatrixType</a>&lt;&gt; &amp;)</td></tr>
+<tr class="memdesc:a12b6a98487d0e0da6378889aff4aa283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
+<tr class="separator:a12b6a98487d0e0da6378889aff4aa283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e328062067d41422a3046e1ddeb3f23" id="r_a1e328062067d41422a3046e1ddeb3f23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e328062067d41422a3046e1ddeb3f23">Matrix</a> (const std::pair&lt; size_t, size_t &gt; &amp;)</td></tr>
+<tr class="memdesc:a1e328062067d41422a3046e1ddeb3f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with size specification.  <br /></td></tr>
+<tr class="separator:a1e328062067d41422a3046e1ddeb3f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96f86a90804b79d4a4265ddefaf5338b" id="r_a96f86a90804b79d4a4265ddefaf5338b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a96f86a90804b79d4a4265ddefaf5338b">Matrix</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt; &amp;)</td></tr>
+<tr class="memdesc:a96f86a90804b79d4a4265ddefaf5338b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
+<tr class="separator:a96f86a90804b79d4a4265ddefaf5338b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf452f1b876da41422f712f7bbe6a73" id="r_afaf452f1b876da41422f712f7bbe6a73"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf452f1b876da41422f712f7bbe6a73">Matrix</a> (<a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&amp;) noexcept</td></tr>
+<tr class="memdesc:afaf452f1b876da41422f712f7bbe6a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <br /></td></tr>
+<tr class="separator:afaf452f1b876da41422f712f7bbe6a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af51a94cce88d38e56cabe195c8182546" id="r_af51a94cce88d38e56cabe195c8182546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af51a94cce88d38e56cabe195c8182546">operator=</a> (const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt; Type &gt; &amp;)</td></tr>
 <tr class="memdesc:af51a94cce88d38e56cabe195c8182546"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator overloads.  <br /></td></tr>
 <tr class="separator:af51a94cce88d38e56cabe195c8182546"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,10 +226,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b093abef2bdb077d263e8567738f5b0" id="r_a2b093abef2bdb077d263e8567738f5b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b093abef2bdb077d263e8567738f5b0">hadamardDiv</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
 <tr class="memdesc:a2b093abef2bdb077d263e8567738f5b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hadamard division.  <br /></td></tr>
 <tr class="separator:a2b093abef2bdb077d263e8567738f5b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60" id="r_a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplParams" colspan="2">template&lt;typename calcType &gt; </td></tr>
-<tr class="memitem:a612baf65a8d94a00683c8e4bedf53a60"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a612baf65a8d94a00683c8e4bedf53a60">scalarCalc</a> (const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;)</td></tr>
-<tr class="memdesc:a612baf65a8d94a00683c8e4bedf53a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar calculation.  <br /></td></tr>
-<tr class="separator:a612baf65a8d94a00683c8e4bedf53a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404b00bb5231dc3f5ecc96a8c3dd87e6" id="r_a404b00bb5231dc3f5ecc96a8c3dd87e6"><td class="memTemplParams" colspan="2">template&lt;typename CalcType &gt; </td></tr>
+<tr class="memitem:a404b00bb5231dc3f5ecc96a8c3dd87e6"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a404b00bb5231dc3f5ecc96a8c3dd87e6">scalarCalc</a> (const Type &amp;)</td></tr>
+<tr class="memdesc:a404b00bb5231dc3f5ecc96a8c3dd87e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar calculation.  <br /></td></tr>
+<tr class="separator:a404b00bb5231dc3f5ecc96a8c3dd87e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af84b6d4591325b9010384152e42db0c9" id="r_af84b6d4591325b9010384152e42db0c9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_matrix.html">Matrix</a>&lt; DcmpType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af84b6d4591325b9010384152e42db0c9">luDec</a> (DcmpType epsilon=1e-9)</td></tr>
 <tr class="memdesc:af84b6d4591325b9010384152e42db0c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">LU decomposition.  <br /></td></tr>
 <tr class="separator:af84b6d4591325b9010384152e42db0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,6 +276,13 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c18c4afc325808a00d4e16da82d91f0"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="class_matrix.html">Matrix</a>&lt; Type_ &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1c18c4afc325808a00d4e16da82d91f0">identity</a> (const size_t &amp;)</td></tr>
 <tr class="memdesc:a1c18c4afc325808a00d4e16da82d91f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate identity matrix.  <br /></td></tr>
 <tr class="separator:a1c18c4afc325808a00d4e16da82d91f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a080c4c9d5b3f618b05bc2383dbcf9a07" id="r_a080c4c9d5b3f618b05bc2383dbcf9a07"><td class="memItemLeft" align="right" valign="top"><a id="a080c4c9d5b3f618b05bc2383dbcf9a07" name="a080c4c9d5b3f618b05bc2383dbcf9a07"></a>
+const bool&#160;</td><td class="memItemRight" valign="bottom"><b>useGPU</b> = false</td></tr>
+<tr class="memdesc:a080c4c9d5b3f618b05bc2383dbcf9a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cna't use GPU. <br /></td></tr>
+<tr class="separator:a080c4c9d5b3f618b05bc2383dbcf9a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Type, typename DcmpType = double&gt;<br />
@@ -304,8 +317,8 @@ template&lt;typename rowType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0782748e121418a9f5a97da278870222" name="a0782748e121418a9f5a97da278870222"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0782748e121418a9f5a97da278870222">&#9670;&#160;</a></span>Matrix() <span class="overload">[1/5]</span></h2>
+<a id="a66f028630a259b0f1fd5e6a2b981e646" name="a66f028630a259b0f1fd5e6a2b981e646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66f028630a259b0f1fd5e6a2b981e646">&#9670;&#160;</a></span>Matrix() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +328,7 @@ template&lt;typename Type , typename DcmpType  = double&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;<a class="el" href="class_matrix.html">::Matrix</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>init</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="#ad7551bfbed0b1f1f6ffd5a6ec625cad6">MatrixInitType</a>&lt;&gt; &amp;</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -331,8 +344,8 @@ template&lt;typename Type , typename DcmpType  = double&gt; </div>
 
 </div>
 </div>
-<a id="a705e879db52bfe007a58f40d38212ad4" name="a705e879db52bfe007a58f40d38212ad4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a705e879db52bfe007a58f40d38212ad4">&#9670;&#160;</a></span>Matrix() <span class="overload">[2/5]</span></h2>
+<a id="a12b6a98487d0e0da6378889aff4aa283" name="a12b6a98487d0e0da6378889aff4aa283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12b6a98487d0e0da6378889aff4aa283">&#9670;&#160;</a></span>Matrix() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,8 +392,8 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 
 </div>
 </div>
-<a id="ac62823ceebbeefccd7167bc991e6e0ff" name="ac62823ceebbeefccd7167bc991e6e0ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac62823ceebbeefccd7167bc991e6e0ff">&#9670;&#160;</a></span>Matrix() <span class="overload">[3/5]</span></h2>
+<a id="a1e328062067d41422a3046e1ddeb3f23" name="a1e328062067d41422a3046e1ddeb3f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e328062067d41422a3046e1ddeb3f23">&#9670;&#160;</a></span>Matrix() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,8 +432,8 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 
 </div>
 </div>
-<a id="ae7c8ee2d692835142e98b73b03e37a12" name="ae7c8ee2d692835142e98b73b03e37a12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c8ee2d692835142e98b73b03e37a12">&#9670;&#160;</a></span>Matrix() <span class="overload">[4/5]</span></h2>
+<a id="a96f86a90804b79d4a4265ddefaf5338b" name="a96f86a90804b79d4a4265ddefaf5338b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96f86a90804b79d4a4265ddefaf5338b">&#9670;&#160;</a></span>Matrix() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -460,8 +473,8 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 
 </div>
 </div>
-<a id="a9bf0f336b35af484d032bd0e9cfe95ec" name="a9bf0f336b35af484d032bd0e9cfe95ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bf0f336b35af484d032bd0e9cfe95ec">&#9670;&#160;</a></span>Matrix() <span class="overload">[5/5]</span></h2>
+<a id="afaf452f1b876da41422f712f7bbe6a73" name="afaf452f1b876da41422f712f7bbe6a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaf452f1b876da41422f712f7bbe6a73">&#9670;&#160;</a></span>Matrix() <span class="overload">[5/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1827,20 +1840,20 @@ template&lt;typename Type , typename DcmpType &gt; </div>
 
 </div>
 </div>
-<a id="a612baf65a8d94a00683c8e4bedf53a60" name="a612baf65a8d94a00683c8e4bedf53a60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a612baf65a8d94a00683c8e4bedf53a60">&#9670;&#160;</a></span>scalarCalc()</h2>
+<a id="a404b00bb5231dc3f5ecc96a8c3dd87e6" name="a404b00bb5231dc3f5ecc96a8c3dd87e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a404b00bb5231dc3f5ecc96a8c3dd87e6">&#9670;&#160;</a></span>scalarCalc()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Type , typename DcmpType &gt; </div>
 <div class="memtemplate">
-template&lt;typename calcType &gt; </div>
+template&lt;typename CalcType &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp; <a class="el" href="class_matrix.html">Matrix</a>&lt; Type, DcmpType &gt;::scalarCalc </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_matrix.html">Matrix</a>&lt; Type &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
+          <td class="paramtype">const Type &amp;</td>          <td class="paramname"><span class="paramname"><em>source</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1851,7 +1864,7 @@ template&lt;typename calcType &gt; </div>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">Type</td><td>The data type of the matrix elements. </td></tr>
-    <tr><td class="paramname">calcType</td><td>The type of the operation to perform. </td></tr>
+    <tr><td class="paramname">CalcType</td><td>The type of the operation to perform. </td></tr>
   </table>
   </dd>
 </dl>

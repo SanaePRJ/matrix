@@ -133,6 +133,8 @@ public:
 private:
     void add_(MatrixType<Type>&, const MatrixType<Type>&); ///< Addition operation
     void sub_(MatrixType<Type>&, const MatrixType<Type>&); ///< Subtraction operation
+
+	MatrixType<Type> mulGPU_(const MatrixType<Type>&, const MatrixType<Type>&); ///< Multiplication operation (GPU)
     MatrixType<Type> mul_(const MatrixType<Type>&, const MatrixType<Type>&); ///< Multiplication operation
 
     void hadamardMul_(MatrixType<Type>&, const MatrixType<Type>&); ///< Hadamard product

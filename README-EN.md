@@ -1,68 +1,65 @@
 # matrixCpp
-
 ## Overview
-This project aims to develop a **simple** and **lightweight** library for matrix operations.
+This project aims to develop a library for **simple** and **lightweight** matrix operations.
 
 > [!NOTE]
-> The compiler used is MSVC2022 C++17.
+> The compiler used is MSVC2022 Cpp14 or Cpp17.
 
 ## Contribution Guidelines
-For those who wish to contribute to the development, please follow these steps:
+If you would like to contribute, please follow these steps:
 
-### How to Contribute
+### Steps to Contribute
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/userName`).
 3. Commit your changes (`git commit -m 'comment'`).
-4. Push your branch (`git push origin feature/userName`).
-5. Open a pull request.
+4. Push to the branch (`git push origin feature/userName`).
+5. Create a pull request.
 
 ## Classes
-
-### **Matrix** Type
-Using `template`, you can create matrices of types such as `int` or `double`.
+### **matrix** Type
+Generate matrices of `int` or `double` types using `template`.
 ```cpp
 template<typename Type>
-class Matrix {
-    // member
+class Matrix{
+	// member
 };
 
 Matrix<int> mint;
 Matrix<double> mdouble;
 ```
-Additionally, there are methods available only when specialized with real-number types like `float` or `double` using [partial template specialization](https://en.wikipedia.org/wiki/Partial_template_specialization).
 
-## Implementation
+## Implementation Details
+- **Data Storage**
+  Data is stored and processed in `std::vector<std::vector<Type>>`.
+  To enable GPU processing (e.g., with `CUDA`) in the future, a method to expand data into a one-dimensional array will be defined.
 
-### Data Storage
-Data is stored and processed as `std::vector<std::vector<Type>>`. A method to expand the data into a one-dimensional array will be defined for potential future processing on GPUs such as CUDA.
+- **Type Aliases**
+  Since `std::vector<std::vector<Type>>` can be lengthy during implementation, the following type aliases are defined for convenience: `RowType`, `RowInitType`, `MatrixType`, and `MatrixInitType`. These aliases will also be made `public` for external use.
+  ```cpp
+  template<typename Type>
+  class matrix{
+  public:
+      template<typename rowType    > using RowType     = std::vector<rowType>;
+      template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>;
 
-### Type Aliases
-Since `std::vector<std::vector<Type>>` is somewhat lengthy to write during implementation, the following type aliases are defined as `RowType`, `RowInitType`, `MatrixType`, and `MatrixInitType`. These are made `public` for usage outside the class.
-```cpp
-template<typename Type>
-class matrix {
-public:
-    template<typename rowType    > using RowType     = std::vector<rowType>;
-    template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>;
-
-    template<typename matrixType = Type> using MatrixType     = std::vector          <RowType<matrixType>>;
-    template<typename matrixType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixType>>;
-};
-```
+      template<typename matrixType = Type> using MatrixType     = std::vector          <RowType<matrixType>>;
+      template<typename matrixType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixType>>;
+  };
+  ```
 
 ### Header Files
-To enhance maintainability, this library separates `declaration files` and `implementation files`.
-
-- Declaration Files
+The library will separate `definition files` and `implementation files` to enhance maintainability.
+- **Definition Files**
   - Class declarations
   - Function prototype declarations
-  - Macro definitions, etc.
-- Implementation Files
+  - Macro definitions
+
+- **Implementation Files**
   - Function implementations
   - Member function implementations
 
-#### Include Guard
-The naming convention for include guards is `MATRIXCPP_filename_extension`.
+#### Include Guards
+The naming convention for include guards is `MATRIXCPP_FILENAME_EXTENSION`.
 ```cpp
 // For test.hpp
 #ifndef MATRIXCPP_TEST_HPP
@@ -74,15 +71,21 @@ The naming convention for include guards is `MATRIXCPP_filename_extension`.
 ```
 
 #### File Structure
-Files are named with `.h` for declarations and `.hpp` for implementations.
-
-- matrix: Includes all files such as matrix.h, matrixCalc.hpp, etc.
-- matrix.h: Defines the `Matrix` class and declares member function prototypes.
-- matrixCtor.hpp: Defines constructors.
-- matrixCalc.hpp: Handles operations such as addition, subtraction, and Hadamard products.
-- matrixOp.hpp: Implements operator functions.
-- matrixDec.hpp: Handles matrix decompositions such as LU decomposition and inverse matrices.
-- matrixUtils.hpp: Handles operations like row swapping.
+Files are divided into `.h` for definition and `.hpp` for implementation.
+- **matrix**
+  Includes all related files such as matrix.h and matrixCalc.hpp.
+- **matrix.h**
+  Contains matrix class definitions, member declarations, and prototypes.
+- **matrixCtor.hpp**
+  Defines constructors.
+- **matrixCalc.hpp**
+  Handles operations such as addition, subtraction, and Hadamard product.
+- **matrixOp.hpp**
+  Implements operator functions.
+- **matrixDec.hpp**
+  Performs matrix decompositions such as LU decomposition, including inverse matrix computation.
+- **matrixUtils.hpp**
+  Manages matrix manipulations such as row swapping.
 
 ```
 matrix ---- matrix.h
@@ -90,35 +93,36 @@ matrix ---- matrix.h
         |-- matrixCalc.hpp
         |-- matrixOp.hpp
         |-- matrixDec.hpp
-        |-- matrixUtils.hpp
+        |__ matrixUtils.hpp
 ```
 
-### Naming Conventions
-- Member names are written in [`camelCase`](https://en.wikipedia.org/wiki/Camel_case).
-- Class names are written in `PascalCase`.
-- Private members: Append `_` to `camelCase` member names.
-- Prototype declaration: `returnType memberName(argumentType1, argumentType2, ...);`
+## Naming Conventions
+- Use [`camelCase`](https://en.wikipedia.org/wiki/Camel_case) for member names.
+- Use `PascalCase` for class names.
+- **Private Members:** Append `_` to private member names (e.g., `camelCase_`).
+- **Prototype Declarations:** Use the format `ReturnType MemberName(ArgType1, ArgType2, ...);`.
 
-### Declaration Files
+## Code Style
+### Definition Files
 ```cpp
 template<typename Type>
-class Matrix {
+class Matrix{
 private:
-    // Private members
+    // Private Members
 
-    // Variable members
+    // Variable Members
     Type testValuePrivate_ = 0; // Comment
 
-    // Function members (prototype declaration)
+    // Function Members (Prototypes)
     Type testFuncPrivate_(const Matrix&, const Matrix&); // Comment
 
 public:
-    // Public members
+    // Public Members
 
-    // Variable members
+    // Variable Members
     Type testValuePublic = 0; // Comment
 
-    // Function members (prototype declaration)
+    // Function Members (Prototypes)
     Type testFuncPublic(const Matrix&, const Matrix&); // Comment
 };
 ```
@@ -127,43 +131,173 @@ public:
 ```cpp
 // Comment
 template<typename Type>
-Type Matrix<Type>::testFuncPrivate_(const Matrix& a, const Matrix& b) {
+Type Matrix<Type>::testFuncPrivate_(const Matrix& a, const Matrix& b){
     return Type();
 }
 
 // Comment
 template<typename Type>
-Type Matrix<Type>::testFuncPublic(const Matrix& a, const Matrix& b) {
+Type Matrix<Type>::testFuncPublic(const Matrix& a, const Matrix& b){
     return Type();
 }
 ```
 
 ## Feature List
+### Constructors
+- `Matrix() = default;`  
+  Default constructor.
 
-| Operation          | Operator | Function       | Arguments                          | Return Type                                         | Specialization |
-|--------------------|----------|----------------|-------------------------------------|---------------------------------------------------|----------------|
-| Assignment         | =, <<    | None           | `MatrixInitType<Type>`             | `Matrix<Type>&`                                    | No             |
-| Copy               | =, <<    | None           | `const Matrix<Type>&`              | `Matrix<Type>&`                                    | No             |
-| Move Assignment    | =        | None           | `Matrix<Type>&&`                   | `Matrix<Type>&`                                    | No             |
-| Row Reference      | []       | rowRef         | `size_t`                           | `std::vector<Type>` / `std::reference_wrapper<Type>` | No             |
-| Column Reference   | None     | colRef         | `size_t`                           | `std::vector<Type>` / `std::reference_wrapper<Type>` | No             |
-| Addition           | +, +=    | add            | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| Subtraction        | -, -=    | sub            | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| Multiplication     | *, *=    | mul            | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| Scalar Multiplication | *, *= | scalarMul      | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| Hadamard Product   | ^, ^=    | hadamardMul    | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| Hadamard Division  | /, /=    | hadamardDiv    | `const Matrix<Type>&`              | `Matrix<Type>` / `Matrix<Type>&`                  | No             |
-| LU Decomposition   | None     | luDec          | `void`                             | `std::vector<Matrix<Type>>`                       | Yes            |
-| Determinant        | None     | det            | `void`                             | `ty`                                             | No             |
-| Inverse Matrix     | None     | inverse        | `void`                             | `Matrix<Type>`                                    | Yes            |
-| Transpose          | None     | transpose      | `void`                             | `Matrix<Type>`                                    | No             |
-| Row Swap           | None     | swapRow        | `size_t`, `size_t`                 | `Matrix<Type>&`                                   | No             |
-| Column Swap        | None     | swapCol        | `size_t`, `size_t`                 | `Matrix<Type>&`                                   | No             |
-| Resize             | None     | resize         | `size_t`, `size_t`                 | `Matrix<Type>&`                                   | No             |
-| Get Row Size       | None     | rows           | `void`                             | `size_t`                                         | No             |
-| Get Column Size    | None     | cols           | `void`                             | `size_t`                                         | No             |
-| Element Operation  | None     | forEach        | `std::function<ty()>`              | `Matrix<Type>&`                                   | No             |
-| Element Operation  | None     | forEach        | `std::function<ty(size_t, size_t, ty&)>` | `Matrix<Type>&`                             | No             |
+- `Matrix(const MatrixInitType<>&);`  
+  Constructor with initialization parameters.
+
+- `Matrix(const MatrixType<>&);`  
+  Copy constructor.
+
+- `Matrix(const std::pair<size_t, size_t>&);`  
+  Constructor with size specification.
+
+- `Matrix(const Matrix<Type, DcmpType>&);`  
+  Copy constructor.
+
+- `Matrix(Matrix<Type>&&) noexcept;`  
+  Move constructor.
+
+### Operator Overloading
+- `Matrix<Type>& operator=(const MatrixInitType<Type>&);`  
+  Assignment operator.
+
+- `Matrix<Type>& operator=(const Matrix<Type>&);`  
+  Assignment operator.
+
+- `Matrix<Type>& operator<<(const MatrixInitType<Type>&);`  
+  Stream insertion operator.
+
+- `Matrix<Type>& operator<<(const Matrix<Type>&);`  
+  Stream insertion operator.
+
+- `Matrix<Type>& operator=(Matrix<Type>&&);`  
+  Move assignment operator.
+
+- `Matrix<Type>& operator<<(Matrix<Type>&&);`  
+  Move stream insertion operator.
+
+- `RowType<Type>& operator[](const size_t&);`  
+  Row access.
+
+- `Matrix<Type>& operator+=(const Matrix<Type>&);`  
+  Addition.
+
+- `Matrix<Type>& operator-=(const Matrix<Type>&);`  
+  Subtraction.
+
+- `Matrix<Type>& operator*=(const Matrix<Type>&);`  
+  Multiplication.
+
+- `Matrix<Type>& operator^=(const Matrix<Type>&);`  
+  Hadamard product.
+
+- `Matrix<Type>& operator/=(const Matrix<Type>&);`  
+  Hadamard division.
+
+- `Matrix<Type>& operator*=(const Type&);`  
+  Scalar multiplication.
+
+- `Matrix<Type> operator+(const Matrix<Type>&);`  
+  Addition.
+
+- `Matrix<Type> operator-(const Matrix<Type>&);`  
+  Subtraction.
+
+- `Matrix<Type> operator*(const Matrix<Type>&);`  
+  Multiplication.
+
+- `Matrix<Type> operator^(const Matrix<Type>&);`  
+  Hadamard product.
+
+- `Matrix<Type> operator/(const Matrix<Type>&);`  
+  Hadamard division.
+
+- `Matrix<Type> operator*(const Type&);`  
+  Scalar multiplication.
+
+- `template<typename Type_>`  
+  `explicit operator Matrix<Type_>();`  
+  Type conversion.
+
+### Member Functions
+- `Matrix<Type>& add(const Matrix<Type>&);`  
+  Addition.
+
+- `Matrix<Type>& sub(const Matrix<Type>&);`  
+  Subtraction.
+
+- `Matrix<Type>& mul(const Matrix<Type>&);`  
+  Multiplication.
+
+- `Matrix<Type>& scalarMul(const Type&);`  
+  Scalar multiplication.
+
+- `Matrix<Type>& hadamardMul(const Matrix<Type>&);`  
+  Hadamard product.
+
+- `Matrix<Type>& hadamardDiv(const Matrix<Type>&);`  
+  Hadamard division.
+
+- `template<typename calcType>`  
+  `Matrix<Type>& scalarCalc(const Matrix<Type>&);`  
+  Scalar calculation.
+
+- `std::vector<Matrix<DcmpType>> luDec(DcmpType epsilon = 1e-9);`  
+  LU decomposition.
+
+- `Matrix<DcmpType> inverse(DcmpType epsilon = 1e-9);`  
+  Inverse matrix.
+
+- `DcmpType det(DcmpType epsilon = 1e-9);`  
+  Determinant.
+
+- `Matrix<Type> transpose();`  
+  Transpose.
+
+- `Matrix<Type>& swapRow(const size_t&, const size_t&);`  
+  Row swapping.
+
+- `Matrix<Type>& swapCol(const size_t&, const size_t&);`  
+  Column swapping.
+
+- `Matrix<Type>& resize(const size_t&, const size_t&);`  
+  Resize.
+
+- `const size_t rows() const;`  
+  Get the number of rows.
+
+- `const size_t cols() const;`  
+  Get the number of columns.
+
+- `std::vector<std::reference_wrapper<Type>> rowRef(const size_t&);`  
+  Row reference.
+
+- `std::vector<std::reference_wrapper<Type>> colRef(const size_t&);`  
+  Column reference.
+
+- `Matrix<Type>& forEach(std::function<Type()>);`  
+  Apply operations to each element.
+
+- `Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>);`  
+  Apply operations to each element (row, column, and value).
+
+- `template<typename Type_ = Type>`  
+  `static Matrix<Type_> identity(const size_t&);`  
+  Generate an identity matrix.
+
+### Stream Output Overloading
+- `template<typename CharT, typename Traits, typename MatrixType = double>`  
+  `std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>&, Matrix<MatrixType>);`  
+  Output matrix.
+
+- `template<typename CharT, typename Traits, typename MatrixType = double>`  
+  `std::basic_ostream<CharT, Traits>& operator<<(std::basic_ostream<CharT, Traits>&, std::vector<std::vector<MatrixType>>);`  
+  Output 2D vectors.
 
 > [!NOTE]
-> Additional decompositions such as [`QR decomposition`, `Cholesky decomposition`, `Eigenvalue decomposition`, `SVD decomposition`, `Jordan normal form`](https://en.wikipedia.org/wiki/Matrix_decomposition) are planned.
+> Additional decomposition methods such as [`QR decomposition`, `Cholesky decomposition`, `Eigenvalue decomposition`, `SVD decomposition`, and `Jordan normal form`](https://en.wikipedia.org/wiki/Matrix_decomposition) are planned.

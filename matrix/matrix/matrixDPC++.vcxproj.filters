@@ -25,4 +25,7 @@
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="matrix.cpp" />
+  </ItemGroup>
 </Project>

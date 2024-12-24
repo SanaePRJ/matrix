@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rowinittype_0',['RowInitType',['../class_matrix.html#a592db8985a8bc4c6774249eef53b6eb5',1,'Matrix']]],
-  ['rowtype_1',['RowType',['../class_matrix.html#a0aeed7ee6e2890e44b30062c85419591',1,'Matrix']]]
+  ['matrixinittype_0',['MatrixInitType',['../class_matrix.html#ad7551bfbed0b1f1f6ffd5a6ec625cad6',1,'Matrix']]],
+  ['matrixtype_1',['MatrixType',['../class_matrix.html#a8fc4bb8f74074a6a081f4884f7c6ad86',1,'Matrix']]]
 ];

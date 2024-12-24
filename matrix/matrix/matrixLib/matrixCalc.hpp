@@ -36,6 +36,67 @@ inline void Matrix<Type,DcmpType>::sub_(
 }
 
 /**
+ * @brief Multiplies two matrices using the GPU and returns the resulting matrix.
+ *
+ * @tparam Type The data type of the matrix elements.
+ * @param matrix1 The first matrix to multiply.
+ * @param matrix2 The second matrix to multiply.
+ * @return The resulting matrix after multiplication.
+ */
+template <typename Type, typename DcmpType>
+typename Matrix<Type, DcmpType>::MatrixType<Type> Matrix<Type, DcmpType>::mulGPU_(
+    const MatrixType<Type>& matrix1,
+    const MatrixType<Type>& matrix2
+) {
+    if (this->cols_(matrix1) != this->rows_(matrix2))
+        throw std::invalid_argument("The number of columns in matrix1 must be the same as the number of rows in matrix2.");
+
+#if __has_include("sycl.hpp")
+    const size_t crSize = this->cols_(matrix1);
+    const size_t rsltRows = this->rows_(matrix1);
+    const size_t rsltCols = this->cols_(matrix2);
+
+    FlatMatrixType<Type> result(rsltRows * rsltCols, 0);
+    FlatMatrixType<Type> source1Flat = this->flatten_(matrix1);
+    FlatMatrixType<Type> source2Flat = this->flatten_(matrix2);
+
+    try {
+        sycl::queue queue(sycl::default_selector{});
+
+        {
+            sycl::buffer<Type> buf_result(result.data(), sycl::range<1>(result.size()));
+            sycl::buffer<Type> buf_source1(source1Flat.data(), sycl::range<1>(source1Flat.size()));
+            sycl::buffer<Type> buf_source2(source2Flat.data(), sycl::range<1>(source2Flat.size()));
+
+            queue.submit([&](sycl::handler& cgh) {
+                auto acc_result = buf_result.template get_access<sycl::access::mode::write>(cgh);
+                auto acc_source1 = buf_source1.template get_access<sycl::access::mode::read>(cgh);
+                auto acc_source2 = buf_source2.template get_access<sycl::access::mode::read>(cgh);
+
+                cgh.parallel_for<class matrix_mul>(sycl::range<2>(rsltRows, rsltCols), [=](sycl::id<2> idx) {
+                    size_t row = idx[0];
+                    size_t col = idx[1];
+
+                    Type sum = 0;
+                    for (size_t k = 0; k < crSize; ++k)
+                        sum += acc_source1[row * crSize + k] * acc_source2[k * rsltCols + col];
+                    
+                    acc_result[row * rsltCols + col] = sum;
+                    });
+                }).wait_and_throw();
+        }
+
+        return this->unflatten_(result, rsltRows, rsltCols);
+    }
+    catch (const sycl::exception& e) {
+        throw std::runtime_error(e.what());
+    }
+#else
+    throw std::runtime_error("GPU is not supported on this platform.");
+#endif
+}
+
+/**
  * @brief Multiplies two matrices and returns the resulting matrix.
  *
  * @tparam Type The data type of the matrix elements.
@@ -52,6 +113,9 @@ typename Matrix<Type, DcmpType>::template MatrixType<Type> Matrix<Type, DcmpType
 {
     if (this->cols_(matrix1) != this->rows_(matrix2))
         throw std::invalid_argument("The number of columns in data1 must be the same as the number of rows in data2.");
+
+	if (useGPU)
+		return this->mulGPU_(matrix1, matrix2);
 
     const size_t crSize = this->cols_(matrix1);
     const size_t rsltRows = this->rows_(matrix1);
@@ -130,14 +194,13 @@ inline void Matrix<Type, DcmpType>::calcMatrixGPU_(
     const MatrixType<Type>& source
 )
 {
-	std::cout << "UseGPU" << std::endl;
 #if __has_include("sycl.hpp")
-	try {
-        FlatMatrixType<Type> result = this->flatten_(dest);
-        FlatMatrixType<Type> sourceFlat = this->flatten_(source);
+    try {
+        auto result = this->flatten_(dest);
+        auto sourceFlat = this->flatten_(source);
         CalcType calcType;
 
-        // Create buffers for the flattened matrices and the operation type
+		// Create buffers for the flattened matrix and the operation type
         {
             sycl::buffer<Type> buf_result(result.data(), sycl::range<1>(result.size()));
             sycl::buffer<Type> buf_source(sourceFlat.data(), sycl::range<1>(sourceFlat.size()));
@@ -148,9 +211,12 @@ inline void Matrix<Type, DcmpType>::calcMatrixGPU_(
                 auto acc_source = buf_source.template get_access<sycl::access::mode::read>(cgh);
                 auto acc_calcType = buf_calcType.template get_access<sycl::access::mode::read>(cgh);
 
-                cgh.parallel_for<class matrix_calc>(sycl::range<1>(result.size()), [=](sycl::id<1> idx) {
-                    acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[idx]);
-                    });
+                cgh.parallel_for<class matrix_calc>(
+                    sycl::range<1>(result.size()),
+                    [=](sycl::id<1> idx) {
+                        acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[idx]);
+                    }
+                );
                 }).wait_and_throw();
         }
 
@@ -160,7 +226,7 @@ inline void Matrix<Type, DcmpType>::calcMatrixGPU_(
         throw std::runtime_error(e.what());
     }
 #else
-	throw std::runtime_error("GPU is not supported on this platform.");
+    throw std::runtime_error("GPU is not supported on this platform.");
 #endif
 }
 
@@ -218,28 +284,30 @@ inline void Matrix<Type, DcmpType>::scalarCalcGPU_(
     const Type& source
 )
 {
-    std::cout << "scalarUseGPU" << std::endl;
 #if __has_include("sycl.hpp")
     try {
         FlatMatrixType<Type> result = this->flatten_(dest);
         CalcType calcType;
 
-        // Create buffers for the flattened matrix and the operation type
+		// Create buffers for the flattened matrix and the operation type
         {
-            sycl::buffer<Type>     buf_result(result.data(), sycl::range<1>(result.size()));
-            sycl::buffer<Type>     buf_source(&source, sycl::range<1>(1));
+            sycl::buffer<Type> buf_result(result.data(), sycl::range<1>(result.size()));
+            sycl::buffer<Type> buf_source(&source, sycl::range<1>(1));
             sycl::buffer<CalcType> buf_calcType(&calcType, sycl::range<1>(1));
-            
+
             queue.submit([&](sycl::handler& cgh) {
                 auto acc_result = buf_result.template get_access<sycl::access::mode::read_write>(cgh);
-                auto acc_calcType = buf_calcType.template get_access<sycl::access::mode::read>(cgh);
                 auto acc_source = buf_source.template get_access<sycl::access::mode::read>(cgh);
+                auto acc_calcType = buf_calcType.template get_access<sycl::access::mode::read>(cgh);
 
-                cgh.parallel_for<class matrix_scalar_calc>(sycl::range<1>(result.size()), [=](sycl::id<1> idx) {
-                    acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[0]);
+                cgh.parallel_for<class matrix_scalar_calc>(
+                    sycl::range<1>(result.size()),
+                    [=](sycl::id<1> idx) {
+                        acc_result[idx] = acc_calcType[0](acc_result[idx], acc_source[0]);
                     });
                 }).wait_and_throw();
         }
+
         dest = this->unflatten_(result, this->rows_(dest), this->cols_(dest));
     }
     catch (const sycl::exception& e) {
