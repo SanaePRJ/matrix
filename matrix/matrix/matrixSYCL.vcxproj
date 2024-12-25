@@ -25,6 +25,7 @@
     <ProjectGuid>{dcf6177e-cf27-47e2-b9f9-5bbb96a74b95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DPCPPConsoleApplication1</RootNamespace>
+    <ProjectName>matrixSycl</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

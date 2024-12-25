@@ -118,27 +118,22 @@ void testIdentityMatrix() {
     std::cout << "IdentityMatrix test passed." << std::endl;
 }
 
-
-static void calcSpeedTest(size_t n, std::function<Matrix<float>(Matrix<float>&, Matrix<float>&)> Func)
+template<typename Type>
+static void calcSpeedTest(size_t n, std::function<Matrix<Type>(Matrix<Type>&, Matrix<Type>&)> Func)
 {
-#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     using namespace std::chrono;
 
     std::default_random_engine       engine;      //エンジン
-    std::normal_distribution<float>  dist(0, 1);  //平均0,標準偏差1
+    std::normal_distribution<Type>  dist(0, 1);  //平均0,標準偏差1
 
     //n*n行列を作成
-    Matrix<float> buf0 = std::pair<size_t, size_t>{ n,n };
-    Matrix<float> buf1 = std::pair<size_t, size_t>{ n,n };
-
-#if __has_include("sycl.hpp")
-	buf0.useGPU = false;
-#endif
+    Matrix<Type> buf0 = std::pair<size_t, size_t>{ n,n };
+    Matrix<Type> buf1 = std::pair<size_t, size_t>{ n,n };
 
     buf0.forEach([&engine, &dist](){return dist(engine); });
     buf1.forEach([&engine, &dist](){return dist(engine); });
 
-    auto calc = [&buf0, &buf1, &engine, &dist, &Func]() {
+    auto calc = [&buf0, &buf1, &Func]() {
         auto buf_time0 = system_clock::now();
 
         Func(buf0, buf1);
@@ -148,8 +143,8 @@ static void calcSpeedTest(size_t n, std::function<Matrix<float>(Matrix<float>&, 
         return duration_cast<milliseconds>(buf_time1 - buf_time0).count();
         };
 
-    std::cout << "CPU calculation speedup test:" << std::endl;
-
+    std::cout << "CPU calculation speedup test:" << n << std::endl;
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
     std::cout << "execution::seq" << std::endl;
 	buf0.execPolicy = std::execution::seq;
     const double time1 = static_cast<double>(calc());
@@ -171,6 +166,9 @@ static void calcSpeedTest(size_t n, std::function<Matrix<float>(Matrix<float>&, 
 	const double time4 = static_cast<double>(calc());
 	std::cout << time4 << "ms\t" << (time1 / time4) << "faster!!" << std::endl;
 #endif
+#else
+    const double time1 = static_cast<double>(calc());
+    std::cout << time1 << "ms" << std::endl;
 #endif
 }
 
@@ -189,7 +187,7 @@ int main() {
     testLUDecomposition();
     testForEach();
     testIdentityMatrix();
-    calcSpeedTest(1000, [](Matrix<float>& arg1, Matrix<float>& arg2) {return arg1 * arg2; });
+    calcSpeedTest<float>(500, [](Matrix<float>& arg1, Matrix<float>& arg2) {return arg1 + arg2; });
    
     return 0;
 }

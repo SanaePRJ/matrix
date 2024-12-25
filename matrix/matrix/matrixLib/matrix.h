@@ -50,7 +50,7 @@ public:
 	// GPU
 #if __has_include("sycl.hpp")
 	sycl::queue queue  = sycl::default_selector{};
-	bool        useGPU = true;
+	bool        useGPU = false;
 #else
 	const bool useGPU = false; ///< Cna't use GPU
 #endif
