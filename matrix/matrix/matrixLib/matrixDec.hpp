@@ -20,7 +20,7 @@ inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix
 )
 {
     // キャッシュの有効性を確認
-    if (mtrx == this->matrix_ && this->matrixHash(this->matrix_) == this->dcmpHash_)
+    if (mtrx == this->matrix_ && this->matrixHash_(this->matrix_) == this->dcmpHash_)
         return this->dcmp_;
 
     // 正方行列であることを確認
@@ -75,7 +75,7 @@ inline std::vector<typename Matrix<Type, DcmpType>::MatrixType<DcmpType>> Matrix
 
     // キャッシュの保存
     if (mtrx == this->matrix_) {
-        this->dcmpHash_ = this->matrixHash(this->matrix_);
+        this->dcmpHash_ = this->matrixHash_(this->matrix_);
         this->dcmp_ = result;
     }
 

@@ -208,7 +208,7 @@ inline typename Matrix<Type,DcmpType>::MatrixType<Type_> Matrix<Type,DcmpType>::
  */
 template<typename Type, typename DCMPType>
 template<typename Type_>
-inline size_t Matrix<Type, DCMPType>::matrixHash(const MatrixType<Type_>& mtrx)
+inline size_t Matrix<Type, DCMPType>::matrixHash_(const MatrixType<Type_>& mtrx)
 {
     size_t hash = 0;
     for (const auto& row : mtrx) {
@@ -216,6 +216,52 @@ inline size_t Matrix<Type, DCMPType>::matrixHash(const MatrixType<Type_>& mtrx)
             hash ^= std::hash<Type_>{}(elem)+0x9e3779b9 + (hash << 6) + (hash >> 2); // 各要素をハッシュ化して結合 0x9e3779b9:黄金比
     }
     return hash;
+}
+
+/**
+ * @brief Flattens a matrix into a single vector.
+ *
+ * @tparam Type The type of the elements in the matrix.
+ * @tparam DcmpType The decomposition type of the matrix.
+ * @param mtrx The matrix to be flattened.
+ * @return FlatMatrixType<Type> A single vector containing all elements of the matrix in row-major order.
+ */
+template<typename Type, typename DcmpType>
+inline typename Matrix<Type, DcmpType>::FlatMatrixType<Type> Matrix<Type, DcmpType>::flatten_(
+    const MatrixType<Type>& mtrx
+)
+{
+    FlatMatrixType<Type> result;
+    result.reserve(this->rows_(mtrx) * this->cols_(mtrx));
+
+    for (const auto& row : mtrx)
+        result.insert(result.end(), row.begin(), row.end());
+
+    return result;
+}
+
+/**
+ * @brief Unflattens a vector into a matrix with specified rows and columns.
+ *
+ * @tparam Type The type of the elements in the matrix.
+ * @tparam DcmpType The decomposition type of the matrix.
+ * @param mtrx The flattened vector to be converted back into a matrix.
+ * @param rows The number of rows in the resulting matrix.
+ * @param cols The number of columns in the resulting matrix.
+ * @return MatrixType<Type> A matrix constructed from the elements of the vector.
+ */
+template<typename Type, typename DcmpType>
+inline typename Matrix<Type, DcmpType>::MatrixType<Type> Matrix<Type, DcmpType>::unflatten_(
+    const FlatMatrixType<Type>& mtrx,
+    const size_t& rows,
+    const size_t& cols
+)
+{
+    MatrixType<Type> result(rows, RowType<Type>(cols, 0));
+    for (size_t i = 0; i < rows; i++)
+        std::copy(mtrx.begin() + i * cols, mtrx.begin() + (i + 1) * cols, result[i].begin());
+
+    return result;
 }
 
 /**
@@ -244,8 +290,6 @@ inline Matrix<Type>& Matrix<Type,DcmpType>::swapRow(
     const size_t& swapRow2
 )
 {
-    
-
     this->swapRow_(this->matrix_, swapRow1, swapRow2);
     return *this;
 }
@@ -264,8 +308,6 @@ inline Matrix<Type>& Matrix<Type,DcmpType>::swapCol(
     const size_t& swapCol2
 )
 {
-    
-
     this->swapCol_(this->matrix_, swapCol1, swapCol2);
     return *this;
 }
@@ -284,8 +326,6 @@ inline Matrix<Type>& Matrix<Type,DcmpType>::resize(
     const size_t& col
 )
 {
-    
-
     this->matrix_.resize(row, RowType<Type>(col, 0));
     return *this;
 }

@@ -24,158 +24,331 @@
 \DoxyCodeLine{00035\ \ \ \ \ this-\/>calcMatrix\_<std::minus<Type>>(dest,\ source);}
 \DoxyCodeLine{00036\ \}}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00048\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::template}}\ MatrixType<Type>\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::mul\_}}(}
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix1,}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix2}
-\DoxyCodeLine{00051\ )}
-\DoxyCodeLine{00052\ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>cols\_(matrix1)\ !=\ this-\/>rows\_(matrix2))}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ number\ of\ columns\ in\ data1\ must\ be\ the\ same\ as\ the\ number\ of\ rows\ in\ data2."{}});}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ crSize\ =\ this-\/>cols\_(matrix1);}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltRows\ =\ this-\/>rows\_(matrix1);}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltCols\ =\ this-\/>cols\_(matrix2);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ MatrixType<Type>\ result(rsltRows,\ RowType<Type>(rsltCols));}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{auto}\ calcLambda\ =\ [\&matrix1,\ \&matrix2,\ \&crSize](\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ posRow,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ posCol)\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ Type\ resultMatrix\ =\ 0;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ crSize;\ i++)}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ resultMatrix\ +=\ matrix1[posRow][i]\ *\ matrix2[i][posCol];}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ resultMatrix;}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ rsltRows;\ row++)\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ rsltCols;\ col++)\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ result[row][col]\ =\ calcLambda(row,\ col);}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00047\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{class_matrix_a8fc4bb8f74074a6a081f4884f7c6ad86}{Matrix<Type,\ DcmpType>::MatrixType}}<Type>\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::mulGPU\_}}(}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix1,}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix2}
+\DoxyCodeLine{00050\ )\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>cols\_(matrix1)\ !=\ this-\/>rows\_(matrix2))}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ number\ of\ columns\ in\ matrix1\ must\ be\ the\ same\ as\ the\ number\ of\ rows\ in\ matrix2."{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#if\ \_\_has\_include("{}sycl.hpp"{})}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ crSize\ =\ this-\/>cols\_(matrix1);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltRows\ =\ this-\/>rows\_(matrix1);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltCols\ =\ this-\/>cols\_(matrix2);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ FlatMatrixType<Type>\ result(rsltRows\ *\ rsltCols,\ 0);}
+\DoxyCodeLine{00060\ \ \ \ \ FlatMatrixType<Type>\ source1Flat\ =\ this-\/>flatten\_(matrix1);}
+\DoxyCodeLine{00061\ \ \ \ \ FlatMatrixType<Type>\ source2Flat\ =\ this-\/>flatten\_(matrix2);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ sycl::queue\ queue(sycl::default\_selector\{\});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_result(result.data(),\ sycl::range<1>(result.size()));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_source1(source1Flat.data(),\ sycl::range<1>(source1Flat.size()));}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_source2(source2Flat.data(),\ sycl::range<1>(source2Flat.size()));}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ queue.submit([\&](sycl::handler\&\ cgh)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_result\ =\ buf\_result.template\ get\_access<sycl::access::mode::write>(cgh);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_source1\ =\ buf\_source1.template\ get\_access<sycl::access::mode::read>(cgh);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_source2\ =\ buf\_source2.template\ get\_access<sycl::access::mode::read>(cgh);}
 \DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
-\DoxyCodeLine{00077\ \}}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00086\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00087\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::hadamardMul\_}}(}
-\DoxyCodeLine{00088\ \ \ \ \ MatrixType<Type>\&\ dest,}
-\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
-\DoxyCodeLine{00090\ )}
-\DoxyCodeLine{00091\ \{}
-\DoxyCodeLine{00092\ \ \ \ \ this-\/>calcMatrix\_<std::multiplies<Type>>(dest,\ source);}
-\DoxyCodeLine{00093\ \}}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00102\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00103\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::hadamardDiv\_}}(}
-\DoxyCodeLine{00104\ \ \ \ \ MatrixType<Type>\&\ dest,}
-\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
-\DoxyCodeLine{00106\ )}
-\DoxyCodeLine{00107\ \{}
-\DoxyCodeLine{00108\ \ \ \ \ this-\/>calcMatrix\_<std::divides<Type>>(dest,\ source);}
-\DoxyCodeLine{00109\ \}}
-\DoxyCodeLine{00110\ }
-\DoxyCodeLine{00120\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00121\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ calcType>}
-\DoxyCodeLine{00122\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::calcMatrix\_}}(}
-\DoxyCodeLine{00123\ \ \ \ \ MatrixType<Type>\&\ dest,}
-\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
-\DoxyCodeLine{00125\ )}
-\DoxyCodeLine{00126\ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>areSameSize\_(dest,\ source))}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ number\ of\ rows\ and\ columns\ of\ data1\ and\ data2\ must\ be\ equal."{}});}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ this-\/>rows\_(dest);\ ++row)\ \{}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ this-\/>cols\_(source);\ ++col)}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ dest[row][col]\ =\ calcType()(dest[row][col],\ source[row][col]);}
-\DoxyCodeLine{00133\ \ \ \ \ \}}
-\DoxyCodeLine{00134\ \}}
-\DoxyCodeLine{00135\ }
-\DoxyCodeLine{00144\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00145\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ calcType>}
-\DoxyCodeLine{00146\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::scalarCalc\_}}(}
-\DoxyCodeLine{00147\ \ \ \ \ MatrixType<Type>\&\ dest,}
-\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
-\DoxyCodeLine{00149\ )}
-\DoxyCodeLine{00150\ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ this-\/>rows\_(dest);\ ++row)\ \{}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ this-\/>cols\_(dest);\ ++col)}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ dest[row][col]\ =\ calcType()(dest[row][col],\ source);}
-\DoxyCodeLine{00154\ \ \ \ \ \}}
-\DoxyCodeLine{00155\ \}}
-\DoxyCodeLine{00156\ }
-\DoxyCodeLine{00164\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00165\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6a23864aa392e4fe742c03ad9cc1bfb7}{Matrix<Type,DcmpType>::add}}(}
-\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
-\DoxyCodeLine{00167\ )}
-\DoxyCodeLine{00168\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ }
-\DoxyCodeLine{00170\ \ \ \ \ this-\/>add\_(this-\/>matrix\_,\ mtrx.matrix\_);}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00173\ \}}
-\DoxyCodeLine{00174\ }
-\DoxyCodeLine{00182\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00183\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a344d58a411291a928c6b3679bb1b7753}{Matrix<Type,DcmpType>::sub}}(}
-\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
-\DoxyCodeLine{00185\ )}
-\DoxyCodeLine{00186\ \{}
-\DoxyCodeLine{00187\ \ \ \ \ }
-\DoxyCodeLine{00188\ \ \ \ \ this-\/>sub\_(this-\/>matrix\_,\ mtrx.matrix\_);}
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00191\ \}}
-\DoxyCodeLine{00192\ }
-\DoxyCodeLine{00200\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00201\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a17448a39bb88b1ae47ea6a25059da797}{Matrix<Type,DcmpType>::mul}}(}
-\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
-\DoxyCodeLine{00203\ )}
-\DoxyCodeLine{00204\ \{}
-\DoxyCodeLine{00205\ \ \ \ \ this-\/>matrix\_\ =\ this-\/>mul\_(this-\/>matrix\_,\ mtrx.matrix\_);}
-\DoxyCodeLine{00206\ }
-\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00208\ \}}
-\DoxyCodeLine{00209\ }
-\DoxyCodeLine{00217\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00218\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a33dbc11f4e852bdf5f01c935ccedf54f}{Matrix<Type,DcmpType>::scalarMul}}(}
-\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
-\DoxyCodeLine{00220\ )}
-\DoxyCodeLine{00221\ \{}
-\DoxyCodeLine{00222\ \ \ \ \ this-\/>scalarCalc\_<Type,\ std::multiplies<Type>>(this-\/>matrix\_,\ source);}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00225\ \}}
-\DoxyCodeLine{00226\ }
-\DoxyCodeLine{00234\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00235\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_aee906ae982a11c3bd9e99e5f8201aa72}{Matrix<Type,DcmpType>::hadamardMul}}(}
-\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ source}
-\DoxyCodeLine{00237\ )}
-\DoxyCodeLine{00238\ \{}
-\DoxyCodeLine{00239\ \ \ \ \ this-\/>hadamardMul\_<Type>(this-\/>matrix\_,\ source);}
-\DoxyCodeLine{00240\ }
-\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00242\ \}}
-\DoxyCodeLine{00243\ }
-\DoxyCodeLine{00251\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00252\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a2b093abef2bdb077d263e8567738f5b0}{Matrix<Type,DcmpType>::hadamardDiv}}(}
-\DoxyCodeLine{00253\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ source}
-\DoxyCodeLine{00254\ )}
-\DoxyCodeLine{00255\ \{}
-\DoxyCodeLine{00256\ \ \ \ \ this-\/>hadamardDiv\_<Type>(this-\/>matrix\_,\ source);}
-\DoxyCodeLine{00257\ }
-\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00259\ \}}
-\DoxyCodeLine{00260\ }
-\DoxyCodeLine{00269\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
-\DoxyCodeLine{00270\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ calcType>}
-\DoxyCodeLine{00271\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a612baf65a8d94a00683c8e4bedf53a60}{Matrix<Type,DcmpType>::scalarCalc}}(}
-\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ source}
-\DoxyCodeLine{00273\ )}
-\DoxyCodeLine{00274\ \{}
-\DoxyCodeLine{00275\ \ \ \ \ this-\/>scalarCalc\_<Type,\ calcType>(this-\/>matrix\_,\ source);}
-\DoxyCodeLine{00276\ }
-\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
-\DoxyCodeLine{00278\ \}}
-\DoxyCodeLine{00279\ }
-\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cgh.parallel\_for<\textcolor{keyword}{class\ }matrix\_mul>(sycl::range<2>(rsltRows,\ rsltCols),\ [=](sycl::id<2>\ idx)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ row\ =\ idx[0];}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ col\ =\ idx[1];}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ sum\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ k\ =\ 0;\ k\ <\ crSize;\ ++k)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ acc\_source1[row\ *\ crSize\ +\ k]\ *\ acc\_source2[k\ *\ rsltCols\ +\ col];}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ acc\_result[row\ *\ rsltCols\ +\ col]\ =\ sum;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).wait\_and\_throw();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>unflatten\_(result,\ rsltRows,\ rsltCols);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ sycl::exception\&\ e)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(e.what());}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}GPU\ is\ not\ supported\ on\ this\ platform."{}});}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00097\ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00108\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00109\ \textcolor{keyword}{typename}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::template}}\ MatrixType<Type>\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::mul\_}}(}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix1,}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ matrix2}
+\DoxyCodeLine{00112\ )}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (this-\/>cols\_(matrix1)\ !=\ this-\/>rows\_(matrix2))}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ number\ of\ columns\ in\ data1\ must\ be\ the\ same\ as\ the\ number\ of\ rows\ in\ data2."{}});}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{if}\ (useGPU)}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ this-\/>mulGPU\_(matrix1,\ matrix2);}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ crSize\ =\ this-\/>cols\_(matrix1);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltRows\ =\ this-\/>rows\_(matrix1);}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ rsltCols\ =\ this-\/>cols\_(matrix2);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ MatrixType<Type>\ result(rsltRows,\ RowType<Type>(rsltCols));}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{auto}\ calcLambda\ =\ [\&matrix1,\ \&matrix2,\ \&crSize](\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ posRow,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\&\ posCol)\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ Type\ resultMatrix\ =\ 0;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ crSize;\ i++)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ resultMatrix\ +=\ matrix1[posRow][i]\ *\ matrix2[i][posCol];}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ resultMatrix;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ rsltRows;\ row++)\ \{}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#if\ ((defined(\_MSVC\_LANG)\ \&\&\ \_MSVC\_LANG\ >=\ 201703)\ ||\ \_\_cplusplus\ >=\ 201703)\ \&\&\ \_\_has\_include("{}execution"{})\ }\textcolor{comment}{//\ C++17}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ std::visit([\&](\textcolor{keyword}{auto}\&\&\ policy)\ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ std::transform(policy,\ result[row].begin(),\ result[row].end(),\ result[row].begin(),\ [\&,\ row](Type\&\ col)\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ colIdx\ =\ \&col\ -\/\ \&result[row][0];}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ calcLambda(row,\ colIdx);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ execPolicy);}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ rsltCols;\ col++)}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ result[row][col]\ =\ calcLambda(row,\ col);}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00149\ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00159\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::hadamardMul\_}}(}
+\DoxyCodeLine{00160\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
+\DoxyCodeLine{00162\ )}
+\DoxyCodeLine{00163\ \{}
+\DoxyCodeLine{00164\ \ \ \ \ this-\/>calcMatrix\_<std::multiplies<Type>>(dest,\ source);}
+\DoxyCodeLine{00165\ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00174\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00175\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::hadamardDiv\_}}(}
+\DoxyCodeLine{00176\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
+\DoxyCodeLine{00178\ )}
+\DoxyCodeLine{00179\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ this-\/>calcMatrix\_<std::divides<Type>>(dest,\ source);}
+\DoxyCodeLine{00181\ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00190\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00191\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CalcType>}
+\DoxyCodeLine{00192\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::calcMatrixGPU\_}}(}
+\DoxyCodeLine{00193\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
+\DoxyCodeLine{00195\ )}
+\DoxyCodeLine{00196\ \{}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#if\ \_\_has\_include("{}sycl.hpp"{})}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ this-\/>flatten\_(dest);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ sourceFlat\ =\ this-\/>flatten\_(source);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ CalcType\ calcType;}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ buffers\ for\ the\ flattened\ matrix\ and\ the\ operation\ type}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_result(result.data(),\ sycl::range<1>(result.size()));}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_source(sourceFlat.data(),\ sycl::range<1>(sourceFlat.size()));}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<CalcType>\ buf\_calcType(\&calcType,\ sycl::range<1>(1));}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ queue.submit([\&](sycl::handler\&\ cgh)\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_result\ =\ buf\_result.template\ get\_access<sycl::access::mode::read\_write>(cgh);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_source\ =\ buf\_source.template\ get\_access<sycl::access::mode::read>(cgh);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_calcType\ =\ buf\_calcType.template\ get\_access<sycl::access::mode::read>(cgh);}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cgh.parallel\_for<\textcolor{keyword}{class\ }matrix\_calc>(}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sycl::range<1>(result.size()),}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [=](sycl::id<1>\ idx)\ \{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ acc\_result[idx]\ =\ acc\_calcType[0](acc\_result[idx],\ acc\_source[idx]);}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).wait\_and\_throw();}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ dest\ =\ this-\/>unflatten\_(result,\ this-\/>rows\_(dest),\ this-\/>cols\_(dest));}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ sycl::exception\&\ e)\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(e.what());}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}GPU\ is\ not\ supported\ on\ this\ platform."{}});}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00231\ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00242\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00243\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CalcType>}
+\DoxyCodeLine{00244\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::calcMatrix\_}}(}
+\DoxyCodeLine{00245\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00246\ \ \ \ \ \textcolor{keyword}{const}\ MatrixType<Type>\&\ source}
+\DoxyCodeLine{00247\ )}
+\DoxyCodeLine{00248\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keywordflow}{if}\ (!this-\/>areSameSize\_(dest,\ source))}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}The\ number\ of\ rows\ and\ columns\ of\ data1\ and\ data2\ must\ be\ equal."{}});}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \textcolor{keywordflow}{if}\ (useGPU)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ this-\/>calcMatrixGPU\_<CalcType>(dest,\ source);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#if\ ((defined(\_MSVC\_LANG)\ \&\&\ \_MSVC\_LANG\ >=\ 201703)\ ||\ \_\_cplusplus\ >=\ 201703)\ \&\&\ \_\_has\_include("{}execution"{})\ }\textcolor{comment}{//\ C++17}}
+\DoxyCodeLine{00258\ \ \ \ \ std::visit([\&](\textcolor{keyword}{auto}\&\&\ policy)\ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ rowCalcLambda\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ row)\ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ std::transform(policy,\ dest[row].begin(),\ dest[row].end(),\ source[row].begin(),\ dest[row].begin(),\ CalcType());}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ std::for\_each(policy,\ dest.begin(),\ dest.end(),\ [\&rowCalcLambda,\ row\ =\ 0](RowType<Type>\&)\ \textcolor{keyword}{mutable}\ \{\ rowCalcLambda(row);\ ++row;\ \});}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \},\ execPolicy);}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ this-\/>rows\_(dest);\ ++row)\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ this-\/>cols\_(source);\ ++col)}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ dest[row][col]\ =\ CalcType()(dest[row][col],\ source[row][col]);}
+\DoxyCodeLine{00268\ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00270\ \}}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00280\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00281\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CalcType>}
+\DoxyCodeLine{00282\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,\ DcmpType>::scalarCalcGPU\_}}(}
+\DoxyCodeLine{00283\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00284\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
+\DoxyCodeLine{00285\ )}
+\DoxyCodeLine{00286\ \{}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#if\ \_\_has\_include("{}sycl.hpp"{})}}
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ FlatMatrixType<Type>\ result\ =\ this-\/>flatten\_(dest);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ CalcType\ calcType;}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ buffers\ for\ the\ flattened\ matrix\ and\ the\ operation\ type}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_result(result.data(),\ sycl::range<1>(result.size()));}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<Type>\ buf\_source(\&source,\ sycl::range<1>(1));}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ sycl::buffer<CalcType>\ buf\_calcType(\&calcType,\ sycl::range<1>(1));}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ queue.submit([\&](sycl::handler\&\ cgh)\ \{}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_result\ =\ buf\_result.template\ get\_access<sycl::access::mode::read\_write>(cgh);}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_source\ =\ buf\_source.template\ get\_access<sycl::access::mode::read>(cgh);}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ acc\_calcType\ =\ buf\_calcType.template\ get\_access<sycl::access::mode::read>(cgh);}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cgh.parallel\_for<\textcolor{keyword}{class\ }matrix\_scalar\_calc>(}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sycl::range<1>(result.size()),}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [=](sycl::id<1>\ idx)\ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ acc\_result[idx]\ =\ acc\_calcType[0](acc\_result[idx],\ acc\_source[0]);}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).wait\_and\_throw();}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ dest\ =\ this-\/>unflatten\_(result,\ this-\/>rows\_(dest),\ this-\/>cols\_(dest));}
+\DoxyCodeLine{00312\ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ sycl::exception\&\ e)\ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(e.what());}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}GPU\ is\ not\ supported\ on\ this\ platform."{}});}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00319\ \}}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00329\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00330\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CalcType>}
+\DoxyCodeLine{00331\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_matrix}{Matrix<Type,DcmpType>::scalarCalc\_}}(}
+\DoxyCodeLine{00332\ \ \ \ \ MatrixType<Type>\&\ dest,}
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
+\DoxyCodeLine{00334\ )}
+\DoxyCodeLine{00335\ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordflow}{if}\ (useGPU)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ this-\/>scalarCalcGPU\_<CalcType>(dest,\ source);}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00339\ \ \ \ \ \}}
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#if\ ((defined(\_MSVC\_LANG)\ \&\&\ \_MSVC\_LANG\ >=\ 201703)\ ||\ \_\_cplusplus\ >=\ 201703)\ \&\&\ \_\_has\_include("{}execution"{})\ }\textcolor{comment}{//\ C++17}}
+\DoxyCodeLine{00341\ \ \ \ \ std::visit([\&](\textcolor{keyword}{auto}\&\&\ policy)\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ rowCalcLambda\ =\ [\&](\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ row)\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ std::transform(policy,\ dest[row].begin(),\ dest[row].end(),\ dest[row].begin(),\ [\&](\textcolor{keyword}{const}\ Type\&\ d)\ \{\textcolor{keywordflow}{return}\ CalcType()(d,\ source);\ \});}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ std::for\_each(policy,\ dest.begin(),\ dest.end(),\ [\&rowCalcLambda,\ row\ =\ 0](RowType<Type>\&)\ \textcolor{keyword}{mutable}\ \{\ rowCalcLambda(row);\ ++row;\ \});}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \},\ execPolicy);}
+\DoxyCodeLine{00347\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00348\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ row\ =\ 0;\ row\ <\ this-\/>rows\_(dest);\ ++row)\ \{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ col\ =\ 0;\ col\ <\ this-\/>cols\_(dest);\ ++col)}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ dest[row][col]\ =\ CalcType()(dest[row][col],\ source);}
+\DoxyCodeLine{00351\ \ \ \ \ \}}
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00353\ \}}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00362\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00363\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a6a23864aa392e4fe742c03ad9cc1bfb7}{Matrix<Type,DcmpType>::add}}(}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{00365\ )}
+\DoxyCodeLine{00366\ \{\ }
+\DoxyCodeLine{00367\ \ \ \ \ this-\/>add\_(this-\/>matrix\_,\ mtrx.matrix\_);}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00370\ \}}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00379\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00380\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a344d58a411291a928c6b3679bb1b7753}{Matrix<Type,DcmpType>::sub}}(}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{00382\ )}
+\DoxyCodeLine{00383\ \{}
+\DoxyCodeLine{00384\ \ \ \ \ this-\/>sub\_(this-\/>matrix\_,\ mtrx.matrix\_);}
+\DoxyCodeLine{00385\ }
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00387\ \}}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00396\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00397\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a17448a39bb88b1ae47ea6a25059da797}{Matrix<Type,DcmpType>::mul}}(}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ mtrx}
+\DoxyCodeLine{00399\ )}
+\DoxyCodeLine{00400\ \{}
+\DoxyCodeLine{00401\ \ \ \ \ this-\/>matrix\_\ =\ this-\/>mul\_(this-\/>matrix\_,\ mtrx.matrix\_);}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00404\ \}}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00413\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00414\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a33dbc11f4e852bdf5f01c935ccedf54f}{Matrix<Type,DcmpType>::scalarMul}}(}
+\DoxyCodeLine{00415\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
+\DoxyCodeLine{00416\ )}
+\DoxyCodeLine{00417\ \{}
+\DoxyCodeLine{00418\ \ \ \ \ this-\/>scalarCalc\_<std::multiplies<Type>>(this-\/>matrix\_,\ source);}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00421\ \}}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00430\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00431\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_aee906ae982a11c3bd9e99e5f8201aa72}{Matrix<Type,DcmpType>::hadamardMul}}(}
+\DoxyCodeLine{00432\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ source}
+\DoxyCodeLine{00433\ )}
+\DoxyCodeLine{00434\ \{}
+\DoxyCodeLine{00435\ \ \ \ \ this-\/>hadamardMul\_(this-\/>matrix\_,\ source);}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00438\ \}}
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00447\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00448\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a2b093abef2bdb077d263e8567738f5b0}{Matrix<Type,DcmpType>::hadamardDiv}}(}
+\DoxyCodeLine{00449\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ source}
+\DoxyCodeLine{00450\ )}
+\DoxyCodeLine{00451\ \{}
+\DoxyCodeLine{00452\ \ \ \ \ this-\/>hadamardDiv\_(this-\/>matrix\_,\ source);}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00454\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00455\ \}}
+\DoxyCodeLine{00456\ }
+\DoxyCodeLine{00465\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\textcolor{keyword}{typename}\ DcmpType>}
+\DoxyCodeLine{00466\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ CalcType>}
+\DoxyCodeLine{00467\ \mbox{\hyperlink{class_matrix}{Matrix<Type>}}\&\ \mbox{\hyperlink{class_matrix_a404b00bb5231dc3f5ecc96a8c3dd87e6}{Matrix<Type,DcmpType>::scalarCalc}}(}
+\DoxyCodeLine{00468\ \ \ \ \ \textcolor{keyword}{const}\ Type\&\ source}
+\DoxyCodeLine{00469\ )}
+\DoxyCodeLine{00470\ \{}
+\DoxyCodeLine{00471\ \ \ \ \ this-\/>scalarCalc\_<CalcType>(this-\/>matrix\_,\ source);}
+\DoxyCodeLine{00472\ }
+\DoxyCodeLine{00473\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00474\ \}}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

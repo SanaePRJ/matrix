@@ -16,6 +16,10 @@
     #include <variant>
 #endif
 
+#if __has_include("sycl.hpp")
+    #include <CL/sycl.hpp>
+#endif
+
  /**
   * @brief Template definition for the Matrix class
   *
@@ -32,12 +36,23 @@ public:
     template<typename matrixType = Type>     using MatrixType     = std::vector<RowType<matrixType>>;                   ///< Matrix type
     template<typename matrixInitType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixInitType>>; ///< Matrix type (initialization)
 
-#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution") // C++17
+	template<typename flatMatrixType = Type> using FlatMatrixType = std::vector<flatMatrixType>; ///< Flat matrix type
+
+	// C++17 features
+#if ((defined(_MSVC_LANG) && _MSVC_LANG >= 201703) || __cplusplus >= 201703) && __has_include("execution")
     std::variant< 
         std::execution::sequenced_policy, 
         std::execution::parallel_policy, 
         std::execution::parallel_unsequenced_policy 
     > execPolicy = std::execution::par_unseq;
+#endif
+
+	// GPU
+#if __has_include("sycl.hpp")
+	sycl::queue queue  = sycl::default_selector{};
+	bool        useGPU = false;
+#else
+	const bool useGPU = false; ///< Cna't use GPU
 #endif
 
 private:
@@ -118,15 +133,21 @@ public:
 private:
     void add_(MatrixType<Type>&, const MatrixType<Type>&); ///< Addition operation
     void sub_(MatrixType<Type>&, const MatrixType<Type>&); ///< Subtraction operation
+
+	MatrixType<Type> mulGPU_(const MatrixType<Type>&, const MatrixType<Type>&); ///< Multiplication operation (GPU)
     MatrixType<Type> mul_(const MatrixType<Type>&, const MatrixType<Type>&); ///< Multiplication operation
 
     void hadamardMul_(MatrixType<Type>&, const MatrixType<Type>&); ///< Hadamard product
     void hadamardDiv_(MatrixType<Type>&, const MatrixType<Type>&); ///< Hadamard division
 
-    template<typename calcType>
+    template<typename CalcType>
+	void calcMatrixGPU_(MatrixType<Type>&, const MatrixType<Type>&); ///< General calculation operation (GPU)
+    template<typename CalcType>
     void calcMatrix_(MatrixType<Type>&, const MatrixType<Type>&); ///< General calculation operation
 
-    template<typename calcType>
+    template<typename CalcType>
+	void scalarCalcGPU_(MatrixType<Type>&, const Type&); ///< Scalar operation (GPU)
+    template<typename CalcType>
     void scalarCalc_(MatrixType<Type>&, const Type&); ///< Scalar operation
 
     std::vector<MatrixType<DcmpType>> luDec_(const MatrixType<Type>&, DcmpType epsilon = 1e-9); ///< LU decomposition
@@ -140,8 +161,8 @@ public:
     Matrix<Type>& scalarMul(const Type&);   ///< Scalar multiplication
     Matrix<Type>& hadamardMul(const Matrix<Type>&); ///< Hadamard product
     Matrix<Type>& hadamardDiv(const Matrix<Type>&); ///< Hadamard division
-    template<typename calcType>
-    Matrix<Type>& scalarCalc(const Matrix<Type>&); ///< Scalar calculation
+    template<typename CalcType>
+    Matrix<Type>& scalarCalc(const Type&); ///< Scalar calculation
 
     std::vector<Matrix<DcmpType>> luDec(DcmpType epsilon = 1e-9); ///< LU decomposition
     Matrix<DcmpType> inverse(DcmpType epsilon = 1e-9); ///< Inverse matrix
@@ -170,7 +191,10 @@ private:
     static MatrixType<Type_> identity_(const size_t&); ///< Generate identity matrix
 
     template<typename Type_ = Type>
-    size_t matrixHash(const MatrixType<Type_>&); ///< Generate matrix hash value
+    size_t matrixHash_(const MatrixType<Type_>&); ///< Generate matrix hash value
+
+    FlatMatrixType<Type> flatten_(const MatrixType<Type>&); ///< Flatten matrix
+    MatrixType<Type>     unflatten_(const FlatMatrixType<Type>&, const size_t&, const size_t&); ///< Unflatten matrix
 
 public:
     Matrix<Type> transpose(); ///< Transpose

@@ -363,7 +363,7 @@ Matrix<Type> Matrix<Type,DcmpType>::operator*(
 {
     MatrixType<Type> result;
     this->copyMatrix_(result, this->matrix_);
-    this->scalarCalc_<std::multiplies>(result, scalar);
+    this->scalarCalc_<std::multiplies<Type>>(result, scalar);
     return result;
 }
 
