@@ -52,7 +52,7 @@ public:
 	sycl::queue queue  = sycl::default_selector{};
 	bool        useGPU = false;
 #else
-	const bool useGPU = false; ///< Cna't use GPU
+	const bool useGPU = false; ///< Can't use GPU
 #endif
 
 private:
