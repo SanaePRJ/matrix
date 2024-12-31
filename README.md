@@ -1,23 +1,23 @@
 # matrixCpp
-## ŠT—v
-‚±‚ÌƒvƒƒWƒFƒNƒg‚Í**ƒVƒ“ƒvƒ‹**‚ÈÀ‘•‚©‚Â**Œy—Ê**‚Ès—ñ‘€ì‚ğ‰Â”\‚Æ‚·‚éƒ‰ƒCƒuƒ‰ƒŠ‚ÌŠJ”­‚ğ–Ú“I‚Æ‚µ‚Ä‚¢‚Ü‚·B
+## æ¦‚è¦
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯**ã‚·ãƒ³ãƒ—ãƒ«**ãªå®Ÿè£…ã‹ã¤**è»½é‡**ãªè¡Œåˆ—æ“ä½œã‚’å¯èƒ½ã¨ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®é–‹ç™ºã‚’ç›®çš„ã¨ã—ã¦ã„ã¾ã™ã€‚
 
 > [!NOTE]
-> ƒRƒ“ƒpƒCƒ‰‚ÍMSVC2022 Cpp14 or 17‚Æ‚µ‚Ü‚·B
+> ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã¯MSVC2022 Cpp14 or 17ã¨ã—ã¾ã™ã€‚
 
-## vŒ£•û–@
-ŠJ”­‚É‹¦—Í‚µ‚Ä‚­‚¾‚³‚é•û‚ÍˆÈ‰º‚Ì•û–@‚Å‚¨Šè‚¢‚µ‚Ü‚·B
+## è²¢çŒ®æ–¹æ³•
+é–‹ç™ºã«å”åŠ›ã—ã¦ãã ã•ã‚‹æ–¹ã¯ä»¥ä¸‹ã®æ–¹æ³•ã§ãŠé¡˜ã„ã—ã¾ã™ã€‚
 
-### vŒ£
-1. ƒŠƒ|ƒWƒgƒŠ‚ğƒtƒH[ƒN‚µ‚Ü‚·B
-2. V‚µ‚¢ƒuƒ‰ƒ“ƒ`‚ğì¬‚µ‚Ü‚· (`git checkout -b feature/userName`).
-3. •ÏX‚ğƒRƒ~ƒbƒg‚µ‚Ü‚· (`git commit -m 'comment'`).
-4. ƒuƒ‰ƒ“ƒ`‚ÉƒvƒbƒVƒ…‚µ‚Ü‚· (`git push origin feature/userName`).
-5. ƒvƒ‹ƒŠƒNƒGƒXƒg‚ğì¬‚µ‚Ü‚·B
+### è²¢çŒ®
+1. ãƒªãƒã‚¸ãƒˆãƒªã‚’ãƒ•ã‚©ãƒ¼ã‚¯ã—ã¾ã™ã€‚
+2. æ–°ã—ã„ãƒ–ãƒ©ãƒ³ãƒã‚’ä½œæˆã—ã¾ã™ (`git checkout -b feature/userName`).
+3. å¤‰æ›´ã‚’ã‚³ãƒŸãƒƒãƒˆã—ã¾ã™ (`git commit -m 'comment'`).
+4. ãƒ–ãƒ©ãƒ³ãƒã«ãƒ—ãƒƒã‚·ãƒ¥ã—ã¾ã™ (`git push origin feature/userName`).
+5. ãƒ—ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä½œæˆã—ã¾ã™ã€‚
 
-## ƒNƒ‰ƒX
-### **matrix**Œ^
-`template`‚ğ—p‚¢‚Ä`int`‚â`double`Œ^‚Ìs—ñ‚ğ¶¬‚µ‚Ü‚·B  
+## ã‚¯ãƒ©ã‚¹
+### **matrix**å‹
+`template`ã‚’ç”¨ã„ã¦`int`ã‚„`double`å‹ã®è¡Œåˆ—ã‚’ç”Ÿæˆã—ã¾ã™ã€‚  
 ```cpp
 template<typename Type>
 class Matrix{
@@ -28,38 +28,38 @@ Matrix<int> mint;
 Matrix<double> mdouble;
 ```
 
-## À‘•
- - ƒf[ƒ^‚ÌŠi”[
-	ƒf[ƒ^‚Í`std::vector<std::vector<Type>>`‚ÅŠi”[‚µˆ—‚µ‚Ü‚·B
-	«—ˆ“I‚É`CUDA`‚È‚ÇGPUã‚Å‚Ìˆ—‚ğs‚í‚¹‚é—\’è‚Å‚·‚Ì‚ÅˆêŸŒ³”z—ñ‚Ö“WŠJ‚·‚éƒƒ\ƒbƒh‚ğ’è‹`‚µ‚Ü‚·B
- - Œ^ƒGƒCƒŠƒAƒX
-	`std::vector<std::vector<Type>>`‚ÍÀ‘•‚·‚éÛ‚É­‚µ’·‚¢‚½‚ßˆÈ‰º‚ÌƒR[ƒh‚É‚æ‚èŒ^ƒGƒCƒŠƒAƒX`RowType`,`RowInitType`,`MatrixType`,`MatrixInitType`‚ğ’è‹`‚µ‚Ü‚·B
-	‚Ü‚½ƒNƒ‰ƒXŠO•”‚Å‚àg—p‚Å‚«‚é‚æ‚¤`public`‚É‚µ‚Ä‚¨‚«‚Ü‚·B
-	```cpp
-	template<typename Type>
-	class matrix{
-	public:
-		template<typename rowType    > using RowType     = std::vector<rowType>;
-		template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>;
+## å®Ÿè£…
+ - ãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´
+	ãƒ‡ãƒ¼ã‚¿ã¯`std::vector<std::vector<Type>>`ã§æ ¼ç´ã—å‡¦ç†ã—ã¾ã™ã€‚
+	å°†æ¥çš„ã«`CUDA`ãªã©GPUä¸Šã§ã®å‡¦ç†ã‚’è¡Œã‚ã›ã‚‹äºˆå®šã§ã™ã®ã§ä¸€æ¬¡å…ƒé…åˆ—ã¸å±•é–‹ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
+ - å‹ã‚¨ã‚¤ãƒªã‚¢ã‚¹
+	`std::vector<std::vector<Type>>`ã¯å®Ÿè£…ã™ã‚‹éš›ã«å°‘ã—é•·ã„ãŸã‚ä»¥ä¸‹ã®ã‚³ãƒ¼ãƒ‰ã«ã‚ˆã‚Šå‹ã‚¨ã‚¤ãƒªã‚¢ã‚¹`RowType`,`RowInitType`,`MatrixType`,`MatrixInitType`ã‚’å®šç¾©ã—ã¾ã™ã€‚
+	ã¾ãŸã‚¯ãƒ©ã‚¹å¤–éƒ¨ã§ã‚‚ä½¿ç”¨ã§ãã‚‹ã‚ˆã†`public`ã«ã—ã¦ãŠãã¾ã™ã€‚
+```cpp
+template<typename Type>
+class matrix{
+public:
+	template<typename rowType    > using RowType     = std::vector<rowType>;
+	template<typename rowInitType> using RowInitType = std::initializer_list<rowInitType>;
 
-		template<typename matrixType = Type> using MatrixType     = std::vector          <RowType<matrixType>>;
-		template<typename matrixType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixType>>;
-	} 
-	```
-### ƒwƒbƒ_ƒtƒ@ƒCƒ‹
-‚±‚ÌƒvƒƒWƒFƒNƒg‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚Í•Ûç«Œüã‚Ì‚½‚ß`’è‹`ƒtƒ@ƒCƒ‹`‚Æ`À‘•ƒtƒ@ƒCƒ‹`‚É•ª‚¯‚é–‚Æ‚µ‚Ü‚·B
-- ’è‹`ƒtƒ@ƒCƒ‹
-	- ƒNƒ‰ƒX‚ÌéŒ¾
-	- ŠÖ”‚Ìƒvƒƒgƒ^ƒCƒvéŒ¾
-	- ƒ}ƒNƒ‚Ì’è‹`‚È‚Ç
-- À‘•ƒtƒ@ƒCƒ‹
-	- ŠÖ”‚ÌÀ‘•
-	- ƒƒ“ƒoŠÖ”‚ÌÀ‘•
+	template<typename matrixType = Type> using MatrixType     = std::vector          <RowType<matrixType>>;
+	template<typename matrixType = Type> using MatrixInitType = std::initializer_list<RowInitType<matrixType>>;
+}
+```
+### ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã¯ä¿å®ˆæ€§å‘ä¸Šã®ãŸã‚`å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«`ã¨`å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«`ã«åˆ†ã‘ã‚‹äº‹ã¨ã—ã¾ã™ã€‚
+- å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«
+	- ã‚¯ãƒ©ã‚¹ã®å®£è¨€
+	- é–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
+	- ãƒã‚¯ãƒ­ã®å®šç¾©ãªã©
+- å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«
+	- é–¢æ•°ã®å®Ÿè£…
+	- ãƒ¡ãƒ³ãƒé–¢æ•°ã®å®Ÿè£…
 
 #### Include Guard
-ƒCƒ“ƒNƒ‹[ƒhƒK[ƒh‚Ì–½–¼‚Í`MATRIXCPP_ƒtƒ@ƒCƒ‹–¼_Šg’£q`‚Æ‚µ‚Ü‚·B
+ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã‚¬ãƒ¼ãƒ‰ã®å‘½åã¯`MATRIXCPP_ãƒ•ã‚¡ã‚¤ãƒ«å_æ‹¡å¼µå­`ã¨ã—ã¾ã™ã€‚
 ```cpp
-// test.hpp‚Ìê‡
+// test.hppã®å ´åˆ
 #ifndef MATRIXCPP_TEST_HPP
 #define MATRIXCPP_TEST_HPP
 
@@ -68,22 +68,22 @@ Matrix<double> mdouble;
 #endif
 ```
 
-#### •ªŠ„
-`.h`‚Í’è‹`ƒtƒ@ƒCƒ‹A`.hpp`‚ÍÀ‘•ƒtƒ@ƒCƒ‹‚ğˆÓ–¡‚µ‚Ü‚·B
+#### åˆ†å‰²
+`.h`ã¯å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã€`.hpp`ã¯å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ„å‘³ã—ã¾ã™ã€‚
  - matrix
-	matrix.h matrixCalc.hpp‚È‚Ç‚·‚×‚Ä‚Ìƒtƒ@ƒCƒ‹‚ğƒCƒ“ƒNƒ‹[ƒh‚µ‚Ü‚·B
+	matrix.h matrixCalc.hppãªã©ã™ã¹ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¾ã™ã€‚
  - matrix.h
-	matrixƒNƒ‰ƒX‚Ì’è‹`,ƒƒ“ƒoŠÖ”‚Ìƒvƒƒgƒ^ƒCƒvéŒ¾‚È‚Çƒƒ“ƒo‚Ì’è‹`‚ğs‚¢‚Ü‚·B
+	matrixã‚¯ãƒ©ã‚¹ã®å®šç¾©,ãƒ¡ãƒ³ãƒé–¢æ•°ã®ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€ãªã©ãƒ¡ãƒ³ãƒã®å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
  - matrixCtor.hpp
-	ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚ğ’è‹`‚µ‚Ü‚·B
+	ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã‚’å®šç¾©ã—ã¾ã™ã€‚
  - matrixCalc.hpp
-	‰ÁZ,Œ¸Z,ƒAƒ_ƒ}[ƒ‹Ï‚È‚ÇŒvZ‚ğs‚¢‚Ü‚·B
+	åŠ ç®—,æ¸›ç®—,ã‚¢ãƒ€ãƒãƒ¼ãƒ«ç©ãªã©è¨ˆç®—ã‚’è¡Œã„ã¾ã™ã€‚
  - matrixOp.hpp
-	‰‰ZqŠÖ”‚ÌÀ‘•‚ğs‚¢‚Ü‚·B
+	æ¼”ç®—å­é–¢æ•°ã®å®Ÿè£…ã‚’è¡Œã„ã¾ã™ã€‚
  - matrixDec.hpp
-	LU•ª‰ğ‚È‚Çs—ñ•ª‰ğ‚ğs‚¢‚Ü‚·B‹ts—ñ‚àŠÜ‚ŞB
+	LUåˆ†è§£ãªã©è¡Œåˆ—åˆ†è§£ã‚’è¡Œã„ã¾ã™ã€‚é€†è¡Œåˆ—ã‚‚å«ã‚€ã€‚
  - matrixUtils.hpp
-	s“ü‚ê‘Ö‚¦‚È‚Çs—ñ‚Ì‘€ì‚ğs‚¢‚Ü‚·B
+	è¡Œå…¥ã‚Œæ›¿ãˆãªã©è¡Œåˆ—ã®æ“ä½œã‚’è¡Œã„ã¾ã™ã€‚
 
 ```
 matrix ---- matrix.h
@@ -94,210 +94,210 @@ matrix ---- matrix.h
         |__ matrixUtils.hpp
 ```
 #### 
-## –½–¼
-- ƒƒ“ƒo–¼‚Í[`camelCase`](https://en.wikipedia.org/wiki/Camel_case)‚Å‹Lq‚µ‚Ü‚·B
-- ƒNƒ‰ƒX–¼‚Í`PascalCase`‚Å‹Lq‚µ‚Ü‚·B
-- ƒvƒ‰ƒCƒx[ƒgƒƒ“ƒo
-	ƒvƒ‰ƒCƒx[ƒgƒƒ“ƒo–¼(`camelCase`)‚ÌŒã‚É`_`‚ğ‚Â‚¯‚Ü‚·B
-- ƒvƒƒgƒ^ƒCƒvéŒ¾
-	`•Ô‚è’lŒ^ ƒƒ“ƒo–¼(ˆø”Œ^1,ˆø”Œ^2,...);`
+## å‘½å
+- ãƒ¡ãƒ³ãƒåã¯[`camelCase`](https://en.wikipedia.org/wiki/Camel_case)ã§è¨˜è¿°ã—ã¾ã™ã€‚
+- ã‚¯ãƒ©ã‚¹åã¯`PascalCase`ã§è¨˜è¿°ã—ã¾ã™ã€‚
+- ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ãƒ³ãƒ
+	ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ãƒ³ãƒå(`camelCase`)ã®å¾Œã«`_`ã‚’ã¤ã‘ã¾ã™ã€‚
+- ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
+	`è¿”ã‚Šå€¤å‹ ãƒ¡ãƒ³ãƒå(å¼•æ•°å‹1,å¼•æ•°å‹2,...);`
 
-## ‹L–@
-### ’è‹`ƒtƒ@ƒCƒ‹
+## è¨˜æ³•
+### å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«
 ```cpp
 template<typename Type>
 class Matrix{
 private:
-	// ƒvƒ‰ƒCƒx[ƒgƒƒ“ƒo
+	// ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒ¡ãƒ³ãƒ
 
-	// •Ï”ƒƒ“ƒo
-	Type testValuePrivate_ = 0; // ƒRƒƒ“ƒg
+	// å¤‰æ•°ãƒ¡ãƒ³ãƒ
+	Type testValuePrivate_ = 0; // ã‚³ãƒ¡ãƒ³ãƒˆ
 
-	// ”Ÿ”ƒƒ“ƒo(ƒvƒƒgƒ^ƒCƒvéŒ¾)
-	Type testFuncPrivate_(const Matrix&,const Matrix&); // ƒRƒƒ“ƒg
+	// å‡½æ•°ãƒ¡ãƒ³ãƒ(ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€)
+	Type testFuncPrivate_(const Matrix&,const Matrix&); // ã‚³ãƒ¡ãƒ³ãƒˆ
 
 public:
-	// ƒpƒuƒŠƒbƒNƒƒ“ƒo
+	// ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ¡ãƒ³ãƒ
 	
-	// •Ï”ƒƒ“ƒo
-	Type testValuePublic = 0; // ƒRƒƒ“ƒg
+	// å¤‰æ•°ãƒ¡ãƒ³ãƒ
+	Type testValuePublic = 0; // ã‚³ãƒ¡ãƒ³ãƒˆ
 
-	// ”Ÿ”ƒƒ“ƒo(ƒvƒƒgƒ^ƒCƒvéŒ¾)
-	Type testFuncPublic(const Matrix&,const Matrix&); // ƒRƒƒ“ƒg
+	// å‡½æ•°ãƒ¡ãƒ³ãƒ(ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€)
+	Type testFuncPublic(const Matrix&,const Matrix&); // ã‚³ãƒ¡ãƒ³ãƒˆ
 }
 ```
-### À‘•ƒtƒ@ƒCƒ‹
+### å®Ÿè£…ãƒ•ã‚¡ã‚¤ãƒ«
 ```cpp
 
-// ƒRƒƒ“ƒg
+// ã‚³ãƒ¡ãƒ³ãƒˆ
 template<typename Type>
 Type Matrix<Type>::testFuncPrivate_(const Matrix& a,const Matrix& b){
 	return Type();
 }
 
-// ƒRƒƒ“ƒg
+// ã‚³ãƒ¡ãƒ³ãƒˆ
 template<typename Type>
 Type Matrix<Type>::testFuncPublic(const Matrix& a,const Matrix& b){
 	return Type();
 }
 ```
 
-## ‹@”\ˆê——
-### ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+## æ©Ÿèƒ½ä¸€è¦§
+### ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 - `Matrix() = default;`  
-  ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 - `Matrix(const MatrixInitType<>&);`  
-  ‰Šú‰»—p‚Ìƒpƒ‰ƒ[ƒ^•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  åˆæœŸåŒ–ç”¨ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 - `Matrix(const MatrixType<>&);`  
-  ƒRƒs[ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  ã‚³ãƒ”ãƒ¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 - `Matrix(const std::pair<size_t, size_t>&);`  
-  ƒTƒCƒYw’è‚Ìƒpƒ‰ƒ[ƒ^•t‚«ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  ã‚µã‚¤ã‚ºæŒ‡å®šã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ä»˜ãã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 - `Matrix(const Matrix<Type, DcmpType>&);`  
-  ƒRƒs[ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  ã‚³ãƒ”ãƒ¼ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
 - `Matrix(Matrix<Type>&&) noexcept;`  
-  ƒ€[ƒuƒRƒ“ƒXƒgƒ‰ƒNƒ^
+  ãƒ ãƒ¼ãƒ–ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 
-### ‰‰ZqƒI[ƒo[ƒ[ƒh
+### æ¼”ç®—å­ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 - `Matrix<Type>& operator=(const MatrixInitType<Type>&);`  
-  ‘ã“ü‰‰Zq
+  ä»£å…¥æ¼”ç®—å­
 
 - `Matrix<Type>& operator=(const Matrix<Type>&);`  
-  ‘ã“ü‰‰Zq
+  ä»£å…¥æ¼”ç®—å­
 
 - `Matrix<Type>& operator<<(const MatrixInitType<Type>&);`  
-  ƒXƒgƒŠ[ƒ€‘}“ü‰‰Zq
+  ã‚¹ãƒˆãƒªãƒ¼ãƒ æŒ¿å…¥æ¼”ç®—å­
 
 - `Matrix<Type>& operator<<(const Matrix<Type>&);`  
-  ƒXƒgƒŠ[ƒ€‘}“ü‰‰Zq
+  ã‚¹ãƒˆãƒªãƒ¼ãƒ æŒ¿å…¥æ¼”ç®—å­
 
 - `Matrix<Type>& operator=(Matrix<Type>&&);`  
-  ƒ€[ƒu‘ã“ü‰‰Zq
+  ãƒ ãƒ¼ãƒ–ä»£å…¥æ¼”ç®—å­
 
 - `Matrix<Type>& operator<<(Matrix<Type>&&);`  
-  ƒ€[ƒuƒXƒgƒŠ[ƒ€‘}“ü‰‰Zq
+  ãƒ ãƒ¼ãƒ–ã‚¹ãƒˆãƒªãƒ¼ãƒ æŒ¿å…¥æ¼”ç®—å­
 
 - `RowType<Type>& operator[](const size_t&);`  
-  sƒAƒNƒZƒX
+  è¡Œã‚¢ã‚¯ã‚»ã‚¹
 
 - `Matrix<Type>& operator+=(const Matrix<Type>&);`  
-  ‰ÁZ
+  åŠ ç®—
 
 - `Matrix<Type>& operator-=(const Matrix<Type>&);`  
-  Œ¸Z
+  æ¸›ç®—
 
 - `Matrix<Type>& operator*=(const Matrix<Type>&);`  
-  æZ
+  ä¹—ç®—
 
 - `Matrix<Type>& operator^=(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹Ï
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«ç©
 
 - `Matrix<Type>& operator/=(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹œZ
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«é™¤ç®—
 
 - `Matrix<Type>& operator*=(const Type&);`  
-  ƒXƒJƒ‰æZ
+  ã‚¹ã‚«ãƒ©ä¹—ç®—
 
 - `Matrix<Type> operator+(const Matrix<Type>&);`  
-  ‰ÁZ
+  åŠ ç®—
 
 - `Matrix<Type> operator-(const Matrix<Type>&);`  
-  Œ¸Z
+  æ¸›ç®—
 
 - `Matrix<Type> operator*(const Matrix<Type>&);`  
-  æZ
+  ä¹—ç®—
 
 - `Matrix<Type> operator^(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹Ï
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«ç©
 
 - `Matrix<Type> operator/(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹œZ
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«é™¤ç®—
 
 - `Matrix<Type> operator*(const Type&);`  
-  ƒXƒJƒ‰æZ
+  ã‚¹ã‚«ãƒ©ä¹—ç®—
 
 - `template<typename Type_>`  
   `explicit operator Matrix<Type_>();`  
-  Œ^•ÏŠ·
+  å‹å¤‰æ›
 
-### ƒƒ“ƒoŠÖ”
+### ãƒ¡ãƒ³ãƒé–¢æ•°
 - `Matrix<Type>& add(const Matrix<Type>&);`  
-  ‰ÁZ
+  åŠ ç®—
 
 - `Matrix<Type>& sub(const Matrix<Type>&);`  
-  Œ¸Z
+  æ¸›ç®—
 
 - `Matrix<Type>& mul(const Matrix<Type>&);`  
-  æZ
+  ä¹—ç®—
 
 - `Matrix<Type>& scalarMul(const Type&);`  
-  ƒXƒJƒ‰æZ
+  ã‚¹ã‚«ãƒ©ä¹—ç®—
 
 - `Matrix<Type>& hadamardMul(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹Ï
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«ç©
 
 - `Matrix<Type>& hadamardDiv(const Matrix<Type>&);`  
-  ƒAƒ_ƒ}[ƒ‹œZ
+  ã‚¢ãƒ€ãƒãƒ¼ãƒ«é™¤ç®—
 
 - `template<typename calcType>`  
   `Matrix<Type>& scalarCalc(const Matrix<Type>&);`  
-  ƒXƒJƒ‰ŒvZ
+  ã‚¹ã‚«ãƒ©è¨ˆç®—
 
 - `std::vector<Matrix<DcmpType>> luDec(DcmpType epsilon = 1e-9);`  
-  LU•ª‰ğ
+  LUåˆ†è§£
 
 - `Matrix<DcmpType> inverse(DcmpType epsilon = 1e-9);`  
-  ‹ts—ñ
+  é€†è¡Œåˆ—
 
 - `DcmpType det(DcmpType epsilon = 1e-9);`  
-  s—ñ®
+  è¡Œåˆ—å¼
 
 - `Matrix<Type> transpose();`  
-  “]’u
+  è»¢ç½®
 
 - `Matrix<Type>& swapRow(const size_t&, const size_t&);`  
-  s‚Ì“ü‚ê‘Ö‚¦
+  è¡Œã®å…¥ã‚Œæ›¿ãˆ
 
 - `Matrix<Type>& swapCol(const size_t&, const size_t&);`  
-  —ñ‚Ì“ü‚ê‘Ö‚¦
+  åˆ—ã®å…¥ã‚Œæ›¿ãˆ
 
 - `Matrix<Type>& resize(const size_t&, const size_t&);`  
-  ƒTƒCƒY•ÏX
+  ã‚µã‚¤ã‚ºå¤‰æ›´
 
 - `const size_t rows() const;`  
-  s”‚Ìæ“¾
+  è¡Œæ•°ã®å–å¾—
 
 - `const size_t cols() const;`  
-  —ñ”‚Ìæ“¾
+  åˆ—æ•°ã®å–å¾—
 
 - `std::vector<std::reference_wrapper<Type>> rowRef(const size_t&);`  
-  sQÆ
+  è¡Œå‚ç…§
 
 - `std::vector<std::reference_wrapper<Type>> colRef(const size_t&);`  
-  —ñQÆ
+  åˆ—å‚ç…§
 
 - `Matrix<Type>& forEach(std::function<Type()>);`  
-  Še—v‘f‚Ö‚Ì‘€ì
+  å„è¦ç´ ã¸ã®æ“ä½œ
 
 - `Matrix<Type>& forEach(std::function<Type(size_t, size_t, Type&)>);`  
-  Še—v‘f‚Ö‚Ì‘€ìisA—ñA‚»‚Ìƒ|ƒCƒ“ƒg‚Ì’lj
+  å„è¦ç´ ã¸ã®æ“ä½œï¼ˆè¡Œã€åˆ—ã€ãã®ãƒã‚¤ãƒ³ãƒˆã®å€¤ï¼‰
 
 - `template<typename Type_ = Type>`  
   `static Matrix<Type_> identity(const size_t&);`  
-  ’PˆÊs—ñ¶¬
+  å˜ä½è¡Œåˆ—ç”Ÿæˆ
 
-### ƒXƒgƒŠ[ƒ€o—ÍƒI[ƒo[ƒ[ƒh
+### ã‚¹ãƒˆãƒªãƒ¼ãƒ å‡ºåŠ›ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 - `template<typename CharT, typename Traits, typename MatrixType = double>`  
   `std::basic_ostream<CharT, Traits>& operator <<(std::basic_ostream<CharT, Traits>&, Matrix<MatrixType>);`  
-  s—ñ‚Ìo—ÍƒI[ƒo[ƒ[ƒh
+  è¡Œåˆ—ã®å‡ºåŠ›ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 
 - `template<typename CharT, typename Traits, typename MatrixType = double>`  
   `std::basic_ostream<CharT, Traits>& operator <<(std::basic_ostream<CharT, Traits>&, std::vector<std::vector<MatrixType>>);`  
-  2ŸŒ³ƒxƒNƒgƒ‹‚Ìo—ÍƒI[ƒo[ƒ[ƒh
+  2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã®å‡ºåŠ›ã‚ªãƒ¼ãƒãƒ¼ãƒ­ãƒ¼ãƒ‰
 
 > [!NOTE]
-> ‘¼‚Ì•ª‰ğ–@‚Í’Ç‰Á—\’è[`QR•ª‰ğ`,`ƒRƒŒƒXƒL[•ª‰ğ`,`ŒÅ—L’l•ª‰ğ`,`SVD•ª‰ğ`,`ƒWƒ‡ƒ‹ƒ_ƒ“•W€Œ``](https://en.wikipedia.org/wiki/Matrix_decomposition)
+> ä»–ã®åˆ†è§£æ³•ã¯è¿½åŠ äºˆå®š[`QRåˆ†è§£`,`ã‚³ãƒ¬ã‚¹ã‚­ãƒ¼åˆ†è§£`,`å›ºæœ‰å€¤åˆ†è§£`,`SVDåˆ†è§£`,`ã‚¸ãƒ§ãƒ«ãƒ€ãƒ³æ¨™æº–å½¢`](https://en.wikipedia.org/wiki/Matrix_decomposition)
