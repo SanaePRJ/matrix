@@ -11,15 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="matrixLib\matrix.h" />
-    <ClInclude Include="matrixLib\matrixCalc.hpp" />
-    <ClInclude Include="matrixLib\matrixCtor.hpp" />
-    <ClInclude Include="matrixLib\matrixDec.hpp" />
-    <ClInclude Include="matrixLib\matrixOps.hpp" />
-    <ClInclude Include="matrixLib\matrixUtils.hpp" />
+    <ClInclude Include="../src/matrixLib\matrix.h" />
+    <ClInclude Include="../src/matrixLib\matrixCalc.hpp" />
+    <ClInclude Include="../src/matrixLib\matrixCtor.hpp" />
+    <ClInclude Include="../src/matrixLib\matrixDec.hpp" />
+    <ClInclude Include="../src/matrixLib\matrixOps.hpp" />
+    <ClInclude Include="../src/matrixLib\matrixUtils.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="../src/matrix.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{dcf6177e-cf27-47e2-b9f9-5bbb96a74b95}</ProjectGuid>
@@ -33,6 +33,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Intel(R) oneAPI DPC++ Compiler 2024</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <OutDir>$(SolutionDir)output\debug\x64\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -40,6 +41,7 @@
     <PlatformToolset>Intel(R) oneAPI DPC++ Compiler 2024</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <OutDir>$(SolutionDir)output\release\x64\</OutDir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
